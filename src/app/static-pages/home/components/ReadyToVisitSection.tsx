@@ -10,18 +10,18 @@ import { uploadFiles } from "@/lib/uploadHelpers";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const defaultFormData = {
-  upperTag: "PLAN YOUR VISIT",
-  heading: "Ready to Visit?",
+  upperTag: "",
+  heading: "",
   lines: [
-    "Book online or give us a call.",
-    "We'd love to see you.",
+    "",
+    "",
   ],
-  bookLabel: "Book a Table",
-  bookUrl: "/contact",
-  phoneLabel: "Call Us",
-  phoneUrl: "tel:+441865343337",
-  image1: "/images/gallery/food-gourmet.jpg",
-  image2: "/images/gallery/gallery-8.jpg",
+  bookLabel: "",
+  bookUrl: "",
+  phoneLabel: "",
+  phoneUrl: "",
+  image1: "",
+  image2: "",
 };
 
 interface ReadyToVisitSectionProps {

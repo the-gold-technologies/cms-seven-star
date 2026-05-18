@@ -11,21 +11,21 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
 const defaultFormData = {
-  upperTag: "Food Tales",
-  headingPart1: "The",
-  headingItalicHighlight: "Dining",
-  headingPart3: "Experience",
-  mainQuote: "Our kitchen works with fresh, carefully sourced ingredients to craft heartening dishes that become the season to bond together.",
-  paragraph1: "At their heart, our dishes are rooted in British pub tradition but we love to bring in Middle Eastern, European and South Asian influences that keep things interesting.",
-  paragraph2: "There's always something to look forward to with scrumptious open sandwiches, wholesome cheese boards and mouthwatering orange and cognac crème brulée.",
-  btnLabel: "Explore Dining & Menu",
-  btnUrl: "/dining",
-  indoorCapacity: "76",
-  gardenCapacity: "150",
-  showcaseImage: "/images/gallery/food-gourmet.jpg",
-  imageAlt: "Gourmet dish at Seven Stars",
-  imageOverlayTitle: "Proper Food",
-  imageOverlaySubtitle: "Honouring British Pub Tradition",
+  upperTag: "",
+  headingPart1: "",
+  headingItalicHighlight: "",
+  headingPart3: "",
+  mainQuote: "",
+  paragraph1: "",
+  paragraph2: "",
+  btnLabel: "",
+  btnUrl: "",
+  indoorCapacity: "",
+  gardenCapacity: "",
+  showcaseImage: "",
+  imageAlt: "",
+  imageOverlayTitle: "",
+  imageOverlaySubtitle: "",
 };
 
 interface DiningSectionProps {
@@ -42,13 +42,14 @@ export function DiningSection({
   sectionId,
   initialData,
   saveUrl = "/api/home",
-  responseKey = "WhatWeDo", // Map to the old WhatWeDo DB slot to prevent schema breakage
+  responseKey = "Dining",
   onSave,
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: DiningSectionProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
-  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const isOpen =
+    controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {
       controlledOnToggle();
@@ -67,7 +68,9 @@ export function DiningSection({
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
-          const sectionData = responseKey ? json.data?.[responseKey] : json.data;
+          const sectionData = responseKey
+            ? json.data?.[responseKey]
+            : json.data;
           if (json.success && sectionData) {
             setFormData({ ...defaultFormData, ...sectionData });
           }
@@ -97,9 +100,11 @@ export function DiningSection({
   const handleSave = async () => {
     const errs: string[] = [];
     if (!formData.upperTag?.trim()) errs.push("Tag label is required");
-    if (!formData.headingItalicHighlight?.trim()) errs.push("Italic heading is required");
+    if (!formData.headingItalicHighlight?.trim())
+      errs.push("Italic heading is required");
     if (!formData.mainQuote?.trim()) errs.push("Main quote is required");
-    if (!formData.showcaseImage && !selectedFile) errs.push("Showcase image is required");
+    if (!formData.showcaseImage && !selectedFile)
+      errs.push("Showcase image is required");
 
     if (errs.length > 0) {
       errs.forEach((msg) => toast.error(msg));
@@ -135,7 +140,9 @@ export function DiningSection({
 
       const json = await res.json();
       if (json.success) {
-        toast.success("Dining Experience section saved successfully!", { id: toastId });
+        toast.success("Dining Experience section saved successfully!", {
+          id: toastId,
+        });
         setSelectedFile(null);
         setFormData(payload);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
@@ -152,7 +159,9 @@ export function DiningSection({
     }
   };
 
-  const previewUrl = selectedFile ? URL.createObjectURL(selectedFile) : formData.showcaseImage;
+  const previewUrl = selectedFile
+    ? URL.createObjectURL(selectedFile)
+    : formData.showcaseImage;
 
   return (
     <section>
@@ -171,9 +180,8 @@ export function DiningSection({
         >
           <div className="overflow-hidden">
             <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500">
-              
               {/* Header Editor Block */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
+              <div className="flex flex-col gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full">
                 <InputField
                   label="Upper Tag Label"
                   name="upperTag"
@@ -181,38 +189,43 @@ export function DiningSection({
                   onChange={handleChange}
                   placeholder="e.g. Food Tales"
                   required
+                  containerClassName="w-full"
                 />
-                <InputField
-                  label="Heading Part 1 (Regular)"
-                  name="headingPart1"
-                  value={formData.headingPart1}
-                  onChange={handleChange}
-                  placeholder="e.g. The"
-                  required
-                />
-                <InputField
-                  label="Heading Part 2 (Italic Highlight)"
-                  name="headingItalicHighlight"
-                  value={formData.headingItalicHighlight}
-                  onChange={handleChange}
-                  placeholder="e.g. Dining"
-                  required
-                />
-                <InputField
-                  label="Heading Part 3 (Regular)"
-                  name="headingPart3"
-                  value={formData.headingPart3}
-                  onChange={handleChange}
-                  placeholder="e.g. Experience"
-                  required
-                />
+                <div className="flex flex-col md:flex-row gap-6 w-full">
+                  <InputField
+                    label="Heading Part 1 (Regular)"
+                    name="headingPart1"
+                    value={formData.headingPart1}
+                    onChange={handleChange}
+                    placeholder="e.g. The"
+                    required
+                    containerClassName="flex-1"
+                  />
+                  <InputField
+                    label="Heading Part 2 (Italic Highlight)"
+                    name="headingItalicHighlight"
+                    value={formData.headingItalicHighlight}
+                    onChange={handleChange}
+                    placeholder="e.g. Dining"
+                    required
+                    containerClassName="flex-1"
+                  />
+                  <InputField
+                    label="Heading Part 3 (Regular)"
+                    name="headingPart3"
+                    value={formData.headingPart3}
+                    onChange={handleChange}
+                    placeholder="e.g. Experience"
+                    required
+                    containerClassName="flex-1"
+                  />
+                </div>
               </div>
 
               {/* Layout Content block */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                
+              <div className="flex flex-col gap-8 w-full">
                 {/* Left Side fields: Quotes & Capacities */}
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 w-full">
                   <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
                     <UtensilsCrossed className="w-3.5 h-3.5 text-blue-500" />
                     Custom Copy & Settings
@@ -282,25 +295,34 @@ export function DiningSection({
                 </div>
 
                 {/* Right Side fields: Image Showcase */}
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-6 w-full">
                   <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
                     <Sparkles className="w-3.5 h-3.5 text-blue-500" />
                     Featured Showcase Image
                   </h4>
 
                   <div className="flex flex-col gap-3 bg-gray-50/40 p-5 border border-gray-100 rounded-2xl">
-                    <label className="text-xs font-semibold text-gray-600">Showcase Image Uploader</label>
-                    
+                    <label className="text-xs font-semibold text-gray-600">
+                      Showcase Image Uploader
+                    </label>
+
                     {previewUrl ? (
                       <div className="flex items-center justify-between p-3.5 px-5 bg-white border border-gray-200 rounded-2xl transition-all hover:bg-gray-50/50 mt-1">
                         <div className="flex items-center gap-3.5 text-gray-700">
                           <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={previewUrl} alt={formData.imageAlt} className="w-full h-full object-cover" />
+                            <img
+                              src={previewUrl}
+                              alt={formData.imageAlt}
+                              className="w-full h-full object-cover"
+                            />
                           </div>
                           <div className="flex flex-col">
                             <span className="text-xs font-bold text-gray-900 truncate max-w-[200px] sm:max-w-xs md:max-w-md">
-                              {selectedFile ? selectedFile.name : formData.showcaseImage.split("/").pop() || "Showcase Image"}
+                              {selectedFile
+                                ? selectedFile.name
+                                : formData.showcaseImage.split("/").pop() ||
+                                  "Showcase Image"}
                             </span>
                             <span className="text-[9px] text-gray-400 font-semibold mt-0.5">
                               Dining Showcase Image
@@ -323,9 +345,14 @@ export function DiningSection({
                       >
                         <CloudUpload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors mb-2" />
                         <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
-                          Drag and drop showcase image here, or <span className="text-blue-500 hover:underline animate-pulse">browse</span>
+                          Drag and drop showcase image here, or{" "}
+                          <span className="text-blue-500 hover:underline animate-pulse">
+                            browse
+                          </span>
                         </p>
-                        <p className="text-[10px] text-gray-400 mt-1">PNG, JPG or WEBP (Cinematic Showcase Image)</p>
+                        <p className="text-[10px] text-gray-400 mt-1">
+                          PNG, JPG or WEBP (Cinematic Showcase Image)
+                        </p>
                       </div>
                     )}
                     <input
@@ -363,7 +390,6 @@ export function DiningSection({
                     </div>
                   </div>
                 </div>
-
               </div>
 
               {/* Save Action */}
@@ -374,7 +400,6 @@ export function DiningSection({
                   className="w-44 h-12 text-sm"
                 />
               </div>
-
             </div>
           </div>
         </div>

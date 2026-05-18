@@ -13,25 +13,10 @@ import { SectionHeader } from "@/components/SectionHeader";
 const defaultFormData = {
   testimonials: [
     {
-      quote:
-        "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly boutique experience.",
-      author: "James Harrison",
-      role: "Local Food Critic",
-      image: "/images/gallery/testimonial-v2-1.jpg",
-    },
-    {
-      quote:
-        "A perfect blend of British tradition and modern culinary art. Their orange and cognac crème brulée is quite literally the best dessert I've had this year.",
-      author: "Sarah Jenkins",
-      role: "Frequent Guest",
-      image: "/images/gallery/testimonial-v2-1.jpg",
-    },
-    {
-      quote:
-        "We hosted our anniversary here and the team went above and beyond. The setting is stunning, especially in the evening when the glow hits the stone walls.",
-      author: "Robert & Elena",
-      role: "Club Members",
-      image: "/images/gallery/testimonial-v2-1.jpg",
+      quote: "",
+      author: "",
+      role: "",
+      image: "",
     },
   ],
 };
@@ -119,17 +104,17 @@ export function TestimonialsSection({
   };
 
   const addTestimonial = () => {
-    setTestimonialImages((prev) => [...prev, ""]);
+    setTestimonialImages((prev) => ["", ...prev]);
     setFormData((prev) => ({
       ...prev,
       testimonials: [
-        ...prev.testimonials,
         {
           quote: "",
           author: "",
           role: "",
           image: "",
         },
+        ...prev.testimonials,
       ],
     }));
   };

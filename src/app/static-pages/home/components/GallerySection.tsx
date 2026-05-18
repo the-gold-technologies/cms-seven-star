@@ -16,22 +16,14 @@ interface GalleryImage {
 }
 
 const defaultImages: GalleryImage[] = [
-  { src: "/images/gallery/gallery-1.jpg", alt: "Authentic Pub Atmosphere" },
-  { src: "/images/gallery/gallery-2.jpg", alt: "Vibrant Main Bar" },
-  { src: "/images/gallery/gallery-3.jpg", alt: "Traditional Pub Character" },
-  { src: "/images/gallery/gallery-4.jpg", alt: "Restaurant Interior Detail" },
-  { src: "/images/amenities/barn.jpg", alt: "Atmospheric Interiors" },
-  { src: "/images/gallery/gallery-6.jpg", alt: "Gourmet Dining Setup" },
-  { src: "/images/gallery/gallery-8.jpg", alt: "Blue Exterior Charm" },
-  { src: "/images/gallery/event-celebration.jpg", alt: "Special Event Celebration" },
-  { src: "/images/gallery/gallery-25.jpg", alt: "Vintage Pub Decor" },
+  { src: "", alt: "" },
 ];
 
 const defaultFormData = {
-  upperTag: "Visual Journey",
-  regularHeading: "Our",
-  italicHeading: "Gallery",
-  description: "A comprehensive look into the Seven Stars. Explore our historic architecture, vibrant interiors, and the premium gastro experience across our entire curated collection.",
+  upperTag: "",
+  regularHeading: "",
+  italicHeading: "",
+  description: "",
   images: defaultImages,
 };
 
@@ -49,13 +41,14 @@ export function GallerySection({
   sectionId,
   initialData,
   saveUrl = "/api/home",
-  responseKey = "OurReputation", // Map to OurReputation DB slot to prevent schema breakage
+  responseKey = "Gallery",
   onSave,
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: GallerySectionProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
-  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const isOpen =
+    controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {
       controlledOnToggle();
@@ -65,10 +58,10 @@ export function GallerySection({
   };
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
-  
+
   // Array matching the uploaded files / existing URLs for the images
   const [galleryImages, setGalleryImages] = useState<(File | string)[]>(
-    defaultImages.map((img) => img.src)
+    defaultImages.map((img) => img.src),
   );
 
   const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -83,7 +76,9 @@ export function GallerySection({
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
-          const sectionData = responseKey ? json.data?.[responseKey] : json.data;
+          const sectionData = responseKey
+            ? json.data?.[responseKey]
+            : json.data;
           if (json.success && sectionData) {
             const data = { ...defaultFormData, ...sectionData };
             setFormData(data);
@@ -111,7 +106,10 @@ export function GallerySection({
     });
   };
 
-  const handleFileChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setGalleryImages((prev) => {
@@ -131,10 +129,10 @@ export function GallerySection({
   };
 
   const addNewImage = () => {
-    setGalleryImages((prev) => [...prev, ""]);
+    setGalleryImages((prev) => ["", ...prev]);
     setFormData((prev) => ({
       ...prev,
-      images: [...prev.images, { src: "", alt: "" }],
+      images: [{ src: "", alt: "" }, ...prev.images],
     }));
   };
 
@@ -142,11 +140,14 @@ export function GallerySection({
     const errs: string[] = [];
     if (!formData.upperTag?.trim()) errs.push("Upper Tag is required");
     if (!formData.regularHeading?.trim()) errs.push("Heading is required");
-    if (!formData.italicHeading?.trim()) errs.push("Italic Heading is required");
-    
+    if (!formData.italicHeading?.trim())
+      errs.push("Italic Heading is required");
+
     formData.images.forEach((img, idx) => {
-      if (!galleryImages[idx]) errs.push(`Image slot ${idx + 1} must have a file uploaded`);
-      if (!img.alt?.trim()) errs.push(`Alt description is required for image ${idx + 1}`);
+      if (!galleryImages[idx])
+        errs.push(`Image slot ${idx + 1} must have a file uploaded`);
+      if (!img.alt?.trim())
+        errs.push(`Alt description is required for image ${idx + 1}`);
     });
 
     if (errs.length > 0) {
@@ -219,9 +220,8 @@ export function GallerySection({
         >
           <div className="overflow-hidden">
             <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500">
-              
               {/* Header Editor Block */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
+              <div className="flex flex-col gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full">
                 <InputField
                   label="Tag Label"
                   name="upperTag"
@@ -229,30 +229,35 @@ export function GallerySection({
                   onChange={handleChange}
                   placeholder="e.g. Visual Journey"
                   required
+                  containerClassName="w-full"
                 />
-                <InputField
-                  label="Heading (Regular)"
-                  name="regularHeading"
-                  value={formData.regularHeading}
-                  onChange={handleChange}
-                  placeholder="e.g. Our"
-                  required
-                />
-                <InputField
-                  label="Heading (Italic Highlight)"
-                  name="italicHeading"
-                  value={formData.italicHeading}
-                  onChange={handleChange}
-                  placeholder="e.g. Gallery"
-                  required
-                />
+                <div className="flex flex-col md:flex-row gap-6 w-full">
+                  <InputField
+                    label="Heading (Regular)"
+                    name="regularHeading"
+                    value={formData.regularHeading}
+                    onChange={handleChange}
+                    placeholder="e.g. Our"
+                    required
+                    containerClassName="flex-1"
+                  />
+                  <InputField
+                    label="Heading (Italic Highlight)"
+                    name="italicHeading"
+                    value={formData.italicHeading}
+                    onChange={handleChange}
+                    placeholder="e.g. Gallery"
+                    required
+                    containerClassName="flex-1"
+                  />
+                </div>
                 <TextAreaField
                   label="Top Subheading / Description"
                   name="description"
                   value={formData.description}
                   onChange={handleChange}
                   placeholder="Introduce the gallery journey..."
-                  containerClassName="col-span-1 md:col-span-3"
+                  containerClassName="w-full"
                   rows={2}
                 />
               </div>
@@ -277,7 +282,10 @@ export function GallerySection({
                 <div className="flex flex-col gap-5 mt-2">
                   {formData.images.map((img, idx) => {
                     const imgVal = galleryImages[idx];
-                    const preview = imgVal instanceof File ? URL.createObjectURL(imgVal) : imgVal;
+                    const preview =
+                      imgVal instanceof File
+                        ? URL.createObjectURL(imgVal)
+                        : imgVal;
                     const name =
                       typeof imgVal === "string"
                         ? imgVal.split("/").pop() || `Gallery Image ${idx + 1}`
@@ -323,7 +331,9 @@ export function GallerySection({
                             </div>
                             <button
                               type="button"
-                              onClick={() => fileInputRefs.current[idx]?.click()}
+                              onClick={() =>
+                                fileInputRefs.current[idx]?.click()
+                              }
                               className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3.5 py-1.5 rounded-xl text-[10px] font-bold shadow-sm transition-all active:scale-95 cursor-pointer"
                             >
                               Change
@@ -336,9 +346,14 @@ export function GallerySection({
                           >
                             <CloudUpload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors mb-2" />
                             <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
-                              Drag and drop image here, or <span className="text-blue-500 hover:underline animate-pulse">browse</span>
+                              Drag and drop image here, or{" "}
+                              <span className="text-blue-500 hover:underline animate-pulse">
+                                browse
+                              </span>
                             </p>
-                            <p className="text-[10px] text-gray-400 mt-1">PNG, JPG or WEBP (Marquee Showcase Image)</p>
+                            <p className="text-[10px] text-gray-400 mt-1">
+                              PNG, JPG or WEBP (Marquee Showcase Image)
+                            </p>
                           </div>
                         )}
                         <input
@@ -373,7 +388,6 @@ export function GallerySection({
                   className="w-44 h-12 text-sm"
                 />
               </div>
-
             </div>
           </div>
         </div>

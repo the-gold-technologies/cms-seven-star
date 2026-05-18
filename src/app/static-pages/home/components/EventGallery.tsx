@@ -15,32 +15,17 @@ import { uploadFiles } from "@/lib/uploadHelpers";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const defaultImages = [
-  {
-    src: "/images/481171001_957353706531406_1040071741557670337_nlow.png",
-    alt: "Mother's Day Special Luncheon",
-  },
-  {
-    src: "/images/481171001_957353706531406_1040071741557670337_nlow.webp",
-    alt: "Mother's Day Celebration Table",
-  },
-  {
-    src: "/images/481171001_957353706531406_1040071741557670337_nlow (1).webp",
-    alt: "Mother's Day Experience Preview",
-  },
-  {
-    src: "/images/481983309_18036627329600436_7680148243878380970_nlow.webp",
-    alt: "Indian Heritage Banquet",
-  },
-  {
-    src: "/images/gallery/gallery-3.jpg",
-    alt: "Club Atmosphere",
-  },
+  { src: "", alt: "" },
+  { src: "", alt: "" },
+  { src: "", alt: "" },
+  { src: "", alt: "" },
+  { src: "", alt: "" },
 ];
 
 const defaultFormData = {
-  upperTag: "Events & Celebrations",
-  headingPart1: "Perfect For",
-  headingItalicHighlight: "Every Moment",
+  upperTag: "",
+  headingPart1: "",
+  headingItalicHighlight: "",
   images: defaultImages,
 };
 
@@ -72,7 +57,8 @@ export function EventGallery({
   onToggle: controlledOnToggle,
 }: BlogSectionProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
-  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const isOpen =
+    controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {
       controlledOnToggle();
@@ -251,7 +237,7 @@ export function EventGallery({
           <div className="overflow-hidden">
             <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500">
               {/* Header Titles Editor */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
                 <InputField
                   label="Upper Tag Label"
                   name="upperTag"
@@ -259,6 +245,7 @@ export function EventGallery({
                   onChange={handleChange}
                   placeholder="e.g. Events & Celebrations"
                   required
+                  containerClassName=" col-span-2"
                 />
                 <InputField
                   label="Heading Part 1 (Regular)"
@@ -328,7 +315,9 @@ export function EventGallery({
                             <div className="flex items-center gap-2">
                               <button
                                 type="button"
-                                onClick={() => fileInputRefs.current[idx]?.click()}
+                                onClick={() =>
+                                  fileInputRefs.current[idx]?.click()
+                                }
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-xl text-[10px] font-bold shadow-sm transition-all active:scale-95 cursor-pointer"
                               >
                                 Change
@@ -350,9 +339,14 @@ export function EventGallery({
                           >
                             <CloudUpload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors mb-2" />
                             <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
-                              Drag and drop image here, or <span className="text-blue-500 hover:underline animate-pulse">browse</span>
+                              Drag and drop image here, or{" "}
+                              <span className="text-blue-500 hover:underline animate-pulse">
+                                browse
+                              </span>
                             </p>
-                            <p className="text-[10px] text-gray-400 mt-1">PNG, JPG or WEBP ({slotLabels[idx]})</p>
+                            <p className="text-[10px] text-gray-400 mt-1">
+                              PNG, JPG or WEBP ({slotLabels[idx]})
+                            </p>
                           </div>
                         )}
                         <input
@@ -368,9 +362,7 @@ export function EventGallery({
                         <InputField
                           label="SEO Alt Tag"
                           value={formData.images[idx].alt}
-                          onChange={(e) =>
-                            handleAltChange(idx, e.target.value)
-                          }
+                          onChange={(e) => handleAltChange(idx, e.target.value)}
                           placeholder="Alt tag..."
                           containerClassName="mt-1"
                         />
