@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { CloudUpload, Trash2, Sparkles } from "lucide-react";
+import { CloudUpload, Trash2, Sparkles, Image as ImageIcon } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -11,14 +11,14 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
 const defaultFormData = {
-  backgroundImage: "",
   tagline: "",
   headingPart1: "",
-  headingItalicHighlight: "",
-  quote: "",
+  headingHighlight: "",
+  description: "",
+  backgroundImage: "",
 };
 
-interface GalleryHeroCMSProps {
+interface MenuHeroCMSProps {
   sectionId?: string;
   initialData?: Record<string, unknown>;
   saveUrl?: string;
@@ -28,17 +28,18 @@ interface GalleryHeroCMSProps {
   onToggle?: () => void;
 }
 
-export function GalleryHeroCMS({
+export function MenuHeroCMS({
   sectionId,
   initialData,
-  saveUrl = "/api/gallery",
-  responseKey = "GalleryHero",
+  saveUrl = "/api/menu",
+  responseKey = "MenuHero",
   onSave,
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
-}: GalleryHeroCMSProps) {
+}: MenuHeroCMSProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
-  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const isOpen =
+    controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {
       controlledOnToggle();
@@ -61,7 +62,9 @@ export function GalleryHeroCMS({
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
-          const sectionData = responseKey ? json.data?.[responseKey] : json.data;
+          const sectionData = responseKey
+            ? json.data?.[responseKey]
+            : json.data;
           if (json.success && sectionData) {
             const data = { ...defaultFormData, ...sectionData };
             setFormData(data);
@@ -73,7 +76,7 @@ export function GalleryHeroCMS({
   }, [initialData, saveUrl, responseKey]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -91,11 +94,11 @@ export function GalleryHeroCMS({
 
   const handleSave = async () => {
     const errs: string[] = [];
-    if (!formData.tagline?.trim()) errs.push("Eyebrow tag is required");
-    if (!formData.headingPart1?.trim()) errs.push("Heading Regular Part is required");
-    if (!formData.headingItalicHighlight?.trim()) errs.push("Heading Italic part is required");
-    if (!formData.quote?.trim()) errs.push("Hero quote summary is required");
-    if (!selectedImage) errs.push("Background uploader image is required");
+    if (!formData.tagline?.trim()) errs.push("Hero Tagline label is required");
+    if (!formData.headingPart1?.trim()) errs.push("Hero Heading regular part is required");
+    if (!formData.headingHighlight?.trim()) errs.push("Hero Heading highlight part is required");
+    if (!formData.description?.trim()) errs.push("Hero Quote description copy is required");
+    if (!selectedImage) errs.push("Hero background showcase photo is required");
 
     if (errs.length > 0) {
       errs.forEach((msg) => toast.error(msg));
@@ -103,10 +106,11 @@ export function GalleryHeroCMS({
     }
 
     setIsSaving(true);
-    const toastId = toast.loading("Saving Gallery Hero...");
+    const toastId = toast.loading("Saving Menu Hero details...");
     try {
       const uploadedUrls = await uploadFiles([selectedImage]);
-      const imgUrl = selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
+      const imgUrl =
+        selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
 
       const payload = {
         ...formData,
@@ -125,7 +129,7 @@ export function GalleryHeroCMS({
 
       const json = await res.json();
       if (json.success) {
-        toast.success("Gallery Hero saved successfully!", { id: toastId });
+        toast.success("Menu Hero saved successfully!", { id: toastId });
         setFormData(payload);
         setSelectedImage(imgUrl);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
@@ -140,15 +144,21 @@ export function GalleryHeroCMS({
     }
   };
 
-  const preview = selectedImage instanceof File ? URL.createObjectURL(selectedImage) : selectedImage;
-  const name = typeof selectedImage === "string" ? selectedImage.split("/").pop() || "Background Image" : selectedImage?.name;
+  const preview =
+    selectedImage instanceof File
+      ? URL.createObjectURL(selectedImage)
+      : selectedImage;
+  const name =
+    typeof selectedImage === "string"
+      ? selectedImage.split("/").pop() || "Hero Cover Image"
+      : selectedImage?.name;
 
   return (
     <section>
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
-          title="Gallery Hero Section"
-          description="Manage main gallery background parallax photos, visual eyebrow tags, headers, and quote callouts."
+          title="Menu Hero Section"
+          description="Manage full-screen cover backdrops, headers, subheadings, and quote callouts for the Menu page."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -159,16 +169,15 @@ export function GalleryHeroCMS({
           }`}
         >
           <div className="overflow-hidden">
-            <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500">
-              
-              {/* Header texts */}
+            <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500 text-left">
+              {/* Headings */}
               <div className="flex flex-col gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full">
                 <InputField
                   label="Eyebrow Tag"
                   name="tagline"
                   value={formData.tagline}
                   onChange={handleChange}
-                  placeholder="e.g. A Visual Story"
+                  placeholder="e.g. Culinary Journey"
                   required
                 />
 
@@ -178,37 +187,37 @@ export function GalleryHeroCMS({
                     name="headingPart1"
                     value={formData.headingPart1}
                     onChange={handleChange}
-                    placeholder="e.g. Photo"
+                    placeholder="e.g. Our"
                     required
                     containerClassName="flex-1"
                   />
                   <InputField
                     label="Heading Italic Part"
-                    name="headingItalicHighlight"
-                    value={formData.headingItalicHighlight}
+                    name="headingHighlight"
+                    value={formData.headingHighlight}
                     onChange={handleChange}
-                    placeholder="e.g. Gallery"
+                    placeholder="e.g. Menu"
                     required
                     containerClassName="flex-1"
                   />
                 </div>
 
                 <TextAreaField
-                  label="Hero Callout Quote"
-                  name="quote"
-                  value={formData.quote}
+                  label="Hero Description / Quote Copy"
+                  name="description"
+                  value={formData.description}
                   onChange={handleChange}
-                  placeholder="e.g. Captured moments from our interiors, gardens..."
-                  rows={2}
+                  placeholder="A look at our kitchen starts with fresh..."
+                  rows={3}
                   required
                 />
               </div>
 
-              {/* Background Media */}
+              {/* Cover Photo */}
               <div className="flex flex-col gap-3">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
                   <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                  Hero Parallax Cover Photo
+                  Hero Background Cover Photo
                 </span>
 
                 {preview ? (
@@ -216,14 +225,15 @@ export function GalleryHeroCMS({
                     <div className="flex items-center gap-3.5 text-gray-700">
                       <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={preview} alt="Gallery Hero BG" className="w-full h-full object-cover" />
+                        <img
+                          src={preview}
+                          alt="Menu Hero BG"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-gray-900 truncate max-w-[200px] sm:max-w-xs md:max-w-md">
                           {name}
-                        </span>
-                        <span className="text-[9px] text-gray-400 font-semibold mt-0.5">
-                          Parallax Background Layer
                         </span>
                       </div>
                     </div>
@@ -253,7 +263,6 @@ export function GalleryHeroCMS({
                     <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
                       Drag and drop image here, or browse
                     </p>
-                    <p className="text-[10px] text-gray-400 mt-1">PNG, JPG or WEBP (Cover Photo)</p>
                   </div>
                 )}
                 <input
@@ -273,7 +282,6 @@ export function GalleryHeroCMS({
                   className="w-44 h-12 text-sm"
                 />
               </div>
-
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ export function EventsHeroCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: EventsHeroCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

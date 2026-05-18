@@ -37,7 +37,7 @@ export function StoryHeroCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: StoryHeroCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {

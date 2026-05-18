@@ -47,7 +47,7 @@ export function AboutRootsCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: AboutRootsCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

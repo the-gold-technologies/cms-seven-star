@@ -40,7 +40,7 @@ export function TestimonialsSection({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: TestimonialsSectionProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {

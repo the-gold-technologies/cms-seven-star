@@ -44,7 +44,7 @@ export function WhatWeHostCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: WhatWeHostCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

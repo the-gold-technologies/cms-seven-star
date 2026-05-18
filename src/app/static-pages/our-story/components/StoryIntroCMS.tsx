@@ -35,7 +35,7 @@ export function StoryIntroCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: StoryIntroCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
     if (controlledOnToggle) {

@@ -46,7 +46,7 @@ export function GallerySection({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: GallerySectionProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

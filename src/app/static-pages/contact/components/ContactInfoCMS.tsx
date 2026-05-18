@@ -40,7 +40,7 @@ export function ContactInfoCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: ContactInfoCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

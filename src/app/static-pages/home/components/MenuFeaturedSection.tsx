@@ -39,7 +39,7 @@ export function MenuFeaturedSection({
   responseKey = "MenuFeatured",
   onSave,
 }: MenuFeaturedSectionProps) {
-  const [isOpen, setIsOpen] = useState(!initialData);
+  const [isOpen, setIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
   const [dishImages, setDishImages] = useState<(File | string)[]>([]);

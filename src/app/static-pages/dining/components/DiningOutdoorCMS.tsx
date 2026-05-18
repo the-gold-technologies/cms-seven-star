@@ -38,7 +38,7 @@ export function DiningOutdoorCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: DiningOutdoorCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

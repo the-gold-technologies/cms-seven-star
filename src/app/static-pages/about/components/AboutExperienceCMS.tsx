@@ -44,7 +44,7 @@ export function AboutExperienceCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: AboutExperienceCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

@@ -41,7 +41,7 @@ export function DiningIntroCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: DiningIntroCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

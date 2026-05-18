@@ -35,7 +35,7 @@ export function DiningQuoteCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: DiningQuoteCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {

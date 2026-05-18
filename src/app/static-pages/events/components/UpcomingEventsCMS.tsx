@@ -87,7 +87,7 @@ export function UpcomingEventsCMS({
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,
 }: UpcomingEventsCMSProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(!initialData);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen =
     controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
   const setIsOpen = (val: any) => {
