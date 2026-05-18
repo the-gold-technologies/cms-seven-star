@@ -65,15 +65,6 @@ const staticSidebarLinks: SidebarLink[] = [
     ],
   },
   {
-    title: "Ecommerce",
-    icon: ShoppingCart,
-    sublinks: [
-      { title: "Products", href: "/ecommerce/products" },
-      { title: "Categories", href: "/ecommerce/categories" },
-      { title: "Banners", href: "/ecommerce/banners" },
-    ],
-  },
-  {
     title: "Submissions",
     icon: Layers,
     sublinks: [
@@ -162,18 +153,18 @@ export function AdminSidebar() {
   };
 
   return (
-    <div className="flex h-full w-[280px] flex-col bg-[#0B0F29] text-white overflow-hidden rounded-l-[2.5rem]">
+    <div className="flex h-full w-[280px] flex-col bg-[#0a192f] text-white overflow-hidden rounded-l-[2.5rem] border-l border-white/5">
       {/* Logo Area */}
       <div className="flex h-24 items-center px-8">
         <Link
           href="/"
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
-          <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center text-[#0B0F29] font-black italic shadow-sm text-lg">
-            T
+          <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center text-[#0a192f] font-black italic shadow-sm text-lg">
+            S
           </div>
-          <span className="font-bold text-2xl tracking-tighter italic">
-            TGT <span className="text-[#D4AF37]">CMS</span>
+          <span className="font-bold text-lg tracking-tight">
+            Seven Stars <span className="text-[#475DB1] font-semibold">CMS</span>
           </span>
         </Link>
       </div>
@@ -214,7 +205,7 @@ export function AdminSidebar() {
                             className={cn(
                               "block px-4 py-2.5 rounded-2xl text-[13px] font-medium transition-all duration-200",
                               isSubActive
-                                ? "bg-[#D4AF37] text-[#0B0F29] shadow-sm transform scale-[1.02]"
+                                ? "bg-[#475DB1] text-white shadow-sm shadow-[#475DB1]/20 transform scale-[1.02]"
                                 : "text-gray-400 hover:bg-white/5 hover:text-white",
                             )}
                           >
@@ -235,7 +226,7 @@ export function AdminSidebar() {
                 className={cn(
                   "flex items-center justify-between px-4 py-3 rounded-2xl text-[14px] font-medium transition-all duration-200 mt-2",
                   isActive
-                    ? "bg-[#D4AF37] text-[#0B0F29] shadow-sm transform scale-[1.02]"
+                    ? "bg-[#475DB1] text-white shadow-sm shadow-[#475DB1]/20 transform scale-[1.02]"
                     : "text-gray-400 hover:bg-white/5 hover:text-white",
                 )}
               >
@@ -243,14 +234,14 @@ export function AdminSidebar() {
                   <item.icon
                     className={cn(
                       "w-5 h-5",
-                      isActive ? "text-[#0B0F29]" : "text-gray-400",
+                      isActive ? "text-white" : "text-gray-400",
                     )}
                     strokeWidth={isActive ? 2.5 : 2}
                   />
                   {item.title}
                 </div>
                 {item.badge && (
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-[#B5952F] text-white text-[10px] font-bold">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-[#475DB1]/80 text-white text-[10px] font-bold">
                     {item.badge}
                   </div>
                 )}
