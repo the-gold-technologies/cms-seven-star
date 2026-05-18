@@ -48,6 +48,8 @@ const staticSidebarLinks: SidebarLink[] = [
     sublinks: [
       { title: "Home", href: "/static-pages/home" },
       { title: "About", href: "/static-pages/about" },
+      { title: "Our Story", href: "/static-pages/our-story" },
+      { title: "Gallery", href: "/static-pages/gallery" },
       { title: "Contact", href: "/static-pages/contact" },
       { title: "Services", href: "/static-pages/services" },
       { title: "Products", href: "/static-pages/products" },
