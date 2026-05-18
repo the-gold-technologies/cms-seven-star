@@ -28,7 +28,7 @@ type SidebarLink = {
   badge?: string | number;
 };
 
-const staticSidebarLinks: SidebarLink[] = [
+const sidebarLinks: SidebarLink[] = [
   {
     title: "Dashboard",
     href: "/",
@@ -43,7 +43,7 @@ const staticSidebarLinks: SidebarLink[] = [
     ],
   },
   {
-    title: "Static pages",
+    title: "Pages",
     icon: BookOpen,
     sublinks: [
       { title: "Home", href: "/static-pages/home" },
@@ -69,7 +69,6 @@ const staticSidebarLinks: SidebarLink[] = [
     icon: Layers,
     sublinks: [
       { title: "Enquiries", href: "/submissions/enquiries" },
-      { title: "Audits", href: "/submissions/audits" },
     ],
   },
   {
@@ -81,41 +80,6 @@ const staticSidebarLinks: SidebarLink[] = [
 
 export function AdminSidebar() {
   const pathname = usePathname();
-  const [customPages, setCustomPages] = useState<
-    { title: string; href: string }[]
-  >([]);
-
-  useEffect(() => {
-    fetchWithCache("/api/pages")
-      .then((json) => {
-        if (json.success && Array.isArray(json.data)) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const fetchedPages = json.data
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            .filter((p: any) => p.type === "standard")
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            .map((p: any) => ({
-              title: p.title,
-              href: `/custom-pages/${p.slug}`,
-            }));
-          setCustomPages(fetchedPages);
-        }
-      })
-      .catch(console.error);
-  }, []);
-
-  const dynamicCustomSection: SidebarLink = {
-    title: "Custom pages",
-    icon: Layers,
-    sublinks: [...customPages],
-  };
-
-  // Reconstruct full links array
-  const sidebarLinks = [
-    ...staticSidebarLinks.slice(0, 3),
-    ...(customPages.length > 0 ? [dynamicCustomSection] : []),
-    ...staticSidebarLinks.slice(3),
-  ];
 
   const [openGroups, setOpenGroups] = useState<string[]>(() => {
     return sidebarLinks
@@ -125,7 +89,7 @@ export function AdminSidebar() {
       .map((item) => item.title);
   });
 
-  // Ensure active group is open when custom pages load or pathname changes
+  // Ensure active group is open when pathname changes
   useEffect(() => {
     const activeGroups = sidebarLinks
       .filter((item) =>
@@ -133,7 +97,6 @@ export function AdminSidebar() {
       )
       .map((item) => item.title);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     setOpenGroups((prev) => {
       const newGroups = [...prev];
       activeGroups.forEach((group) => {
@@ -143,8 +106,7 @@ export function AdminSidebar() {
       });
       return newGroups;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, customPages.length]);
+  }, [pathname]);
 
   const toggleGroup = (title: string) => {
     setOpenGroups((prev) =>

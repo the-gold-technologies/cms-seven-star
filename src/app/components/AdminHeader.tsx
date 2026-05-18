@@ -14,7 +14,7 @@ export function AdminHeader() {
     <section className=" flex flex-col gap-6">
       <header className=" flex justify-between items-center w-full">
         <h1 className="text-[28px] font-bold tracking-tight text-[#0B0F29] flex items-center gap-2">
-          Welcome back <span className="text-[#D4AF37]">{userName}</span>
+          Welcome back <span className="text-[#475DB1]">{userName}</span>
           <span className="text-2xl animate-bounce origin-bottom-right delay-700">
             👋
           </span>
@@ -36,12 +36,12 @@ export function AdminHeader() {
           <input
             type="text"
             placeholder="Search content..."
-            className="pl-10 pr-4 py-3.5 bg-white border-0 ring-1 ring-gray-100 w-[350px] rounded-full text-sm font-medium focus:ring-2 focus:ring-[#D4AF37] focus:outline-none  shadow-sm transition-all"
+            className="pl-10 pr-4 py-3.5 bg-white border-0 ring-1 ring-gray-100 w-[350px] rounded-full text-sm font-medium focus:ring-2 focus:ring-[#475DB1] focus:outline-none  shadow-sm transition-all"
           />
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-[#0B0F29] w-max text-white px-8 py-3 rounded-full font-semibold tracking-wide hover:bg-black transition-all duration-300 border border-transparent hover:border-[#D4AF37] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] flex items-center gap-3 group"
+          className="bg-[#0B0F29] w-max text-white px-8 py-3 rounded-full font-semibold tracking-wide hover:bg-black transition-all duration-300 border border-transparent hover:border-[#475DB1] hover:shadow-[0_0_25px_rgba(71, 93, 177,0.4)] flex items-center gap-3 group"
         >
           <Plus className="w-4 h-4" />
           Create Page

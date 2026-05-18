@@ -54,7 +54,7 @@ export function PageHeader({
                   setIsOpen?.(true);
                 }
               }}
-              className="inline-flex items-center gap-2 w-fit px-6 bg-[#0B0F29] text-white font-semibold py-3 rounded-full hover:bg-black transition-all hover:border-[#D4AF37] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+              className="inline-flex items-center gap-2 w-fit px-6 bg-[#0B0F29] text-white font-semibold py-3 rounded-full hover:bg-black transition-all hover:border-[#475DB1] hover:shadow-[0_0_25px_rgba(71, 93, 177,0.4)]"
             >
               <Plus
                 className="-ml-0.5 h-4 w-4"

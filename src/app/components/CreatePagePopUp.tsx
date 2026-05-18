@@ -111,14 +111,14 @@ export const CreatePagePopUp = ({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className=" w-32 bg-[#0B0F29] text-white font-semibold py-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all hover:border-[#D4AF37] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] disabled:opacity-50"
+                      className=" w-32 bg-[#0B0F29] text-white font-semibold py-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all hover:border-[#475DB1] hover:shadow-[0_0_25px_rgba(71, 93, 177,0.4)] disabled:opacity-50"
                     >
                       {isSubmitting ? "Creating..." : "Continue"}
                     </button>
                     <button
                       type="button"
                       onClick={() => setIsModalOpen(false)}
-                      className="text-black px-6 py-3 border-gray-200 rounded-full text-md font-medium transition-colors border hover:border-[#D4AF37]"
+                      className="text-black px-6 py-3 border-gray-200 rounded-full text-md font-medium transition-colors border hover:border-[#475DB1]"
                     >
                       Cancel
                     </button>

@@ -7,7 +7,7 @@ export function AdminRightSidebar() {
       <div className="bg-[#0B0F29] rounded-[2rem] p-7 text-white relative overflow-hidden shadow-xl">
         {/* Decorative Bubbles */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#D4AF37]/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#475DB1]/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2"></div>
         <div className="flex items-center gap-2 font-bold tracking-tight text-white/90 mb-6">
           <div className="w-6 h-6 rounded-full bg-white text-[#0B0F29] flex items-center justify-center font-serif italic text-sm">
             T
@@ -24,7 +24,7 @@ export function AdminRightSidebar() {
         </p>
         <Link
           href="/seo/global"
-          className="inline-block bg-[#D4AF37] text-[#0B0F29] px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white transition-colors transform hover:scale-105 shadow-[0_0_20px_rgba(217,249,105,0.3)] relative z-10"
+          className="inline-block bg-[#475DB1] text-[#0B0F29] px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white transition-colors transform hover:scale-105 shadow-[0_0_20px_rgba(217,249,105,0.3)] relative z-10"
         >
           Get Access
         </Link>
@@ -67,7 +67,7 @@ export function AdminRightSidebar() {
             {/* Mini Progress */}
             <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
               <div
-                className="bg-[#D4AF37] h-1.5 rounded-full"
+                className="bg-[#475DB1] h-1.5 rounded-full"
                 style={{ width: "65%" }}
               ></div>
             </div>

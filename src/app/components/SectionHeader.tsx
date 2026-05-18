@@ -38,7 +38,7 @@ export function SectionHeader({
       {action && (
         <button
           onClick={action.onClick}
-          className="bg-[#0B0F29] w-max text-white ml-auto px-6 py-2.5 rounded-full font-semibold tracking-wide hover:bg-black transition-all duration-300 border border-transparent hover:border-[#D4AF37] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 group whitespace-nowrap"
+          className="bg-[#0B0F29] w-max text-white ml-auto px-6 py-2.5 rounded-full font-semibold tracking-wide hover:bg-black transition-all duration-300 border border-transparent hover:border-[#475DB1] hover:shadow-[0_0_25px_rgba(71, 93, 177,0.4)] flex items-center justify-center gap-2 group whitespace-nowrap"
         >
           <Plus className="w-4 h-4 group-hover:scale-110 transition-transform" />{" "}
           {action.label}

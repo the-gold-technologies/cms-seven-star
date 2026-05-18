@@ -22,7 +22,7 @@ export function DataTable<T>({
   if (isLoading) {
     return (
       <div className="rounded-3xl border border-gray-100 bg-white shadow-sm p-16 text-center flex flex-col items-center justify-center">
-        <div className="h-10 w-10 border-4 border-gray-200 border-t-[#D4AF37] rounded-full animate-spin mb-4"></div>
+        <div className="h-10 w-10 border-4 border-gray-200 border-t-[#475DB1] rounded-full animate-spin mb-4"></div>
         <p className="text-sm font-bold text-gray-400 uppercase tracking-widest animate-pulse">
           Fetching data...
         </p>

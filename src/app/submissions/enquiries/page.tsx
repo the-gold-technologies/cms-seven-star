@@ -89,7 +89,7 @@ export default function EnquiriesPage() {
               {isLoading ? (
                 <tr>
                   <td colSpan={5} className="py-20 text-center">
-                    <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#D4AF37]" />
+                    <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#475DB1]" />
                   </td>
                 </tr>
               ) : enquiries.length === 0 ? (
@@ -132,7 +132,7 @@ export default function EnquiriesPage() {
                     <td className="px-6 py-5 pr-8 text-right">
                        <button 
                          onClick={() => alert(enquiry.projectGoals || "No goals specified")}
-                         className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-[#D4AF37] hover:text-[#0B0F29] transition-all"
+                         className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-[#475DB1] hover:text-[#0B0F29] transition-all"
                        >
                          <Target className="w-4 h-4" />
                        </button>

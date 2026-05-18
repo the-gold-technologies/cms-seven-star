@@ -70,7 +70,7 @@ export default function PageSEODashboard() {
         description="Monitor and manage SEO metadata, OG tags, and canonical URLs for every page on your site."
       />
 
-      <div className="bg-white p-4 rounded-3xl border border-gray-50 shadow-sm flex items-center gap-4 px-6 focus-within:ring-2 focus-within:ring-[#D4AF37]/20 transition-all">
+      <div className="bg-white p-4 rounded-3xl border border-gray-50 shadow-sm flex items-center gap-4 px-6 focus-within:ring-2 focus-within:ring-[#475DB1]/20 transition-all">
         <Search className="w-5 h-5 text-gray-400" />
         <input
           type="text"
@@ -113,7 +113,7 @@ export default function PageSEODashboard() {
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="py-20 text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37] mx-auto"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#475DB1] mx-auto"></div>
                   </td>
                 </tr>
               ) : rootLinks.length === 0 ? (
@@ -148,7 +148,7 @@ export default function PageSEODashboard() {
                           >
                             {hasChildren ? (
                               isExpanded ? (
-                                <ChevronDown className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                                <ChevronDown className="w-4 h-4 text-[#475DB1] shrink-0" />
                               ) : (
                                 <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
                               )
@@ -199,7 +199,7 @@ export default function PageSEODashboard() {
                           <span
                             className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                               root.type === "Main Link"
-                                ? "bg-blue-50 text-[#D4AF37]"
+                                ? "bg-blue-50 text-[#475DB1]"
                                 : root.type === "Dropdown"
                                   ? "bg-purple-50 text-purple-600"
                                   : "bg-gray-100 text-gray-500"
@@ -217,7 +217,7 @@ export default function PageSEODashboard() {
                               <>
                                 <Link
                                   href={`/seo/pages/${root.slug}`}
-                                  className="p-2 bg-gray-50 text-brand-navy rounded-xl hover:bg-[#D4AF37] hover:text-[#0B0F29] transition-all group"
+                                  className="p-2 bg-gray-50 text-brand-navy rounded-xl hover:bg-[#475DB1] hover:text-[#0B0F29] transition-all group"
                                   title="Edit SEO"
                                 >
                                   <Edit2 className="w-4 h-4" />
@@ -295,7 +295,7 @@ export default function PageSEODashboard() {
                                 <div className="flex items-center gap-3 justify-end">
                                   <Link
                                     href={`/seo/pages/${child.slug}`}
-                                    className="p-1.5 bg-white border border-gray-100 text-gray-400 rounded-lg hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all"
+                                    className="p-1.5 bg-white border border-gray-100 text-gray-400 rounded-lg hover:border-[#475DB1] hover:text-[#475DB1] transition-all"
                                   >
                                     <Edit2 className="w-3.5 h-3.5" />
                                   </Link>

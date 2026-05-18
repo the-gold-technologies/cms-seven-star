@@ -32,7 +32,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({
           </div>
         )}
         <select
-          className={`w-full ${icon ? "pl-12" : "px-6"} pr-10 py-4 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all appearance-none cursor-pointer text-gray-800 ${className}`}
+          className={`w-full ${icon ? "pl-12" : "px-6"} pr-10 py-4 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-[#475DB1]/20 outline-none transition-all appearance-none cursor-pointer text-gray-800 ${className}`}
           {...props}
         >
           {options.map((opt) => (

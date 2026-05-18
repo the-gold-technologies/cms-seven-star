@@ -146,7 +146,7 @@ export default function NavLinksPage() {
 
       {isLoading ? (
         <div className="py-20 flex justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37]"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#475DB1]"></div>
         </div>
       ) : (
         <div className="overflow-hidden rounded-[2.5rem] bg-white shadow-sm ring-1 ring-gray-100/50">
@@ -192,7 +192,7 @@ export default function NavLinksPage() {
                           >
                             {hasChildren ? (
                               isExpanded ? (
-                                <ChevronDown className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                                <ChevronDown className="w-4 h-4 text-[#475DB1] shrink-0" />
                               ) : (
                                 <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
                               )
@@ -225,7 +225,7 @@ export default function NavLinksPage() {
                           <span
                             className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                               root.type === "Main Link"
-                                ? "bg-blue-50 text-[#D4AF37]"
+                                ? "bg-blue-50 text-[#475DB1]"
                                 : root.type === "Dropdown"
                                   ? "bg-purple-50 text-purple-600"
                                   : "bg-gray-100 text-gray-500"
@@ -351,7 +351,7 @@ export default function NavLinksPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, label: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all"
                   />
                 </div>
                 <div className="space-y-1.5 flex flex-col">
@@ -366,7 +366,7 @@ export default function NavLinksPage() {
                       setFormData({ ...formData, url: e.target.value })
                     }
                     disabled={formData.isStatic}
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -381,7 +381,7 @@ export default function NavLinksPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, type: e.target.value })
                     }
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all"
                   >
                     <option value="Main Link">Main Link</option>
                     <option value="Dropdown">Dropdown</option>
@@ -399,7 +399,7 @@ export default function NavLinksPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, parent: e.target.value })
                         }
-                        className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all"
                       >
                         <option value="-">-</option>
                         {links
@@ -431,7 +431,7 @@ export default function NavLinksPage() {
                         order: parseInt(e.target.value) || 0,
                       })
                     }
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all"
                   />
                 </div>
                 <div className="space-y-1.5 flex items-center mt-8">
@@ -442,7 +442,7 @@ export default function NavLinksPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, isStatic: e.target.checked })
                       }
-                      className="w-4 h-4 text-[#D4AF37] focus:ring-[#D4AF37] border-gray-300 rounded"
+                      className="w-4 h-4 text-[#475DB1] focus:ring-[#475DB1] border-gray-300 rounded"
                     />
                     <span className="text-sm font-medium text-gray-700">
                       Is Static Page
@@ -463,7 +463,7 @@ export default function NavLinksPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, title: e.target.value })
                       }
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all"
                     />
                   </div>
 
@@ -480,7 +480,7 @@ export default function NavLinksPage() {
                         })
                       }
                       rows={2}
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#475DB1] focus:border-transparent outline-none transition-all resize-none"
                     />
                   </div>
                 </>
@@ -496,7 +496,7 @@ export default function NavLinksPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 text-sm font-bold bg-[#0B0F29] text-white rounded-full hover:bg-black transition-all hover:shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+                  className="px-6 py-2.5 text-sm font-bold bg-[#0B0F29] text-white rounded-full hover:bg-black transition-all hover:shadow-[0_0_15px_rgba(71, 93, 177,0.4)]"
                 >
                   {editingLink ? "Update Link" : "Create Link"}
                 </button>

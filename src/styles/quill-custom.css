@@ -64,7 +64,7 @@
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item:hover,
 .rich-text-container .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-  color: #d4af37 !important;
+  color: #475DB1 !important;
 }
 
 .rich-text-container .ql-snow.ql-toolbar button:hover .ql-fill,
@@ -95,7 +95,7 @@
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
 .rich-text-container .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-  fill: #d4af37 !important;
+  fill: #475DB1 !important;
 }
 
 .rich-text-container .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -126,5 +126,5 @@
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
 .rich-text-container .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
 .rich-text-container .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-  stroke: #d4af37 !important;
+  stroke: #475DB1 !important;
 }

@@ -30,13 +30,13 @@ export function ActivityCharts() {
           </div>
           {/* Bars */}
           <div className="ml-8 w-full flex items-end justify-between h-full group relative">
-            <div className="w-5 h-[40%] bg-[#0B0F29] rounded-full hover:bg-[#D4AF37] transition-colors"></div>
-            <div className="w-5 h-[65%] bg-[#0B0F29] rounded-full hover:bg-[#D4AF37] transition-colors"></div>
-            <div className="w-5 h-[30%] bg-[#0B0F29] rounded-full hover:bg-[#D4AF37] transition-colors"></div>
+            <div className="w-5 h-[40%] bg-[#0B0F29] rounded-full hover:bg-[#475DB1] transition-colors"></div>
+            <div className="w-5 h-[65%] bg-[#0B0F29] rounded-full hover:bg-[#475DB1] transition-colors"></div>
+            <div className="w-5 h-[30%] bg-[#0B0F29] rounded-full hover:bg-[#475DB1] transition-colors"></div>
 
             {/* Highlighted Tooltip Bar */}
             <div className="relative h-full flex items-end justify-center w-5">
-              <div className="w-full h-[90%] bg-[#D4AF37] rounded-full"></div>
+              <div className="w-full h-[90%] bg-[#475DB1] rounded-full"></div>
               {/* Tooltip */}
               <div className="absolute -top-12 bg-[#0B0F29] text-white text-[11px] font-semibold px-3 py-2 rounded-lg whitespace-nowrap shadow-xl z-10 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-2 before:h-2 before:bg-[#0B0F29] before:rotate-45">
                 <div className="flex items-center gap-2">
@@ -48,8 +48,8 @@ export function ActivityCharts() {
               </div>
             </div>
 
-            <div className="w-5 h-[55%] bg-[#0B0F29] rounded-full hover:bg-[#D4AF37] transition-colors"></div>
-            <div className="w-5 h-[50%] bg-[#0B0F29] rounded-full hover:bg-[#D4AF37] transition-colors"></div>
+            <div className="w-5 h-[55%] bg-[#0B0F29] rounded-full hover:bg-[#475DB1] transition-colors"></div>
+            <div className="w-5 h-[50%] bg-[#0B0F29] rounded-full hover:bg-[#475DB1] transition-colors"></div>
           </div>
 
           {/* X Axis */}
