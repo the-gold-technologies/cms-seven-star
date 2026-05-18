@@ -50,10 +50,9 @@ const staticSidebarLinks: SidebarLink[] = [
       { title: "About", href: "/static-pages/about" },
       { title: "Our Story", href: "/static-pages/our-story" },
       { title: "Gallery", href: "/static-pages/gallery" },
+      { title: "Dining", href: "/static-pages/dining" },
+      { title: "Events", href: "/static-pages/events" },
       { title: "Contact", href: "/static-pages/contact" },
-      { title: "Services", href: "/static-pages/services" },
-      { title: "Products", href: "/static-pages/products" },
-      { title: "Portfolio", href: "/static-pages/portfolio" },
     ],
   },
   {

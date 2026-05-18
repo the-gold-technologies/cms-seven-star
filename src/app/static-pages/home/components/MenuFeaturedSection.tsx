@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { CloudUpload, Trash2, Sparkles, Utensils, Euro } from "lucide-react";
+import { CloudUpload, Trash2, Plus, Sparkles, Utensils } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -10,39 +10,18 @@ import { uploadFiles } from "@/lib/uploadHelpers";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
-const defaultDishes = [
-  {
-    name: "Cured Scottish Salmon",
-    price: "£14.50",
-    description: "Citrus-cured salmon, pickled cucumber, radish, and herb emulsion.",
-    image: "/images/menu/SEVEN_STARS_2026_02_09-129.jpg",
-  },
-  {
-    name: "Pan-Seared Duck Breast",
-    price: "£26.95",
-    description: "Tender duck breast, honey-glazed carrots, potato fondant, and rich red wine reduction.",
-    image: "/images/menu/SEVEN_STARS_2026_02_09-142.jpg",
-  },
-  {
-    name: "Golden Squash Risotto",
-    price: "£18.50",
-    description: "Creamy butternut squash risotto, crumbled feta, roasted beetroot, and crispy kale.",
-    image: "/images/menu/SEVEN_STARS_2026_02_09-213.jpg",
-  },
-  {
-    name: "Chocolate Lava Cake",
-    price: "£9.50",
-    description: "Warm chocolate fondant, vanilla bean ice cream, fresh strawberries, and berry coulis.",
-    image: "/images/menu/SEVEN_STARS_2026_02_09-0159.jpg",
-  },
-];
-
 const defaultFormData = {
   upperTag: "The Chef's Selection",
   regularHeading: "Taste the",
   italicHeading: "Exceptional",
-  description: "Experience our most celebrated seasonal creations, each crafted with locally sourced ingredients and culinary passion.",
-  dishes: defaultDishes,
+  description:
+    "Experience our most celebrated seasonal creations, each crafted with locally sourced ingredients and culinary passion.",
+  dishes: [] as {
+    name: string;
+    price: string;
+    description: string;
+    image: string;
+  }[],
 };
 
 interface MenuFeaturedSectionProps {
@@ -57,54 +36,38 @@ export function MenuFeaturedSection({
   sectionId,
   initialData,
   saveUrl = "/api/home",
-  responseKey = "OurPartners", // Map to OurPartners DB slot to prevent schema breakage
+  responseKey = "MenuFeatured",
   onSave,
 }: MenuFeaturedSectionProps) {
   const [isOpen, setIsOpen] = useState(!initialData);
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
-  
-  const [dishImages, setDishImages] = useState<(File | string)[]>(
-    defaultDishes.map((d) => d.image)
-  );
-  
-  const fileInputRefs = useRef<(HTMLInputElement | null)[]>(
-    defaultDishes.map(() => null)
-  );
+  const [dishImages, setDishImages] = useState<(File | string)[]>([]);
+
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     if (initialData) {
       const data = { ...defaultFormData, ...initialData };
-      const mergedDishes = defaultDishes.map((dd, idx) => {
-        const customD = data.dishes?.[idx] || {};
-        return {
-          name: customD.name || dd.name,
-          price: customD.price || dd.price,
-          description: customD.description || dd.description,
-          image: customD.image || dd.image,
-        };
-      });
-      data.dishes = mergedDishes;
-      setFormData(data);
-      setDishImages(mergedDishes.map((d) => d.image));
+      const fetchedDishes = (data.dishes ||
+        []) as typeof defaultFormData.dishes;
+      setFormData({ ...data, dishes: fetchedDishes });
+      setDishImages(fetchedDishes.map((d) => d.image));
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
-          const sectionData = responseKey ? json.data?.[responseKey] : json.data;
+          const sectionData = responseKey
+            ? json.data?.[responseKey]
+            : json.data;
           if (json.success && sectionData) {
             const data = { ...defaultFormData, ...sectionData };
-            const mergedDishes = defaultDishes.map((dd, idx) => {
-              const customD = data.dishes?.[idx] || {};
-              return {
-                name: customD.name || dd.name,
-                price: customD.price || dd.price,
-                description: customD.description || dd.description,
-                image: customD.image || dd.image,
-              };
-            });
-            data.dishes = mergedDishes;
-            setFormData(data);
-            setDishImages(mergedDishes.map((d) => d.image));
+            const fetchedDishes = (data.dishes ||
+              []) as typeof defaultFormData.dishes;
+            setFormData({ ...data, dishes: fetchedDishes });
+            setDishImages(fetchedDishes.map((d) => d.image));
+          } else {
+            setFormData((prev) => ({ ...prev, dishes: [] }));
+            setDishImages([]);
           }
         })
         .catch(console.error);
@@ -118,7 +81,11 @@ export function MenuFeaturedSection({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDishFieldChange = (idx: number, field: "name" | "price" | "description", value: string) => {
+  const handleDishFieldChange = (
+    idx: number,
+    field: "name" | "price" | "description",
+    value: string,
+  ) => {
     setFormData((prev) => {
       const updated = [...prev.dishes];
       updated[idx] = { ...updated[idx], [field]: value };
@@ -126,7 +93,10 @@ export function MenuFeaturedSection({
     });
   };
 
-  const handleFileChange = (idx: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (
+    idx: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setDishImages((prev) => {
@@ -145,16 +115,48 @@ export function MenuFeaturedSection({
     });
   };
 
+  const addDish = () => {
+    if (formData.dishes.length >= 3) {
+      toast.error("You can add a maximum of 3 dishes!");
+      return;
+    }
+    setFormData((prev) => ({
+      ...prev,
+      dishes: [
+        ...prev.dishes,
+        { name: "", price: "", description: "", image: "" },
+      ],
+    }));
+    setDishImages((prev) => [...prev, ""]);
+    toast.success("New dish card prepended!");
+  };
+
+  const deleteDish = (idx: number) => {
+    setFormData((prev) => {
+      const updated = prev.dishes.filter((_, i) => i !== idx);
+      return { ...prev, dishes: updated };
+    });
+    setDishImages((prev) => prev.filter((_, i) => i !== idx));
+    toast.success("Dish card deleted successfully.");
+  };
+
   const handleSave = async () => {
     const errs: string[] = [];
     if (!formData.upperTag?.trim()) errs.push("Upper tag is required");
-    if (!formData.regularHeading?.trim()) errs.push("Heading regular part is required");
-    if (!formData.italicHeading?.trim()) errs.push("Heading italic part is required");
-    
+    if (!formData.regularHeading?.trim())
+      errs.push("Heading regular part is required");
+    if (!formData.italicHeading?.trim())
+      errs.push("Heading italic part is required");
+
+    if (formData.dishes.length === 0) {
+      errs.push("Please add at least one dish before saving.");
+    }
+
     formData.dishes.forEach((dish, idx) => {
       if (!dish.name?.trim()) errs.push(`Dish ${idx + 1} Name is required`);
       if (!dish.price?.trim()) errs.push(`Dish ${idx + 1} Price is required`);
-      if (!dishImages[idx]) errs.push(`Image is required for Dish ${idx + 1} (${dish.name})`);
+      if (!dishImages[idx])
+        errs.push(`Image is required for Dish ${idx + 1} (${dish.name})`);
     });
 
     if (errs.length > 0) {
@@ -165,17 +167,29 @@ export function MenuFeaturedSection({
     setIsSaving(true);
     const toastId = toast.loading("Saving Signature Dishes Section...");
     try {
-      const uploadedUrls = await uploadFiles(dishImages);
+      // 1. Filter out only files to upload
+      const filesToUpload: { index: number; file: File }[] = [];
+      dishImages.forEach((img, idx) => {
+        if (img instanceof File) {
+          filesToUpload.push({ index: idx, file: img });
+        }
+      });
 
+      let uploadedUrls: (string | null)[] = [];
+      if (filesToUpload.length > 0) {
+        uploadedUrls = await uploadFiles(filesToUpload.map((f) => f.file));
+      }
+
+      // 2. Map back
+      let uploadPointer = 0;
       const finalDishes = formData.dishes.map((dish, idx) => {
         const cell = dishImages[idx];
-        const url = cell instanceof File ? uploadedUrls[idx] || "" : cell;
-        return {
-          name: dish.name,
-          price: dish.price,
-          description: dish.description,
-          image: url,
-        };
+        if (cell instanceof File) {
+          const url = uploadedUrls[uploadPointer] || "";
+          uploadPointer++;
+          return { ...dish, image: url };
+        }
+        return { ...dish, image: cell };
       });
 
       const payload = {
@@ -185,7 +199,7 @@ export function MenuFeaturedSection({
 
       const body = sectionId
         ? { id: sectionId, content: payload }
-        : { section: responseKey ?? "OurPartners", content: payload };
+        : { section: responseKey, content: payload };
 
       const res = await fetch(sectionId ? `/api/sections` : saveUrl, {
         method: "PUT",
@@ -195,7 +209,9 @@ export function MenuFeaturedSection({
 
       const json = await res.json();
       if (json.success) {
-        toast.success("Signature Dishes section saved successfully!", { id: toastId });
+        toast.success("Signature Dishes section saved successfully!", {
+          id: toastId,
+        });
         setDishImages(finalDishes.map((d) => d.image));
         setFormData(payload);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
@@ -217,7 +233,7 @@ export function MenuFeaturedSection({
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="Signature Dishes Section (Menu Featured)"
-          description="Manage culinary headings, main chef selections, and precisely edit the 4 spotlight dishes and gourmet photos."
+          description="Manage culinary headings, main chef selections, and precisely edit up to 3 spotlight dishes dynamically."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -229,7 +245,6 @@ export function MenuFeaturedSection({
         >
           <div className="overflow-hidden">
             <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500">
-              
               {/* Header Editor Block */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
                 <InputField
@@ -269,95 +284,166 @@ export function MenuFeaturedSection({
 
               {/* Dishes Editor Grid */}
               <div className="flex flex-col gap-6">
-                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                  Spotlight Dishes (Exactly 4 Dishes)
-                </h4>
+                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                    Spotlight Dishes ({formData.dishes.length} / 3)
+                  </h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {formData.dishes.map((dish, idx) => {
-                    const imgVal = dishImages[idx];
-                    const preview = imgVal instanceof File ? URL.createObjectURL(imgVal) : imgVal;
-                    return (
-                      <div key={idx} className="flex flex-col gap-4 bg-gray-50/40 p-6 border border-gray-100 rounded-3xl shadow-sm relative">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Dish {idx + 1} {idx === 0 ? "(Featured Large Card)" : "(Boutique Swap Card)"}</span>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {formData.dishes.length < 3 && (
+                    <button
+                      type="button"
+                      onClick={addDish}
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-3.5 py-1.5 rounded-xl text-[10px] shadow-sm transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      Add Dish Card
+                    </button>
+                  )}
+                </div>
+
+                {formData.dishes.length === 0 ? (
+                  <div className="py-12 text-center border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center">
+                    <Utensils className="w-8 h-8 text-gray-300 mb-2" />
+                    <p className="text-xs text-gray-400 font-bold">
+                      No dish cards added.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={addDish}
+                      className="mt-3 text-xs font-bold text-blue-500 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-xl transition-all cursor-pointer"
+                    >
+                      Create First Card
+                    </button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {formData.dishes.map((dish, idx) => {
+                      const imgVal = dishImages[idx];
+                      const preview =
+                        imgVal instanceof File
+                          ? URL.createObjectURL(imgVal)
+                          : imgVal;
+                      return (
+                        <div
+                          key={idx}
+                          className="flex flex-col gap-4 bg-gray-50/40 p-6 border border-gray-100 rounded-3xl shadow-sm relative text-left"
+                        >
+                          <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+                              Dish {idx + 1} Card
+                            </span>
+
+                            <button
+                              type="button"
+                              onClick={() => deleteDish(idx)}
+                              className="text-red-500 hover:text-red-600 p-1.5 bg-red-50 rounded-lg hover:bg-red-100 transition-colors cursor-pointer"
+                              title="Delete Dish"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+
                           <InputField
                             label="Dish Name"
                             value={dish.name}
-                            onChange={(e) => handleDishFieldChange(idx, "name", e.target.value)}
+                            onChange={(e) =>
+                              handleDishFieldChange(idx, "name", e.target.value)
+                            }
                             placeholder="e.g. Cured Scottish Salmon"
-                            containerClassName="md:col-span-2"
                             required
                           />
+
                           <InputField
                             label="Price Tag"
                             value={dish.price}
-                            onChange={(e) => handleDishFieldChange(idx, "price", e.target.value)}
+                            onChange={(e) =>
+                              handleDishFieldChange(
+                                idx,
+                                "price",
+                                e.target.value,
+                              )
+                            }
                             placeholder="e.g. £14.50"
                             required
                           />
-                        </div>
 
-                        <TextAreaField
-                          label="Ingredients Description"
-                          value={dish.description}
-                          onChange={(e) => handleDishFieldChange(idx, "description", e.target.value)}
-                          placeholder="Dish ingredients description..."
-                          rows={2}
-                        />
+                          <TextAreaField
+                            label="Ingredients Description"
+                            value={dish.description}
+                            onChange={(e) =>
+                              handleDishFieldChange(
+                                idx,
+                                "description",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="Dish ingredients description..."
+                            rows={3}
+                          />
 
-                        {/* Image Uploader */}
-                        <div className="flex flex-col gap-2 bg-white p-4 border border-gray-100 rounded-2xl">
-                          <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Spotlight Image</label>
-                          <div className="relative h-[180px] rounded-xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center group cursor-pointer mt-1">
-                            {preview ? (
-                              <>
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src={preview} alt={dish.name} className="w-full h-full object-cover" />
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                                  <button
-                                    type="button"
-                                    onClick={() => fileInputRefs.current[idx]?.click()}
-                                    className="bg-white text-gray-800 hover:bg-gray-50 px-3.5 py-1.5 rounded-xl text-[10px] font-bold shadow-md transition-all active:scale-95 cursor-pointer"
-                                  >
-                                    Change Image
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => removeImage(idx)}
-                                    className="bg-red-500 text-white p-2 rounded-xl shadow-md hover:bg-red-600 transition-all active:scale-95 cursor-pointer"
-                                  >
-                                    <Trash2 className="w-3.5 h-3.5" />
-                                  </button>
+                          {/* Image Uploader */}
+                          <div className="flex flex-col gap-2 bg-white p-4 border border-gray-100 rounded-2xl">
+                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                              Spotlight Image
+                            </label>
+                            <div className="relative h-[150px] rounded-xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center group cursor-pointer mt-1">
+                              {preview ? (
+                                <>
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img
+                                    src={preview}
+                                    alt={dish.name || "Dish Preview"}
+                                    className="w-full h-full object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        fileInputRefs.current[idx]?.click()
+                                      }
+                                      className="bg-white text-gray-800 hover:bg-gray-50 px-3 py-1 rounded-[8px] text-[9px] font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+                                    >
+                                      Change Image
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => removeImage(idx)}
+                                      className="bg-red-500 text-white p-1.5 rounded-[8px] shadow-md hover:bg-red-600 transition-all active:scale-95 cursor-pointer"
+                                    >
+                                      <Trash2 className="w-3 h-3" />
+                                    </button>
+                                  </div>
+                                </>
+                              ) : (
+                                <div
+                                  onClick={() =>
+                                    fileInputRefs.current[idx]?.click()
+                                  }
+                                  className="w-full h-full flex flex-col items-center justify-center p-6 text-center hover:bg-blue-50/10 transition-colors"
+                                >
+                                  <CloudUpload className="w-6 h-6 text-gray-400 mb-1" />
+                                  <span className="text-[9px] text-gray-400 font-semibold">
+                                    Upload gourmet image
+                                  </span>
                                 </div>
-                              </>
-                            ) : (
-                              <div
-                                onClick={() => fileInputRefs.current[idx]?.click()}
-                                className="w-full h-full flex flex-col items-center justify-center p-6 text-center hover:bg-blue-50/10 transition-colors"
-                              >
-                                <CloudUpload className="w-6 h-6 text-gray-400 mb-2" />
-                                <span className="text-[10px] text-gray-400 font-semibold">Upload gourmet image</span>
-                              </div>
-                            )}
-                            <input
-                              type="file"
-                              ref={(el) => {
-                                fileInputRefs.current[idx] = el;
-                              }}
-                              onChange={(e) => handleFileChange(idx, e)}
-                              accept="image/*"
-                              className="hidden"
-                            />
+                              )}
+                              <input
+                                type="file"
+                                ref={(el) => {
+                                  fileInputRefs.current[idx] = el;
+                                }}
+                                onChange={(e) => handleFileChange(idx, e)}
+                                accept="image/*"
+                                className="hidden"
+                              />
+                            </div>
                           </div>
                         </div>
-
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               {/* Save Action */}
@@ -368,7 +454,6 @@ export function MenuFeaturedSection({
                   className="w-44 h-12 text-sm"
                 />
               </div>
-
             </div>
           </div>
         </div>

@@ -138,7 +138,7 @@ export function GalleryGridCMS({
         }
       });
 
-      let uploadedUrls: string[] = [];
+      let uploadedUrls: (string | null)[] = [];
       if (filesToUpload.length > 0) {
         uploadedUrls = await uploadFiles(filesToUpload.map((f) => f.file));
       }

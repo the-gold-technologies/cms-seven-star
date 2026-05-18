@@ -10,6 +10,7 @@ import { EventGallery } from "@/static-pages/home/components/EventGallery";
 import { TestimonialsSection } from "@/static-pages/home/components/TestimonialsSection";
 import { ReadyToVisitSection } from "@/static-pages/home/components/ReadyToVisitSection";
 import FooterCMS from "@/components/cms/sections/FooterCMS";
+import { MenuFeaturedSection } from "./components/MenuFeaturedSection";
 
 export default function HomeCMSPage() {
   return (
@@ -19,30 +20,15 @@ export default function HomeCMSPage() {
         description="Manage the layout sections of your homepage. Expand any section to edit its details."
       />
 
-      {/* 1. Hero Slideshow Section */}
       <HeroSection />
-
-      {/* 2. About Us Story Section */}
       <AboutUs />
-
-      {/* 3. Event Gallery Masonry Grid */}
       <EventGallery />
-
-      {/* 4. Dining Experience Details */}
       <DiningSection />
-
-      {/* 5. Pub Traditions Slider Cards */}
       <FeatureTilesSection />
-
-      {/* 6. Scrolling Marquee Gallery Collection */}
+      <MenuFeaturedSection />
       <GallerySection />
-
-      {/* 7. Guest Testimonials Section */}
       <TestimonialsSection />
-
-      {/* 8. Ready To Visit (CTA Plan Visit) Section */}
       <ReadyToVisitSection />
-
       <FooterCMS />
     </section>
   );
