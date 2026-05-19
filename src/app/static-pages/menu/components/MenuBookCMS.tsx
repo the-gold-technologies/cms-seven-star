@@ -2,7 +2,16 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { Plus, Trash2, BookOpen, FileText, ArrowRight, ArrowLeft, CloudUpload } from "lucide-react";
+import {
+  Plus,
+  Trash2,
+  BookOpen,
+  FileText,
+  ArrowRight,
+  ArrowLeft,
+  CloudUpload,
+  Settings,
+} from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -34,6 +43,16 @@ interface MenuSection {
 
 const defaultFormData = {
   menuSections: [] as MenuSection[],
+  sectionNumber: "",
+  tagline: "",
+  headingPart1: "",
+  headingItalicHighlight: "",
+  description: "",
+  locationName: "",
+  locationCounty: "",
+  activeSectionSubtitle: "",
+  ctaText: "",
+  ctaLink: "",
 };
 
 interface MenuBookCMSProps {
@@ -109,7 +128,10 @@ export function MenuBookCMS({
     });
   };
 
-  const handlePdfFileChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePdfFileChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       if (file.type !== "application/pdf") {
@@ -134,7 +156,9 @@ export function MenuBookCMS({
 
   // Section (Category) level methods
   const addSection = () => {
-    const title = prompt("Enter the name of your new Menu Category (e.g. Kids Menu, Christmas Menu):");
+    const title = prompt(
+      "Enter the name of your new Menu Category (e.g. Kids Menu, Christmas Menu):",
+    );
     if (!title || !title.trim()) return;
 
     const id = title.toLowerCase().replace(/[^a-z0-9]/g, "-");
@@ -175,7 +199,11 @@ export function MenuBookCMS({
       return;
     }
     const sec = formData.menuSections[index];
-    if (!confirm(`Are you sure you want to delete the entire "${sec.title}" category? This will delete all of its pages, categories, and dishes.`)) {
+    if (
+      !confirm(
+        `Are you sure you want to delete the entire "${sec.title}" category? This will delete all of its pages, categories, and dishes.`,
+      )
+    ) {
       return;
     }
     setFormData((prev) => ({
@@ -207,7 +235,9 @@ export function MenuBookCMS({
     }
     setFormData((prev) => {
       const updated = [...prev.menuSections];
-      const pages = updated[activeSectionIdx].pages.filter((_, i) => i !== pIdx);
+      const pages = updated[activeSectionIdx].pages.filter(
+        (_, i) => i !== pIdx,
+      );
       updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
       return { ...prev, menuSections: updated };
     });
@@ -220,7 +250,10 @@ export function MenuBookCMS({
     setFormData((prev) => {
       const updated = [...prev.menuSections];
       const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories, { name: "New Category", items: [] }];
+      const categories = [
+        ...pages[activePageIdx].categories,
+        { name: "New Category", items: [] },
+      ];
       pages[activePageIdx] = { ...pages[activePageIdx], categories };
       updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
       return { ...prev, menuSections: updated };
@@ -232,7 +265,9 @@ export function MenuBookCMS({
     setFormData((prev) => {
       const updated = [...prev.menuSections];
       const pages = [...updated[activeSectionIdx].pages];
-      const categories = pages[activePageIdx].categories.filter((_, i) => i !== catIdx);
+      const categories = pages[activePageIdx].categories.filter(
+        (_, i) => i !== catIdx,
+      );
       pages[activePageIdx] = { ...pages[activePageIdx], categories };
       updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
       return { ...prev, menuSections: updated };
@@ -291,7 +326,12 @@ export function MenuBookCMS({
     });
   };
 
-  const handleDishFieldChange = (catIdx: number, dishIdx: number, field: keyof MenuItem, val: string) => {
+  const handleDishFieldChange = (
+    catIdx: number,
+    dishIdx: number,
+    field: keyof MenuItem,
+    val: string,
+  ) => {
     setFormData((prev) => {
       const updated = [...prev.menuSections];
       const pages = [...updated[activeSectionIdx].pages];
@@ -313,10 +353,19 @@ export function MenuBookCMS({
 
       s.pages.forEach((p, pIdx) => {
         p.categories.forEach((cat, catIdx) => {
-          if (!cat.name?.trim()) errs.push(`${s.title} Page ${pIdx + 1} Category ${catIdx + 1} Name is required`);
+          if (!cat.name?.trim())
+            errs.push(
+              `${s.title} Page ${pIdx + 1} Category ${catIdx + 1} Name is required`,
+            );
           cat.items.forEach((dish, dishIdx) => {
-            if (!dish.name?.trim()) errs.push(`${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish ${dishIdx + 1} Name is required`);
-            if (!dish.price?.trim()) errs.push(`${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish "${dish.name}" Price is required`);
+            if (!dish.name?.trim())
+              errs.push(
+                `${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish ${dishIdx + 1} Name is required`,
+              );
+            if (!dish.price?.trim())
+              errs.push(
+                `${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish "${dish.name}" Price is required`,
+              );
           });
         });
       });
@@ -395,7 +444,113 @@ export function MenuBookCMS({
         >
           <div className="overflow-hidden">
             <div className="flex flex-col gap-8 pt-6 animate-in fade-in duration-500 text-left">
-              
+              {/* Global Configuration */}
+              <div className="flex flex-col gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full mb-4">
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
+                  <Settings className="w-3.5 h-3.5 text-blue-500" />
+                  Header & Global Settings
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <InputField
+                    label="Section Number"
+                    value={formData.sectionNumber || ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        sectionNumber: e.target.value,
+                      })
+                    }
+                    placeholder="e.g. 05"
+                  />
+                  <InputField
+                    label="Tagline"
+                    value={formData.tagline || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, tagline: e.target.value })
+                    }
+                    placeholder="e.g. Seasonal Selection"
+                  />
+                  <InputField
+                    label="Heading (Part 1)"
+                    value={formData.headingPart1 || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, headingPart1: e.target.value })
+                    }
+                    placeholder="e.g. Our"
+                  />
+                  <InputField
+                    label="Heading (Italic Highlight)"
+                    value={formData.headingItalicHighlight || ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        headingItalicHighlight: e.target.value,
+                      })
+                    }
+                    placeholder="e.g. Menu"
+                  />
+                  <InputField
+                    label="Location Name"
+                    value={formData.locationName || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, locationName: e.target.value })
+                    }
+                    placeholder="e.g. Marsh Baldon"
+                  />
+                  <InputField
+                    label="Location County"
+                    value={formData.locationCounty || ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        locationCounty: e.target.value,
+                      })
+                    }
+                    placeholder="e.g. Oxfordshire"
+                  />
+                  <InputField
+                    label="Active Section Subtitle"
+                    value={formData.activeSectionSubtitle || ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        activeSectionSubtitle: e.target.value,
+                      })
+                    }
+                    placeholder="e.g. Gastronomic Journey"
+                  />
+                  <InputField
+                    label="CTA Button Text"
+                    value={formData.ctaText || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, ctaText: e.target.value })
+                    }
+                    placeholder="e.g. Enquire For Private Dining"
+                  />
+                  <InputField
+                    label="CTA Button Link"
+                    value={formData.ctaLink || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, ctaLink: e.target.value })
+                    }
+                    placeholder="e.g. /contact"
+                  />
+                  <div className="md:col-span-2 lg:col-span-3">
+                    <InputField
+                      label="Description"
+                      value={formData.description || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          description: e.target.value,
+                        })
+                      }
+                      placeholder="e.g. At The Seven Stars..."
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Premium Tabs for Section Menu Sheet selection */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-4">
                 <div className="flex items-center flex-wrap gap-2">
@@ -444,7 +599,9 @@ export function MenuBookCMS({
               {activeSection && (
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 bg-slate-50/50 p-4 border border-slate-200/50 rounded-2xl w-full">
                   <div className="flex flex-col gap-1 flex-1 w-full">
-                    <span className="text-xs font-bold text-gray-600">Category Name</span>
+                    <span className="text-xs font-bold text-gray-600">
+                      Category Name
+                    </span>
                     <input
                       type="text"
                       value={activeSection.title}
@@ -452,7 +609,10 @@ export function MenuBookCMS({
                         const val = e.target.value;
                         setFormData((prev) => {
                           const updated = [...prev.menuSections];
-                          updated[activeSectionIdx] = { ...updated[activeSectionIdx], title: val };
+                          updated[activeSectionIdx] = {
+                            ...updated[activeSectionIdx],
+                            title: val,
+                          };
                           return { ...prev, menuSections: updated };
                         });
                       }}
@@ -462,12 +622,16 @@ export function MenuBookCMS({
                   </div>
 
                   <div className="flex flex-col gap-1 w-full md:w-auto">
-                    <span className="text-xs font-bold text-gray-600">Upload PDF Menu File</span>
+                    <span className="text-xs font-bold text-gray-600">
+                      Upload PDF Menu File
+                    </span>
                     <div className="flex items-center gap-2">
                       <input
                         type="file"
                         accept="application/pdf"
-                        onChange={(e) => handlePdfFileChange(activeSectionIdx, e)}
+                        onChange={(e) =>
+                          handlePdfFileChange(activeSectionIdx, e)
+                        }
                         className="hidden"
                         id={`pdf-file-input-${activeSectionIdx}`}
                       />
@@ -477,7 +641,9 @@ export function MenuBookCMS({
                           <span className="text-[10px] text-gray-700 font-bold max-w-[120px] truncate">
                             {selectedPdfs[activeSectionIdx] instanceof File
                               ? (selectedPdfs[activeSectionIdx] as File).name
-                              : (selectedPdfs[activeSectionIdx] as string).split("/").pop()}
+                              : (selectedPdfs[activeSectionIdx] as string)
+                                  .split("/")
+                                  .pop()}
                           </span>
                           <button
                             type="button"
@@ -490,10 +656,17 @@ export function MenuBookCMS({
                       ) : (
                         <button
                           type="button"
-                          onClick={() => document.getElementById(`pdf-file-input-${activeSectionIdx}`)?.click()}
+                          onClick={() =>
+                            document
+                              .getElementById(
+                                `pdf-file-input-${activeSectionIdx}`,
+                              )
+                              ?.click()
+                          }
                           className="flex items-center gap-1.5 bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer"
                         >
-                          <CloudUpload className="w-4 h-4 text-gray-400" /> Choose PDF File
+                          <CloudUpload className="w-4 h-4 text-gray-400" />{" "}
+                          Choose PDF File
                         </button>
                       )}
                     </div>
@@ -521,11 +694,14 @@ export function MenuBookCMS({
                       <ArrowLeft className="w-4 h-4" />
                     </button>
                     <span className="text-xs font-bold text-gray-700 px-3">
-                      Page {activePageIdx + 1} of {activeSection?.pages.length || 1}
+                      Page {activePageIdx + 1} of{" "}
+                      {activeSection?.pages.length || 1}
                     </span>
                     <button
                       type="button"
-                      disabled={activePageIdx >= (activeSection?.pages.length || 1) - 1}
+                      disabled={
+                        activePageIdx >= (activeSection?.pages.length || 1) - 1
+                      }
                       onClick={() => setActivePageIdx((p) => p + 1)}
                       className="p-1.5 rounded-lg hover:bg-gray-100 disabled:opacity-30 disabled:hover:bg-transparent"
                     >
@@ -600,14 +776,21 @@ export function MenuBookCMS({
                           <InputField
                             label="Category Name"
                             value={cat.name}
-                            onChange={(e) => handleCategoryNameChange(catIdx, e.target.value)}
+                            onChange={(e) =>
+                              handleCategoryNameChange(catIdx, e.target.value)
+                            }
                             placeholder="e.g. Small Plates"
                             required
                           />
                           <InputField
                             label="Category Subtitle (Optional)"
                             value={cat.subtitle || ""}
-                            onChange={(e) => handleCategorySubtitleChange(catIdx, e.target.value)}
+                            onChange={(e) =>
+                              handleCategorySubtitleChange(
+                                catIdx,
+                                e.target.value,
+                              )
+                            }
                             placeholder="e.g. Served with Yorkshire Pudding..."
                           />
                         </div>
@@ -629,7 +812,8 @@ export function MenuBookCMS({
 
                           {cat.items.length === 0 ? (
                             <p className="text-[10px] text-gray-400 italic text-center py-2">
-                              No dishes in this category. Click Add Dish above to start.
+                              No dishes in this category. Click Add Dish above
+                              to start.
                             </p>
                           ) : (
                             <div className="flex flex-col gap-4">
@@ -650,7 +834,14 @@ export function MenuBookCMS({
                                     <InputField
                                       label="Dish Name"
                                       value={dish.name}
-                                      onChange={(e) => handleDishFieldChange(catIdx, dishIdx, "name", e.target.value)}
+                                      onChange={(e) =>
+                                        handleDishFieldChange(
+                                          catIdx,
+                                          dishIdx,
+                                          "name",
+                                          e.target.value,
+                                        )
+                                      }
                                       placeholder="e.g. Marinated Olives (VG) (GF)"
                                       required
                                     />
@@ -659,7 +850,14 @@ export function MenuBookCMS({
                                     <InputField
                                       label="Price"
                                       value={dish.price}
-                                      onChange={(e) => handleDishFieldChange(catIdx, dishIdx, "price", e.target.value)}
+                                      onChange={(e) =>
+                                        handleDishFieldChange(
+                                          catIdx,
+                                          dishIdx,
+                                          "price",
+                                          e.target.value,
+                                        )
+                                      }
                                       placeholder="e.g. £4.95"
                                       required
                                     />
@@ -668,7 +866,14 @@ export function MenuBookCMS({
                                     <InputField
                                       label="Short Description (Optional)"
                                       value={dish.desc || ""}
-                                      onChange={(e) => handleDishFieldChange(catIdx, dishIdx, "desc", e.target.value)}
+                                      onChange={(e) =>
+                                        handleDishFieldChange(
+                                          catIdx,
+                                          dishIdx,
+                                          "desc",
+                                          e.target.value,
+                                        )
+                                      }
                                       placeholder="e.g. Served with sourdough"
                                     />
                                   </div>
