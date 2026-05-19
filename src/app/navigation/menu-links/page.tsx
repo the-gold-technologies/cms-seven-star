@@ -141,7 +141,6 @@ export default function NavLinksPage() {
       <PageHeader
         title="Navigation Links"
         description="Manage the links that appear in the main website navigation bar."
-        action={{ label: "Add Link", onClick: handleAddLink }}
       />
 
       {isLoading ? (
@@ -166,7 +165,7 @@ export default function NavLinksPage() {
                   <th className="px-6 py-5 text-left text-[11px] font-bold text-gray-400 uppercase tracking-wider">
                     URL
                   </th>
-                  <th className="px-6 py-5 w-[80px]"></th>
+
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -237,22 +236,7 @@ export default function NavLinksPage() {
                         <td className="px-6 py-5 text-sm font-mono text-gray-400">
                           {root.url}
                         </td>
-                        <td className="px-6 py-5">
-                          <div className="flex items-center gap-3 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button
-                              onClick={() => handleEditLink(root)}
-                              className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-blue-500 transition-colors"
-                            >
-                              <Pencil className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={() => handleDeleteLink(root.id)}
-                              className="p-1 hover:bg-red-50 rounded text-gray-400 hover:text-red-500 transition-colors"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </td>
+
                       </tr>
                       {isExpanded &&
                         children.map((child: NavLink) => (
@@ -296,22 +280,7 @@ export default function NavLinksPage() {
                             <td className="px-6 py-4 text-xs font-mono text-gray-400">
                               {child.url}
                             </td>
-                            <td className="px-6 py-4">
-                              <div className="flex items-center gap-3 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button
-                                  onClick={() => handleEditLink(child)}
-                                  className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-blue-500 transition-colors"
-                                >
-                                  <Pencil className="w-4 h-4" />
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteLink(child.id)}
-                                  className="p-1 hover:bg-red-50 rounded text-gray-400 hover:text-red-500 transition-colors"
-                                >
-                                  <Trash2 className="w-4 h-4" />
-                                </button>
-                              </div>
-                            </td>
+
                           </tr>
                         ))}
                     </React.Fragment>
