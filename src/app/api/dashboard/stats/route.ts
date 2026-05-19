@@ -8,14 +8,10 @@ export async function GET() {
     // 1. Count Enquiries from the Enquiry table
     const enquiryCount = await prisma.enquiry.count();
 
-    // 2. Count Audits from the Audit table
-    const auditCount = await prisma.audit.count();
-
     return NextResponse.json({
       success: true,
       data: {
         enquiries: enquiryCount,
-        audits: auditCount,
       },
     });
   } catch (error) {
