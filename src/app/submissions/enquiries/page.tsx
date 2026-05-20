@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { PageHeader } from "@/app/components/PageHeader";
-import { Search, Loader2, ChevronLeft, ChevronRight, Mail, Calendar, User, Tag, DollarSign, Target } from "lucide-react";
+import { Search, Loader2, ChevronLeft, ChevronRight, Mail, Calendar, User, Tag, MessageSquare } from "lucide-react";
 import { InputField } from "@/app/components/InputField";
 import toast from "react-hot-toast";
 
@@ -57,7 +57,7 @@ export default function EnquiriesPage() {
     <div className="flex flex-col gap-8 pb-20">
       <PageHeader
         title="Enquiries"
-        description="View and manage service inquiries from your landing page."
+        description="View and manage table reservations, private event requests, and other inquiries from your website."
       />
 
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
@@ -79,22 +79,21 @@ export default function EnquiriesPage() {
             <thead>
               <tr className="bg-gray-50/50 border-b border-gray-100">
                 <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest pl-8">Name & Email</th>
-                <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Interest</th>
-                <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Budget</th>
+                <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Subject</th>
                 <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Date</th>
-                <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest pr-8 text-right">Goals</th>
+                <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest pr-8 text-right">Message</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
               {isLoading ? (
                 <tr>
-                  <td colSpan={5} className="py-20 text-center">
+                  <td colSpan={4} className="py-20 text-center">
                     <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#475DB1]" />
                   </td>
                 </tr>
               ) : enquiries.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-20 text-center text-gray-400 italic">No enquiries found.</td>
+                  <td colSpan={4} className="py-20 text-center text-gray-400 italic">No enquiries found.</td>
                 </tr>
               ) : (
                 enquiries.map((enquiry) => (
@@ -114,14 +113,8 @@ export default function EnquiriesPage() {
                     <td className="px-6 py-5">
                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-wider">
                         <Tag className="w-3 h-3" />
-                        {enquiry.interestedIn || "N/A"}
+                        {enquiry.interestedIn || "General Question"}
                       </div>
-                    </td>
-                    <td className="px-6 py-5 font-medium text-gray-900">
-                        <div className="flex items-center gap-1.5">
-                            <DollarSign className="w-3.5 h-3.5 text-green-500" />
-                            {enquiry.budget || "Not Specified"}
-                        </div>
                     </td>
                     <td className="px-6 py-5 text-[13px] text-gray-500">
                       <div className="flex items-center gap-2">
@@ -131,10 +124,11 @@ export default function EnquiriesPage() {
                     </td>
                     <td className="px-6 py-5 pr-8 text-right">
                        <button 
-                         onClick={() => alert(enquiry.projectGoals || "No goals specified")}
-                         className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-[#475DB1] hover:text-[#0B0F29] transition-all"
+                         onClick={() => alert(enquiry.projectGoals || "No message content")}
+                         title="View message"
+                         className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-[#475DB1]/10 hover:text-[#475DB1] transition-all"
                        >
-                         <Target className="w-4 h-4" />
+                         <MessageSquare className="w-4 h-4" />
                        </button>
                     </td>
                   </tr>

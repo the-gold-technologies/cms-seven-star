@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { User, Mail, Tag, DollarSign, Calendar, ArrowRight, Loader2 } from "lucide-react";
+import { User, Mail, Tag, Calendar, ArrowRight, Loader2 } from "lucide-react";
 
 interface Enquiry {
   id: string;
@@ -40,7 +40,7 @@ export function RecentEnquiries() {
         <div>
           <h3 className="font-bold text-lg text-[#0B0F29]">Recent Enquiries</h3>
           <p className="text-xs font-medium text-gray-400 mt-0.5">
-            Latest incoming messages from the landing page.
+            Latest incoming messages from the contact page.
           </p>
         </div>
         <Link
@@ -65,8 +65,7 @@ export function RecentEnquiries() {
             <thead>
               <tr className="border-b border-gray-100 pb-2">
                 <th className="pb-3 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Name & Email</th>
-                <th className="pb-3 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Interest</th>
-                <th className="pb-3 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Budget</th>
+                <th className="pb-3 font-bold text-gray-400 uppercase tracking-widest text-[10px]">Subject</th>
                 <th className="pb-3 font-bold text-gray-400 uppercase tracking-widest text-[10px] text-right">Submitted</th>
               </tr>
             </thead>
@@ -88,13 +87,7 @@ export function RecentEnquiries() {
                   <td className="py-3.5">
                     <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-wider">
                       <Tag className="w-2.5 h-2.5" />
-                      {enquiry.interestedIn || "General"}
-                    </span>
-                  </td>
-                  <td className="py-3.5 font-semibold text-gray-800">
-                    <span className="flex items-center gap-1 text-[11px]">
-                      <DollarSign className="w-3 h-3 text-green-500" />
-                      {enquiry.budget || "N/A"}
+                      {enquiry.interestedIn || "General Question"}
                     </span>
                   </td>
                   <td className="py-3.5 text-right text-gray-400 font-medium text-[11px]">

@@ -76,27 +76,15 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 bg-[#0B0F29] text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-black transition-all shadow-lg shadow-black/10 disabled:opacity-50"
+            className="w-full py-4 bg-[#475DB1] text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-[#0B0F29] transition-all shadow-lg shadow-[#475DB1]/20 disabled:opacity-50"
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
-            Don't have an account?{" "}
-            <Link
-              href="/register"
-              className="text-[#475DB1] hover:underline font-semibold"
-            >
-              Sign Up
-            </Link>
-          </p>
-        </div>
-
         <div className="mt-8 text-center">
           <p className="text-gray-400 text-xs">
-            &copy; {new Date().getFullYear()} Volta Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} Seven Star. All rights reserved.
           </p>
         </div>
       </div>
