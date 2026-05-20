@@ -1,14 +1,68 @@
 "use client";
 
-import { useState } from "react";
-import { Search, Plus } from "lucide-react";
-import { CreatePagePopUp } from "./CreatePagePopUp";
+import { useState, useEffect, useRef } from "react";
+import { Search, FileText, Compass, Settings, Shield, Inbox, X } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+interface SearchItem {
+  title: string;
+  category: string;
+  url: string;
+  icon: any;
+}
+
+const STATIC_SEARCH_ITEMS: SearchItem[] = [
+  { title: "Home Page Editor", category: "Pages", url: "/static-pages/home", icon: FileText },
+  { title: "About Page Editor", category: "Pages", url: "/static-pages/about", icon: FileText },
+  { title: "Our Story Page Editor", category: "Pages", url: "/static-pages/our-story", icon: FileText },
+  { title: "Gallery Page Editor", category: "Pages", url: "/static-pages/gallery", icon: FileText },
+  { title: "Dining Page Editor", category: "Pages", url: "/static-pages/dining", icon: FileText },
+  { title: "Menu Page Editor", category: "Pages", url: "/static-pages/menu", icon: FileText },
+  { title: "Events Page Editor", category: "Pages", url: "/static-pages/events", icon: FileText },
+  { title: "Contact Page Editor", category: "Pages", url: "/static-pages/contact", icon: FileText },
+  { title: "Menu Links Navigation", category: "Navigation", url: "/navigation/menu-links", icon: Compass },
+  { title: "Social Media Navigation", category: "Navigation", url: "/navigation/social-media", icon: Compass },
+  { title: "Global SEO Settings", category: "SEO", url: "/seo/global", icon: Shield },
+  { title: "Page SEO Settings", category: "SEO", url: "/seo/pages", icon: Shield },
+  { title: "Enquiries Submissions", category: "Submissions", url: "/submissions/enquiries", icon: Inbox },
+  { title: "Profile Settings", category: "Settings", url: "/settings/profile", icon: Settings },
+];
 
 export function AdminHeader() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: session } = useSession();
   const userName = session?.user?.name || "Admin";
+  const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [results, setResults] = useState<SearchItem[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setResults([]);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = STATIC_SEARCH_ITEMS.filter(
+      (item) =>
+        item.title.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query)
+    );
+    setResults(filtered);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <section className=" flex flex-col gap-6">
@@ -30,29 +84,69 @@ export function AdminHeader() {
         </div>
       </header>
 
-      <div className=" flex justify-between items-center">
-        <div className="relative group">
+      <div className="flex justify-between items-center relative">
+        <div className="relative group w-[350px]" ref={searchRef}>
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#0B0F29] transition-colors" />
           <input
             type="text"
-            placeholder="Search content..."
-            className="pl-10 pr-4 py-3.5 bg-white border-0 ring-1 ring-gray-100 w-[350px] rounded-full text-sm font-medium focus:ring-2 focus:ring-[#475DB1] focus:outline-none  shadow-sm transition-all"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setIsOpen(true);
+            }}
+            onFocus={() => setIsOpen(true)}
+            placeholder="Search CMS pages & settings..."
+            className="pl-10 pr-10 py-3.5 bg-white border-0 ring-1 ring-gray-100 w-full rounded-full text-sm font-medium focus:ring-2 focus:ring-[#475DB1] focus:outline-none shadow-sm transition-all"
           />
-        </div>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="bg-[#0B0F29] w-max text-white px-8 py-3 rounded-full font-semibold tracking-wide hover:bg-black transition-all duration-300 border border-transparent hover:border-[#475DB1] hover:shadow-[0_0_25px_rgba(71, 93, 177,0.4)] flex items-center gap-3 group"
-        >
-          <Plus className="w-4 h-4" />
-          Create Page
-        </button>
-      </div>
+          {searchQuery && (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setIsOpen(false);
+              }}
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
 
-      {/* Create Page Modal */}
-      <CreatePagePopUp
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+          {/* Results Dropdown */}
+          {isOpen && searchQuery && (
+            <div className="absolute left-0 right-0 mt-2 bg-white rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden z-50 py-2 max-h-[300px] overflow-y-auto">
+              {results.length === 0 ? (
+                <div className="px-5 py-4 text-xs font-semibold text-gray-400 text-center italic">
+                  No matching CMS items found
+                </div>
+              ) : (
+                <div className="flex flex-col">
+                  {results.map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        router.push(item.url);
+                        setIsOpen(false);
+                      }}
+                      className="flex items-center gap-3 px-5 py-3 text-left hover:bg-gray-50 transition-colors w-full"
+                    >
+                      <div className="p-2 rounded-xl bg-blue-50 text-[#475DB1]">
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[13px] font-bold text-gray-800">
+                          {item.title}
+                        </span>
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                          {item.category}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

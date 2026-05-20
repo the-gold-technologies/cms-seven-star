@@ -1,8 +1,47 @@
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 
-export function AdminRightSidebar() {
+interface ActivityItem {
+  type: string;
+  text: string;
+  time: string;
+}
+
+interface AdminRightSidebarProps {
+  stats?: {
+    activities?: ActivityItem[];
+  };
+  loading?: boolean;
+}
+
+function getRelativeTime(timeStr: string) {
+  try {
+    const date = new Date(timeStr);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    
+    // Fallback to "Just now" if server time is slightly off
+    if (diffMs < 0) return "Just now";
+
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMins < 1) return "Just now";
+    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffDays === 1) return "Yesterday";
+    return `${diffDays} days ago`;
+  } catch (error) {
+    return "Recent";
+  }
+}
+
+export function AdminRightSidebar({ stats, loading }: AdminRightSidebarProps) {
+  const activities = stats?.activities || [];
+
   return (
-    <>
+    <div className="flex flex-col gap-6">
       {/* Dark Promo Card */}
       <div className="bg-[#0B0F29] rounded-[2rem] p-7 text-white relative overflow-hidden shadow-xl">
         {/* Decorative Bubbles */}
@@ -12,7 +51,7 @@ export function AdminRightSidebar() {
           <div className="w-6 h-6 rounded-full bg-white text-[#0B0F29] flex items-center justify-center font-serif italic text-sm">
             T
           </div>
-          TGT Setup
+          Seven Stars Setup
         </div>
         <h2 className="text-[26px] font-black leading-[1.1] mb-3">
           Optimize <br />
@@ -39,81 +78,46 @@ export function AdminRightSidebar() {
         </div>
       </div>
 
-      {/* Quick Analytics */}
+      {/* Recent Activity */}
       <div>
         <div className="flex items-center justify-between mb-4 px-2">
-          <h3 className="font-bold text-lg text-[#0B0F29]">Quick Analytics</h3>
-          <button className="text-[#0B0F29] text-xs font-bold hover:underline">
-            View All
-          </button>
+          <h3 className="font-bold text-lg text-[#0B0F29]">Recent Activity</h3>
+          <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
         </div>
 
-        <div className="space-y-3">
-          {/* Metric 1 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-50 hover:-translate-y-0.5 transition-transform cursor-pointer">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[13px] font-medium text-gray-400">
-                Conversion Rate
-              </span>
-              <span className="text-[11px] font-bold text-[#12b76a] bg-[#12b76a]/10 px-2 py-0.5 rounded-md">
-                +2.4%
-              </span>
-            </div>
-            <div className="flex items-end gap-2 mb-3">
-              <h4 className="font-black text-2xl text-[#0B0F29] leading-none">
-                3.8%
-              </h4>
-            </div>
-            {/* Mini Progress */}
-            <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
-              <div
-                className="bg-[#475DB1] h-1.5 rounded-full"
-                style={{ width: "65%" }}
-              ></div>
-            </div>
+        {loading ? (
+          <div className="bg-white rounded-3xl p-6 flex justify-center items-center ring-1 ring-gray-50">
+            <Loader2 className="w-5 h-5 animate-spin text-[#475DB1]" />
           </div>
+        ) : activities.length === 0 ? (
+          <div className="bg-white rounded-3xl p-6 text-center text-gray-400 text-xs italic ring-1 ring-gray-50">
+            No activity tracked yet.
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-50 space-y-4">
+            {activities.map((activity, idx) => {
+              const isEnquiry = activity.type === "enquiry";
+              const relativeTime = getRelativeTime(activity.time);
 
-          {/* Metric 2 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-50 hover:-translate-y-0.5 transition-transform cursor-pointer">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[13px] font-medium text-gray-400">
-                Active Users (Now)
-              </span>
-              <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                <span className="text-[11px] font-bold text-gray-400">
-                  Live
-                </span>
-              </div>
-            </div>
-            <div className="flex items-end gap-2">
-              <h4 className="font-black text-2xl text-[#0B0F29] leading-none">
-                428
-              </h4>
-              <span className="text-[12px] font-bold text-[#12b76a] pb-0.5">
-                ↑ 12
-              </span>
-            </div>
+              return (
+                <div key={idx} className="flex items-start gap-3 text-[13px]">
+                  <div className={`mt-1.5 h-2 w-2 rounded-full shrink-0 ${
+                    isEnquiry ? "bg-green-500 animate-pulse" : "bg-[#475DB1]"
+                  }`}></div>
+                  <div className="flex flex-col flex-1 leading-snug">
+                    <span className="font-bold text-[#0B0F29]">
+                      {activity.text}
+                    </span>
+                    <span className="text-[11px] text-gray-400 font-semibold mt-0.5">
+                      {relativeTime}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-          {/* Metric 3 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-50 hover:-translate-y-0.5 transition-transform cursor-pointer">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-[13px] font-medium text-gray-400">
-                Bounce Rate
-              </span>
-              <span className="text-[11px] font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded-md">
-                +1.2%
-              </span>
-            </div>
-            <div className="flex items-end gap-2 mt-1">
-              <h4 className="font-black text-2xl text-[#0B0F29] leading-none">
-                42.3%
-              </h4>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

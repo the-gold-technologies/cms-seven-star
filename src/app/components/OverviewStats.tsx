@@ -1,22 +1,36 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Star, MessageSquare, Activity, Zap } from "lucide-react";
+import { Star, MessageSquare, BookOpen } from "lucide-react";
 
-export function OverviewStats() {
+interface OverviewStatsProps {
+  stats?: {
+    enquiries: number;
+    pages: number;
+  };
+  loading?: boolean;
+}
+
+export function OverviewStats({ stats: propStats, loading: propLoading }: OverviewStatsProps) {
   const [stats, setStats] = useState({
     enquiries: 0,
-    audits: 0,
+    pages: 0,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (propStats) {
+      setStats(propStats);
+      setLoading(propLoading !== undefined ? propLoading : false);
+      return;
+    }
+
     async function fetchStats() {
       try {
         const res = await fetch("/api/dashboard/stats");
         const json = await res.json();
         if (json.success) {
-          setStats(json.data);
+          setStats((prev) => ({ ...prev, ...json.data }));
         }
       } catch (error) {
         console.error("Dashboard stats fetch error:", error);
@@ -25,7 +39,7 @@ export function OverviewStats() {
       }
     }
     fetchStats();
-  }, []);
+  }, [propStats, propLoading]);
 
   return (
     <div>
@@ -40,18 +54,18 @@ export function OverviewStats() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {/* Stat Card 1: Audits */}
+        {/* Stat Card 1: Active Pages */}
         <div className="bg-white rounded-3xl p-5 shadow-sm ring-1 ring-gray-50 hover:-translate-y-1 transition-transform duration-300">
           <div className="flex items-start gap-4 mb-6">
             <div className="h-12 w-12 rounded-2xl bg-[#f0f9ff] text-[#0ea5e9] flex items-center justify-center">
-              <Zap className="w-6 h-6" strokeWidth={2.5} />
+              <BookOpen className="w-6 h-6" strokeWidth={2.5} />
             </div>
             <div>
               <h3 className="font-bold text-[#0B0F29] text-[15px]">
-                Audit Requests
+                Active Pages
               </h3>
               <p className="text-[13px] font-medium text-gray-400 mt-0.5">
-                {loading ? "..." : `${stats.audits} Inbound`}
+                {loading ? "..." : `${stats.pages} Published`}
               </p>
             </div>
           </div>
@@ -60,13 +74,13 @@ export function OverviewStats() {
               <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">
                 Status
               </p>
-              <p className="text-[13px] font-bold text-[#0b0f29]">Active</p>
+              <p className="text-[13px] font-bold text-[#0b0f29]">Online</p>
             </div>
             <div>
               <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">
-                Source
+                CMS Access
               </p>
-              <p className="text-[13px] font-bold text-[#0B0F29]">Audit Form</p>
+              <p className="text-[13px] font-bold text-[#0B0F29]">Editable</p>
             </div>
           </div>
         </div>
