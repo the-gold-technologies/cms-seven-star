@@ -41,7 +41,7 @@ interface DiningSectionProps {
 export function DiningSection({
   sectionId,
   initialData,
-  saveUrl = "/api/home",
+  saveUrl = "/api/dining",
   responseKey = "Dining",
   onSave,
   isOpen: controlledIsOpen,

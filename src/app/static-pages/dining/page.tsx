@@ -5,6 +5,7 @@ import { DiningQuoteCMS } from "./components/DiningQuoteCMS";
 import { DiningPillarsCMS } from "./components/DiningPillarsCMS";
 import { DiningBarnCMS } from "./components/DiningBarnCMS";
 import { DiningOutdoorCMS } from "./components/DiningOutdoorCMS";
+import { DiningSection } from "./components/DiningSection";
 
 export default function DiningCMSPage() {
   return (
@@ -16,6 +17,7 @@ export default function DiningCMSPage() {
 
       {/* Dynamic Modular CMS sections for Dining Page */}
       <DiningHeroCMS />
+      <DiningSection />
       <DiningIntroCMS />
       <DiningQuoteCMS />
       <DiningPillarsCMS />

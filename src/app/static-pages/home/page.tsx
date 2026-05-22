@@ -3,10 +3,9 @@
 import { PageHeader } from "@/components/PageHeader";
 import { HeroSection } from "@/static-pages/home/components/HeroSection";
 import { AboutUs } from "@/static-pages/home/components/AboutUs";
-import { DiningSection } from "@/static-pages/home/components/DiningSection";
 import { FeatureTilesSection } from "@/static-pages/home/components/FeatureTilesSection";
-import { GallerySection } from "@/static-pages/home/components/GallerySection";
-import { EventGallery } from "@/static-pages/home/components/EventGallery";
+// import { GallerySection } from "@/static-pages/home/components/GallerySection";
+// import { EventGallery } from "@/static-pages/home/components/EventGallery";
 import { TestimonialsSection } from "@/static-pages/home/components/TestimonialsSection";
 import { ReadyToVisitSection } from "@/static-pages/home/components/ReadyToVisitSection";
 import FooterCMS from "@/components/cms/sections/FooterCMS";
@@ -22,11 +21,10 @@ export default function HomeCMSPage() {
 
       <HeroSection />
       <AboutUs />
-      <EventGallery />
-      <DiningSection />
+      {/* <EventGallery /> */}
       <FeatureTilesSection />
       <MenuFeaturedSection />
-      <GallerySection />
+      {/* <GallerySection /> */}
       <TestimonialsSection />
       <ReadyToVisitSection />
       <FooterCMS />
