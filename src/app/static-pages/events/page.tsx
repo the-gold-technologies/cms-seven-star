@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/PageHeader";
 import { EventsHeroCMS } from "./components/EventsHeroCMS";
 import { UpcomingEventsCMS } from "./components/UpcomingEventsCMS";
-import { EventsArchiveCMS } from "./components/EventsArchiveCMS";
+import { InstagramRibbonCMS } from "./components/InstagramRibbonCMS";
 import { WhatWeHostCMS } from "./components/WhatWeHostCMS";
 import { EventsCapabilitiesCMS } from "./components/EventsCapabilitiesCMS";
 
@@ -16,7 +16,7 @@ export default function EventsCMSPage() {
       {/* Modular dynamic sections for Events CMS Dashboard */}
       <EventsHeroCMS />
       <UpcomingEventsCMS />
-      <EventsArchiveCMS />
+      <InstagramRibbonCMS />
       <WhatWeHostCMS />
       <EventsCapabilitiesCMS />
     </section>
