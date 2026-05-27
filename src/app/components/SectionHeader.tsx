@@ -31,7 +31,8 @@ export function SectionHeader({
       </div>
       {!action && (
         <ChevronDown
-          className={`text-gray-400 h-5 w-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          onClick={onToggle}
+          className={`text-gray-400 h-5 w-5 cursor-pointer transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
         />
       )}
 
