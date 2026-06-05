@@ -114,8 +114,6 @@ export function StoryHubCMS({
       errs.push("Experiences Card title is required");
     if (!formData.cardDesc?.trim())
       errs.push("Experiences Card description is required");
-    if (!formData.rightImageTitle?.trim())
-      errs.push("Right side caption is required");
     if (!formData.exp1?.trim()) errs.push("Experience 1 text is required");
     if (!formData.exp2?.trim()) errs.push("Experience 2 text is required");
     if (!formData.exp3?.trim()) errs.push("Experience 3 text is required");
@@ -356,16 +354,15 @@ export function StoryHubCMS({
                 <div className="flex flex-col gap-4 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl flex-1">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
                     <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                    Cover Overlay Title
+                    Cover Overlay Title (Optional)
                   </span>
 
                   <InputField
-                    label="Image Quote Caption Overlay"
+                    label="Image Quote Caption Overlay (Optional)"
                     name="rightImageTitle"
                     value={formData.rightImageTitle}
                     onChange={handleChange}
                     placeholder="e.g. Our experiences look like:"
-                    required
                   />
                 </div>
               </div>

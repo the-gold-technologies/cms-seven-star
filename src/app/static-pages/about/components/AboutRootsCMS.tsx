@@ -110,8 +110,6 @@ export function AboutRootsCMS({
       errs.push("Italic Heading Part is required");
     if (!formData.rootsDesc1?.trim())
       errs.push("Description Paragraph 1 is required");
-    if (!formData.rootsQuote?.trim())
-      errs.push("Overlay quote caption is required");
     if (!formData.pillar1?.trim())
       errs.push("Pillar 1 label is required");
     if (!formData.pillar2?.trim())
@@ -348,15 +346,14 @@ export function AboutRootsCMS({
 
                 <div className="flex flex-col gap-4">
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block border-b border-gray-100 pb-2">
-                    Showcase Overlay Quote Caption
+                    Showcase Overlay Quote Caption (Optional)
                   </span>
                   <InputField
-                    label="Image Caption Quote"
+                    label="Image Caption Quote (Optional)"
                     name="rootsQuote"
                     value={formData.rootsQuote}
                     onChange={handleChange}
                     placeholder="e.g. Keeping something genuinely valuable alive."
-                    required
                   />
                 </div>
               </div>
