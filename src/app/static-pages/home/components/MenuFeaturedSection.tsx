@@ -16,6 +16,12 @@ const defaultFormData = {
   italicHeading: "Exceptional",
   description:
     "Experience our most celebrated seasonal creations, each crafted with locally sourced ingredients and culinary passion.",
+  watermark: "Signature Dishes",
+  badgeLabel: "Chef's Signature",
+  badgeText: "Culinary excellence in every bite.",
+  btnUrl: "/menu",
+  btnLabel: "Explore Full Menu",
+  btnSublabel: "See our complete seasonal collection",
   dishes: [] as {
     name: string;
     price: string;
@@ -279,6 +285,55 @@ export function MenuFeaturedSection({
                   placeholder="Subheading..."
                   containerClassName="col-span-1 md:col-span-3"
                   rows={2}
+                />
+              </div>
+
+              {/* Branding, Badges & CTA Editor Block */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest col-span-1 md:col-span-3 pb-2 border-b border-gray-100">
+                  Branding, Badges & CTA Configuration
+                </h4>
+                <InputField
+                  label="Watermark Background Text"
+                  name="watermark"
+                  value={formData.watermark}
+                  onChange={handleChange}
+                  placeholder="e.g. Signature Dishes"
+                />
+                <InputField
+                  label="Hover Badge Tag"
+                  name="badgeLabel"
+                  value={formData.badgeLabel}
+                  onChange={handleChange}
+                  placeholder="e.g. Chef's Signature"
+                />
+                <InputField
+                  label="Hover Badge Text"
+                  name="badgeText"
+                  value={formData.badgeText}
+                  onChange={handleChange}
+                  placeholder="e.g. Culinary excellence in every bite."
+                />
+                <InputField
+                  label="CTA Button Label"
+                  name="btnLabel"
+                  value={formData.btnLabel}
+                  onChange={handleChange}
+                  placeholder="e.g. Explore Full Menu"
+                />
+                <InputField
+                  label="CTA Button Sublabel"
+                  name="btnSublabel"
+                  value={formData.btnSublabel}
+                  onChange={handleChange}
+                  placeholder="e.g. See our complete seasonal collection"
+                />
+                <InputField
+                  label="CTA Button Link / URL"
+                  name="btnUrl"
+                  value={formData.btnUrl}
+                  onChange={handleChange}
+                  placeholder="e.g. /menu"
                 />
               </div>
 
