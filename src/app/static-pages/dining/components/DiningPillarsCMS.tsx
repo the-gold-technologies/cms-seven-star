@@ -19,32 +19,16 @@ interface PillarData {
 }
 
 const defaultFormData = {
-  upperTag: "Our Menu",
-  heading: "Classic Foundations,",
-  headingHighlight: "Global Inspirations",
-  pillars: [
-    {
-      title: "British Classics",
-      description: "We serve British pub classics done properly. No shortcuts, just traditional recipes elevated with premium ingredients.",
-      image: "/images/gallery/feature-classic-1.jpg",
-      bullet1: "Proper Pies",
-      bullet2: "Hand-cut Chips",
-    },
-    {
-      title: "Seasonal Specials",
-      description: "Our specials draw on European, Middle Eastern and South Asian flavours, bringing a contemporary twist to the village pub.",
-      image: "/images/gallery/feature-special-1.jpg",
-      bullet1: "Middle Eastern Spices",
-      bullet2: "European Techniques",
-    },
-    {
-      title: "Not To Be Missed",
-      description: "Our fortnightly Indian Thali Nights and Sunday Roasts are, frankly, the highlight of the week.",
-      image: "/images/gallery/feature-roast-1.jpg",
-      bullet1: "Sunday Roasts",
-      bullet2: "Indian Thali Nights",
-    },
-  ] as PillarData[],
+  upperTag: "",
+  heading: "",
+  headingHighlight: "",
+  pillars: Array.from({ length: 3 }, () => ({
+    title: "",
+    description: "",
+    image: "",
+    bullet1: "",
+    bullet2: "",
+  })) as PillarData[],
 };
 
 interface DiningPillarsCMSProps {

@@ -18,29 +18,15 @@ interface CapabilityData {
 }
 
 const defaultFormData = {
-  upperTag: "Our Capabilities",
-  heading: "From Intimate to",
-  headingHighlight: "Grand Occasions",
-  capabilities: [
-    {
-      title: "Celebrations",
-      description: "Birthdays, anniversaries, and family reunions find their perfect home in our versatile spaces.",
-      image: "/images/gallery/gallery-3.jpg",
-      iconName: "PartyPopper",
-    },
-    {
-      title: "Live Events",
-      description: "Our garden and bar often come alive with live acoustic sets and community performances.",
-      image: "/images/gallery/gallery-4.jpg",
-      iconName: "Music",
-    },
-    {
-      title: "The Private Barn",
-      description: "Our signature private space for up to 40 guests, offering an exclusive feel for your most special moments.",
-      image: "/images/gallery/gallery-8.jpg",
-      iconName: "Warehouse",
-    },
-  ] as CapabilityData[],
+  upperTag: "",
+  heading: "",
+  headingHighlight: "",
+  capabilities: Array.from({ length: 3 }, () => ({
+    title: "",
+    description: "",
+    image: "",
+    iconName: "",
+  })) as CapabilityData[],
 };
 
 interface EventsCapabilitiesCMSProps {

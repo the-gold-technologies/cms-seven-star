@@ -11,9 +11,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
 const defaultFormData = {
-  quotePart1: "Food is the ingredient that binds us together,",
-  quoteHighlight: "extraordinary.",
-  backgroundImage: "/images/assets/SEVEN_STARS_2026_02_09-0065.jpg",
+  quotePart1: "",
+  quoteHighlight: "",
+  backgroundImage: "",
 };
 
 interface DiningQuoteCMSProps {

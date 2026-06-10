@@ -24,15 +24,7 @@ const iconOptions = [
 const defaultFormData = {
   amenitiesTag: "",
   amenitiesHeading: "",
-  amenities: [
-    { label: "Free Parking", icon: "Car" },
-    { label: "Beer Garden", icon: "Sun" },
-    { label: "Open Fireplace", icon: "Flame" },
-    { label: "Local Ales & Ciders", icon: "Beer" },
-    { label: "Private Barn", icon: "Home" },
-    { label: "Live Music", icon: "Music" },
-    { label: "Covered Outdoor Space", icon: "CloudRain" },
-  ],
+  amenities: [] as { label: string; icon: string }[],
 };
 
 interface AboutAmenitiesCMSProps {

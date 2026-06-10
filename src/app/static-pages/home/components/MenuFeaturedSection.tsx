@@ -11,17 +11,16 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
 const defaultFormData = {
-  upperTag: "The Chef's Selection",
-  regularHeading: "Taste the",
-  italicHeading: "Exceptional",
-  description:
-    "Experience our most celebrated seasonal creations, each crafted with locally sourced ingredients and culinary passion.",
-  watermark: "Signature Dishes",
-  badgeLabel: "Chef's Signature",
-  badgeText: "Culinary excellence in every bite.",
-  btnUrl: "/menu",
-  btnLabel: "Explore Full Menu",
-  btnSublabel: "See our complete seasonal collection",
+  upperTag: "",
+  regularHeading: "",
+  italicHeading: "",
+  description: "",
+  watermark: "",
+  badgeLabel: "",
+  badgeText: "",
+  btnUrl: "",
+  btnLabel: "",
+  btnSublabel: "",
   dishes: [] as {
     name: string;
     price: string;

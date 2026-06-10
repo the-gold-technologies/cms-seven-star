@@ -23,49 +23,20 @@ interface EventData {
 }
 
 const defaultFormData = {
-  upperTag: "Seven Stars Calendar",
-  heading: "Upcoming & Past Occasions",
-  description:
-    "Experience the vibrant tapestry of Seven Stars. Join us for upcoming featured dining events or explore captured moments from our historic archives.",
-  upcomingEvents: [
-    {
-      title: "Mother's Day Lunch",
-      date: "March 30th",
-      time: "Set Luncheon",
-      description:
-        "Treat Mum to a special day out with our exclusive 2 or 3 Course Set Luncheon. Enjoy our seasonal menus crafted by the head chef for the perfect family gathering.",
-      pricing: "ADULTS £28.95 / £33.95 | CHILDREN £17.95 / £21.95",
-      highlight: "GLASS OF PROSECCO FOR MOMS",
-      contactInfo: "01865 343337 | info@sevenstarsatmb.co.uk",
-      image: "/images/481171001_957353706531406_1040071741557670337_nlow.png",
-      category: "Special Occasion",
-    },
-    {
-      title: "Mother's Day Family Luncheon",
-      date: "March 30th",
-      time: "Afternoon Table",
-      description:
-        "Join us at Seven Stars at Marsh Baldon for an exquisite 2 or 3 Course Set Luncheon celebrating mothers. Includes a complimentary glass of Prosecco for moms alongside seasonal culinary highlights.",
-      pricing: "ADULTS £28.95 / £33.95 | CHILDREN £17.95 / £21.95",
-      highlight: "GLASS OF PROSECCO FOR MOMS",
-      contactInfo: "01865 343337 | info@sevenstarsatmb.co.uk",
-      image: "/images/481171001_957353706531406_1040071741557670337_nlow.webp",
-      category: "Family Dining",
-    },
-    {
-      title: "Indian Culinary Showcase & Banquet",
-      date: "Upcoming Tasting",
-      time: "Evening Experience",
-      description:
-        "Experience a quintessential collection of authentic Indian flavours, from spiced plant-based soya and rich paneer delicacies to traditional staple preparations crafted with aromatic heritage spices.",
-      pricing: "Tasting Menu & Pairings Available upon Request",
-      highlight: "Authentic Heritage Indian Recipes",
-      contactInfo: "Book via Info Desk or Call Directly",
-      image:
-        "/images/481983309_18036627329600436_7680148243878380970_nlow.webp",
-      category: "Culinary Tasting",
-    },
-  ] as EventData[],
+  upperTag: "",
+  heading: "",
+  description: "",
+  upcomingEvents: Array.from({ length: 3 }, () => ({
+    title: "",
+    date: "",
+    time: "",
+    description: "",
+    pricing: "",
+    highlight: "",
+    contactInfo: "",
+    image: "",
+    category: "",
+  })) as EventData[],
 };
 
 interface UpcomingEventsCMSProps {

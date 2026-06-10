@@ -10,19 +10,11 @@ import { uploadFiles } from "@/lib/uploadHelpers";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const defaultFormData = {
-  tagline: "Occasions",
-  heading: "What We Host",
-  subtext: "Perfect For..",
-  image: "/images/gallery/event-celebration.jpg",
-  items: [
-    "Birthday parties & milestone celebrations",
-    "Family get-togethers & reunion dinners",
-    "Corporate lunches & team away days",
-    "Wedding receptions & pre-wedding celebrations",
-    "Summer BBQ parties",
-    "Christmas parties & NYE celebrations",
-    "Community events & fundraisers",
-  ] as string[],
+  tagline: "",
+  heading: "",
+  subtext: "",
+  image: "",
+  items: [] as string[],
 };
 
 interface WhatWeHostCMSProps {

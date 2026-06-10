@@ -11,11 +11,11 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TextAreaField } from "@/components/TextAreaField";
 
 const defaultFormData = {
-  tagline: "Memorable Occasions",
-  headingPart1: "Events &",
-  headingHighlight: "Celebrations",
-  description: "From intimate gatherings in our historic bar to grand celebrations in the garden, we host moments that matter.",
-  backgroundImage: "/images/gallery/event-celebration.jpg",
+  tagline: "",
+  headingPart1: "",
+  headingHighlight: "",
+  description: "",
+  backgroundImage: "",
 };
 
 interface EventsHeroCMSProps {
