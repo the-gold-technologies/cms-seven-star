@@ -165,8 +165,6 @@ export function DiningPillarsCMS({
     formData.pillars.forEach((p, index) => {
       if (!p.title?.trim()) errs.push(`Pillar ${index + 1} Title is required`);
       if (!p.description?.trim()) errs.push(`Pillar ${index + 1} Description is required`);
-      if (!p.bullet1?.trim()) errs.push(`Pillar ${index + 1} Highlight Point 1 is required`);
-      if (!p.bullet2?.trim()) errs.push(`Pillar ${index + 1} Highlight Point 2 is required`);
       if (!selectedImages[index]) errs.push(`Pillar ${index + 1} Image is required`);
     });
 
@@ -375,14 +373,12 @@ export function DiningPillarsCMS({
                           value={pillar.bullet1}
                           onChange={(e) => handlePillarChange(idx, "bullet1", e.target.value)}
                           placeholder="e.g. Proper Pies"
-                          required
                         />
                         <InputField
                           label="Highlight Bullet 2"
                           value={pillar.bullet2}
                           onChange={(e) => handlePillarChange(idx, "bullet2", e.target.value)}
                           placeholder="e.g. Hand-cut Chips"
-                          required
                         />
                       </div>
                     </div>
