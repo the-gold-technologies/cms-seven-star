@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { CloudUpload, Trash2, Sparkles } from "lucide-react";
+import { CloudUpload, Trash2, Sparkles, Plus } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -17,6 +17,7 @@ const defaultFormData = {
   outdoorCtaText: "",
   outdoorCtaLink: "",
   outdoorImage: "",
+  outdoorImages: [] as string[],
 };
 
 interface DiningOutdoorCMSProps {
@@ -51,15 +52,21 @@ export function DiningOutdoorCMS({
 
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
-  const [selectedImage, setSelectedImage] = useState<File | string>("");
+  const [outdoorImages, setOutdoorImages] = useState<(File | string)[]>([""]);
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     if (initialData) {
       const data = { ...defaultFormData, ...initialData };
       setFormData(data);
-      if (data.outdoorImage) setSelectedImage(data.outdoorImage);
+      if (Array.isArray(data.outdoorImages) && data.outdoorImages.length > 0) {
+        setOutdoorImages(data.outdoorImages);
+      } else if (data.outdoorImage) {
+        setOutdoorImages([data.outdoorImage]);
+      } else {
+        setOutdoorImages([""]);
+      }
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
@@ -69,10 +76,21 @@ export function DiningOutdoorCMS({
           if (json.success && sectionData) {
             const data = { ...defaultFormData, ...sectionData };
             setFormData(data);
-            if (data.outdoorImage) setSelectedImage(data.outdoorImage);
+            if (Array.isArray(data.outdoorImages) && data.outdoorImages.length > 0) {
+              setOutdoorImages(data.outdoorImages);
+            } else if (data.outdoorImage) {
+              setOutdoorImages([data.outdoorImage]);
+            } else {
+              setOutdoorImages([""]);
+            }
+          } else {
+            setOutdoorImages([""]);
           }
         })
-        .catch(console.error);
+        .catch((err) => {
+          console.error(err);
+          setOutdoorImages([""]);
+        });
     }
   }, [initialData, saveUrl, responseKey]);
 
@@ -83,15 +101,7 @@ export function DiningOutdoorCMS({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedImage(e.target.files[0]);
-    }
-  };
-
-  const removeImage = () => {
-    setSelectedImage("");
-  };
+  // File change helper functions are handled inline in JSX map
 
   const handleSave = async () => {
     const errs: string[] = [];
@@ -103,7 +113,9 @@ export function DiningOutdoorCMS({
       errs.push("Outdoor description copy is required");
     if (!formData.outdoorCtaText?.trim())
       errs.push("CTA booking button label is required");
-    if (!selectedImage) errs.push("Outdoor seating photo uploader is required");
+    
+    const validImages = outdoorImages.filter((img) => img !== "");
+    if (validImages.length === 0) errs.push("At least one Outdoor seating photo is required");
 
     if (errs.length > 0) {
       errs.forEach((msg) => toast.error(msg));
@@ -113,13 +125,15 @@ export function DiningOutdoorCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Outdoor seating details...");
     try {
-      const uploadedUrls = await uploadFiles([selectedImage]);
-      const imgUrl =
-        selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
+      const uploadedUrls = await uploadFiles(validImages);
+      const finalImages = validImages.map((img, idx) => {
+        return img instanceof File ? uploadedUrls[idx] || "" : img;
+      });
 
       const payload = {
         ...formData,
-        outdoorImage: imgUrl,
+        outdoorImage: finalImages[0] || "",
+        outdoorImages: finalImages,
       };
 
       const body = sectionId
@@ -136,7 +150,7 @@ export function DiningOutdoorCMS({
       if (json.success) {
         toast.success("Outdoor seating saved successfully!", { id: toastId });
         setFormData(payload);
-        setSelectedImage(imgUrl);
+        setOutdoorImages(finalImages.length > 0 ? finalImages : [""]);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
       } else {
         toast.error(json.error || "Save failed.", { id: toastId });
@@ -149,14 +163,7 @@ export function DiningOutdoorCMS({
     }
   };
 
-  const preview =
-    selectedImage instanceof File
-      ? URL.createObjectURL(selectedImage)
-      : selectedImage;
-  const name =
-    typeof selectedImage === "string"
-      ? selectedImage.split("/").pop() || "Outdoor Image"
-      : selectedImage?.name;
+  // File previews are handled inside JSX mapping
 
   return (
     <section>
@@ -235,65 +242,117 @@ export function DiningOutdoorCMS({
                 </div>
               </div>
 
-              {/* Cover Photo */}
+              {/* Carousel Images Collection */}
               <div className="flex flex-col gap-3">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                  Outdoor Seating Cover Photo
-                </span>
+                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                    Outdoor Seating Slider Images ({outdoorImages.length})
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setOutdoorImages((prev) => [...prev, ""])}
+                    className="text-xs text-[#475DB1] hover:text-[#475DB1]/80 font-bold flex items-center gap-1 cursor-pointer"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    Add Photo
+                  </button>
+                </div>
 
-                {preview ? (
-                  <div className="flex items-center justify-between p-3.5 px-5 bg-white border border-gray-200 rounded-2xl transition-all hover:bg-gray-50/50 mt-1">
-                    <div className="flex items-center gap-3.5 text-gray-700">
-                      <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={preview}
-                          alt="Outdoor BG"
-                          className="w-full h-full object-cover"
+                <div className="flex flex-col gap-4 mt-1 w-full">
+                  {outdoorImages.map((img, idx) => {
+                    const preview =
+                      img instanceof File
+                        ? URL.createObjectURL(img)
+                        : img;
+                    const name =
+                      typeof img === "string"
+                        ? img.split("/").pop() || `Photo ${idx + 1}`
+                        : img?.name || `Photo ${idx + 1}`;
+                    return (
+                      <div key={idx} className="w-full">
+                        {preview ? (
+                          <div className="flex items-center justify-between p-3.5 px-5 bg-white border border-gray-200 rounded-2xl transition-all hover:bg-gray-50/50">
+                            <div className="flex items-center gap-3.5 text-gray-700 overflow-hidden">
+                              <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={preview}
+                                  alt={`Outdoor Preview ${idx + 1}`}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                              <div className="flex flex-col overflow-hidden">
+                                <span className="text-xs font-bold text-gray-900 truncate max-w-[120px] sm:max-w-xs md:max-w-md">
+                                  {name}
+                                </span>
+                                <span className="text-[9px] text-gray-400 font-semibold mt-0.5">
+                                  Showcase Image
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => fileInputRefs.current[idx]?.click()}
+                                className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-xl text-[10px] font-bold shadow-sm transition-all active:scale-95 cursor-pointer"
+                              >
+                                Change
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setOutdoorImages((prev) => {
+                                    const updated = prev.filter((_, i) => i !== idx);
+                                    return updated.length > 0 ? updated : [""];
+                                  });
+                                }}
+                                className="text-red-500 hover:text-red-600 p-2 bg-red-50 hover:bg-red-100 rounded-xl transition-all cursor-pointer"
+                                title="Delete Photo"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            onClick={() => fileInputRefs.current[idx]?.click()}
+                            className="w-full border-2 border-dashed border-gray-200 hover:border-blue-500 bg-white hover:bg-blue-50/10 rounded-xl flex flex-col items-center justify-center h-[120px] p-6 text-center cursor-pointer transition-all group"
+                          >
+                            <CloudUpload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors mb-2" />
+                            <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
+                              Drag and drop image here, or{" "}
+                              <span className="text-blue-500 hover:underline">
+                                browse
+                              </span>
+                            </p>
+                            <p className="text-[10px] text-gray-400 mt-1">
+                              PNG, JPG or WEBP (Carousel Photo {idx + 1})
+                            </p>
+                          </div>
+                        )}
+                        <input
+                          type="file"
+                          ref={(el) => {
+                            fileInputRefs.current[idx] = el;
+                          }}
+                          onChange={(e) => {
+                            if (e.target.files && e.target.files[0]) {
+                              const file = e.target.files[0];
+                              setOutdoorImages((prev) => {
+                                const updated = [...prev];
+                                updated[idx] = file;
+                                return updated;
+                              });
+                            }
+                          }}
+                          accept="image/*"
+                          className="hidden"
                         />
                       </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-900 truncate max-w-[200px] sm:max-w-xs md:max-w-md">
-                          {name}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => fileInputRef.current?.click()}
-                        className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3.5 py-1.5 rounded-xl text-[10px] font-bold shadow-sm transition-all active:scale-95 cursor-pointer"
-                      >
-                        Change
-                      </button>
-                      <button
-                        type="button"
-                        onClick={removeImage}
-                        className="text-red-500 hover:text-red-600 p-2 bg-red-50 hover:bg-red-100 rounded-xl transition-all cursor-pointer"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    onClick={() => fileInputRef.current?.click()}
-                    className="w-full border-2 border-dashed border-gray-200 hover:border-blue-500 bg-white hover:bg-blue-50/10 rounded-2xl flex flex-col items-center justify-center p-8 text-center cursor-pointer transition-all group mt-1"
-                  >
-                    <CloudUpload className="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors mb-2" />
-                    <p className="text-xs text-gray-500 font-semibold group-hover:text-blue-600">
-                      Drag and drop image here, or browse
-                    </p>
-                  </div>
-                )}
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  accept="image/*"
-                  className="hidden"
-                />
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Save Action */}
