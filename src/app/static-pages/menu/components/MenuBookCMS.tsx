@@ -43,6 +43,7 @@ interface MenuSection {
 
 const defaultFormData = {
   menuSections: [] as MenuSection[],
+  menuPdfs: [] as string[],
   sectionNumber: "",
   tagline: "",
   headingPart1: "",
@@ -92,16 +93,14 @@ export function MenuBookCMS({
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
   const [activePageIdx, setActivePageIdx] = useState(0);
 
-  // Maintain separate upload state arrays for each of the menu categories (PDFs)
-  const [selectedPdfs, setSelectedPdfs] = useState<(File | string)[]>([]);
+  // Maintain global list of uploaded/pending PDFs
+  const [menuPdfsList, setMenuPdfsList] = useState<(File | string)[]>([]);
 
   useEffect(() => {
     if (initialData) {
       const data = { ...defaultFormData, ...initialData };
       setFormData(data);
-      if (data.menuSections) {
-        setSelectedPdfs(data.menuSections.map((s) => s.pdf || ""));
-      }
+      setMenuPdfsList(data.menuPdfs || []);
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
@@ -111,47 +110,29 @@ export function MenuBookCMS({
           if (json.success && sectionData) {
             const data = { ...defaultFormData, ...sectionData };
             setFormData(data);
-            if (data.menuSections) {
-              setSelectedPdfs(data.menuSections.map((s: any) => s.pdf || ""));
-            }
+            setMenuPdfsList(data.menuPdfs || []);
           }
         })
         .catch(console.error);
     }
   }, [initialData, saveUrl, responseKey]);
 
-  const handleSectionPdfChange = (val: string) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pdf: val };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
-  const handlePdfFileChange = (
-    index: number,
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      if (file.type !== "application/pdf") {
-        toast.error("Please upload a valid PDF file!");
-        return;
-      }
-      setSelectedPdfs((prev) => {
-        const updated = [...prev];
-        updated[index] = file;
-        return updated;
+  const handleAddPdfFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      const validFiles = files.filter((file) => {
+        if (file.type !== "application/pdf") {
+          toast.error(`${file.name} is not a valid PDF file!`);
+          return false;
+        }
+        return true;
       });
+      setMenuPdfsList((prev) => [...prev, ...validFiles]);
     }
   };
 
-  const removePdfFile = (index: number) => {
-    setSelectedPdfs((prev) => {
-      const updated = [...prev];
-      updated[index] = "";
-      return updated;
-    });
+  const removePdfFromList = (index: number) => {
+    setMenuPdfsList((prev) => prev.filter((_, i) => i !== index));
   };
 
   // Section (Category) level methods
@@ -187,7 +168,6 @@ export function MenuBookCMS({
       ...prev,
       menuSections: [...prev.menuSections, newSection],
     }));
-    setSelectedPdfs((prev) => [...prev, ""]);
     setActiveSectionIdx(formData.menuSections.length);
     setActivePageIdx(0);
     toast.success(`Category "${title}" added successfully!`);
@@ -210,7 +190,6 @@ export function MenuBookCMS({
       ...prev,
       menuSections: prev.menuSections.filter((_, i) => i !== index),
     }));
-    setSelectedPdfs((prev) => prev.filter((_, i) => i !== index));
     setActiveSectionIdx(0);
     setActivePageIdx(0);
     toast.success(`Category "${sec.title}" deleted.`);
@@ -379,22 +358,22 @@ export function MenuBookCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving 3D Menu Book Sheets...");
     try {
-      const updatedSections = [...formData.menuSections];
-
-      // Sequential PDF upload
-      for (let i = 0; i < updatedSections.length; i++) {
-        const item = selectedPdfs[i];
+      const uploadedPdfs: string[] = [];
+      for (const item of menuPdfsList) {
         if (item instanceof File) {
           const urls = await uploadFiles([item]);
-          updatedSections[i].pdf = urls[0] || "";
-        } else {
-          updatedSections[i].pdf = item || "";
+          if (urls[0]) {
+            uploadedPdfs.push(urls[0]);
+          }
+        } else if (typeof item === "string" && item) {
+          uploadedPdfs.push(item);
         }
       }
 
       const payload = {
         ...formData,
-        menuSections: updatedSections,
+        menuPdfs: uploadedPdfs,
+        menuSections: formData.menuSections.map((s) => ({ ...s, pdf: "" })),
       };
 
       const body = sectionId
@@ -411,7 +390,7 @@ export function MenuBookCMS({
       if (json.success) {
         toast.success("Menu book sheets saved successfully!", { id: toastId });
         setFormData(payload);
-        setSelectedPdfs(payload.menuSections.map((s) => s.pdf || ""));
+        setMenuPdfsList(payload.menuPdfs || []);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
       } else {
         toast.error(json.error || "Save failed.", { id: toastId });
@@ -551,6 +530,71 @@ export function MenuBookCMS({
                 </div>
               </div>
 
+              {/* Global PDF Menu Uploads */}
+              <div className="flex flex-col gap-6 bg-slate-50/50 border border-slate-200/50 p-6 rounded-2xl w-full mb-4">
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
+                  <FileText className="w-3.5 h-3.5 text-emerald-500" />
+                  Global PDF Menu Files
+                </h4>
+                <div className="flex flex-col gap-4">
+                  <p className="text-xs text-gray-500 leading-relaxed font-light">
+                    Upload all PDF menu files in one place. Users can download all of them with a single click.
+                  </p>
+                  
+                  {menuPdfsList.length > 0 && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {menuPdfsList.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center justify-between bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs shadow-2xs hover:border-gray-300 transition-all"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <FileText className="w-4 h-4 text-emerald-600 shrink-0" />
+                            <span className="text-gray-700 font-bold truncate">
+                              {item instanceof File
+                                ? item.name
+                                : typeof item === "string"
+                                ? item.split("/").pop()
+                                : `PDF Menu ${idx + 1}`}
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removePdfFromList(idx)}
+                            className="text-red-500 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="file"
+                      accept="application/pdf"
+                      multiple
+                      onChange={handleAddPdfFile}
+                      className="hidden"
+                      id="global-menu-pdf-upload"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById("global-menu-pdf-upload")?.click()}
+                      className="flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold px-5 py-2.5 rounded-xl transition-all cursor-pointer active:scale-95"
+                    >
+                      <CloudUpload className="w-4 h-4" /> Upload Menu PDF(s)
+                    </button>
+                    {menuPdfsList.length > 0 && (
+                      <span className="text-[10px] text-gray-400 font-medium">
+                        {menuPdfsList.length} file(s) selected
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               {/* Premium Tabs for Section Menu Sheet selection */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-4">
                 <div className="flex items-center flex-wrap gap-2">
@@ -595,7 +639,7 @@ export function MenuBookCMS({
                 </div>
               </div>
 
-              {/* Title & PDF Uploader */}
+              {/* Title Editor */}
               {activeSection && (
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 bg-slate-50/50 p-4 border border-slate-200/50 rounded-2xl w-full">
                   <div className="flex flex-col gap-1 flex-1 w-full">
@@ -619,57 +663,6 @@ export function MenuBookCMS({
                       placeholder="e.g. Main Menu"
                       className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
                     />
-                  </div>
-
-                  <div className="flex flex-col gap-1 w-full md:w-auto">
-                    <span className="text-xs font-bold text-gray-600">
-                      Upload PDF Menu File
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="file"
-                        accept="application/pdf"
-                        onChange={(e) =>
-                          handlePdfFileChange(activeSectionIdx, e)
-                        }
-                        className="hidden"
-                        id={`pdf-file-input-${activeSectionIdx}`}
-                      />
-                      {selectedPdfs[activeSectionIdx] ? (
-                        <div className="flex items-center gap-2 bg-white border border-gray-200 px-3 py-2 rounded-xl text-xs">
-                          <FileText className="w-4 h-4 text-emerald-600" />
-                          <span className="text-[10px] text-gray-700 font-bold max-w-[120px] truncate">
-                            {selectedPdfs[activeSectionIdx] instanceof File
-                              ? (selectedPdfs[activeSectionIdx] as File).name
-                              : (selectedPdfs[activeSectionIdx] as string)
-                                  .split("/")
-                                  .pop()}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => removePdfFile(activeSectionIdx)}
-                            className="text-red-500 hover:text-red-600 p-0.5"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() =>
-                            document
-                              .getElementById(
-                                `pdf-file-input-${activeSectionIdx}`,
-                              )
-                              ?.click()
-                          }
-                          className="flex items-center gap-1.5 bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer"
-                        >
-                          <CloudUpload className="w-4 h-4 text-gray-400" />{" "}
-                          Choose PDF File
-                        </button>
-                      )}
-                    </div>
                   </div>
                 </div>
               )}
