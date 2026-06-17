@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { CloudUpload, X, HelpCircle } from "lucide-react";
+import { deleteFileFromSupabase } from "@/lib/uploadHelpers";
 
 interface ImageUploadFieldProps {
   label?: string;
@@ -43,7 +44,7 @@ export const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
     setIsDragging(false);
   };
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = async (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
 
@@ -51,20 +52,35 @@ export const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
       const droppedFiles = Array.from(e.dataTransfer.files).filter((file) =>
         file.type.startsWith("image/"),
       );
+      // If replacing (maxImages=1 and there's an existing saved URL), delete old from Supabase
+      if (maxImages === 1 && images[0] && typeof images[0] === "string") {
+        await deleteFileFromSupabase(images[0]);
+      }
       const newImages = [...images, ...droppedFiles].slice(0, maxImages);
       handleUpdate(newImages);
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files);
+      // If replacing (maxImages=1 and there's an existing saved URL), delete old from Supabase
+      if (maxImages === 1 && images[0] && typeof images[0] === "string") {
+        await deleteFileFromSupabase(images[0]);
+      }
       const newImages = [...images, ...selectedFiles].slice(0, maxImages);
       handleUpdate(newImages);
+      // Reset input so the same file can be re-selected
+      e.target.value = "";
     }
   };
 
-  const removeImage = (index: number) => {
+  const removeImage = async (index: number) => {
+    const img = images[index];
+    // Delete from Supabase if it's a saved URL
+    if (img && typeof img === "string") {
+      await deleteFileFromSupabase(img);
+    }
     handleUpdate(images.filter((_, i) => i !== index));
   };
 
@@ -137,6 +153,7 @@ export const ImageUploadField: React.FC<ImageUploadFieldProps> = ({
                     removeImage(idx);
                   }}
                   className="p-1.5 bg-white text-gray-500 hover:text-red-500 rounded-full shadow-sm ring-1 ring-gray-100 transition-colors cursor-pointer relative z-10"
+                  title="Remove image"
                 >
                   <X className="w-4 h-4" />
                 </button>
