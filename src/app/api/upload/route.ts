@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
 
         const { error } = await supabase.storage
-          .from("uploadsFiles")
+          .from("myBucket")
           .upload(fileName, buffer, {
             contentType: file.type,
             upsert: false,
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
         const {
           data: { publicUrl },
-        } = supabase.storage.from("uploadsFiles").getPublicUrl(fileName);
+        } = supabase.storage.from("myBucket").getPublicUrl(fileName);
         uploadedFiles.push(publicUrl);
       }
     }
