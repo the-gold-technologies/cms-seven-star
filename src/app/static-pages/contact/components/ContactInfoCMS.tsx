@@ -19,6 +19,9 @@ const defaultFormData = {
   phoneNumber: "",
   emailAddress: "",
   openingHours: [{ days: "", hours: "" }],
+  mapEmbedUrl: "",
+  mapHeading: "",
+  mapDescription: "",
 };
 
 interface ContactInfoCMSProps {
@@ -118,6 +121,9 @@ export function ContactInfoCMS({
     if (!formData.addressLine2?.trim()) errs.push("Address line 2 is required");
     if (!formData.phoneNumber?.trim()) errs.push("Phone number is required");
     if (!formData.emailAddress?.trim()) errs.push("Email address is required");
+    if (!formData.mapEmbedUrl?.trim()) errs.push("Google Maps Embed URL is required");
+    if (!formData.mapHeading?.trim()) errs.push("Map section heading is required");
+    if (!formData.mapDescription?.trim()) errs.push("Map section description is required");
 
     formData.openingHours.forEach((item, idx) => {
       if (!item.days.trim())
@@ -254,6 +260,44 @@ export function ContactInfoCMS({
                     value={formData.addressLine2}
                     onChange={handleChange}
                     placeholder="e.g. Oxford, OX44 9LP"
+                    required
+                  />
+                </div>
+
+                {/* Map Configuration */}
+                <div className="flex flex-col gap-5 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full">
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                    Map Configuration
+                  </span>
+
+                  <div className="flex flex-col md:flex-row gap-6 w-full">
+                    <InputField
+                      label="Map Section Heading"
+                      name="mapHeading"
+                      value={formData.mapHeading}
+                      onChange={handleChange}
+                      placeholder="e.g. Find Our Location"
+                      required
+                      containerClassName="flex-1"
+                    />
+                    <InputField
+                      label="Map Section Description"
+                      name="mapDescription"
+                      value={formData.mapDescription}
+                      onChange={handleChange}
+                      placeholder="e.g. The Seven Stars at Marsh Baldon..."
+                      required
+                      containerClassName="flex-1"
+                    />
+                  </div>
+
+                  <InputField
+                    label="Google Maps Embed URL"
+                    name="mapEmbedUrl"
+                    value={formData.mapEmbedUrl}
+                    onChange={handleChange}
+                    placeholder="e.g. https://www.google.com/maps/embed?pb=..."
                     required
                   />
                 </div>

@@ -159,7 +159,7 @@ export function AboutAmenitiesCMS({
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="About Amenities Section"
-          description="Manage boutique gastro garden features, open fireplaces, local ales, private barn icons and titles."
+          description="Manage gastro garden features, open fireplaces, local ales, private barn icons and titles."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />

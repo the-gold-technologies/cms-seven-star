@@ -265,7 +265,7 @@ export function FeatureTilesSection({
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="Feature Tiles Section (Pub Traditions)"
-          description="Manage boutique gastro traditions, custom cards, descriptions, and the 3-image slide decks uploader."
+          description="Manage gastro traditions, custom cards, descriptions, and the 3-image slide decks uploader."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -296,11 +296,11 @@ export function FeatureTilesSection({
                   required
                 />
                 <InputField
-                  label="Boutique Tag Label"
+                  label="Tag Label"
                   name="tagLabel"
                   value={formData.tagLabel}
                   onChange={handleChange}
-                  placeholder="e.g. Boutique Gastro Experience"
+                  placeholder="e.g. Gastro Experience"
                   required
                 />
               </div>
@@ -309,7 +309,7 @@ export function FeatureTilesSection({
               <div className="flex flex-col gap-6">
                 <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
                   <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                  Boutique Cards Manager (3 Cards Total)
+                  Cards Manager (3 Cards Total)
                 </h4>
 
                 <div className="flex flex-col gap-8 mt-2">
