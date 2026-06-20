@@ -33,6 +33,9 @@ const defaultFormData = {
   instagramUrl: "",
   facebookUrl: "",
   youtubeUrl: "",
+  googleRating: "",
+  googleReviewsCount: "",
+  googleReviewsUrl: "",
 };
 
 interface HeroSectionProps {
@@ -470,6 +473,40 @@ export function HeroSection({
                   icon={<Youtube className="w-4 h-4 text-red-500" />}
                 />
               </div>
+
+              {/* Google Reviews & Ratings */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="col-span-3">
+                  <h3 className="text-sm font-semibold text-gray-700 border-b border-gray-100 pb-2 flex items-center gap-2">
+                    Google Reviews & Ratings
+                  </h3>
+                </div>
+
+                <InputField
+                  label="Google Rating"
+                  name="googleRating"
+                  value={formData.googleRating || ""}
+                  onChange={handleChange}
+                  placeholder="e.g. 4.6"
+                />
+
+                <InputField
+                  label="Google Reviews Count"
+                  name="googleReviewsCount"
+                  value={formData.googleReviewsCount || ""}
+                  onChange={handleChange}
+                  placeholder="e.g. 1,031"
+                />
+
+                <InputField
+                  label="Google Reviews URL"
+                  name="googleReviewsUrl"
+                  value={formData.googleReviewsUrl || ""}
+                  onChange={handleChange}
+                  placeholder="e.g. https://search.google.com/local/reviews?placeid=..."
+                />
+              </div>
+
 
               {/* Action Save Button */}
               <div className="flex justify-end pt-4 border-t border-gray-50">

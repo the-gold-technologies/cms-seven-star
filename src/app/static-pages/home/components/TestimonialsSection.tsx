@@ -16,6 +16,7 @@ const defaultFormData = {
       quote: "",
       author: "",
       role: "",
+      rating: 5,
     },
   ],
   testimonialImages: [] as string[],
@@ -138,6 +139,7 @@ export function TestimonialsSection({
           quote: "",
           author: "",
           role: "",
+          rating: 5,
         },
         ...prev.testimonials,
       ],
@@ -198,10 +200,11 @@ export function TestimonialsSection({
       });
 
       const payload = {
-        testimonials: formData.testimonials.map((t) => ({
+        testimonials: formData.testimonials.map((t: any) => ({
           quote: t.quote,
           author: t.author,
           role: t.role,
+          rating: Number(t.rating) || 5,
         })),
         testimonialImages: finalImages,
       };
@@ -323,7 +326,7 @@ export function TestimonialsSection({
 
                         {!collapsed && (
                           <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-1 duration-200">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                               <InputField
                                 label="Author Name"
                                 value={testimonial.author}
@@ -336,6 +339,17 @@ export function TestimonialsSection({
                                 value={testimonial.role}
                                 onChange={(e) => handleFieldChange(idx, "role", e.target.value)}
                                 placeholder="e.g. Local Food Critic"
+                                required
+                              />
+                              <InputField
+                                label="Rating (1-5)"
+                                type="number"
+                                min={1}
+                                max={5}
+                                step={0.5}
+                                value={(testimonial as any).rating !== undefined ? (testimonial as any).rating : 5}
+                                onChange={(e) => handleFieldChange(idx, "rating", e.target.value)}
+                                placeholder="e.g. 5"
                                 required
                               />
                             </div>
