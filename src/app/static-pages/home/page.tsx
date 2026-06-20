@@ -8,6 +8,7 @@ import { FeatureTilesSection } from "@/static-pages/home/components/FeatureTiles
 // import { EventGallery } from "@/static-pages/home/components/EventGallery";
 import { TestimonialsSection } from "@/static-pages/home/components/TestimonialsSection";
 import { ReadyToVisitSection } from "@/static-pages/home/components/ReadyToVisitSection";
+import { FirstTimePopupSection } from "@/static-pages/home/components/FirstTimePopupSection";
 import FooterCMS from "@/components/cms/sections/FooterCMS";
 import { MenuFeaturedSection } from "./components/MenuFeaturedSection";
 
@@ -20,6 +21,7 @@ export default function HomeCMSPage() {
       />
 
       <HeroSection />
+      <FirstTimePopupSection />
       <AboutUs />
       {/* <EventGallery /> */}
       <FeatureTilesSection />
