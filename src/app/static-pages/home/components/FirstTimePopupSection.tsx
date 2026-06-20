@@ -14,6 +14,9 @@ const defaultFormData = {
   title: "Send an Enquiry",
   description: "We aim to respond to all enquiries within 24 hours.",
   image: "",
+  welcomeText: "Welcome",
+  imageTitle: "Seven Stars",
+  imageSubtitle: "Marsh Baldon, Oxford",
 };
 
 interface FirstTimePopupSectionProps {
@@ -195,6 +198,31 @@ export function FirstTimePopupSection({
                   onChange={handleChange}
                   placeholder="e.g. We aim to respond within 24 hours."
                   required
+                />
+              </div>
+
+              {/* Image Overlay Text fields */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
+                <InputField
+                  label="Image Overlay Welcome Label"
+                  name="welcomeText"
+                  value={formData.welcomeText}
+                  onChange={handleChange}
+                  placeholder="e.g. Welcome"
+                />
+                <InputField
+                  label="Image Overlay Title"
+                  name="imageTitle"
+                  value={formData.imageTitle}
+                  onChange={handleChange}
+                  placeholder="e.g. Seven Stars"
+                />
+                <InputField
+                  label="Image Overlay Subtitle"
+                  name="imageSubtitle"
+                  value={formData.imageSubtitle}
+                  onChange={handleChange}
+                  placeholder="e.g. Marsh Baldon, Oxford"
                 />
               </div>
 
