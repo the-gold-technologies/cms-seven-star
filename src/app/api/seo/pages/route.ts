@@ -95,6 +95,29 @@ export async function GET() {
       };
     });
 
+    // 4. Manually inject Christmas page details so it shows in the SEO CMS manager without having a NavLink
+    const christmasPage = pages.find((p) => p.slug === "christmas");
+    if (christmasPage) {
+      const idx = mergedData.findIndex((m) => m.slug === "christmas");
+      if (idx === -1) {
+        mergedData.push({
+          id: "christmas-seo-link-id",
+          pageId: christmasPage.id,
+          title: "Christmas",
+          slug: christmasPage.slug,
+          metaTitle: christmasPage.metaTitle,
+          metaDescription: christmasPage.metaDescription,
+          type: "Main Link",
+          visibility: christmasPage.visibility,
+          parent: "-",
+          order: 6,
+          description: "Configure dynamic metadata and SEO properties for the Christmas landing page.",
+          navTitle: "Christmas",
+          isStatic: true,
+        });
+      }
+    }
+
     return NextResponse.json({ success: true, data: mergedData });
   } catch (error) {
     console.error("Error fetching pages for SEO:", error);

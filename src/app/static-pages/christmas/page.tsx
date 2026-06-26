@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
+import { ChristmasVisibilityCMS } from "./components/ChristmasVisibilityCMS";
 import { ChristmasHeroCMS } from "./components/ChristmasHeroCMS";
 import { ChristmasIntroCMS } from "./components/ChristmasIntroCMS";
 import { ChristmasFeaturesCMS } from "./components/ChristmasFeaturesCMS";
@@ -15,6 +16,7 @@ export default function ChristmasCMSPage() {
         description="Manage the content displayed on the Christmas 2026 landing page, including hero, introduction, special features, menus downloads, transition banner, dishes showcase, and reservation links."
       />
 
+      <ChristmasVisibilityCMS />
       <ChristmasHeroCMS />
       <ChristmasIntroCMS />
       <ChristmasFeaturesCMS />
