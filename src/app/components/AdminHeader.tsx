@@ -21,6 +21,7 @@ const STATIC_SEARCH_ITEMS: SearchItem[] = [
   { title: "Menu Page Editor", category: "Pages", url: "/static-pages/menu", icon: FileText },
   { title: "Events Page Editor", category: "Pages", url: "/static-pages/events", icon: FileText },
   { title: "Contact Page Editor", category: "Pages", url: "/static-pages/contact", icon: FileText },
+  { title: "Christmas Page Editor", category: "Pages", url: "/static-pages/christmas", icon: FileText },
   { title: "Menu Links Navigation", category: "Navigation", url: "/navigation/menu-links", icon: Compass },
   { title: "Social Media Navigation", category: "Navigation", url: "/navigation/social-media", icon: Compass },
   { title: "Global SEO Settings", category: "SEO", url: "/seo/global", icon: Shield },
