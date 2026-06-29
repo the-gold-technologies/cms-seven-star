@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { CloudUpload, Trash2, Sparkles, Calendar, Award } from "lucide-react";
+import { CloudUpload, Trash2, Sparkles, Calendar, Award, Plus, ChevronDown, ChevronRight } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -26,17 +26,7 @@ const defaultFormData = {
   upperTag: "",
   heading: "",
   description: "",
-  upcomingEvents: Array.from({ length: 3 }, () => ({
-    title: "",
-    date: "",
-    time: "",
-    description: "",
-    pricing: "",
-    highlight: "",
-    contactInfo: "",
-    image: "",
-    category: "",
-  })) as EventData[],
+  upcomingEvents: [] as EventData[],
 };
 
 interface UpcomingEventsCMSProps {
@@ -73,17 +63,11 @@ export function UpcomingEventsCMS({
   const [formData, setFormData] = useState(defaultFormData);
 
   // Maintain separate upload state arrays for each upcoming event photo
-  const [selectedImages, setSelectedImages] = useState<(File | string)[]>([
-    "",
-    "",
-    "",
-  ]);
+  const [selectedImages, setSelectedImages] = useState<(File | string)[]>([]);
 
-  const fileInputRefs = [
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-  ];
+  const [collapsedCards, setCollapsedCards] = useState<Record<number, boolean>>({});
+
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     if (initialData) {
@@ -153,6 +137,42 @@ export function UpcomingEventsCMS({
     });
   };
 
+  const toggleCardCollapse = (index: number) => {
+    setCollapsedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  const addEvent = () => {
+    setFormData((prev) => ({
+      ...prev,
+      upcomingEvents: [
+        ...prev.upcomingEvents,
+        {
+          title: "",
+          date: "",
+          time: "",
+          description: "",
+          pricing: "",
+          highlight: "",
+          contactInfo: "",
+          image: "",
+          category: "",
+        },
+      ],
+    }));
+    setSelectedImages((prev) => [...prev, ""]);
+  };
+
+  const deleteEvent = (index: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      upcomingEvents: prev.upcomingEvents.filter((_, i) => i !== index),
+    }));
+    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const handleSave = async () => {
     const errs: string[] = [];
     if (!formData.upperTag?.trim()) errs.push("Calendar tag label is required");
@@ -191,13 +211,13 @@ export function UpcomingEventsCMS({
       const updatedEvents = [...formData.upcomingEvents];
 
       // Upload images sequentially
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < updatedEvents.length; i++) {
         const item = selectedImages[i];
         if (item instanceof File) {
           const urls = await uploadFiles([item]);
           updatedEvents[i].image = urls[0] || "";
         } else {
-          updatedEvents[i].image = item;
+          updatedEvents[i].image = item || "";
         }
       }
 
@@ -240,7 +260,7 @@ export function UpcomingEventsCMS({
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="Upcoming Calendar Section"
-          description="Edit global schedule headers and fully customize details across all 3 active upcoming events."
+          description="Edit global schedule headers and fully customize details across all active upcoming events."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -288,8 +308,8 @@ export function UpcomingEventsCMS({
                 />
               </div>
 
-              {/* Three Upcoming Cards */}
-              <div className="grid grid-cols-1  gap-8">
+              {/* Dynamic Upcoming Cards */}
+              <div className="grid grid-cols-1 gap-8">
                 {formData.upcomingEvents.map((ev, idx) => {
                   const preview =
                     selectedImages[idx] instanceof File
@@ -306,169 +326,200 @@ export function UpcomingEventsCMS({
                       key={idx}
                       className="flex flex-col gap-6 p-6 bg-white border border-gray-200/80 rounded-3xl relative hover:border-gray-300 transition-all text-left"
                     >
-                      <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2 mb-1">
-                        <Award className="w-3.5 h-3.5 text-blue-500" />
-                        Upcoming Event Card #{idx + 1}
-                      </span>
-
-                      {/* Cover Photo */}
-                      <div className="flex flex-col gap-2.5">
-                        <label className="text-xs font-semibold text-gray-600">
-                          Cover Photo
-                        </label>
-                        {preview ? (
-                          <div className="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-200 rounded-2xl">
-                            <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={preview}
-                                alt={`Event ${idx + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <span className="text-[10px] font-bold text-gray-700 truncate max-w-[80px]">
-                              {name}
-                            </span>
-                            <div className="flex gap-1.5">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  fileInputRefs[idx].current?.click()
-                                }
-                                className="bg-white hover:bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-[9px] font-bold border border-gray-200 shadow-sm"
-                              >
-                                Edit
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => removeImage(idx)}
-                                className="text-red-500 hover:text-red-600 p-1.5 bg-red-50 rounded-lg"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            onClick={() => fileInputRefs[idx].current?.click()}
-                            className="border-2 border-dashed border-gray-200 hover:border-blue-500 bg-white hover:bg-blue-50/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-all"
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2 mb-1 cursor-pointer" onClick={() => toggleCardCollapse(idx)}>
+                        <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest flex items-center gap-2">
+                          <Award className="w-3.5 h-3.5 text-blue-500" />
+                          Upcoming Event Card #{idx + 1}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${collapsedCards[idx] ? 'rotate-180' : ''}`} />
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); deleteEvent(idx); }}
+                            className="text-red-500 hover:text-red-600 hover:bg-red-50 px-2.5 py-1 rounded-lg text-[10px] font-bold border border-red-100 flex items-center gap-1 transition-all"
                           >
-                            <CloudUpload className="w-6 h-6 text-gray-400 mb-1" />
-                            <p className="text-[10px] text-gray-500 font-bold">
-                              Upload cover
-                            </p>
+                            <Trash2 className="w-3 h-3" />
+                            Delete Event
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className={`grid transition-all duration-300 ${collapsedCards[idx] ? 'grid-rows-[0fr] opacity-0 overflow-hidden' : 'grid-rows-[1fr] opacity-100'}`}>
+                        <div className="overflow-hidden flex flex-col gap-6">
+                          {/* Cover Photo */}
+                          <div className="flex flex-col gap-2.5">
+                            <label className="text-xs font-semibold text-gray-600">
+                              Cover Photo
+                            </label>
+                            {preview ? (
+                              <div className="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-200 rounded-2xl">
+                                <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-200 border border-gray-300/40 relative flex-shrink-0">
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img
+                                    src={preview}
+                                    alt={`Event ${idx + 1}`}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                                <span className="text-[10px] font-bold text-gray-700 truncate max-w-[80px]">
+                                  {name}
+                                </span>
+                                <div className="flex gap-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      fileInputRefs.current[idx]?.click()
+                                    }
+                                    className="bg-white hover:bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-[9px] font-bold border border-gray-200 shadow-sm"
+                                  >
+                                    Edit
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => removeImage(idx)}
+                                    className="text-red-500 hover:text-red-600 p-1.5 bg-red-50 rounded-lg"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div
+                                onClick={() => fileInputRefs.current[idx]?.click()}
+                                className="border-2 border-dashed border-gray-200 hover:border-blue-500 bg-white hover:bg-blue-50/5 rounded-2xl flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-all"
+                              >
+                                <CloudUpload className="w-6 h-6 text-gray-400 mb-1" />
+                                <p className="text-[10px] text-gray-500 font-bold">
+                                  Upload cover
+                                </p>
+                              </div>
+                            )}
+                            <input
+                              type="file"
+                              ref={(el) => {
+                                fileInputRefs.current[idx] = el;
+                              }}
+                              onChange={(e) => handleFileChange(idx, e)}
+                              accept="image/*"
+                              className="hidden"
+                            />
                           </div>
-                        )}
-                        <input
-                          type="file"
-                          ref={fileInputRefs[idx]}
-                          onChange={(e) => handleFileChange(idx, e)}
-                          accept="image/*"
-                          className="hidden"
-                        />
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <InputField
+                              label="Event Title"
+                              value={ev.title}
+                              onChange={(e) =>
+                                handleEventFieldChange(idx, "title", e.target.value)
+                              }
+                              placeholder="e.g. Mother's Day Lunch"
+                              required
+                            />
+                            <InputField
+                              label="Category Tag"
+                              value={ev.category}
+                              onChange={(e) =>
+                                handleEventFieldChange(
+                                  idx,
+                                  "category",
+                                  e.target.value,
+                                )
+                              }
+                              placeholder="e.g. Special Occasion"
+                              required
+                            />
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <InputField
+                              label="Schedule Date"
+                              value={ev.date}
+                              onChange={(e) =>
+                                handleEventFieldChange(idx, "date", e.target.value)
+                              }
+                              placeholder="e.g. March 30th"
+                              required
+                            />
+                            <InputField
+                              label="Schedule Time"
+                              value={ev.time}
+                              onChange={(e) =>
+                                handleEventFieldChange(idx, "time", e.target.value)
+                              }
+                              placeholder="e.g. Set Luncheon"
+                              required
+                            />
+                          </div>
+
+                          <TextAreaField
+                            label="Description Summary"
+                            value={ev.description}
+                            onChange={(e) =>
+                              handleEventFieldChange(
+                                idx,
+                                "description",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="Treat Mum to a special day out..."
+                            rows={3}
+                            required
+                          />
+
+                          <InputField
+                            label="Pricing Detail"
+                            value={ev.pricing}
+                            onChange={(e) =>
+                              handleEventFieldChange(idx, "pricing", e.target.value)
+                            }
+                            placeholder="e.g. ADULTS £28.95 / CHILDREN £17.95"
+                            required
+                          />
+
+                          <InputField
+                            label="Glass Highlight Tag"
+                            value={ev.highlight}
+                            onChange={(e) =>
+                              handleEventFieldChange(
+                                idx,
+                                "highlight",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="e.g. GLASS OF PROSECCO FOR MOMS"
+                            required
+                          />
+
+                          <InputField
+                            label="Reservation Contact Info"
+                            value={ev.contactInfo}
+                            onChange={(e) =>
+                              handleEventFieldChange(
+                                idx,
+                                "contactInfo",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="e.g. 01865 343337 | info@..."
+                            required
+                          />
+                        </div>
                       </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <InputField
-                          label="Event Title"
-                          value={ev.title}
-                          onChange={(e) =>
-                            handleEventFieldChange(idx, "title", e.target.value)
-                          }
-                          placeholder="e.g. Mother's Day Lunch"
-                          required
-                        />
-                        <InputField
-                          label="Category Tag"
-                          value={ev.category}
-                          onChange={(e) =>
-                            handleEventFieldChange(
-                              idx,
-                              "category",
-                              e.target.value,
-                            )
-                          }
-                          placeholder="e.g. Special Occasion"
-                          required
-                        />
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <InputField
-                          label="Schedule Date"
-                          value={ev.date}
-                          onChange={(e) =>
-                            handleEventFieldChange(idx, "date", e.target.value)
-                          }
-                          placeholder="e.g. March 30th"
-                          required
-                        />
-                        <InputField
-                          label="Schedule Time"
-                          value={ev.time}
-                          onChange={(e) =>
-                            handleEventFieldChange(idx, "time", e.target.value)
-                          }
-                          placeholder="e.g. Set Luncheon"
-                          required
-                        />
-                      </div>
-
-                      <TextAreaField
-                        label="Description Summary"
-                        value={ev.description}
-                        onChange={(e) =>
-                          handleEventFieldChange(
-                            idx,
-                            "description",
-                            e.target.value,
-                          )
-                        }
-                        placeholder="Treat Mum to a special day out..."
-                        rows={3}
-                        required
-                      />
-
-                      <InputField
-                        label="Pricing Detail"
-                        value={ev.pricing}
-                        onChange={(e) =>
-                          handleEventFieldChange(idx, "pricing", e.target.value)
-                        }
-                        placeholder="e.g. ADULTS £28.95 / CHILDREN £17.95"
-                        required
-                      />
-
-                      <InputField
-                        label="Glass Highlight Tag"
-                        value={ev.highlight}
-                        onChange={(e) =>
-                          handleEventFieldChange(
-                            idx,
-                            "highlight",
-                            e.target.value,
-                          )
-                        }
-                        placeholder="e.g. GLASS OF PROSECCO FOR MOMS"
-                        required
-                      />
-
-                      <InputField
-                        label="Reservation Contact Info"
-                        value={ev.contactInfo}
-                        onChange={(e) =>
-                          handleEventFieldChange(
-                            idx,
-                            "contactInfo",
-                            e.target.value,
-                          )
-                        }
-                        placeholder="e.g. 01865 343337 | info@..."
-                        required
-                      />
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Add Event Action */}
+              <div className="flex justify-start pt-2">
+                <button
+                  type="button"
+                  onClick={addEvent}
+                  className="bg-white hover:bg-gray-50 text-blue-600 px-4 py-2.5 rounded-xl text-xs font-bold border border-blue-200 shadow-sm flex items-center gap-2 transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add New Event
+                </button>
               </div>
 
               {/* Save Action */}
