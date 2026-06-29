@@ -27,6 +27,7 @@ model Page {
   ogTitle         String?
   ogDescription   String?
   ogImage         String?
+  schema          String?
   headingOptions  Json?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt

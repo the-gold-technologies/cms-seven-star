@@ -42,6 +42,7 @@ export async function GET(
           targetKeywords: content.seo?.targetKeywords || "",
           canonicalUrl: content.seo?.canonicalUrl || "",
           noIndex: content.seo?.noIndex || false,
+          schema: content.seo?.schema || "",
         },
       });
     }
@@ -63,6 +64,7 @@ export async function GET(
         ogTitle: true,
         ogDescription: true,
         ogImage: true,
+        schema: true,
         headingOptions: true,
       },
     });
@@ -137,6 +139,7 @@ export async function PUT(
           ogDescription: seo.ogDescription,
           ogImage: seo.ogImage,
           headingOptions: seo.headingOptions,
+          schema: seo.schema,
         },
       };
 
@@ -163,6 +166,7 @@ export async function PUT(
         ogDescription: seo.ogDescription,
         ogImage: seo.ogImage,
         headingOptions: seo.headingOptions,
+        schema: seo.schema,
       },
       create: {
         slug: dbSlug,
@@ -178,6 +182,7 @@ export async function PUT(
         ogImage: seo.ogImage,
         headingOptions: seo.headingOptions || {},
         visibility: "published",
+        schema: seo.schema,
       },
     });
 

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { InputField } from "@/components/InputField";
 import { TextAreaField } from "@/components/TextAreaField";
 import { SaveButton } from "@/components/SaveButton";
 import toast from "react-hot-toast";
-import { ChevronLeft, Search } from "lucide-react";
+import { ChevronLeft, Search, Upload, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 interface PageSEOData {
@@ -18,6 +18,7 @@ interface PageSEOData {
   targetKeywords: string;
   canonicalUrl: string;
   noIndex: boolean;
+  schema: string;
 }
 
 const defaultData: PageSEOData = {
@@ -28,6 +29,7 @@ const defaultData: PageSEOData = {
   targetKeywords: "",
   canonicalUrl: "",
   noIndex: false,
+  schema: "",
 };
 
 export default function PageSEOEditor() {
@@ -38,6 +40,28 @@ export default function PageSEOEditor() {
   const [formData, setFormData] = useState<PageSEOData>(defaultData);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const schemaInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSchemaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      if (text) {
+        setFormData((prev) => ({
+          ...prev,
+          schema: text,
+        }));
+        toast.success("Schema content loaded! Save to apply changes.");
+      }
+    };
+    reader.onerror = () => {
+      toast.error("Failed to read file.");
+    };
+    reader.readAsText(file);
+  };
 
   useEffect(() => {
     async function fetchSEO() {
@@ -54,6 +78,7 @@ export default function PageSEOEditor() {
             metaDescription: data.metaDescription || "",
             targetKeywords: data.targetKeywords || "",
             canonicalUrl: data.canonicalUrl || "",
+            schema: data.schema || "",
           });
         }
       } catch (error) {
@@ -181,6 +206,45 @@ export default function PageSEOEditor() {
               }
               placeholder="https://mysite.com/page"
               tooltip="The preferred URL for this page. Helps prevent duplicate content issues if the page is accessible via multiple URLs."
+            />
+          </div>
+
+          <div className="flex flex-col gap-2 px-0.5">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4 flex items-center gap-1.5 relative">
+                Structured Data (Schema Markup JSON-LD)
+                <div className="group relative flex items-center">
+                  <HelpCircle className="w-3.5 h-3.5 cursor-help text-gray-300 hover:text-[#475DB1] transition-colors" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[280px] px-4 py-3 bg-white text-gray-900 text-[11px] font-medium rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 normal-case tracking-normal text-center leading-relaxed backdrop-blur-sm">
+                    JSON-LD structured data schema markup for this specific page. Do not include &lt;script&gt; tags, just the raw JSON object.
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-white"></div>
+                  </div>
+                </div>
+              </span>
+              <div className="flex gap-2">
+                <input
+                  type="file"
+                  ref={schemaInputRef}
+                  onChange={handleSchemaUpload}
+                  accept=".json,application/json,text/plain"
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => schemaInputRef.current?.click()}
+                  className="flex items-center gap-1.5 py-1.5 px-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl text-[10px] font-bold text-gray-600 transition-colors cursor-pointer"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  Upload JSON (.json)
+                </button>
+              </div>
+            </div>
+            <textarea
+              value={formData.schema}
+              onChange={(e) => setFormData({ ...formData, schema: e.target.value })}
+              placeholder='e.g. { "@context": "https://schema.org", "@type": "LocalBusiness", ... }'
+              rows={8}
+              className="w-full font-mono text-xs px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] outline-none transition-all text-gray-800"
             />
           </div>
 

@@ -37,6 +37,7 @@ export async function GET(
       ogDescription,
       ogImage,
       headingOptions,
+      schema,
       ...rest
     } = page;
 
@@ -55,6 +56,7 @@ export async function GET(
           ogDescription,
           ogImage,
           headingOptions,
+          schema,
         },
       },
     });
