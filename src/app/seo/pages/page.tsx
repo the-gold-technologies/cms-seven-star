@@ -123,7 +123,7 @@ export default function PageSEODashboard() {
                   </td>
                 </tr>
               ) : (
-                rootLinks.map((root) => {
+                rootLinks.map((root, rootIndex) => {
                   const children = filteredPages
                     .filter((l) => l.parent === root.id)
                     .sort((a, b) => a.order - b.order);
@@ -137,7 +137,7 @@ export default function PageSEODashboard() {
                     <React.Fragment key={root.id}>
                       <tr className="hover:bg-[#fafafb] transition-colors group">
                         <td className="px-6 py-5 text-sm font-medium text-gray-500">
-                          {root.order}
+                          {rootIndex + 1}
                         </td>
                         <td className="px-6 py-5">
                           <div
@@ -157,7 +157,7 @@ export default function PageSEODashboard() {
                             )}
                             <div className="flex flex-col">
                               <span className="font-bold text-[#0B0F29] text-[15px]">
-                                {root.title}
+                                {root.title === "Blog Index" ? "Blogs" : root.title}
                                 {root.isStatic && (
                                   <span className="ml-2 px-1.5 py-0.5 rounded-md bg-gray-50 text-[9px] font-bold text-gray-400 uppercase border border-gray-100">
                                     Static
@@ -205,7 +205,7 @@ export default function PageSEODashboard() {
                                   : "bg-gray-100 text-gray-500"
                             }`}
                           >
-                            {root.type}
+                            {root.type === "Blog Post" ? "Blog Article" : root.type}
                           </span>
                         </td>
                         <td className="px-6 py-5 w-10 font-mono text-xs text-gray-400">
@@ -228,7 +228,7 @@ export default function PageSEODashboard() {
                         </td>
                       </tr>
                       {isExpanded &&
-                        children.map((child) => {
+                        children.map((child, childIndex) => {
                           const childHasTitle = !!child.metaTitle;
                           const childHasDesc = !!child.metaDescription;
 
@@ -238,7 +238,7 @@ export default function PageSEODashboard() {
                               className="bg-[#fcfdff]/50 hover:bg-[#f5f8ff] transition-colors group"
                             >
                               <td className="px-6 py-4 text-sm font-medium text-gray-400 pl-12">
-                                {child.order}
+                                {rootIndex + 1}.{childIndex + 1}
                               </td>
                               <td className="px-6 py-4">
                                 <div className="flex items-center gap-3 pl-6 border-l-2 border-gray-100/50">
@@ -285,7 +285,7 @@ export default function PageSEODashboard() {
                               </td>
                               <td className="px-6 py-4">
                                 <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest bg-gray-50 text-gray-400 border border-gray-100">
-                                  {child.type}
+                                  {child.type === "Blog Post" ? "Blog Article" : child.type}
                                 </span>
                               </td>
                               <td className="px-6 py-4 text-xs font-mono text-gray-400">
