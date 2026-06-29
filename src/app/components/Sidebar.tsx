@@ -55,6 +55,7 @@ const sidebarLinks: SidebarLink[] = [
       { title: "Events", href: "/static-pages/events" },
       { title: "Contact", href: "/static-pages/contact" },
       { title: "Christmas", href: "/static-pages/christmas" },
+      { title: "Blog Posts", href: "/static-pages/blog" },
     ],
   },
   {

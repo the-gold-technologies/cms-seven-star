@@ -46,8 +46,10 @@ export async function GET(
       });
     }
 
+    const dbSlug = slug.startsWith("blog/") ? slug.substring(5) : slug;
+
     const page = await prisma.page.findUnique({
-      where: { slug },
+      where: { slug: dbSlug },
       select: {
         id: true,
         title: true,
@@ -146,8 +148,10 @@ export async function PUT(
       return NextResponse.json({ success: true, data: updatedContent });
     }
 
+    const dbSlug = slug.startsWith("blog/") ? slug.substring(5) : slug;
+
     const updatedPage = await prisma.page.upsert({
-      where: { slug },
+      where: { slug: dbSlug },
       update: {
         metaTitle: seo.metaTitle,
         metaDescription: seo.metaDescription,
@@ -161,8 +165,8 @@ export async function PUT(
         headingOptions: seo.headingOptions,
       },
       create: {
-        slug,
-        title: seo.metaTitle || slug.charAt(0).toUpperCase() + slug.slice(1),
+        slug: dbSlug,
+        title: seo.metaTitle || dbSlug.charAt(0).toUpperCase() + dbSlug.slice(1),
         metaTitle: seo.metaTitle,
         metaDescription: seo.metaDescription,
         targetKeywords: seo.targetKeywords,

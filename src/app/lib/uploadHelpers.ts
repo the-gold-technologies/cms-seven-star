@@ -73,25 +73,24 @@ export async function uploadFiles(
     const uploadedUrls: string[] = [];
 
     for (const file of filesToUpload) {
-      const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
+      const formData = new FormData();
+      formData.append("file", file);
 
-      const { error } = await supabase.storage
-        .from(BUCKET)
-        .upload(fileName, file, {
-          contentType: file.type,
-          upsert: false,
-        });
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-      if (error) {
-        console.error("Supabase Storage Error:", error);
-        throw new Error(`Supabase Storage Error: ${error.message}`);
+      if (!res.ok) {
+        throw new Error(`Upload failed with status: ${res.statusText}`);
       }
 
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from(BUCKET).getPublicUrl(fileName);
+      const json = await res.json();
+      if (!json.success || !json.files || json.files.length === 0) {
+        throw new Error(json.error || "Invalid response from upload API");
+      }
 
-      uploadedUrls.push(publicUrl);
+      uploadedUrls.push(json.files[0]);
     }
 
     const result = [...files];

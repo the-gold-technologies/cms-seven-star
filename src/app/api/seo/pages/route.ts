@@ -118,6 +118,48 @@ export async function GET() {
       }
     }
 
+    // 5. Inject Blog Parent Row & all child blog pages
+    const parentBlogIdx = mergedData.findIndex((m) => m.slug === "blog");
+    let blogParentId = "blog-seo-parent-id";
+    if (parentBlogIdx === -1) {
+      mergedData.push({
+        id: blogParentId,
+        pageId: null,
+        title: "Blog Index",
+        slug: "blog",
+        metaTitle: "Blog & Guides | Seven Stars",
+        metaDescription: "Read the Seven Stars blog for local guides, stories, and dining updates.",
+        type: "Main Link",
+        visibility: "published",
+        parent: "-",
+        order: 7,
+        description: "Configure SEO and meta tags for the main Blog page.",
+        navTitle: "Blog",
+        isStatic: true,
+      });
+    } else {
+      blogParentId = mergedData[parentBlogIdx].id;
+    }
+
+    const blogPages = pages.filter((p) => p.type === "blog");
+    blogPages.forEach((blog) => {
+      mergedData.push({
+        id: blog.id,
+        pageId: blog.id,
+        title: blog.title || "Untitled Blog",
+        slug: `blog/${blog.slug}`,
+        metaTitle: blog.metaTitle,
+        metaDescription: blog.metaDescription,
+        type: "Blog Post",
+        visibility: blog.visibility,
+        parent: blogParentId,
+        order: 0,
+        description: `SEO Configuration for the blog post: "${blog.title}".`,
+        navTitle: blog.title || "Untitled Blog",
+        isStatic: false,
+      });
+    });
+
     return NextResponse.json({ success: true, data: mergedData });
   } catch (error) {
     console.error("Error fetching pages for SEO:", error);
