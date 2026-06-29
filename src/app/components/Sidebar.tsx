@@ -64,6 +64,7 @@ const sidebarLinks: SidebarLink[] = [
     sublinks: [
       { title: "Global Settings", href: "/seo/global" },
       { title: "Page Settings", href: "/seo/pages" },
+      { title: "Sitemap & Robots", href: "/seo/sitemap-robots" },
     ],
   },
   {

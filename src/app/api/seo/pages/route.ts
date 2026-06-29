@@ -80,11 +80,11 @@ export async function GET() {
       // 3. Fallback for static/missing links
       return {
         id: link.id,
-        pageId: null,
+        pageId: null as string | null,
         title: link.label,
         slug: link.url === "/" ? "home" : link.url.replace(/^\//, ""),
-        metaTitle: null,
-        metaDescription: null,
+        metaTitle: null as string | null,
+        metaDescription: null as string | null,
         type: link.type || "static",
         visibility: "published",
         parent: link.parent,

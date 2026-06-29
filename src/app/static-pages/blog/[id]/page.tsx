@@ -495,7 +495,7 @@ export default function BlogFormPage() {
           </Link>
           <SaveButton
             label={isNew ? "Create Post" : "Save Changes"}
-            isSaving={isSaving}
+            disabled={isSaving}
             type="submit"
           />
         </div>
