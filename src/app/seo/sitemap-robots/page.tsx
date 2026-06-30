@@ -141,6 +141,8 @@ export default function SitemapRobotsPage() {
     reader.readAsText(file);
   };
 
+  const websiteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "https://pub-club-mu.vercel.app";
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#F6F8FA] flex items-center justify-center">
@@ -167,7 +169,7 @@ export default function SitemapRobotsPage() {
 
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto mt-2 md:mt-0">
               <a
-                href="http://localhost:3000/sitemap.xml"
+                href={`${websiteUrl}/sitemap.xml`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between gap-3 p-3.5 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-2xl text-xs font-bold text-gray-700 transition-all group w-full sm:w-auto"
@@ -180,7 +182,7 @@ export default function SitemapRobotsPage() {
               </a>
 
               <a
-                href="http://localhost:3000/robots.txt"
+                href={`${websiteUrl}/robots.txt`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between gap-3 p-3.5 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-2xl text-xs font-bold text-gray-700 transition-all group w-full sm:w-auto"
