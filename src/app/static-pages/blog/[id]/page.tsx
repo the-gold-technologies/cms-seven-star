@@ -51,6 +51,7 @@ interface Blog {
   date: string;
   metaTitle?: string;
   metaDescription?: string;
+  schema?: string;
 }
 
 const defaultFormData: Partial<Blog> = {
@@ -66,6 +67,7 @@ const defaultFormData: Partial<Blog> = {
   date: "",
   metaTitle: "",
   metaDescription: "",
+  schema: "",
 };
 
 export default function BlogFormPage() {
@@ -115,6 +117,7 @@ export default function BlogFormPage() {
           date: blog.date,
           metaTitle: blog.metaTitle || "",
           metaDescription: blog.metaDescription || "",
+          schema: blog.schema || "",
         });
         setSelectedImage(blog.featuredImage);
       } else {
@@ -410,6 +413,16 @@ export default function BlogFormPage() {
             </select>
           </div>
         </div>
+
+        {/* JSON-LD Schema */}
+        <TextAreaField
+          label="JSON-LD Schema Markup (Optional)"
+          placeholder='e.g. { "@context": "https://schema.org", "@type": "BlogPosting", "headline": "..." }'
+          name="schema"
+          value={formData.schema}
+          onChange={handleInputChange}
+          rows={6}
+        />
 
         {/* Quill Editor */}
         <div className="flex flex-col gap-1.5 px-0.5">

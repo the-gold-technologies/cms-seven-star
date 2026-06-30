@@ -86,6 +86,7 @@ model GlobalConfig {
   sitemapEnabled      Boolean  @default(true)
   sitemapCustomContent String?
   robotsTxt           String?  @default("User-agent: *\nAllow: /\n\nSitemap: https://sevenstarsatmarshbaldon.co.uk/sitemap.xml")
+  schema              String?
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }

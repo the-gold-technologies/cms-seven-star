@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { InputField } from "@/components/InputField";
 import { TextAreaField } from "@/components/TextAreaField";
@@ -8,7 +8,7 @@ import { SaveButton } from "@/components/SaveButton";
 import { ImageUploadField } from "@/components/ImageUploadField";
 import { uploadFiles } from "@/app/lib/uploadHelpers";
 import toast from "react-hot-toast";
-import { Globe, Shield, Activity } from "lucide-react";
+import { Globe, Shield, Activity, Upload } from "lucide-react";
 
 interface GlobalConfig {
   siteTitle: string;
@@ -19,6 +19,7 @@ interface GlobalConfig {
   searchConsoleId: string;
   customHeaderScripts: string;
   customFooterScripts: string;
+  schema: string;
 }
 
 const defaultData: GlobalConfig = {
@@ -30,12 +31,35 @@ const defaultData: GlobalConfig = {
   searchConsoleId: "",
   customHeaderScripts: "",
   customFooterScripts: "",
+  schema: "",
 };
 
 export default function GlobalSEOPage() {
   const [formData, setFormData] = useState<GlobalConfig>(defaultData);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const schemaInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSchemaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      if (text) {
+        setFormData((prev) => ({
+          ...prev,
+          schema: text,
+        }));
+        toast.success("Schema JSON loaded! Save to apply changes.");
+      }
+    };
+    reader.onerror = () => {
+      toast.error("Failed to read schema file.");
+    };
+    reader.readAsText(file);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -48,6 +72,7 @@ export default function GlobalSEOPage() {
             ...defaultData,
             ...data,
             favicon: data.favicon ? [data.favicon] : [],
+            schema: data.schema || "",
             socialLinks: Array.isArray(data.socialLinks)
               ? data.socialLinks
               : [],
@@ -257,6 +282,40 @@ Paste only XXXXXXXX`}
               placeholder="Paste your scripts to be injected before the closing body tag..."
               rows={8}
               className="font-mono text-xs"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2 mt-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+                Global JSON-LD Schema Markup (e.g. Organization/WebSite)
+              </span>
+              <div>
+                <input
+                  type="file"
+                  ref={schemaInputRef}
+                  onChange={handleSchemaUpload}
+                  accept=".json,application/json"
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => schemaInputRef.current?.click()}
+                  className="flex items-center gap-1.5 py-1.5 px-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl text-[10px] font-bold text-gray-600 transition-colors cursor-pointer"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  Upload Schema (.json)
+                </button>
+              </div>
+            </div>
+            <textarea
+              value={formData.schema}
+              onChange={(e) =>
+                setFormData({ ...formData, schema: e.target.value })
+              }
+              placeholder='e.g. {"@context": "https://schema.org", "@type": "Organization", "name": "Seven Stars", ...}'
+              rows={8}
+              className="w-full font-mono text-xs p-4 bg-gray-50 text-gray-800 border border-gray-200 focus:border-[#475DB1] focus:bg-white transition-all rounded-2xl outline-none"
             />
           </div>
         </div>

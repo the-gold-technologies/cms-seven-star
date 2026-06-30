@@ -40,6 +40,7 @@ export async function GET(
       ogTitle: page.ogTitle,
       ogDescription: page.ogDescription,
       ogImage: page.ogImage,
+      schema: page.schema,
       createdAt: page.createdAt,
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",

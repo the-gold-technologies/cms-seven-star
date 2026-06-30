@@ -18,6 +18,7 @@ function transformBlogPages(pages: any[]) {
       ogTitle: page.ogTitle,
       ogDescription: page.ogDescription,
       ogImage: page.ogImage,
+      schema: page.schema,
       createdAt: page.createdAt,
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",
@@ -96,6 +97,7 @@ export async function POST(request: Request) {
       date,
       metaTitle,
       metaDescription,
+      schema,
     } = body;
 
     if (!title || !excerpt || !content) {
@@ -137,6 +139,7 @@ export async function POST(request: Request) {
         featuredImage: image || null,
         metaTitle: metaTitle || `${title} | Seven Stars`,
         metaDescription: metaDescription || excerpt,
+        schema: schema || null,
       }
     });
 
@@ -208,6 +211,7 @@ export async function PUT(request: Request) {
       date,
       metaTitle,
       metaDescription,
+      schema,
     } = body;
 
     if (!id) {
@@ -248,6 +252,7 @@ export async function PUT(request: Request) {
         featuredImage: image !== undefined ? image : existingPage.featuredImage,
         metaTitle: metaTitle !== undefined ? metaTitle : existingPage.metaTitle,
         metaDescription: metaDescription !== undefined ? metaDescription : existingPage.metaDescription,
+        schema: schema !== undefined ? schema : existingPage.schema,
       }
     });
 
@@ -288,6 +293,7 @@ export async function PUT(request: Request) {
         slug: updatedPage.slug,
         visibility: updatedPage.visibility,
         featuredImage: updatedPage.featuredImage,
+        schema: updatedPage.schema,
         ...sectionContent
       }
     });
