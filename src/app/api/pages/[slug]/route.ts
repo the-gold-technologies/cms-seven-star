@@ -7,9 +7,10 @@ export async function GET(
 ) {
   try {
     const { slug } = await params;
+    const targetSlug = slug.startsWith("blog/") ? slug.substring(5) : slug;
 
     const page = await prisma.page.findUnique({
-      where: { slug },
+      where: { slug: targetSlug },
       include: {
         sections: {
           orderBy: {
