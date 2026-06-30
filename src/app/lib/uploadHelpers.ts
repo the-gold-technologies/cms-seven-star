@@ -33,6 +33,69 @@ export async function deleteFileFromSupabase(publicUrl: string): Promise<void> {
 }
 
 /**
+ * Compresses an image file on the client side using HTML5 Canvas
+ * and outputs a WebP file.
+ */
+async function compressImageToWebP(
+  file: File,
+  maxWidth = 1920,
+  quality = 0.8
+): Promise<File> {
+  return new Promise((resolve) => {
+    // Only compress standard images (excluding GIFs)
+    if (!file.type.startsWith("image/") || file.type.includes("gif")) {
+      return resolve(file);
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target?.result as string;
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        // Resize if width exceeds maxWidth
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          return resolve(file); // Fallback to original
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              return resolve(file); // Fallback to original
+            }
+            const baseName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+            const compressedFile = new File([blob], `${baseName}.webp`, {
+              type: "image/webp",
+              lastModified: Date.now(),
+            });
+            resolve(compressedFile);
+          },
+          "image/webp",
+          quality
+        );
+      };
+      img.onerror = () => resolve(file);
+    };
+    reader.onerror = () => resolve(file);
+  });
+}
+
+/**
  * Uploads new File objects to Supabase storage.
  *
  * @param files    Array of File objects (new upload) or existing string URLs / null (kept as-is).
@@ -73,8 +136,11 @@ export async function uploadFiles(
     const uploadedUrls: string[] = [];
 
     for (const file of filesToUpload) {
+      // Compress file on client side first (reduces bandwidth & server load)
+      const processedFile = await compressImageToWebP(file);
+
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", processedFile);
 
       const res = await fetch("/api/upload", {
         method: "POST",

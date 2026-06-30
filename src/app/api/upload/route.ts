@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         const buffer = Buffer.from(bytes);
         const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
 
-        let uploadBuffer: any = buffer;
+        let uploadBuffer: Buffer = buffer;
         let mimeType = file.type;
         let finalFileName = fileName;
 
@@ -43,6 +43,7 @@ export async function POST(req: Request) {
           .from("myBucket")
           .upload(finalFileName, uploadBuffer, {
             contentType: mimeType,
+            cacheControl: "31536000",
             upsert: false,
           });
 
