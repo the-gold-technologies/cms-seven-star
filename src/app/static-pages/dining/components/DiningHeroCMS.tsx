@@ -105,7 +105,8 @@ export function DiningHeroCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Dining Hero...");
     try {
-      const uploadedUrls = await uploadFiles([selectedImage]);
+      const oldUrl = selectedImage instanceof File ? formData.backgroundImage : undefined;
+      const uploadedUrls = await uploadFiles([selectedImage], oldUrl ? [oldUrl] : []);
       const imgUrl = selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
 
       const payload = {

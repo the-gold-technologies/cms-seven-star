@@ -166,7 +166,8 @@ export function DiningPillarsCMS({
       for (let i = 0; i < 3; i++) {
         const item = selectedImages[i];
         if (item instanceof File) {
-          const urls = await uploadFiles([item]);
+          const oldUrl = formData.pillars[i]?.image;
+          const urls = await uploadFiles([item], oldUrl ? [oldUrl] : []);
           updatedPillars[i].image = urls[0] || "";
         } else {
           updatedPillars[i].image = item;

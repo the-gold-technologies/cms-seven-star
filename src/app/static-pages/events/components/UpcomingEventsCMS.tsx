@@ -214,7 +214,8 @@ export function UpcomingEventsCMS({
       for (let i = 0; i < updatedEvents.length; i++) {
         const item = selectedImages[i];
         if (item instanceof File) {
-          const urls = await uploadFiles([item]);
+          const oldUrl = formData.upcomingEvents[i]?.image;
+          const urls = await uploadFiles([item], oldUrl ? [oldUrl] : []);
           updatedEvents[i].image = urls[0] || "";
         } else {
           updatedEvents[i].image = item || "";

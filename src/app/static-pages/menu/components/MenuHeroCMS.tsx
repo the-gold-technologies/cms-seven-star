@@ -108,7 +108,8 @@ export function MenuHeroCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Menu Hero details...");
     try {
-      const uploadedUrls = await uploadFiles([selectedImage]);
+      const oldUrl = selectedImage instanceof File ? formData.backgroundImage : undefined;
+      const uploadedUrls = await uploadFiles([selectedImage], oldUrl ? [oldUrl] : []);
       const imgUrl =
         selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
 

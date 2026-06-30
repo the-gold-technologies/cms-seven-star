@@ -132,7 +132,8 @@ export function WhatWeHostCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Hosted Occasions checklist...");
     try {
-      const uploadedUrls = await uploadFiles([selectedImage]);
+      const oldUrl = selectedImage instanceof File ? formData.image : undefined;
+      const uploadedUrls = await uploadFiles([selectedImage], oldUrl ? [oldUrl] : []);
       const imgUrl =
         selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
 

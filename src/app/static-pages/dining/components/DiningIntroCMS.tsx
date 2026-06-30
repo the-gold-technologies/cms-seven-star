@@ -120,7 +120,8 @@ export function DiningIntroCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Dining Intro...");
     try {
-      const uploadedUrls = await uploadFiles([selectedImage]);
+      const oldUrl = selectedImage instanceof File ? formData.introImage : undefined;
+      const uploadedUrls = await uploadFiles([selectedImage], oldUrl ? [oldUrl] : []);
       const imgUrl =
         selectedImage instanceof File ? uploadedUrls[0] || "" : selectedImage;
 

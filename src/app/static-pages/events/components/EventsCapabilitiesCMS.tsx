@@ -165,7 +165,8 @@ export function EventsCapabilitiesCMS({
       for (let i = 0; i < 3; i++) {
         const item = selectedImages[i];
         if (item instanceof File) {
-          const urls = await uploadFiles([item]);
+          const oldUrl = formData.capabilities[i]?.image;
+          const urls = await uploadFiles([item], oldUrl ? [oldUrl] : []);
           updatedCards[i].image = urls[0] || "";
         } else {
           updatedCards[i].image = item;
