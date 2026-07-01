@@ -257,7 +257,7 @@ export async function PUT(request: Request) {
         metaTitle: metaTitle !== undefined ? metaTitle : existingPage.metaTitle,
         metaDescription: metaDescription !== undefined ? metaDescription : existingPage.metaDescription,
         schema: schema !== undefined ? schema : existingPage.schema,
-        headingOptions: headingTag !== undefined ? { heroHeadingTag: headingTag } : existingPage.headingOptions,
+        ...(headingTag !== undefined && { headingOptions: { heroHeadingTag: headingTag } }),
       }
     });
 
