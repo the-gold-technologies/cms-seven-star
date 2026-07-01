@@ -391,8 +391,15 @@ export default function BlogFormPage() {
           />
         </div>
 
-        {/* Views & Visibility */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* SEO Meta Title & Description */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <InputField
+            label="SEO Meta Title (Optional)"
+            name="metaTitle"
+            value={formData.metaTitle}
+            onChange={handleInputChange}
+            placeholder="e.g. Traditional Sunday Roasts | Seven Stars"
+          />
           <InputField
             label="SEO Meta Description (Optional)"
             name="metaDescription"
@@ -400,6 +407,10 @@ export default function BlogFormPage() {
             onChange={handleInputChange}
             placeholder="e.g. In-depth guide on Abingdon attractions..."
           />
+        </div>
+
+        {/* Visibility & Heading Tag */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-1.5 px-0.5">
             <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
               Visibility Status

@@ -3,10 +3,11 @@ import { prisma } from "../../../../lib/prisma";
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   try {
-    const { slug } = await params;
+    const { slug: rawSlug } = await params;
+    const slug = Array.isArray(rawSlug) ? rawSlug.join("/") : rawSlug;
     const targetSlug = slug.startsWith("blog/") ? slug.substring(5) : slug;
 
     const page = await prisma.page.findUnique({
@@ -101,10 +102,11 @@ export async function PUT(request: Request) {
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string[] }> },
 ) {
   try {
-    const { slug } = await params;
+    const { slug: rawSlug } = await params;
+    const slug = Array.isArray(rawSlug) ? rawSlug.join("/") : rawSlug;
 
     const page = await prisma.page.findUnique({
       where: { slug },
