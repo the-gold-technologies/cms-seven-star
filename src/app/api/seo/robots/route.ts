@@ -7,7 +7,11 @@ export async function GET() {
       where: { id: "global" },
     });
 
-    const robotsTxt = config?.robotsTxt || "User-agent: *\nAllow: /\n\nSitemap: https://sevenstarsatmarshbaldon.co.uk/sitemap.xml";
+    const websiteUrl =
+      process.env.NEXT_PUBLIC_WEBSITE_URL || "https://pub-club-mu.vercel.app";
+    const robotsTxt =
+      config?.robotsTxt ||
+      `User-agent: *\nAllow: /\n\nSitemap: ${websiteUrl}/sitemap.xml`;
 
     return new Response(robotsTxt, {
       headers: {

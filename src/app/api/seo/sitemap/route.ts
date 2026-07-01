@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const SITE_URL = "https://sevenstarsatmarshbaldon.co.uk";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_WEBSITE_URL || "https://pub-club-mu.vercel.app";
 
 export async function GET() {
   try {
@@ -33,7 +34,12 @@ export async function GET() {
       orderBy: { order: "asc" },
     });
 
-    const urls: { loc: string; lastmod: string; changefreq: string; priority: string }[] = [];
+    const urls: {
+      loc: string;
+      lastmod: string;
+      changefreq: string;
+      priority: string;
+    }[] = [];
 
     // Add homepage
     urls.push({
@@ -46,15 +52,15 @@ export async function GET() {
     // Add page URLs
     pages.forEach((page) => {
       let slug = page.slug === "home" ? "" : page.slug;
-      
+
       // Prefix blog posts
       if (page.type === "blog") {
         slug = `blog/${slug}`;
       }
-      
+
       const loc = `${SITE_URL}/${slug}`.replace(/\/$/, "");
-      
-      if (!urls.some(u => u.loc === loc)) {
+
+      if (!urls.some((u) => u.loc === loc)) {
         urls.push({
           loc,
           lastmod: page.updatedAt.toISOString(),
@@ -68,7 +74,7 @@ export async function GET() {
     navLinks.forEach((link) => {
       if (link.url.startsWith("/")) {
         const loc = `${SITE_URL}${link.url}`.replace(/\/$/, "");
-        if (!urls.some(u => u.loc === loc)) {
+        if (!urls.some((u) => u.loc === loc)) {
           urls.push({
             loc,
             lastmod: link.updatedAt.toISOString(),
@@ -90,7 +96,7 @@ export async function GET() {
     <lastmod>${url.lastmod}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-  </url>`
+  </url>`,
     )
     .join("")}
 </urlset>`;
