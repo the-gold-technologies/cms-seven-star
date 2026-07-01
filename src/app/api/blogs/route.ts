@@ -19,6 +19,7 @@ function transformBlogPages(pages: any[]) {
       ogDescription: page.ogDescription,
       ogImage: page.ogImage,
       schema: page.schema,
+      headingTag: (page.headingOptions as any)?.heroHeadingTag || "h1",
       createdAt: page.createdAt,
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",
@@ -98,6 +99,7 @@ export async function POST(request: Request) {
       metaTitle,
       metaDescription,
       schema,
+      headingTag,
     } = body;
 
     if (!title || !excerpt || !content) {
@@ -140,6 +142,7 @@ export async function POST(request: Request) {
         metaTitle: metaTitle || `${title} | Seven Stars`,
         metaDescription: metaDescription || excerpt,
         schema: schema || null,
+        headingOptions: { heroHeadingTag: headingTag || "h1" },
       }
     });
 
@@ -212,6 +215,7 @@ export async function PUT(request: Request) {
       metaTitle,
       metaDescription,
       schema,
+      headingTag,
     } = body;
 
     if (!id) {
@@ -253,6 +257,7 @@ export async function PUT(request: Request) {
         metaTitle: metaTitle !== undefined ? metaTitle : existingPage.metaTitle,
         metaDescription: metaDescription !== undefined ? metaDescription : existingPage.metaDescription,
         schema: schema !== undefined ? schema : existingPage.schema,
+        headingOptions: headingTag !== undefined ? { heroHeadingTag: headingTag } : existingPage.headingOptions,
       }
     });
 

@@ -16,6 +16,7 @@ const defaultFormData = {
   headingHighlight: "",
   description: "",
   backgroundImage: "",
+  headingTag: "h1",
 };
 
 interface MenuHeroCMSProps {
@@ -76,7 +77,7 @@ export function MenuHeroCMS({
   }, [initialData, saveUrl, responseKey]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -212,6 +213,25 @@ export function MenuHeroCMS({
                   rows={3}
                   required
                 />
+
+                <div className="flex flex-col gap-1.5 px-0.5">
+                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+                    Hero Headline Tag (SEO)
+                  </span>
+                  <select
+                    name="headingTag"
+                    value={formData.headingTag || "h1"}
+                    onChange={handleChange}
+                    className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
+                  >
+                    <option value="h1">H1 (Recommended standard title tag)</option>
+                    <option value="h2">H2 (Alternative heading tag)</option>
+                    <option value="h3">H3 (Sub-heading tag)</option>
+                    <option value="h4">H4 (Sub-heading tag)</option>
+                    <option value="h5">H5 (Sub-heading tag)</option>
+                    <option value="h6">H6 (Sub-heading tag)</option>
+                  </select>
+                </div>
               </div>
 
               {/* Cover Photo */}

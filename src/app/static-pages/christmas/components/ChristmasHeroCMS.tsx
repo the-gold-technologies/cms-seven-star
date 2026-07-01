@@ -22,6 +22,7 @@ const defaultFormData = {
   ctaLink2: "#menus",
   backgroundImage: "/christmas-pub-hero.png",
   musicTrack: "/christmas-tune.mp3",
+  headingTag: "h1",
 };
 
 export function ChristmasHeroCMS() {
@@ -50,7 +51,7 @@ export function ChristmasHeroCMS() {
       .catch(console.error);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -171,6 +172,25 @@ export function ChristmasHeroCMS() {
               placeholder="Explain the celebration details..."
               rows={3}
             />
+
+            <div className="flex flex-col gap-1.5 px-0.5">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+                Hero Headline Tag (SEO)
+              </span>
+              <select
+                name="headingTag"
+                value={formData.headingTag || "h1"}
+                onChange={handleChange}
+                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
+              >
+                <option value="h1">H1 (Recommended standard title tag)</option>
+                <option value="h2">H2 (Alternative heading tag)</option>
+                <option value="h3">H3 (Sub-heading tag)</option>
+                <option value="h4">H4 (Sub-heading tag)</option>
+                <option value="h5">H5 (Sub-heading tag)</option>
+                <option value="h6">H6 (Sub-heading tag)</option>
+              </select>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-gray-100 pt-6">
               <InputField

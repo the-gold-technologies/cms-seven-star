@@ -19,6 +19,9 @@ interface PageSEOData {
   canonicalUrl: string;
   noIndex: boolean;
   schema: string;
+  headingOptions?: {
+    heroHeadingTag?: string;
+  };
 }
 
 const defaultData: PageSEOData = {
@@ -30,6 +33,9 @@ const defaultData: PageSEOData = {
   canonicalUrl: "",
   noIndex: false,
   schema: "",
+  headingOptions: {
+    heroHeadingTag: "h1",
+  },
 };
 
 export default function PageSEOEditor() {
@@ -79,6 +85,7 @@ export default function PageSEOEditor() {
             targetKeywords: data.targetKeywords || "",
             canonicalUrl: data.canonicalUrl || "",
             schema: data.schema || "",
+            headingOptions: data.headingOptions || { heroHeadingTag: "h1" },
           });
         }
       } catch (error) {
@@ -244,12 +251,39 @@ export default function PageSEOEditor() {
               onChange={(e) => setFormData({ ...formData, schema: e.target.value })}
               placeholder='e.g. { "@context": "https://schema.org", "@type": "LocalBusiness", ... }'
               rows={8}
-              className="w-full font-mono text-xs px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] outline-none transition-all text-gray-800"
-            />
-          </div>
+            className="w-full font-mono text-xs px-6 py-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] outline-none transition-all text-gray-800"
+          />
+        </div>
 
-          <div className="flex items-center gap-8 p-6 bg-gray-50 rounded-3xl border border-gray-100">
-            <div className="flex-1">
+        {/* Hero Heading Tag Configuration */}
+        <div className="flex flex-col gap-1.5 px-0.5 mt-2">
+          <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+            Hero Headline Tag (SEO)
+          </span>
+          <select
+            value={formData.headingOptions?.heroHeadingTag || "h1"}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                headingOptions: {
+                  ...formData.headingOptions,
+                  heroHeadingTag: e.target.value,
+                },
+              })
+            }
+            className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
+          >
+            <option value="h1">H1 (Recommended standard title tag)</option>
+            <option value="h2">H2 (Alternative heading tag)</option>
+            <option value="h3">H3 (Sub-heading tag)</option>
+            <option value="h4">H4 (Sub-heading tag)</option>
+            <option value="h5">H5 (Sub-heading tag)</option>
+            <option value="h6">H6 (Sub-heading tag)</option>
+          </select>
+        </div>
+
+        <div className="flex items-center gap-8 p-6 bg-gray-50 rounded-3xl border border-gray-100">
+          <div className="flex-1">
               <h4 className="font-bold text-[#0B0F29] text-sm mb-1 uppercase tracking-tight">
                 Index Visibility
               </h4>

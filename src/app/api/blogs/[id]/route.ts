@@ -41,6 +41,7 @@ export async function GET(
       ogDescription: page.ogDescription,
       ogImage: page.ogImage,
       schema: page.schema,
+      headingTag: (page.headingOptions as any)?.heroHeadingTag || "h1",
       createdAt: page.createdAt,
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",

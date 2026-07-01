@@ -52,6 +52,7 @@ interface Blog {
   metaTitle?: string;
   metaDescription?: string;
   schema?: string;
+  headingTag?: string;
 }
 
 const defaultFormData: Partial<Blog> = {
@@ -68,6 +69,7 @@ const defaultFormData: Partial<Blog> = {
   metaTitle: "",
   metaDescription: "",
   schema: "",
+  headingTag: "h1",
 };
 
 export default function BlogFormPage() {
@@ -390,13 +392,13 @@ export default function BlogFormPage() {
         </div>
 
         {/* Views & Visibility */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <InputField
-            label="Views Count"
-            type="number"
-            name="views"
-            value={formData.views}
+            label="SEO Meta Description (Optional)"
+            name="metaDescription"
+            value={formData.metaDescription}
             onChange={handleInputChange}
+            placeholder="e.g. In-depth guide on Abingdon attractions..."
           />
           <div className="flex flex-col gap-1.5 px-0.5">
             <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
@@ -410,6 +412,24 @@ export default function BlogFormPage() {
             >
               <option value="draft">Draft (Hidden from client)</option>
               <option value="published">Published (Visible on client)</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-1.5 px-0.5">
+            <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+              Hero Headline Tag (SEO)
+            </label>
+            <select
+              name="headingTag"
+              value={formData.headingTag || "h1"}
+              onChange={handleInputChange}
+              className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
+            >
+              <option value="h1">H1 (Recommended standard title tag)</option>
+              <option value="h2">H2 (Alternative heading tag)</option>
+              <option value="h3">H3 (Sub-heading tag)</option>
+              <option value="h4">H4 (Sub-heading tag)</option>
+              <option value="h5">H5 (Sub-heading tag)</option>
+              <option value="h6">H6 (Sub-heading tag)</option>
             </select>
           </div>
         </div>
