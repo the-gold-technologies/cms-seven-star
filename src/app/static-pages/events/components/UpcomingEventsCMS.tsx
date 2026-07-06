@@ -26,6 +26,9 @@ const defaultFormData = {
   upperTag: "",
   heading: "",
   description: "",
+  ctaText: "",
+  ctaSubtitle: "",
+  ctaLink: "",
   upcomingEvents: [] as EventData[],
 };
 
@@ -306,6 +309,38 @@ export function UpcomingEventsCMS({
                   placeholder="e.g. Experience the vibrant tapestry..."
                   rows={2}
                   required
+                />
+              </div>
+
+              {/* CTA Configuration */}
+              <div className="flex flex-col gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl w-full">
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                  CTA Configuration
+                </h4>
+
+                <InputField
+                  label="CTA Button Label"
+                  name="ctaText"
+                  value={formData.ctaText}
+                  onChange={handleChange}
+                  placeholder="e.g. Request Table"
+                />
+
+                <InputField
+                  label="CTA Subtitle"
+                  name="ctaSubtitle"
+                  value={formData.ctaSubtitle}
+                  onChange={handleChange}
+                  placeholder="Inquire about our upcoming occasions"
+                />
+
+                <InputField
+                  label="CTA Link URL (Leave empty or set to '#' to open the Booking Table pop-up)"
+                  name="ctaLink"
+                  value={formData.ctaLink}
+                  onChange={handleChange}
+                  placeholder="e.g. /contact"
                 />
               </div>
 
