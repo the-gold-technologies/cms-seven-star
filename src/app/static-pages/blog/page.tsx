@@ -18,6 +18,7 @@ import {
 import { PageHeader } from "@/app/components/PageHeader";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { BlogHeroCMS } from "./components/BlogHeroCMS";
 
 interface Blog {
   id: string;
@@ -126,6 +127,8 @@ export default function BlogAdminPage() {
           Create Blog Post
         </Link>
       </div>
+
+      <BlogHeroCMS />
 
       {/* Search & Filters */}
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
