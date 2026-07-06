@@ -56,6 +56,8 @@ const sidebarLinks: SidebarLink[] = [
       { title: "Contact", href: "/static-pages/contact" },
       { title: "Christmas", href: "/static-pages/christmas" },
       { title: "Blogs", href: "/static-pages/blog" },
+      { title: "Privacy Policy", href: "/static-pages/privacy-policy" },
+      { title: "Terms of Service", href: "/static-pages/terms-of-service" },
     ],
   },
   {
@@ -70,9 +72,7 @@ const sidebarLinks: SidebarLink[] = [
   {
     title: "Submissions",
     icon: Layers,
-    sublinks: [
-      { title: "Enquiries", href: "/submissions/enquiries" },
-    ],
+    sublinks: [{ title: "Enquiries", href: "/submissions/enquiries" }],
   },
   {
     title: "Settings",
@@ -129,7 +129,8 @@ export function AdminSidebar() {
             S
           </div>
           <span className="font-bold text-lg tracking-tight">
-            Seven Stars <span className="text-[#475DB1] font-semibold">CMS</span>
+            Seven Stars{" "}
+            <span className="text-[#475DB1] font-semibold">CMS</span>
           </span>
         </Link>
       </div>
