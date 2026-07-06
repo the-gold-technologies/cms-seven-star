@@ -98,7 +98,6 @@ export function MenuHeroCMS({
     if (!formData.tagline?.trim()) errs.push("Hero Tagline label is required");
     if (!formData.headingPart1?.trim()) errs.push("Hero Heading regular part is required");
     if (!formData.headingHighlight?.trim()) errs.push("Hero Heading highlight part is required");
-    if (!formData.description?.trim()) errs.push("Hero Quote description copy is required");
     if (!selectedImage) errs.push("Hero background showcase photo is required");
 
     if (errs.length > 0) {
@@ -211,7 +210,7 @@ export function MenuHeroCMS({
                   onChange={handleChange}
                   placeholder="A look at our kitchen starts with fresh..."
                   rows={3}
-                  required
+                  required={false}
                 />
 
                 <div className="flex flex-col gap-1.5 px-0.5">

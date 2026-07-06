@@ -141,7 +141,6 @@ export function HeroSection({
     const errs: string[] = [];
     if (!formData.headlineLine1?.trim())
       errs.push("Headline Line 1 is required");
-    if (!formData.description?.trim()) errs.push("Description is required");
     if (sliderImages.length === 0)
       errs.push("At least one slideshow image is required");
 
@@ -247,7 +246,7 @@ export function HeroSection({
                   placeholder="e.g. We're your neighborhood pub situated in Marsh Baldon..."
                   containerClassName="col-span-2"
                   rows={3}
-                  required
+                  required={false}
                   tooltip="Brief introductory paragraph text displayed below the headlines."
                 />
 

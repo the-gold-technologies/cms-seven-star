@@ -95,7 +95,6 @@ export function DiningHeroCMS({
     if (!formData.tagline?.trim()) errs.push("Tagline is required");
     if (!formData.headingPart1?.trim()) errs.push("Heading regular part is required");
     if (!formData.headingItalicHighlight?.trim()) errs.push("Heading italic part is required");
-    if (!formData.description?.trim()) errs.push("Description quote is required");
     if (!selectedImage) errs.push("Cover parallax image is required");
 
     if (errs.length > 0) {
@@ -203,7 +202,7 @@ export function DiningHeroCMS({
                   onChange={handleChange}
                   placeholder="A look at our menu and you'll see the care and craft..."
                   rows={2}
-                  required
+                  required={false}
                 />
 
                 <div className="flex flex-col gap-1.5 px-0.5">

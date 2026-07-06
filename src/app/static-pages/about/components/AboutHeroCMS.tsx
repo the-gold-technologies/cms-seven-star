@@ -95,7 +95,6 @@ export function AboutHeroCMS({
     if (!formData.tagline?.trim()) errs.push("Tagline label is required");
     if (!formData.headingPart1?.trim()) errs.push("Heading Part 1 is required");
     if (!formData.headingItalicHighlight?.trim()) errs.push("Heading Italic Highlight is required");
-    if (!formData.quote?.trim()) errs.push("Quote is required");
     if (!selectedImage) errs.push("Background image is required");
 
     if (errs.length > 0) {
@@ -203,7 +202,7 @@ export function AboutHeroCMS({
                   placeholder="Introduce the About page in a beautiful quote box..."
                   containerClassName="w-full"
                   rows={2}
-                  required
+                  required={false}
                 />
 
                 <div className="flex flex-col gap-1.5 px-0.5">

@@ -95,7 +95,6 @@ export function GalleryHeroCMS({
     if (!formData.tagline?.trim()) errs.push("Eyebrow tag is required");
     if (!formData.headingPart1?.trim()) errs.push("Heading Regular Part is required");
     if (!formData.headingItalicHighlight?.trim()) errs.push("Heading Italic part is required");
-    if (!formData.quote?.trim()) errs.push("Hero quote summary is required");
     if (!selectedImage) errs.push("Background uploader image is required");
 
     if (errs.length > 0) {
@@ -201,7 +200,7 @@ export function GalleryHeroCMS({
                   onChange={handleChange}
                   placeholder="e.g. Captured moments from our interiors, gardens..."
                   rows={2}
-                  required
+                  required={false}
                 />
 
                 <div className="flex flex-col gap-1.5 px-0.5">

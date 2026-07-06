@@ -95,7 +95,6 @@ export function StoryHeroCMS({
     if (!formData.tagline?.trim()) errs.push("Tagline label is required");
     if (!formData.headingPart1?.trim()) errs.push("Heading Regular Part is required");
     if (!formData.headingItalicHighlight?.trim()) errs.push("Heading Italic part is required");
-    if (!formData.description?.trim()) errs.push("Introductory description copy is required");
     if (!selectedImage) errs.push("Background parallax image is required");
 
     if (errs.length > 0) {
@@ -204,7 +203,7 @@ export function StoryHeroCMS({
                   placeholder="Discover the rich history of the Seven Stars..."
                   containerClassName="w-full"
                   rows={3}
-                  required
+                  required={false}
                 />
 
                 <div className="flex flex-col gap-1.5 px-0.5">
