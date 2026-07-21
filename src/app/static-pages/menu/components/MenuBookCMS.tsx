@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
 import {
   Plus,
   Trash2,
   BookOpen,
-  FileText,
   ArrowRight,
   ArrowLeft,
   CloudUpload,
@@ -93,14 +92,20 @@ export function MenuBookCMS({
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
   const [activePageIdx, setActivePageIdx] = useState(0);
 
-  // Maintain global list of uploaded/pending PDFs
-  const [menuPdfsList, setMenuPdfsList] = useState<(File | string)[]>([]);
-
   useEffect(() => {
+    const processData = (rawData: any) => {
+      const data = { ...defaultFormData, ...rawData };
+      if (Array.isArray(data.menuSections)) {
+        data.menuSections = data.menuSections.map((sec: MenuSection, i: number) => ({
+          ...sec,
+          pdf: sec.pdf || (Array.isArray(data.menuPdfs) ? data.menuPdfs[i] || "" : ""),
+        }));
+      }
+      return data;
+    };
+
     if (initialData) {
-      const data = { ...defaultFormData, ...initialData };
-      setFormData(data);
-      setMenuPdfsList(data.menuPdfs || []);
+      setFormData(processData(initialData));
     } else {
       fetchWithCache(saveUrl)
         .then((json) => {
@@ -108,31 +113,47 @@ export function MenuBookCMS({
             ? json.data?.[responseKey]
             : json.data;
           if (json.success && sectionData) {
-            const data = { ...defaultFormData, ...sectionData };
-            setFormData(data);
-            setMenuPdfsList(data.menuPdfs || []);
+            setFormData(processData(sectionData));
           }
         })
         .catch(console.error);
     }
   }, [initialData, saveUrl, responseKey]);
 
-  const handleAddPdfFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const files = Array.from(e.target.files);
-      const validFiles = files.filter((file) => {
-        if (file.type !== "application/pdf") {
-          toast.error(`${file.name} is not a valid PDF file!`);
-          return false;
+  const handleUploadCategoryPdf = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    secIdx: number,
+  ) => {
+    const inputElement = e.target;
+    if (inputElement.files && inputElement.files[0]) {
+      const file = inputElement.files[0];
+      if (file.type !== "application/pdf") {
+        toast.error(`${file.name} is not a valid PDF file!`);
+        inputElement.value = "";
+        return;
+      }
+      const toastId = toast.loading(`Uploading ${file.name}...`);
+      try {
+        const urls = await uploadFiles([file]);
+        const uploadedUrl = urls[0];
+        if (uploadedUrl) {
+          setFormData((prev) => {
+            const updated = [...prev.menuSections];
+            updated[secIdx] = {
+              ...updated[secIdx],
+              pdf: uploadedUrl,
+            };
+            return { ...prev, menuSections: updated };
+          });
+          toast.success(`PDF uploaded for category!`, { id: toastId });
         }
-        return true;
-      });
-      setMenuPdfsList((prev) => [...prev, ...validFiles]);
+      } catch (err) {
+        console.error(err);
+        toast.error("Upload failed.", { id: toastId });
+      } finally {
+        inputElement.value = "";
+      }
     }
-  };
-
-  const removePdfFromList = (index: number) => {
-    setMenuPdfsList((prev) => prev.filter((_, i) => i !== index));
   };
 
   // Section (Category) level methods
@@ -358,22 +379,15 @@ export function MenuBookCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving 3D Menu Book Sheets...");
     try {
-      const uploadedPdfs: string[] = [];
-      for (const item of menuPdfsList) {
-        if (item instanceof File) {
-          const urls = await uploadFiles([item]);
-          if (urls[0]) {
-            uploadedPdfs.push(urls[0]);
-          }
-        } else if (typeof item === "string" && item) {
-          uploadedPdfs.push(item);
-        }
-      }
-
       const payload = {
         ...formData,
-        menuPdfs: uploadedPdfs,
-        menuSections: formData.menuSections.map((s) => ({ ...s, pdf: "" })),
+        menuPdfs: formData.menuSections
+          .map((s) => s.pdf)
+          .filter((url) => Boolean(url) && url !== "#"),
+        menuSections: formData.menuSections.map((s) => ({
+          ...s,
+          pdf: s.pdf || "",
+        })),
       };
 
       const body = sectionId
@@ -390,7 +404,6 @@ export function MenuBookCMS({
       if (json.success) {
         toast.success("Menu book sheets saved successfully!", { id: toastId });
         setFormData(payload);
-        setMenuPdfsList(payload.menuPdfs || []);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
       } else {
         toast.error(json.error || "Save failed.", { id: toastId });
@@ -411,7 +424,7 @@ export function MenuBookCMS({
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="3D Menu Book Sheets Editor"
-          description="Manage nested lists of categories, descriptions, individual dishes, prices, and PDF download files."
+          description="Manage nested lists of categories, descriptions, individual dishes, prices, and section PDF download files."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -530,71 +543,6 @@ export function MenuBookCMS({
                 </div>
               </div>
 
-              {/* Global PDF Menu Uploads */}
-              <div className="flex flex-col gap-6 bg-slate-50/50 border border-slate-200/50 p-6 rounded-2xl w-full mb-4">
-                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 border-b border-gray-100 pb-2">
-                  <FileText className="w-3.5 h-3.5 text-emerald-500" />
-                  Global PDF Menu Files
-                </h4>
-                <div className="flex flex-col gap-4">
-                  <p className="text-xs text-gray-500 leading-relaxed font-light">
-                    Upload all PDF menu files in one place. Users can download all of them with a single click.
-                  </p>
-                  
-                  {menuPdfsList.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {menuPdfsList.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center justify-between bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs shadow-2xs hover:border-gray-300 transition-all"
-                        >
-                          <div className="flex items-center gap-2 min-w-0">
-                            <FileText className="w-4 h-4 text-emerald-600 shrink-0" />
-                            <span className="text-gray-700 font-bold truncate">
-                              {item instanceof File
-                                ? item.name
-                                : typeof item === "string"
-                                ? item.split("/").pop()
-                                : `PDF Menu ${idx + 1}`}
-                            </span>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => removePdfFromList(idx)}
-                            className="text-red-500 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="file"
-                      accept="application/pdf"
-                      multiple
-                      onChange={handleAddPdfFile}
-                      className="hidden"
-                      id="global-menu-pdf-upload"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => document.getElementById("global-menu-pdf-upload")?.click()}
-                      className="flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold px-5 py-2.5 rounded-xl transition-all cursor-pointer active:scale-95"
-                    >
-                      <CloudUpload className="w-4 h-4" /> Upload Menu PDF(s)
-                    </button>
-                    {menuPdfsList.length > 0 && (
-                      <span className="text-[10px] text-gray-400 font-medium">
-                        {menuPdfsList.length} file(s) selected
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
               {/* Premium Tabs for Section Menu Sheet selection */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-4">
                 <div className="flex items-center flex-wrap gap-2">
@@ -639,7 +587,7 @@ export function MenuBookCMS({
                 </div>
               </div>
 
-              {/* Title Editor */}
+              {/* Title & PDF Editor */}
               {activeSection && (
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 bg-slate-50/50 p-4 border border-slate-200/50 rounded-2xl w-full">
                   <div className="flex flex-col gap-1 flex-1 w-full">
@@ -663,6 +611,52 @@ export function MenuBookCMS({
                       placeholder="e.g. Main Menu"
                       className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
                     />
+                  </div>
+                  <div className="flex flex-col gap-1 flex-1 w-full">
+                    <span className="text-xs font-bold text-gray-600">
+                      Category Specific PDF File / URL
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={activeSection.pdf || ""}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setFormData((prev) => {
+                            const updated = [...prev.menuSections];
+                            updated[activeSectionIdx] = {
+                              ...updated[activeSectionIdx],
+                              pdf: val,
+                            };
+                            return { ...prev, menuSections: updated };
+                          });
+                        }}
+                        placeholder="Upload file or enter URL..."
+                        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
+                      />
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={(e) =>
+                          handleUploadCategoryPdf(e, activeSectionIdx)
+                        }
+                        className="hidden"
+                        id={`category-pdf-upload-${activeSectionIdx}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          document
+                            .getElementById(
+                              `category-pdf-upload-${activeSectionIdx}`,
+                            )
+                            ?.click()
+                        }
+                        className="flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold px-4 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer active:scale-95"
+                      >
+                        <CloudUpload className="w-4 h-4" /> Upload PDF
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
