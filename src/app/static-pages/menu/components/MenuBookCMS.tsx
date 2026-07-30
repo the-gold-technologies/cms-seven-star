@@ -5,11 +5,9 @@ import { fetchWithCache } from "@/lib/apiCache";
 import {
   Plus,
   Trash2,
-  BookOpen,
-  ArrowRight,
-  ArrowLeft,
   CloudUpload,
   Settings,
+  FileText,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
@@ -17,27 +15,11 @@ import { SaveButton } from "@/components/SaveButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import { uploadFiles } from "@/lib/uploadHelpers";
 
-interface MenuItem {
-  name: string;
-  price: string;
-  desc?: string;
-}
-
-interface MenuCategory {
-  name: string;
-  subtitle?: string;
-  items: MenuItem[];
-}
-
-interface MenuPage {
-  categories: MenuCategory[];
-}
-
 interface MenuSection {
   id: string;
   title: string;
   pdf: string;
-  pages: MenuPage[];
+  pages?: any[];
 }
 
 const defaultFormData = {
@@ -50,7 +32,6 @@ const defaultFormData = {
   description: "",
   locationName: "",
   locationCounty: "",
-  activeSectionSubtitle: "",
   ctaText: "",
   ctaLink: "",
 };
@@ -87,18 +68,16 @@ export function MenuBookCMS({
 
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
-
-  // Active section tab & page selection states
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
-  const [activePageIdx, setActivePageIdx] = useState(0);
 
   useEffect(() => {
     const processData = (rawData: any) => {
       const data = { ...defaultFormData, ...rawData };
       if (Array.isArray(data.menuSections)) {
-        data.menuSections = data.menuSections.map((sec: MenuSection, i: number) => ({
+        data.menuSections = data.menuSections.map((sec: any, i: number) => ({
           ...sec,
           pdf: sec.pdf || (Array.isArray(data.menuPdfs) ? data.menuPdfs[i] || "" : ""),
+          pages: Array.isArray(sec.pages) && sec.pages.length > 0 ? sec.pages : [{}],
         }));
       }
       return data;
@@ -127,11 +106,6 @@ export function MenuBookCMS({
     const inputElement = e.target;
     if (inputElement.files && inputElement.files[0]) {
       const file = inputElement.files[0];
-      if (file.type !== "application/pdf") {
-        toast.error(`${file.name} is not a valid PDF file!`);
-        inputElement.value = "";
-        return;
-      }
       const toastId = toast.loading(`Uploading ${file.name}...`);
       try {
         const urls = await uploadFiles([file]);
@@ -156,7 +130,6 @@ export function MenuBookCMS({
     }
   };
 
-  // Section (Category) level methods
   const addSection = () => {
     const title = prompt(
       "Enter the name of your new Menu Category (e.g. Kids Menu, Christmas Menu):",
@@ -173,16 +146,7 @@ export function MenuBookCMS({
       id,
       title: title.trim(),
       pdf: "",
-      pages: [
-        {
-          categories: [
-            {
-              name: "Welcome",
-              items: [],
-            },
-          ],
-        },
-      ],
+      pages: [{}],
     };
 
     setFormData((prev) => ({
@@ -190,7 +154,6 @@ export function MenuBookCMS({
       menuSections: [...prev.menuSections, newSection],
     }));
     setActiveSectionIdx(formData.menuSections.length);
-    setActivePageIdx(0);
     toast.success(`Category "${title}" added successfully!`);
   };
 
@@ -202,7 +165,7 @@ export function MenuBookCMS({
     const sec = formData.menuSections[index];
     if (
       !confirm(
-        `Are you sure you want to delete the entire "${sec.title}" category? This will delete all of its pages, categories, and dishes.`,
+        `Are you sure you want to delete the entire "${sec.title}" category?`,
       )
     ) {
       return;
@@ -212,163 +175,13 @@ export function MenuBookCMS({
       menuSections: prev.menuSections.filter((_, i) => i !== index),
     }));
     setActiveSectionIdx(0);
-    setActivePageIdx(0);
     toast.success(`Category "${sec.title}" deleted.`);
   };
 
-  // Page level methods
-  const addPage = () => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages, { categories: [] }];
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-    setActivePageIdx(formData.menuSections[activeSectionIdx].pages.length);
-    toast.success("Page added to menu!");
-  };
-
-  const deletePage = (pIdx: number) => {
-    if (formData.menuSections[activeSectionIdx].pages.length <= 1) {
-      toast.error("Menu section must have at least 1 page!");
-      return;
-    }
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = updated[activeSectionIdx].pages.filter(
-        (_, i) => i !== pIdx,
-      );
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-    setActivePageIdx(0);
-    toast.success("Page deleted!");
-  };
-
-  // Category level methods
-  const addCategory = () => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [
-        ...pages[activePageIdx].categories,
-        { name: "New Category", items: [] },
-      ];
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-    toast.success("Category added!");
-  };
-
-  const deleteCategory = (catIdx: number) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = pages[activePageIdx].categories.filter(
-        (_, i) => i !== catIdx,
-      );
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-    toast.success("Category deleted!");
-  };
-
-  const handleCategoryNameChange = (catIdx: number, val: string) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories];
-      categories[catIdx] = { ...categories[catIdx], name: val };
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
-  const handleCategorySubtitleChange = (catIdx: number, val: string) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories];
-      categories[catIdx] = { ...categories[catIdx], subtitle: val };
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
-  // Dish level methods
-  const addDish = (catIdx: number) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories];
-      const items = [...categories[catIdx].items, { name: "", price: "" }];
-      categories[catIdx] = { ...categories[catIdx], items };
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
-  const deleteDish = (catIdx: number, dishIdx: number) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories];
-      const items = categories[catIdx].items.filter((_, i) => i !== dishIdx);
-      categories[catIdx] = { ...categories[catIdx], items };
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
-  const handleDishFieldChange = (
-    catIdx: number,
-    dishIdx: number,
-    field: keyof MenuItem,
-    val: string,
-  ) => {
-    setFormData((prev) => {
-      const updated = [...prev.menuSections];
-      const pages = [...updated[activeSectionIdx].pages];
-      const categories = [...pages[activePageIdx].categories];
-      const items = [...categories[catIdx].items];
-      items[dishIdx] = { ...items[dishIdx], [field]: val };
-      categories[catIdx] = { ...categories[catIdx], items };
-      pages[activePageIdx] = { ...pages[activePageIdx], categories };
-      updated[activeSectionIdx] = { ...updated[activeSectionIdx], pages };
-      return { ...prev, menuSections: updated };
-    });
-  };
-
   const handleSave = async () => {
-    // Validate
     const errs: string[] = [];
     formData.menuSections.forEach((s) => {
-      if (!s.title?.trim()) errs.push(`Section Title is required`);
-
-      s.pages.forEach((p, pIdx) => {
-        p.categories.forEach((cat, catIdx) => {
-          if (!cat.name?.trim())
-            errs.push(
-              `${s.title} Page ${pIdx + 1} Category ${catIdx + 1} Name is required`,
-            );
-          cat.items.forEach((dish, dishIdx) => {
-            if (!dish.name?.trim())
-              errs.push(
-                `${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish ${dishIdx + 1} Name is required`,
-              );
-            if (!dish.price?.trim())
-              errs.push(
-                `${s.title} Page ${pIdx + 1} Cat "${cat.name}" Dish "${dish.name}" Price is required`,
-              );
-          });
-        });
-      });
+      if (!s.title?.trim()) errs.push(`Category Title is required`);
     });
 
     if (errs.length > 0) {
@@ -377,7 +190,7 @@ export function MenuBookCMS({
     }
 
     setIsSaving(true);
-    const toastId = toast.loading("Saving 3D Menu Book Sheets...");
+    const toastId = toast.loading("Saving 3D Menu Book...");
     try {
       const payload = {
         ...formData,
@@ -387,6 +200,7 @@ export function MenuBookCMS({
         menuSections: formData.menuSections.map((s) => ({
           ...s,
           pdf: s.pdf || "",
+          pages: s.pages || [{}],
         })),
       };
 
@@ -402,7 +216,7 @@ export function MenuBookCMS({
 
       const json = await res.json();
       if (json.success) {
-        toast.success("Menu book sheets saved successfully!", { id: toastId });
+        toast.success("3D Menu Book saved successfully!", { id: toastId });
         setFormData(payload);
         if (onSave) onSave(payload as unknown as Record<string, unknown>);
       } else {
@@ -417,14 +231,13 @@ export function MenuBookCMS({
   };
 
   const activeSection = formData.menuSections[activeSectionIdx];
-  const activePage = activeSection?.pages[activePageIdx] || { categories: [] };
 
   return (
     <section>
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col gap-4 transition-all">
         <SectionHeader
           title="3D Menu Book Sheets Editor"
-          description="Manage nested lists of categories, descriptions, individual dishes, prices, and section PDF download files."
+          description="Manage 3D book categories and category-specific PDF menu files for display & download."
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
         />
@@ -442,7 +255,7 @@ export function MenuBookCMS({
                   <Settings className="w-3.5 h-3.5 text-blue-500" />
                   Header & Global Settings
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <InputField
                     label="Section Number"
                     value={formData.sectionNumber || ""}
@@ -501,17 +314,6 @@ export function MenuBookCMS({
                     placeholder="e.g. Oxfordshire"
                   />
                   <InputField
-                    label="Active Section Subtitle"
-                    value={formData.activeSectionSubtitle || ""}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        activeSectionSubtitle: e.target.value,
-                      })
-                    }
-                    placeholder="e.g. Gastronomic Journey"
-                  />
-                  <InputField
                     label="CTA Button Text"
                     value={formData.ctaText || ""}
                     onChange={(e) =>
@@ -527,7 +329,7 @@ export function MenuBookCMS({
                     }
                     placeholder="e.g. /contact"
                   />
-                  <div className="md:col-span-2 lg:col-span-3">
+                  <div className="md:col-span-2 lg:col-span-4">
                     <InputField
                       label="Description"
                       value={formData.description || ""}
@@ -543,18 +345,15 @@ export function MenuBookCMS({
                 </div>
               </div>
 
-              {/* Premium Tabs for Section Menu Sheet selection */}
+              {/* Category Tabs */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-4">
                 <div className="flex items-center flex-wrap gap-2">
                   <div className="flex bg-gray-100 p-1.5 rounded-2xl gap-1 flex-wrap">
                     {formData.menuSections.map((sec, i) => (
                       <button
-                        key={sec.id}
+                        key={sec.id || i}
                         type="button"
-                        onClick={() => {
-                          setActiveSectionIdx(i);
-                          setActivePageIdx(0);
-                        }}
+                        onClick={() => setActiveSectionIdx(i)}
                         className={`px-6 py-2.5 rounded-xl text-xs font-bold transition-all ${
                           activeSectionIdx === i
                             ? "bg-white text-gray-900 shadow-sm"
@@ -587,293 +386,98 @@ export function MenuBookCMS({
                 </div>
               </div>
 
-              {/* Title & PDF Editor */}
+              {/* Title & PDF Editor for Active Category */}
               {activeSection && (
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-6 bg-slate-50/50 p-4 border border-slate-200/50 rounded-2xl w-full">
-                  <div className="flex flex-col gap-1 flex-1 w-full">
-                    <span className="text-xs font-bold text-gray-600">
-                      Category Name
-                    </span>
-                    <input
-                      type="text"
-                      value={activeSection.title}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        setFormData((prev) => {
-                          const updated = [...prev.menuSections];
-                          updated[activeSectionIdx] = {
-                            ...updated[activeSectionIdx],
-                            title: val,
-                          };
-                          return { ...prev, menuSections: updated };
-                        });
-                      }}
-                      placeholder="e.g. Main Menu"
-                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 flex-1 w-full">
-                    <span className="text-xs font-bold text-gray-600">
-                      Category Specific PDF File / URL
-                    </span>
-                    <div className="flex items-center gap-2">
+                <div className="flex flex-col gap-6 bg-slate-50/70 p-6 border border-slate-200/60 rounded-2xl w-full">
+                  <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <div className="flex flex-col gap-1 flex-1 w-full">
+                      <span className="text-xs font-bold text-gray-700">
+                        Category Title
+                      </span>
                       <input
                         type="text"
-                        value={activeSection.pdf || ""}
+                        value={activeSection.title}
                         onChange={(e) => {
                           const val = e.target.value;
                           setFormData((prev) => {
                             const updated = [...prev.menuSections];
                             updated[activeSectionIdx] = {
                               ...updated[activeSectionIdx],
-                              pdf: val,
+                              title: val,
                             };
                             return { ...prev, menuSections: updated };
                           });
                         }}
-                        placeholder="Upload file or enter URL..."
+                        placeholder="e.g. Main Menu"
                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
                       />
-                      <input
-                        type="file"
-                        accept="application/pdf"
-                        onChange={(e) =>
-                          handleUploadCategoryPdf(e, activeSectionIdx)
-                        }
-                        className="hidden"
-                        id={`category-pdf-upload-${activeSectionIdx}`}
-                      />
-                      <button
-                        type="button"
-                        onClick={() =>
-                          document
-                            .getElementById(
-                              `category-pdf-upload-${activeSectionIdx}`,
-                            )
-                            ?.click()
-                        }
-                        className="flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold px-4 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer active:scale-95"
-                      >
-                        <CloudUpload className="w-4 h-4" /> Upload PDF
-                      </button>
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1 w-full">
+                      <span className="text-xs font-bold text-gray-700">
+                        Category Menu PDF / Image (Displayed on Sheet & Downloadable)
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={activeSection.pdf || ""}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setFormData((prev) => {
+                              const updated = [...prev.menuSections];
+                              updated[activeSectionIdx] = {
+                                ...updated[activeSectionIdx],
+                                pdf: val,
+                              };
+                              return { ...prev, menuSections: updated };
+                            });
+                          }}
+                          placeholder="Upload PDF or enter URL..."
+                          className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none"
+                        />
+                        <input
+                          type="file"
+                          accept="application/pdf,image/*"
+                          onChange={(e) =>
+                            handleUploadCategoryPdf(e, activeSectionIdx)
+                          }
+                          className="hidden"
+                          id={`category-pdf-upload-${activeSectionIdx}`}
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            document
+                              .getElementById(
+                                `category-pdf-upload-${activeSectionIdx}`,
+                              )
+                              ?.click()
+                          }
+                          className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer active:scale-95 shadow-2xs"
+                        >
+                          <CloudUpload className="w-4 h-4" /> Upload PDF / Image
+                        </button>
+                      </div>
                     </div>
                   </div>
+
+                  {activeSection.pdf && activeSection.pdf !== "#" && (
+                    <div className="flex items-center gap-3 bg-white p-3.5 border border-emerald-200/60 rounded-xl text-emerald-800 text-xs">
+                      <FileText className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span className="font-medium truncate flex-1">
+                        Active Menu File: <span className="font-bold">{activeSection.pdf}</span>
+                      </span>
+                      <a
+                        href={activeSection.pdf}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[11px] font-bold text-blue-600 hover:underline shrink-0"
+                      >
+                        Preview File ↗
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
-
-              {/* Page Selection Bar */}
-              <div className="flex items-center justify-between bg-slate-50 border border-slate-200/60 p-4 rounded-2xl w-full">
-                <div className="flex items-center gap-3">
-                  <BookOpen className="w-5 h-5 text-blue-500" />
-                  <span className="text-sm font-bold text-slate-800">
-                    Menu Sheet Pages ({activeSection?.pages.length || 0})
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex bg-white border border-gray-200 p-1 rounded-xl items-center gap-1">
-                    <button
-                      type="button"
-                      disabled={activePageIdx === 0}
-                      onClick={() => setActivePageIdx((p) => p - 1)}
-                      className="p-1.5 rounded-lg hover:bg-gray-100 disabled:opacity-30 disabled:hover:bg-transparent"
-                    >
-                      <ArrowLeft className="w-4 h-4" />
-                    </button>
-                    <span className="text-xs font-bold text-gray-700 px-3">
-                      Page {activePageIdx + 1} of{" "}
-                      {activeSection?.pages.length || 1}
-                    </span>
-                    <button
-                      type="button"
-                      disabled={
-                        activePageIdx >= (activeSection?.pages.length || 1) - 1
-                      }
-                      onClick={() => setActivePageIdx((p) => p + 1)}
-                      className="p-1.5 rounded-lg hover:bg-gray-100 disabled:opacity-30 disabled:hover:bg-transparent"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={addPage}
-                      className="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-2xs cursor-pointer active:scale-95"
-                    >
-                      Add Page
-                    </button>
-                    <button
-                      type="button"
-                      disabled={(activeSection?.pages.length || 1) <= 1}
-                      onClick={() => deletePage(activePageIdx)}
-                      className="bg-red-50 hover:bg-red-100 text-red-500 text-xs font-bold px-3 py-2 rounded-xl transition-all disabled:opacity-45 cursor-pointer active:scale-95"
-                    >
-                      Delete Page
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Categories & Dishes Grid */}
-              <div className="flex flex-col gap-6">
-                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    Categories on Page {activePageIdx + 1}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={addCategory}
-                    className="flex items-center gap-1.5 text-blue-500 hover:text-blue-600 text-xs font-bold cursor-pointer"
-                  >
-                    <Plus className="w-4 h-4" /> Add Category Card
-                  </button>
-                </div>
-
-                {activePage.categories.length === 0 ? (
-                  <div className="py-12 text-center border-2 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center">
-                    <BookOpen className="w-8 h-8 text-gray-300 mb-2" />
-                    <p className="text-xs text-gray-400 font-bold">
-                      No categories added on this page yet.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-8">
-                    {activePage.categories.map((cat, catIdx) => (
-                      <div
-                        key={catIdx}
-                        className="bg-white border border-gray-200 hover:border-gray-300 rounded-3xl p-6 flex flex-col gap-6 transition-all"
-                      >
-                        <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                          <span className="text-xs font-bold text-gray-900 uppercase tracking-wider">
-                            Category #{catIdx + 1}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => deleteCategory(catIdx)}
-                            className="text-red-500 hover:text-red-600 p-1.5 hover:bg-red-50 rounded-xl"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-
-                        {/* Title & optional subtitle */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <InputField
-                            label="Category Name"
-                            value={cat.name}
-                            onChange={(e) =>
-                              handleCategoryNameChange(catIdx, e.target.value)
-                            }
-                            placeholder="e.g. Small Plates"
-                            required
-                          />
-                          <InputField
-                            label="Category Subtitle (Optional)"
-                            value={cat.subtitle || ""}
-                            onChange={(e) =>
-                              handleCategorySubtitleChange(
-                                catIdx,
-                                e.target.value,
-                              )
-                            }
-                            placeholder="e.g. Served with Yorkshire Pudding..."
-                          />
-                        </div>
-
-                        {/* Dishes items inside Category */}
-                        <div className="flex flex-col gap-4 bg-gray-50/50 p-6 border border-gray-100 rounded-2xl">
-                          <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">
-                              Dishes / Menu Items ({cat.items.length})
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() => addDish(catIdx)}
-                              className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs font-bold cursor-pointer"
-                            >
-                              <Plus className="w-3.5 h-3.5" /> Add Dish
-                            </button>
-                          </div>
-
-                          {cat.items.length === 0 ? (
-                            <p className="text-[10px] text-gray-400 italic text-center py-2">
-                              No dishes in this category. Click Add Dish above
-                              to start.
-                            </p>
-                          ) : (
-                            <div className="flex flex-col gap-4">
-                              {cat.items.map((dish, dishIdx) => (
-                                <div
-                                  key={dishIdx}
-                                  className="flex flex-col sm:flex-row gap-4 bg-white p-4 border border-gray-200 rounded-2xl relative animate-in fade-in duration-300"
-                                >
-                                  <button
-                                    type="button"
-                                    onClick={() => deleteDish(catIdx, dishIdx)}
-                                    className="absolute -top-1.5 -right-1.5 sm:top-4 sm:right-4 text-red-500 hover:text-red-600 p-1 bg-red-50 hover:bg-red-100 rounded-lg active:scale-95"
-                                  >
-                                    <Trash2 className="w-3.5 h-3.5" />
-                                  </button>
-
-                                  <div className="flex-1">
-                                    <InputField
-                                      label="Dish Name"
-                                      value={dish.name}
-                                      onChange={(e) =>
-                                        handleDishFieldChange(
-                                          catIdx,
-                                          dishIdx,
-                                          "name",
-                                          e.target.value,
-                                        )
-                                      }
-                                      placeholder="e.g. Marinated Olives (VG) (GF)"
-                                      required
-                                    />
-                                  </div>
-                                  <div className="w-full sm:w-28 shrink-0">
-                                    <InputField
-                                      label="Price"
-                                      value={dish.price}
-                                      onChange={(e) =>
-                                        handleDishFieldChange(
-                                          catIdx,
-                                          dishIdx,
-                                          "price",
-                                          e.target.value,
-                                        )
-                                      }
-                                      placeholder="e.g. £4.95"
-                                      required
-                                    />
-                                  </div>
-                                  <div className="flex-1">
-                                    <InputField
-                                      label="Short Description (Optional)"
-                                      value={dish.desc || ""}
-                                      onChange={(e) =>
-                                        handleDishFieldChange(
-                                          catIdx,
-                                          dishIdx,
-                                          "desc",
-                                          e.target.value,
-                                        )
-                                      }
-                                      placeholder="e.g. Served with sourdough"
-                                    />
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
 
               {/* Save Action */}
               <div className="flex justify-end pt-4 border-t border-gray-100">
