@@ -325,7 +325,7 @@ export default function BlogFormPage() {
         </div>
 
         {/* Title & Slug */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={`grid grid-cols-1 ${formData.postType !== "news" ? "md:grid-cols-2" : ""} gap-6`}>
           <InputField
             label={formData.postType === "news" ? "News / Article Title *" : "Blog Post Title *"}
             placeholder={
@@ -339,28 +339,30 @@ export default function BlogFormPage() {
             required
           />
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
-              URL Slug
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                placeholder="e.g. traditional-sunday-roasts"
-                name="slug"
-                value={formData.slug}
-                onChange={handleInputChange}
-                className="flex-1 px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] outline-none transition-all text-gray-800"
-              />
-              <button
-                type="button"
-                onClick={generateSlug}
-                className="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-600 text-xs font-bold px-6 rounded-2xl transition-colors cursor-pointer h-[54px] hover:border-gray-300 transition-all shrink-0"
-              >
-                Generate
-              </button>
+          {formData.postType !== "news" && (
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+                URL Slug
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="e.g. traditional-sunday-roasts"
+                  name="slug"
+                  value={formData.slug}
+                  onChange={handleInputChange}
+                  className="flex-1 px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] outline-none transition-all text-gray-800"
+                />
+                <button
+                  type="button"
+                  onClick={generateSlug}
+                  className="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-600 text-xs font-bold px-6 rounded-2xl transition-colors cursor-pointer h-[54px] hover:border-gray-300 transition-all shrink-0"
+                >
+                  Generate
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Conditional External Link Input for News */}
@@ -446,7 +448,7 @@ export default function BlogFormPage() {
         />
 
         {/* Details Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className={`grid grid-cols-1 ${formData.postType !== "news" ? "sm:grid-cols-2 md:grid-cols-4" : "sm:grid-cols-3"} gap-4`}>
           <InputField
             label="Category / Tag"
             placeholder="e.g. Gastronomy / Abingdon"
@@ -461,13 +463,15 @@ export default function BlogFormPage() {
             value={formData.area}
             onChange={handleInputChange}
           />
-          <InputField
-            label="Read Time"
-            placeholder="e.g. 3 min read"
-            name="readTime"
-            value={formData.readTime}
-            onChange={handleInputChange}
-          />
+          {formData.postType !== "news" && (
+            <InputField
+              label="Read Time"
+              placeholder="e.g. 3 min read"
+              name="readTime"
+              value={formData.readTime}
+              onChange={handleInputChange}
+            />
+          )}
           <InputField
             label="Publish Date"
             placeholder="e.g. 22 Jun 2026"
