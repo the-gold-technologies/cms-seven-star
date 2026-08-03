@@ -261,8 +261,16 @@ export default function BlogFormPage() {
         </Link>
         
         <PageHeader
-          title={isNew ? "Create Blog Post" : "Edit Blog Post"}
-          description={isNew ? "Fill in details to release a new article on the Seven Stars blog." : `Updating details and content for "${formData.title}"`}
+          title={
+            formData.postType === "news"
+              ? (isNew ? "Create News Article" : "Edit News Article")
+              : (isNew ? "Create Blog Post" : "Edit Blog Post")
+          }
+          description={
+            formData.postType === "news"
+              ? (isNew ? "Fill in details to add an external news article link." : `Updating details for "${formData.title}"`)
+              : (isNew ? "Fill in details to release a new article on the Seven Stars blog." : `Updating details and content for "${formData.title}"`)
+          }
         />
       </div>
 
@@ -299,12 +307,12 @@ export default function BlogFormPage() {
               onClick={() => setFormData(prev => ({ ...prev, postType: "news" }))}
               className={`flex items-center gap-3.5 p-4 rounded-2xl border text-left transition-all cursor-pointer ${
                 formData.postType === "news"
-                  ? "border-purple-600 bg-purple-50 ring-2 ring-purple-500/20 text-purple-700"
+                  ? "border-[#475DB1] bg-[#475DB1]/5 ring-2 ring-[#475DB1]/20 text-[#475DB1]"
                   : "border-gray-200 bg-white hover:bg-gray-50 text-gray-600"
               }`}
             >
               <div className={`p-2.5 rounded-xl ${
-                formData.postType === "news" ? "bg-purple-600 text-white" : "bg-gray-100 text-gray-500"
+                formData.postType === "news" ? "bg-[#475DB1] text-white" : "bg-gray-100 text-gray-500"
               }`}>
                 <Newspaper className="w-5 h-5" />
               </div>
@@ -319,8 +327,12 @@ export default function BlogFormPage() {
         {/* Title & Slug */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <InputField
-            label="Blog Post Title *"
-            placeholder="e.g. Traditional Sunday Roasts near Wallingford"
+            label={formData.postType === "news" ? "News / Article Title *" : "Blog Post Title *"}
+            placeholder={
+              formData.postType === "news"
+                ? "e.g. Staff at Village Green Pub Get Ready for Beer Festival"
+                : "e.g. Traditional Sunday Roasts near Wallingford"
+            }
             name="title"
             value={formData.title}
             onChange={handleInputChange}
