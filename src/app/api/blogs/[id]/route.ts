@@ -46,6 +46,8 @@ export async function GET(
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",
       content: blogDetail.content || "",
+      postType: blogDetail.postType || "blog",
+      link: blogDetail.link || "",
       area: blogDetail.area || "",
       readTime: blogDetail.readTime || "",
       tag: blogDetail.tag || "",

@@ -14,7 +14,10 @@ import {
   Clock,
   Calendar,
   Eye,
-  Trash2
+  Trash2,
+  Newspaper,
+  FileText,
+  ExternalLink
 } from "lucide-react";
 import { PageHeader } from "@/app/components/PageHeader";
 import { InputField } from "@/app/components/InputField";
@@ -44,6 +47,8 @@ interface Blog {
   featuredImage: string | null;
   excerpt: string;
   content: string;
+  postType: "blog" | "news";
+  link: string;
   area: string;
   readTime: string;
   tag: string;
@@ -60,6 +65,8 @@ const defaultFormData: Partial<Blog> = {
   slug: "",
   excerpt: "",
   content: "",
+  postType: "blog",
+  link: "",
   area: "",
   readTime: "3 min read",
   tag: "",
@@ -111,6 +118,8 @@ export default function BlogFormPage() {
           slug: blog.slug,
           excerpt: blog.excerpt,
           content: blog.content,
+          postType: blog.postType || "blog",
+          link: blog.link || "",
           area: blog.area,
           readTime: blog.readTime,
           tag: blog.tag,
@@ -169,7 +178,12 @@ export default function BlogFormPage() {
     
     if (!formData.title?.trim()) return toast.error("Title is required");
     if (!formData.excerpt?.trim()) return toast.error("Excerpt description is required");
-    if (!formData.content?.trim() || formData.content === "<p><br></p>") return toast.error("Blog content is required");
+
+    if (formData.postType === "news") {
+      if (!formData.link?.trim()) return toast.error("External article/news link is required");
+    } else {
+      if (!formData.content?.trim() || formData.content === "<p><br></p>") return toast.error("Blog content is required");
+    }
 
     setIsSaving(true);
     const toastId = toast.loading(isNew ? "Creating blog post..." : "Saving blog post...");
@@ -254,6 +268,54 @@ export default function BlogFormPage() {
 
       <form onSubmit={handleSubmit} className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-8 flex flex-col gap-6">
         
+        {/* Post Type Selector (Blog vs News) */}
+        <div className="flex flex-col gap-2 px-0.5">
+          <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+            Post Type *
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button
+              type="button"
+              onClick={() => setFormData(prev => ({ ...prev, postType: "blog" }))}
+              className={`flex items-center gap-3.5 p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                (formData.postType || "blog") === "blog"
+                  ? "border-[#475DB1] bg-[#475DB1]/5 ring-2 ring-[#475DB1]/20 text-[#475DB1]"
+                  : "border-gray-200 bg-white hover:bg-gray-50 text-gray-600"
+              }`}
+            >
+              <div className={`p-2.5 rounded-xl ${
+                (formData.postType || "blog") === "blog" ? "bg-[#475DB1] text-white" : "bg-gray-100 text-gray-500"
+              }`}>
+                <FileText className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="font-bold text-sm text-gray-900">Blog Post</div>
+                <div className="text-xs text-gray-400 font-light">Full article with rich text content</div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setFormData(prev => ({ ...prev, postType: "news" }))}
+              className={`flex items-center gap-3.5 p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                formData.postType === "news"
+                  ? "border-purple-600 bg-purple-50 ring-2 ring-purple-500/20 text-purple-700"
+                  : "border-gray-200 bg-white hover:bg-gray-50 text-gray-600"
+              }`}
+            >
+              <div className={`p-2.5 rounded-xl ${
+                formData.postType === "news" ? "bg-purple-600 text-white" : "bg-gray-100 text-gray-500"
+              }`}>
+                <Newspaper className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="font-bold text-sm text-gray-900">News / Article</div>
+                <div className="text-xs text-gray-400 font-light">External link redirection post</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
         {/* Title & Slug */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <InputField
@@ -288,6 +350,18 @@ export default function BlogFormPage() {
             </div>
           </div>
         </div>
+
+        {/* Conditional External Link Input for News */}
+        {formData.postType === "news" && (
+          <InputField
+            label="External News / Article Link * (Visitors will be redirected here when clicking this item)"
+            placeholder="e.g. https://www.heraldseries.co.uk/news/1234567-seven-stars-pub/"
+            name="link"
+            value={formData.link || ""}
+            onChange={handleInputChange}
+            required
+          />
+        )}
 
         {/* Featured Image */}
         <div className="flex flex-col gap-1.5 px-0.5">
@@ -391,26 +465,28 @@ export default function BlogFormPage() {
           />
         </div>
 
-        {/* SEO Meta Title & Description */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <InputField
-            label="SEO Meta Title (Optional)"
-            name="metaTitle"
-            value={formData.metaTitle}
-            onChange={handleInputChange}
-            placeholder="e.g. Traditional Sunday Roasts | Seven Stars"
-          />
-          <InputField
-            label="SEO Meta Description (Optional)"
-            name="metaDescription"
-            value={formData.metaDescription}
-            onChange={handleInputChange}
-            placeholder="e.g. In-depth guide on Abingdon attractions..."
-          />
-        </div>
+        {/* SEO Meta Title & Description (Hidden for News items) */}
+        {formData.postType !== "news" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <InputField
+              label="SEO Meta Title (Optional)"
+              name="metaTitle"
+              value={formData.metaTitle}
+              onChange={handleInputChange}
+              placeholder="e.g. Traditional Sunday Roasts | Seven Stars"
+            />
+            <InputField
+              label="SEO Meta Description (Optional)"
+              name="metaDescription"
+              value={formData.metaDescription}
+              onChange={handleInputChange}
+              placeholder="e.g. In-depth guide on Abingdon attractions..."
+            />
+          </div>
+        )}
 
         {/* Visibility & Heading Tag */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className={`grid grid-cols-1 ${formData.postType !== "news" ? "md:grid-cols-2" : ""} gap-6`}>
           <div className="flex flex-col gap-1.5 px-0.5">
             <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
               Visibility Status
@@ -425,107 +501,113 @@ export default function BlogFormPage() {
               <option value="published">Published (Visible on client)</option>
             </select>
           </div>
+          {formData.postType !== "news" && (
+            <div className="flex flex-col gap-1.5 px-0.5">
+              <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
+                Hero Headline Tag (SEO)
+              </label>
+              <select
+                name="headingTag"
+                value={formData.headingTag || "h1"}
+                onChange={handleInputChange}
+                className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
+              >
+                <option value="h1">H1 (Recommended standard title tag)</option>
+                <option value="h2">H2 (Alternative heading tag)</option>
+                <option value="h3">H3 (Sub-heading tag)</option>
+                <option value="h4">H4 (Sub-heading tag)</option>
+                <option value="h5">H5 (Sub-heading tag)</option>
+                <option value="h6">H6 (Sub-heading tag)</option>
+              </select>
+            </div>
+          )}
+        </div>
+
+        {/* JSON-LD Schema (Hidden for News items) */}
+        {formData.postType !== "news" && (
+          <TextAreaField
+            label="JSON-LD Schema Markup (Optional)"
+            placeholder='e.g. { "@context": "https://schema.org", "@type": "BlogPosting", "headline": "..." }'
+            name="schema"
+            value={formData.schema}
+            onChange={handleInputChange}
+            rows={6}
+          />
+        )}
+
+        {/* Quill Editor (Hidden for News items) */}
+        {formData.postType !== "news" && (
           <div className="flex flex-col gap-1.5 px-0.5">
             <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
-              Hero Headline Tag (SEO)
+              Full Article Content *
             </label>
-            <select
-              name="headingTag"
-              value={formData.headingTag || "h1"}
-              onChange={handleInputChange}
-              className="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:outline-none focus:border-[#475DB1] focus:ring-1 focus:ring-[#475DB1] text-gray-800 cursor-pointer h-[54px]"
-            >
-              <option value="h1">H1 (Recommended standard title tag)</option>
-              <option value="h2">H2 (Alternative heading tag)</option>
-              <option value="h3">H3 (Sub-heading tag)</option>
-              <option value="h4">H4 (Sub-heading tag)</option>
-              <option value="h5">H5 (Sub-heading tag)</option>
-              <option value="h6">H6 (Sub-heading tag)</option>
-            </select>
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+              <ReactQuill
+                theme="snow"
+                value={formData.content}
+                onChange={handleContentChange}
+                modules={quillModules}
+                placeholder="Write the full body of the article here..."
+                className="quill-editor"
+              />
+            </div>
+            <style jsx global>{`
+              .quill-editor .ql-toolbar.ql-snow {
+                border: none;
+                border-bottom: 1px solid #f3f4f6;
+                padding: 12px;
+                background-color: #f9fafb;
+              }
+              .quill-editor .ql-container.ql-snow {
+                border: none;
+                font-family: var(--font-inter), sans-serif;
+                font-size: 14px;
+                min-height: 250px;
+                max-height: 450px;
+                overflow-y: auto;
+              }
+              
+              /* Custom labels inside Quill Header Dropdown */
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item::before {
+                content: 'Normal' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
+                content: 'H1' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+                content: 'H2' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+                content: 'H3' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+                content: 'H4' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+                content: 'H5' !important;
+              }
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+              .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+                content: 'H6' !important;
+              }
+
+              .quill-editor .ql-editor {
+                padding: 20px;
+                line-height: 1.6;
+                color: #1f2937;
+              }
+              .quill-editor .ql-editor p {
+                margin-bottom: 1rem;
+              }
+            `}</style>
           </div>
-        </div>
-
-        {/* JSON-LD Schema */}
-        <TextAreaField
-          label="JSON-LD Schema Markup (Optional)"
-          placeholder='e.g. { "@context": "https://schema.org", "@type": "BlogPosting", "headline": "..." }'
-          name="schema"
-          value={formData.schema}
-          onChange={handleInputChange}
-          rows={6}
-        />
-
-        {/* Quill Editor */}
-        <div className="flex flex-col gap-1.5 px-0.5">
-          <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest ml-4">
-            Full Article Content *
-          </label>
-          <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <ReactQuill
-              theme="snow"
-              value={formData.content}
-              onChange={handleContentChange}
-              modules={quillModules}
-              placeholder="Write the full body of the article here..."
-              className="quill-editor"
-            />
-          </div>
-          <style jsx global>{`
-            .quill-editor .ql-toolbar.ql-snow {
-              border: none;
-              border-bottom: 1px solid #f3f4f6;
-              padding: 12px;
-              background-color: #f9fafb;
-            }
-            .quill-editor .ql-container.ql-snow {
-              border: none;
-              font-family: var(--font-inter), sans-serif;
-              font-size: 14px;
-              min-height: 250px;
-              max-height: 450px;
-              overflow-y: auto;
-            }
-            
-            /* Custom labels inside Quill Header Dropdown */
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item::before {
-              content: 'Normal' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
-              content: 'H1' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
-              content: 'H2' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
-              content: 'H3' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
-              content: 'H4' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
-              content: 'H5' !important;
-            }
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
-            .quill-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
-              content: 'H6' !important;
-            }
-
-            .quill-editor .ql-editor {
-              padding: 20px;
-              line-height: 1.6;
-              color: #1f2937;
-            }
-            .quill-editor .ql-editor p {
-              margin-bottom: 1rem;
-            }
-          `}</style>
-        </div>
+        )}
 
 
 

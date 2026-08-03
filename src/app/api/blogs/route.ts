@@ -24,6 +24,8 @@ function transformBlogPages(pages: any[]) {
       updatedAt: page.updatedAt,
       excerpt: blogDetail.excerpt || "",
       content: blogDetail.content || "",
+      postType: blogDetail.postType || "blog",
+      link: blogDetail.link || "",
       area: blogDetail.area || "",
       readTime: blogDetail.readTime || "",
       tag: blogDetail.tag || "",
@@ -62,8 +64,6 @@ export async function GET(request: Request) {
       orderBy: { createdAt: "desc" }
     });
 
-
-
     return NextResponse.json({ success: true, data: transformBlogPages(pages) });
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -89,6 +89,8 @@ export async function POST(request: Request) {
       slug: customSlug,
       excerpt,
       content,
+      postType = "blog",
+      link = "",
       image,
       area,
       readTime,
@@ -102,9 +104,23 @@ export async function POST(request: Request) {
       headingTag,
     } = body;
 
-    if (!title || !excerpt || !content) {
+    if (!title || !excerpt) {
       return NextResponse.json(
-        { success: false, error: "Title, excerpt, and content are required" },
+        { success: false, error: "Title and excerpt are required" },
+        { status: 400 }
+      );
+    }
+
+    if (postType === "news" && !link) {
+      return NextResponse.json(
+        { success: false, error: "News article link is required when selecting News" },
+        { status: 400 }
+      );
+    }
+
+    if (postType !== "news" && !content) {
+      return NextResponse.json(
+        { success: false, error: "Blog content is required when selecting Blog" },
         { status: 400 }
       );
     }
@@ -112,7 +128,7 @@ export async function POST(request: Request) {
     // Sanitize spaces to prevent text wrapping issues
     title = sanitizeSpaces(title);
     excerpt = sanitizeSpaces(excerpt);
-    content = sanitizeSpaces(content);
+    content = content ? sanitizeSpaces(content) : "";
     metaTitle = metaTitle ? sanitizeSpaces(metaTitle) : "";
     metaDescription = metaDescription ? sanitizeSpaces(metaDescription) : "";
 
@@ -152,7 +168,9 @@ export async function POST(request: Request) {
         type: "BlogDetail",
         content: {
           excerpt,
-          content,
+          content: content || "",
+          postType: postType || "blog",
+          link: link || "",
           area: area || "",
           readTime: readTime || "",
           tag: tag || "",
@@ -176,7 +194,9 @@ export async function POST(request: Request) {
         visibility: page.visibility,
         featuredImage: page.featuredImage,
         excerpt,
-        content,
+        content: content || "",
+        postType: postType || "blog",
+        link: link || "",
         area,
         readTime,
         tag,
@@ -205,6 +225,8 @@ export async function PUT(request: Request) {
       slug,
       excerpt,
       content,
+      postType,
+      link,
       image,
       area,
       readTime,
@@ -267,6 +289,8 @@ export async function PUT(request: Request) {
       ...(existingSection?.content as Record<string, any> || {}),
       ...(excerpt !== undefined && { excerpt }),
       ...(content !== undefined && { content }),
+      ...(postType !== undefined && { postType }),
+      ...(link !== undefined && { link }),
       ...(area !== undefined && { area }),
       ...(readTime !== undefined && { readTime }),
       ...(tag !== undefined && { tag }),

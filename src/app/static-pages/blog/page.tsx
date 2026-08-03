@@ -28,6 +28,8 @@ interface Blog {
   featuredImage: string | null;
   excerpt: string;
   content: string;
+  postType?: "blog" | "news";
+  link?: string;
   area: string;
   readTime: string;
   tag: string;
@@ -205,14 +207,23 @@ export default function BlogAdminPage() {
                     No image configured
                   </div>
                 )}
-                {/* Status badge */}
-                <span className={`absolute top-4 left-4 z-10 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-sm ${
-                  blog.visibility === "published" 
-                    ? "bg-green-50 text-green-700 border border-green-200" 
-                    : "bg-amber-50 text-amber-700 border border-amber-200"
-                }`}>
-                  {blog.visibility}
-                </span>
+                {/* Badges container */}
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                  <span className={`text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-sm ${
+                    blog.visibility === "published" 
+                      ? "bg-green-50 text-green-700 border border-green-200" 
+                      : "bg-amber-50 text-amber-700 border border-amber-200"
+                  }`}>
+                    {blog.visibility}
+                  </span>
+                  <span className={`text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full shadow-sm ${
+                    blog.postType === "news"
+                      ? "bg-purple-50 text-purple-700 border border-purple-200"
+                      : "bg-blue-50 text-blue-700 border border-blue-200"
+                  }`}>
+                    {blog.postType === "news" ? "News" : "Blog"}
+                  </span>
+                </div>
               </div>
 
               {/* Card Body */}
