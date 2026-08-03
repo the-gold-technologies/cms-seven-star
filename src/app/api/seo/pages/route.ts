@@ -42,6 +42,10 @@ export async function GET() {
         metaDescription: true,
         type: true,
         visibility: true,
+        sections: {
+          where: { type: "BlogDetail" },
+          select: { content: true },
+        },
       },
     });
 
@@ -221,7 +225,12 @@ export async function GET() {
       blogParentId = mergedData[parentBlogIdx].id;
     }
 
-    const blogPages = pages.filter((p) => p.type === "blog");
+    const blogPages = pages.filter((p) => {
+      if (p.type !== "blog") return false;
+      const blogDetail = p.sections?.[0]?.content as any;
+      if (blogDetail?.postType === "news") return false;
+      return true;
+    });
     blogPages.forEach((blog) => {
       mergedData.push({
         id: blog.id,
