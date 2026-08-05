@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
+import { checkAndAutoRefreshToken } from "@/lib/instagramAutoRefresh";
 
 const DEFAULT_PRIVACY_POLICY = {
   title: "Privacy Policy",
@@ -89,6 +90,18 @@ export async function GET(
       schema,
       ...rest
     } = page;
+
+    if (targetSlug === "events" && page.sections) {
+      for (const section of page.sections) {
+        if (section.type === "EventsArchive" && section.content) {
+          section.content = (await checkAndAutoRefreshToken(
+            section.content as Record<string, any>,
+            "events",
+            "EventsArchive"
+          )) as any;
+        }
+      }
+    }
 
     return NextResponse.json({
       success: true,

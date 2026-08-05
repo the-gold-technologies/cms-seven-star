@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
+import { checkAndAutoRefreshToken } from "@/lib/instagramAutoRefresh";
 
 const PAGE_SLUG = "events";
 
@@ -26,7 +27,15 @@ export async function GET() {
 
     const sectionsMap: Record<string, unknown> = {};
     for (const section of page.sections) {
-      sectionsMap[section.type] = section.content;
+      if (section.type === "EventsArchive" && section.content) {
+        sectionsMap[section.type] = await checkAndAutoRefreshToken(
+          section.content as Record<string, any>,
+          PAGE_SLUG,
+          "EventsArchive"
+        );
+      } else {
+        sectionsMap[section.type] = section.content;
+      }
     }
 
     return NextResponse.json({ success: true, data: sectionsMap });

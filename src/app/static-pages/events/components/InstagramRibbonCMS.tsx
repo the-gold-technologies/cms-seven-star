@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { Sparkles, Code } from "lucide-react";
+import { Sparkles, Code, RefreshCw } from "lucide-react";
 import toast from "react-hot-toast";
 import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
@@ -46,7 +46,50 @@ export function InstagramRibbonCMS({
   };
 
   const [isSaving, setIsSaving] = useState(false);
+  const [isRefreshingToken, setIsRefreshingToken] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
+
+  const handleRefreshToken = async () => {
+    if (!formData.instagramToken?.trim()) {
+      toast.error("Please enter an Instagram Access Token first.");
+      return;
+    }
+
+    setIsRefreshingToken(true);
+    const toastId = toast.loading("Refreshing Instagram token via Meta API...");
+
+    try {
+      const res = await fetch("/api/instagram/refresh-token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: formData.instagramToken.trim() }),
+      });
+
+      const json = await res.json();
+
+      if (json.success && json.access_token) {
+        setFormData((prev) => ({
+          ...prev,
+          instagramToken: json.access_token,
+          lastRefreshedAt: Date.now(),
+        }));
+        toast.success(
+          "Access Token refreshed successfully for 60 days! Click 'Save Changes' to apply.",
+          { id: toastId, duration: 5000 }
+        );
+      } else {
+        toast.error(
+          json.error || "Failed to refresh token. Please check your token or re-generate via Meta Developer Portal.",
+          { id: toastId, duration: 6000 }
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Network error while refreshing token.", { id: toastId });
+    } finally {
+      setIsRefreshingToken(false);
+    }
+  };
 
   useEffect(() => {
     if (initialData) {
@@ -87,7 +130,10 @@ export function InstagramRibbonCMS({
     setIsSaving(true);
     const toastId = toast.loading("Saving Instagram Ribbon details...");
     try {
-      const payload = { ...formData };
+      const payload = {
+        ...formData,
+        lastRefreshedAt: (formData as any).lastRefreshedAt || Date.now(),
+      };
 
       const body = sectionId
         ? { id: sectionId, content: payload }
@@ -195,13 +241,46 @@ export function InstagramRibbonCMS({
                     onChange={handleChange}
                     placeholder="e.g. 17841412345678901 (Leave blank to use manual fallback)"
                   />
-                  <InputField
-                    label="Instagram Long-Lived Access Token"
-                    name="instagramToken"
-                    value={formData.instagramToken || ""}
-                    onChange={handleChange}
-                    placeholder="e.g. EAAPz... (Leave blank to use manual fallback)"
-                  />
+                  <div className="flex flex-col gap-2">
+                    <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-end">
+                      <div className="flex-1 w-full">
+                        <InputField
+                          label="Instagram Long-Lived Access Token"
+                          name="instagramToken"
+                          value={formData.instagramToken || ""}
+                          onChange={handleChange}
+                          placeholder="e.g. EAAPz... (Leave blank to use manual fallback)"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleRefreshToken}
+                        disabled={isRefreshingToken || !formData.instagramToken?.trim()}
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-amber-600 hover:bg-amber-700 disabled:bg-amber-300 text-white text-xs font-semibold rounded-xl transition-all shadow-sm hover:shadow-md disabled:cursor-not-allowed cursor-pointer shrink-0"
+                        title="Extend access token validity by 60 days via Meta API"
+                      >
+                        <RefreshCw
+                          className={`w-4 h-4 ${isRefreshingToken ? "animate-spin" : ""}`}
+                        />
+                        {isRefreshingToken ? "Refreshing..." : "Refresh Token"}
+                      </button>
+                    </div>
+                    <div className="flex flex-col gap-2.5 pt-1">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-2 rounded-xl w-fit">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Automatic Token Refresh Active
+                        <span className="text-emerald-600 font-normal">
+                          • Renews automatically when token is near expiration (45+ days old)
+                        </span>
+                      </div>
+                      <p className="text-xs text-amber-800/80 pl-1">
+                        💡 Meta access tokens expire every 60 days. While your token is active and fresh, auto-refresh stays idle. It will automatically renew your token in the background once it reaches 45 days old (~15 days before expiration). You can also click <b>Refresh Token</b> anytime to manually extend validity.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
