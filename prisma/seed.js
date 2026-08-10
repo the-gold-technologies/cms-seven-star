@@ -15,6 +15,7 @@ const IMAGES = {
   DINING_TABLE: `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
   FOOD_STEAK: `${STORAGE_BASE}/1781686614010-SEVEN_STARS_2026_02_09-210.webp`,
   FOOD_SPECIAL: `${STORAGE_BASE}/1781686617797-SEVEN_STARS_2026_02_09-0113.webp`,
+  FOOD_SEASONAL_170: `${STORAGE_BASE}/1781688386177-SEVEN_STARS_2026_02_09-170.webp`,
   EVENT_GATHERING: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
   EVENT_MUSIC: `${STORAGE_BASE}/1781686610741-SEVEN_STARS_2026_02_09-0076.webp`,
   STORY_HERITAGE: `${STORAGE_BASE}/1781163080123-SEVEN_STARS_2026_02_09-0005.webp`,
@@ -457,8 +458,8 @@ async function main() {
                 title: "Seasonal Specials",
                 images: [
                   IMAGES.GALLERY_DRINKS,
-                  IMAGES.GALLERY_GARDEN,
                   IMAGES.STORY_HERITAGE,
+                  IMAGES.FOOD_SEASONAL_170,
                 ],
                 description:
                   "Fresh, local ingredients inspired by the changing seasons.",
@@ -490,19 +491,18 @@ async function main() {
                 image: `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
               },
               {
+                name: "Spiced Poached Pear",
+                price: "£8.50",
+                description:
+                  "Red wine gastrique, vanilla bean gelato, cinnamon oat crumble.",
+                image: `${STORAGE_BASE}/1781688775136-SEVEN_STARS_2026_02_09-0173.webp`,
+              },
+              {
                 name: "Spiced Home-Reared Lamb Kofta",
                 price: "£12.95",
                 description:
                   "Red pepper hummus, lightly spiced onion, tzatziki, warm pita.",
                 image: `${STORAGE_BASE}/1781071047399-SEVEN_STARS_2026_02_09-35.webp`,
-              },
-              {
-                name: "Spiced Poached Pear",
-                price: "£8.50",
-                description:
-                  "Red wine gastrique, vanilla bean gelato, cinnamon oat crumble.",
-                image:
-                  "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688775136-SEVEN_STARS_2026_02_09-0173.webp",
               },
             ],
           },
@@ -607,7 +607,7 @@ async function main() {
                 comment:
                   "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly boutique experience.",
                 rating: 5,
-                image: IMAGES.HERO_INTERIOR,
+                image: `${STORAGE_BASE}/1781686610741-SEVEN_STARS_2026_02_09-0076.webp`,
               },
               {
                 quote:
@@ -618,7 +618,7 @@ async function main() {
                 comment:
                   "A perfect blend of British tradition and modern culinary art. Their orange and cognac crème brulée is quite literally the best dessert I've had this year.",
                 rating: 5,
-                image: IMAGES.DINING_HALL,
+                image: `${STORAGE_BASE}/1781688388195-SEVEN_STARS_2026_02_09-155.webp`,
               },
               {
                 quote:
@@ -629,13 +629,13 @@ async function main() {
                 comment:
                   "We hosted our anniversary here and the team went above and beyond. The setting is stunning, especially in the evening when the glow hits the stone walls.",
                 rating: 5,
-                image: IMAGES.DINING_TABLE,
+                image: `${STORAGE_BASE}/1781688953515-SEVEN_STARS_2026_02_09-0006.webp`,
               },
             ],
             testimonialImages: [
-              IMAGES.HERO_INTERIOR,
-              IMAGES.DINING_HALL,
-              IMAGES.DINING_TABLE,
+              `${STORAGE_BASE}/1781686610741-SEVEN_STARS_2026_02_09-0076.webp`,
+              `${STORAGE_BASE}/1781688388195-SEVEN_STARS_2026_02_09-155.webp`,
+              `${STORAGE_BASE}/1781688953515-SEVEN_STARS_2026_02_09-0006.webp`,
             ],
           },
         },
@@ -735,9 +735,9 @@ async function main() {
             rootsHeading: "A village pub, owned by the",
             rootsHeadingItalic: "people it serves.",
             rootsDesc1:
-              "The Seven Stars at Marsh Baldon is set in a picturesque Oxfordshire village. In the truest sense of the word, it belongs to the people who call this place home. Community-owned and community-run, every pint poured and every plate served is a small act of keeping something genuinely valuable alive.",
+              "Nestled in the heart of Marsh Baldon, The Seven Stars is one of the few community-owned pubs in Oxfordshire. More than a local landmark, it is a shared commitment—kept alive by the people who cherish it.",
             rootsDesc2:
-              "Nestled in the heart of Marsh Baldon, The Seven Stars is one of the few community-owned pubs in Oxfordshire. More than a local landmark, it is a shared commitment—kept alive by the people who cherish it. Every pint poured, every meal served, and every guest welcomed helps preserve a pub that continues to bring people together, just as it has for generations.",
+              "Every pint poured, every meal served, and every guest welcomed helps preserve a pub that continues to bring people together, just as it has for generations.",
             pillar1: "Community Owned",
             pillar2: "Warm Hospitality",
             pillar3: "Local Produce",
@@ -763,7 +763,7 @@ async function main() {
           order: 2,
           content: {
             philosophyQuote:
-              "We believe that a great British pub should do three things well: serve excellent food, pour a proper drink, and make every single person who walks through the door feel welcome.",
+              "We believe a great British pub does three things well: serves excellent food, pours a proper drink, and makes everyone who walks through its doors feel at home.",
             title: "Our Hospitality Philosophy",
             quote:
               "We believe a great British pub does three things well: serves excellent food, pours a proper drink, and makes everyone who walks through its doors feel at home.",
@@ -784,12 +784,13 @@ async function main() {
               "The character of a classic Oxfordshire village.",
               "Warmth of local open fires and aged beams.",
               "A place where everyone is welcome.",
-              "More than a meal. More than a drink.",
-              "Set beside the village green, welcoming walkers, families, and friends.",
             ],
-            title: "Life at The Seven Stars",
+            title: "Life at The Seven Stars...",
+            subTitle: "More than a meal. More than a drink.",
             description:
-              "The Seven Stars is the kind of place where time slows down. Set beside the village green, it welcomes walkers fresh from the countryside, families gathering around the table, friends meeting over a pint, and visitors discovering Marsh Baldon for the first time.",
+              "The Seven Stars is the kind of place where time slows down. Set beside the village green, it welcomes walkers fresh from the countryside, families gathering around the table, friends meeting over a pint, and visitors discovering Marsh Baldon for the first time. In winter, the open fires invite you to linger indoors. In summer, the garden becomes the perfect place to settle in for the afternoon.",
+            paragraph2:
+              "Whatever brings you here, you'll leave having shared more than just good food and drink—you'll have experienced the warmth and easy charm of a pub that's been bringing people together for generations.",
           },
         },
         {
@@ -814,9 +815,9 @@ async function main() {
           type: "AboutCta",
           order: 5,
           content: {
-            ctaHeading: "Celebrate your special moments with us.",
+            ctaHeading: "The Backdrop to Life's Celebrations",
             ctaDesc:
-              "From intimate dinners to grand celebrations in our private barn, we make every occasion unforgettable. The Seven Stars is a place to come together.",
+              "From intimate dinners and milestone birthdays to weddings, anniversaries, christenings, and private celebrations—The Seven Stars is a place to come together. For larger gatherings, our private barn offers a characterful setting where every celebration feels truly special.",
             ctaButtonUrl: "/contact",
             ctaButtonLabel: "Book a Table",
             title: "The Backdrop to Life's Celebrations",
@@ -865,12 +866,11 @@ async function main() {
             headingPart1: "The",
             headingItalicHighlight: "Dining",
             headingPart3: "Experience",
-            mainQuote:
-              "Our kitchen works with fresh, carefully sourced ingredients to craft heartening dishes that become the season to bond together.",
+            mainQuote: "Honest food, thoughtfully prepared.",
             paragraph1:
-              "At their heart, our dishes are rooted in British pub tradition but we love to bring in Middle Eastern, European and South Asian influences that keep things interesting.",
+              "At The Seven Stars, every dish begins with fresh, carefully sourced ingredients and a respect for the seasons. Rooted in the traditions of the British pub, our menu is complemented by subtle influences from the Middle East, Europe and South Asia, bringing fresh perspectives to familiar favourites.",
             paragraph2:
-              "There's always something to look forward to with scrumptious open sandwiches, wholesome cheese boards and mouthwatering orange and cognac crème brulée.",
+              "Whether you're stopping by for a leisurely lunch, sharing a cheese board over drinks, enjoying one of our open sandwiches, or ending your meal with our orange and cognac crème brûlée, every plate is prepared with care and designed to be enjoyed together.",
             btnLabel: "View Our Menus",
             btnUrl: "/menu",
             indoorCapacity: "76",
@@ -885,18 +885,18 @@ async function main() {
           type: "DiningIntro",
           order: 2,
           content: {
-            introTagline: "THE DINING EXPERIENCE",
-            introHeadingPart1: "Honest food,",
-            introHeadingItalic: "thoughtfully",
-            introHeadingPart2: "prepared.",
+            introTagline: "The Dining Experience",
+            introHeadingPart1: "Serious food,",
+            introHeadingItalic: "unfussy",
+            introHeadingPart2: "hospitality.",
             introDesc1:
-              "At The Seven Stars, every dish begins with fresh, carefully sourced ingredients and a respect for the seasons. Rooted in the traditions of the British pub, our menu is complemented by subtle influences from the Middle East, Europe and South Asia.",
+              "A great pub is as much about what's in the glass as what's on the plate. Alongside our seasonal menus, you'll find a carefully kept selection of cask ales, craft beers, fine wines, premium spirits, and cocktails, chosen to suit every occasion—from a quiet pint after a countryside walk to a celebratory toast with family and friends.",
             introDesc2:
-              "Whether you're stopping by for a leisurely lunch, a Sunday roast, or ending your meal with our orange and cognac crème brûlée — every plate is prepared with care and designed to be enjoyed together.",
+              "What brings it all together is our approach to hospitality. Relaxed, genuine and without pretence, it's the kind of service that lets you settle in, linger a little longer, and enjoy good food, good drink and even better company.",
             introFeature1: "Locally Sourced Ingredients",
             introFeature2: "Seasonal Menus",
             introImage: IMAGES.DINING_TABLE,
-            title: "Honest food, thoughtfully prepared.",
+            title: "Serious food, unfussy hospitality.",
           },
         },
         {
@@ -905,31 +905,40 @@ async function main() {
           content: {
             quote:
               "Food is the ingredient that binds us together, And at Seven Stars, we make sure it's extraordinary.",
+            quotePart1:
+              "Food is the ingredient that binds us together, And at Seven Stars, we make sure it's",
+            quoteHighlight: "extraordinary.",
             author:
-              "Food has always brought people together. At The Seven Stars, we simply make it worth gathering for.",
+              "Food has always brought people together.\nAt The Seven Stars, we simply make it worth gathering for.",
           },
         },
         {
           type: "DiningPillars",
           order: 4,
           content: {
+            upperTag: "OUR MENU",
+            heading: "Classic Foundations,",
+            headingHighlight: "Global Inspirations",
             title: "Classic Foundations, Global Inspirations",
             subtitle: "British Traditions. Worldly Flavours.",
             pillars: [
               {
                 title: "British Classics",
                 description:
-                  "Timeless British favourites, prepared with care using fresh, seasonal ingredients. Familiar, comforting and full of flavour, they're the dishes you'll want to come back to.",
+                  "We serve British pub classics prepared properly. No shortcuts, just traditional recipes elevated with premium ingredients.",
+                image: `${STORAGE_BASE}/1781686617797-SEVEN_STARS_2026_02_09-0113.webp`,
               },
               {
                 title: "Seasonal Specials",
                 description:
-                  "Alongside our British favourites, our seasonal specials take inspiration from European, Middle Eastern and South Asian cuisines, offering new flavours to discover throughout the year.",
+                  "Our specials draw on European, Middle Eastern and South Asian flavours, bringing a contemporary twist to the village pub.",
+                image: `${STORAGE_BASE}/1781688386177-SEVEN_STARS_2026_02_09-170.webp`,
               },
               {
-                title: "Signature Experiences / Weekly Rituals",
+                title: "Not To Be Missed",
                 description:
-                  "Our fortnightly Indian Thali Nights sit comfortably alongside our celebrated Sunday Roasts, offering two dining experiences that guests look forward to throughout the year.",
+                  "Our fortnightly Indian Thali Nights and Sunday Roasts are designated the highlight of the week.",
+                image: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
               },
             ],
           },
@@ -944,9 +953,9 @@ async function main() {
             barnDesc:
               "Set apart from the main pub, The Barn offers a warm and characterful setting for private gatherings. Whether you're hosting an intimate celebration, a family occasion or a small corporate event, it's a flexible space paired with thoughtful hospitality and seasonal menus.",
             barnImage: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
-            capacityTitle: "CAPACITY",
+            capacityTitle: "Capacity",
             capacityDesc: "Designed for gatherings of up to 40 guests.",
-            beerTentTitle: "OUTDOOR EXTENSION",
+            beerTentTitle: "Outdoor Extension",
             beerTentDesc:
               "A covered Beer Tent provides a flexible outdoor setting for larger celebrations.",
             barnCtaText: "Enquire Barn Hire",
@@ -956,6 +965,9 @@ async function main() {
           type: "DiningOutdoor",
           order: 6,
           content: {
+            title: "Outdoor Seating",
+            description:
+              "When the weather is kind, there's nowhere better to be than our garden overlooking the village green. Settle in for a leisurely meal, enjoy a drink with friends, or simply take in the peaceful surroundings.",
             outdoorHeading: "Outdoor",
             outdoorHeadingItalic: "Seating",
             outdoorDesc:
@@ -1270,9 +1282,12 @@ async function main() {
           type: "MenuCellar",
           order: 3,
           content: {
-            title: "Local Ales, Lagers & Fine Drinks",
+            tagline: "THE CELLAR",
+            heading: "We take our drinks",
+            headingHighlight: "as seriously as our food.",
+            title: "The Cellar",
             description:
-              "We take our drinks as seriously as our food. The Seven Stars stocks a carefully chosen range of local ales, lagers and ciders while supporting producers from across the region.",
+              "A perfectly kept pint, a thoughtfully chosen wine or a favourite cocktail—whatever your drink of choice, you'll find a bar that's stocked with care. Alongside local ales, lagers and ciders, we proudly support producers from across the region.",
             image: IMAGES.GALLERY_DRINKS,
           },
         },
@@ -1316,25 +1331,93 @@ async function main() {
           type: "UpcomingEvents",
           order: 1,
           content: {
-            title: "Upcoming Pub Gatherings",
+            upperTag: "SEVEN STARS CALENDAR",
+            heading: "Upcoming & Past Occasions",
+            title: "Upcoming and Past Events",
             description:
-              "From summer BBQs in our sprawling beer garden to quiz nights, live music evenings, classic car meets and festive celebrations.",
-            events: [
+              "There's always something happening at The Seven Stars. Discover our upcoming dining experiences, seasonal celebrations and community events, or look back at some of the memorable moments we've shared together.",
+            upcomingEvents: [
               {
-                title: "Monthly Pub Quiz Night",
-                date: "First Thursday of the Month",
+                title: "Quiz Night",
+                date: "12th Aug, 26th Aug",
                 time: "7:30 PM",
+                category: "PUB EVENT",
+                highlight: "Test your trivia knowledge & win prizes",
                 description:
-                  "Test your trivia knowledge! Entry £2 per person, prizes for top teams.",
-                image: IMAGES.EVENT_GATHERING,
+                  "Join us for our popular Quiz Night at The Seven Stars! Test your knowledge, enjoy great drinks, and compete for exciting prizes with friends.",
+                image: `${STORAGE_BASE}/1781156724977-SEVEN_STARS_2026_02_09-0106.webp`,
               },
               {
-                title: "Live Acoustic & Summer BBQ Sessions",
-                date: "Every Alternate Sunday",
-                time: "4:00 PM - 7:00 PM",
+                title: "Classic Car Show",
+                date: "18th Aug, 15th Sep",
+                time: "5:00 PM",
+                category: "SPECIAL GATHERING",
+                highlight: "Vintage cars & classics on the green",
                 description:
-                  "Relax with local acoustic talent while enjoying great food and drinks in the garden.",
-                image: IMAGES.EVENT_MUSIC,
+                  "Admire a fantastic collection of classic cars and vintage vehicles on Marsh Baldon Green. Enjoy great food and drinks while meeting fellow car enthusiasts.",
+                image: `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
+              },
+              {
+                title: "Indian Desi Thali",
+                date: "20th Aug, 3rd & 17th Sep",
+                time: "6:00 PM",
+                category: "DINING EXPERIENCE",
+                highlight: "Authentic Indian curries & fresh naan",
+                description:
+                  "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
+                image: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
+              },
+              {
+                title: "Aunt Sally Season",
+                date: "Starting Soon",
+                time: "6:30 PM",
+                category: "TRADITIONAL PUB SPORT",
+                highlight: "Traditional Oxfordshire pub game",
+                description:
+                  "Get ready for the traditional Oxfordshire Aunt Sally pub game season at The Seven Stars! Join the local team or cheer from the garden.",
+                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
+              },
+            ],
+            events: [
+              {
+                title: "Quiz Night",
+                date: "12th Aug, 26th Aug",
+                time: "7:30 PM",
+                category: "PUB EVENT",
+                highlight: "Test your trivia knowledge & win prizes",
+                description:
+                  "Join us for our popular Quiz Night at The Seven Stars! Test your knowledge, enjoy great drinks, and compete for exciting prizes with friends.",
+                image: `${STORAGE_BASE}/1781156724977-SEVEN_STARS_2026_02_09-0106.webp`,
+              },
+              {
+                title: "Classic Car Show",
+                date: "18th Aug, 15th Sep",
+                time: "5:00 PM",
+                category: "SPECIAL GATHERING",
+                highlight: "Vintage cars & classics on the green",
+                description:
+                  "Admire a fantastic collection of classic cars and vintage vehicles on Marsh Baldon Green. Enjoy great food and drinks while meeting fellow car enthusiasts.",
+                image: `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
+              },
+              {
+                title: "Indian Desi Thali",
+                date: "20th Aug, 3rd & 17th Sep",
+                time: "6:00 PM",
+                category: "DINING EXPERIENCE",
+                highlight: "Authentic Indian curries & fresh naan",
+                description:
+                  "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
+                image: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
+              },
+              {
+                title: "Aunt Sally Season",
+                date: "Starting Soon",
+                time: "6:30 PM",
+                category: "TRADITIONAL PUB SPORT",
+                highlight: "Traditional Oxfordshire pub game",
+                description:
+                  "Get ready for the traditional Oxfordshire Aunt Sally pub game season at The Seven Stars! Join the local team or cheer from the garden.",
+                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
               },
             ],
           },
@@ -1357,16 +1440,17 @@ async function main() {
           content: {
             tagline: "PERFECT FOR EVERY OCCASION",
             heading: "What We Host",
+            title: "Occasions we host",
             subtext:
               "From intimate celebrations to large gatherings, we have the perfect setting for every occasion.",
             items: [
-              "Birthday parties & milestone celebrations",
-              "Family get-togethers & reunion dinners",
-              "Corporate lunches & team away days",
-              "Wedding receptions & pre-wedding celebrations",
-              "Summer BBQ parties",
-              "Christmas parties & NYE celebrations",
-              "Community events & fundraisers",
+              "Birthday celebrations and milestone occasions",
+              "Family gatherings and reunion dinners",
+              "Corporate lunches and team away days",
+              "Wedding receptions and pre-wedding celebrations",
+              "Summer BBQs and garden parties",
+              "Christmas and New Year's celebrations",
+              "Community events and fundraisers",
             ],
             image: `${STORAGE_BASE}/1781164162893-SEVEN_STARS_2026_02_09-0142.webp`,
           },
@@ -1416,9 +1500,16 @@ async function main() {
           type: "GalleryHero",
           order: 0,
           content: {
+            tagline: "VISUAL JOURNEY",
+            headingPart1: "Photo",
+            headingItalicHighlight: "Gallery",
             title: "Photo Gallery",
             subtitle:
-              "Check out our countryside charm, cosy interiors, roaring fireplace and finest beer garden",
+              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
+            quote:
+              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
+            description:
+              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
             backgroundImage: IMAGES.GALLERY_BAR,
           },
         },
@@ -1428,7 +1519,7 @@ async function main() {
           content: {
             title: "Our Image Collection",
             description:
-              "Explore our interiors, beer garden and the events that bring our community together.",
+              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
             images: ALL_SUPABASE_FILES.filter(
               (url) => !url.endsWith(".pdf") && !url.endsWith(".mp3"),
             ).map((url, idx) => ({
@@ -1474,14 +1565,14 @@ async function main() {
             subtitle: "A Community That Creates Happy Moments",
             description:
               "Our story began when we started looking for ways to bring people together. These community members shared a common interest and shared purpose.",
-            backgroundImage: `${STORAGE_BASE}/1781163080123-SEVEN_STARS_2026_02_09-0005.webp`,
+            backgroundImage: `${STORAGE_BASE}/1781073689384-SEVEN_STARS_2026_02_09-0104.webp`,
           },
         },
         {
           type: "StoryIntro",
           order: 1,
           content: {
-            introTagline: "OUR STORY",
+            introTagline: "Our Story",
             introHeading: "Saved by the community.",
             introHeadingItalic: "Sustained by its people.",
             introDesc:
@@ -1489,7 +1580,7 @@ async function main() {
             title: "A Pub by the People, for the People",
             content:
               "The Seven Stars is one of the few pubs in the country to be owned by the very community it serves. When its future was uncertain, the people of Marsh Baldon came together to secure it, ensuring this much-loved village pub would remain part of local life for generations to come.\n\nThat spirit continues to shape everything we do. While our roots are firmly in the village, our doors are open to everyone—whether you're a familiar face or visiting for the very first time. Every meal shared, every pint poured and every gathering held here helps sustain a place that belongs not to one person, but to an entire community.\n\nMore than a pub, The Seven Stars is a shared legacy—cared for by its people and enjoyed by all who walk through its doors.",
-            image: `${STORAGE_BASE}/1781085714533-SEVEN_STARS_2026_02_09-0008.webp`,
+            image: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
           },
         },
         {
@@ -1499,29 +1590,69 @@ async function main() {
             title: "Key Milestones in Our Journey",
             timelineSteps: [
               {
-                year: "1660s",
-                title: "350+ Years of Tradition",
-                desc: "Established as a village pub central to life across Marsh Baldon, Toot Baldon, and Nuneham Courtenay.",
+                subtitle: "CLOSURE",
+                year: "Late 2012",
+                title: "Late 2012",
+                desc: "After years of instability, the pub closed its doors. The villages lost a 350-year-old central hub for community joy.",
+                gridClass:
+                  "lg:col-span-2 lg:col-start-1 lg:row-start-1 md:col-span-2 md:col-start-1 md:row-start-1",
+                lines: {
+                  mobile: "down",
+                  tablet: "right",
+                  desktop: "right",
+                },
               },
               {
+                subtitle: "MISSION",
                 year: "Dec 2012",
-                title: "Community Society Formed",
-                desc: "Residents formed the Baldons and Nuneham Community Society (BNCS) to buy and run the pub.",
+                title: "Dec 2012",
+                desc: "What began as conversations turned into a mission. Residents formed the Baldons and Nuneham Community Society (BNCS).",
+                gridClass:
+                  "lg:col-span-2 lg:col-start-3 lg:row-start-1 md:col-span-2 md:col-start-3 md:row-start-1",
+                lines: {
+                  mobile: "down",
+                  tablet: "down",
+                  desktop: "right",
+                },
               },
               {
+                subtitle: "REOPENING",
                 year: "Mar 2013",
-                title: "Pub Reopened by Villagers",
-                desc: "Purchased in March 2013 and restored by villagers, reopening on 30th March 2013 as a revived community hub.",
+                title: "Mar 2013",
+                desc: "Through community investment and grants, the society purchased the pub. On March 30th, the Seven Stars reopened.",
+                gridClass:
+                  "lg:col-span-2 lg:col-start-5 lg:row-start-1 md:col-span-2 md:col-start-1 md:row-start-2",
+                lines: {
+                  mobile: "down",
+                  tablet: "right",
+                  desktop: "down-left",
+                },
               },
               {
+                subtitle: "MILESTONES",
                 year: "2016",
-                title: "CAMRA Pub of the Year",
-                desc: "Awarded CAMRA Pub of the Year with ongoing enhancements to dining, accessibility, and facilities.",
+                title: "The Journey",
+                desc: "Named CAMRA Pub of the Year in 2016. Continuous improvements and community support helped navigate challenges like COVID.",
+                gridClass:
+                  "lg:col-span-2 lg:col-start-4 lg:row-start-2 md:col-span-2 md:col-start-3 md:row-start-2",
+                lines: {
+                  mobile: "down",
+                  tablet: "down",
+                  desktop: "left",
+                },
               },
               {
-                year: "2023",
-                title: "New Stewardship Chapter",
-                desc: "A new chapter began under Namit Julka and Sunit Bansode, ensuring Seven Stars stays true to its roots with fresh energy.",
+                subtitle: "RENEWAL",
+                year: "2023 & Beyond",
+                title: "2023 & Beyond",
+                desc: "Under new stewards Namit and Sunit, the pub stays true to its roots with fresh energy. A true story of renewal.",
+                gridClass:
+                  "lg:col-span-2 lg:col-start-2 lg:row-start-2 md:col-span-2 md:col-start-2 md:row-start-3",
+                lines: {
+                  mobile: "none",
+                  tablet: "none",
+                  desktop: "none",
+                },
               },
             ],
             milestones: [
