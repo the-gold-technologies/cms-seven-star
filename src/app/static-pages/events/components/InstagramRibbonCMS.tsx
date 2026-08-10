@@ -29,7 +29,7 @@ export function InstagramRibbonCMS({
   sectionId,
   initialData,
   saveUrl = "/api/events",
-  responseKey = "EventsArchive",
+  responseKey = "InstagramRibbon",
   onSave,
   isOpen: controlledIsOpen,
   onToggle: controlledOnToggle,

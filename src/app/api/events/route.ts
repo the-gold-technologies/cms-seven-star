@@ -27,11 +27,11 @@ export async function GET() {
 
     const sectionsMap: Record<string, unknown> = {};
     for (const section of page.sections) {
-      if (section.type === "EventsArchive" && section.content) {
+      if (section.type === "InstagramRibbon" && section.content) {
         sectionsMap[section.type] = await checkAndAutoRefreshToken(
           section.content as Record<string, any>,
           PAGE_SLUG,
-          "EventsArchive"
+          "InstagramRibbon"
         );
       } else {
         sectionsMap[section.type] = section.content;
