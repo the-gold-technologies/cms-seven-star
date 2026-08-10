@@ -1321,9 +1321,14 @@ async function main() {
           type: "EventsHero",
           order: 0,
           content: {
-            title: "Events & Special Gatherings",
+            tagline: "EVENTS & CELEBRATIONS",
+            headingPart1: "Events &",
+            headingHighlight: "Functions",
+            title: "Events & Functions",
             subtitle:
-              "Step through the door into a classic space or enjoy Oxfordshire's finest beer garden",
+              "Step through the door into a classic space or enjoy Oxfordshire's finest beer garden.",
+            description:
+              "Step through the door into a classic space or enjoy Oxfordshire's finest beer garden.",
             backgroundImage: IMAGES.EVENT_GATHERING,
           },
         },
@@ -1459,22 +1464,31 @@ async function main() {
           type: "EventsCapabilities",
           order: 4,
           content: {
+            upperTag: "OUR SPACES",
+            heading: "Function Features",
+            headingHighlight: "& Spaces",
             title: "Function Features & Spaces",
             capabilities: [
               {
                 title: "Main Bar & Dining Area",
                 description:
                   "Seats 76 guests, warmed by an open fireplace in winter and filled with light in summer.",
+                iconName: "PartyPopper",
+                image: `${STORAGE_BASE}/1781160176550-SEVEN_STARS_2026_02_09-137.webp`,
               },
               {
                 title: "The Private Barn",
                 description:
                   "Flexible private space accommodating up to 40 guests for celebrations or corporate dining, with covered Beer Tent option.",
+                iconName: "Warehouse",
+                image: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
               },
               {
                 title: "Sprawling Beer Garden",
                 description:
                   "One of the finest beer gardens in Oxfordshire, seating 120 to 150 guests for slow summer afternoons.",
+                iconName: "Sun",
+                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
               },
             ],
           },
