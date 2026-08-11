@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sendEnquiryNotificationEmail } from "@/lib/mail";
 
 export async function GET(request: Request) {
   try {
@@ -67,6 +68,11 @@ export async function POST(request: Request) {
         budget,
         projectGoals,
       },
+    });
+
+    // Send email notification via SMTP (runs safely in background)
+    sendEnquiryNotificationEmail(enquiry).catch((err) => {
+      console.error("Error sending enquiry SMTP email:", err);
     });
 
     return NextResponse.json(
