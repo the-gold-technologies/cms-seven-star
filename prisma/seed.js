@@ -423,7 +423,7 @@ async function main() {
           content: {
             regularHeading: "Discover Our",
             italicHeading: "Pub Traditions",
-            tagLabel: "Boutique Gastro Experience",
+            tagLabel: "Gastro Pub Experience",
             title: "What Makes Us Special",
             subtitle: "Experience true countryside charm",
             features: [
@@ -475,8 +475,9 @@ async function main() {
             watermark: "Signature Dishes",
             badgeLabel: "Chef's Signature",
             badgeText: "Culinary excellence in every bite.",
-            ctaLabel: "Explore Full Menu",
-            ctaUrl: "/menu",
+            btnLabel: "Explore Full Menu",
+            btnSublabel: "See our complete seasonal collection",
+            btnUrl: "/menu",
             dishes: [
               {
                 name: "Pan-Seared Duck Breast",
@@ -530,7 +531,7 @@ async function main() {
               },
               {
                 src: IMAGES.GALLERY_BAR,
-                alt: "Club Atmosphere",
+                alt: "Pub Atmosphere",
               },
             ],
           },
@@ -595,12 +596,12 @@ async function main() {
             testimonials: [
               {
                 quote:
-                  "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly boutique experience.",
+                  "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly wonderful pub experience.",
                 author: "James Harrison",
                 name: "James Harrison",
                 role: "Local Food Critic",
                 comment:
-                  "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly boutique experience.",
+                  "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly wonderful pub experience.",
                 rating: 5,
                 image: `${STORAGE_BASE}/1781686610741-SEVEN_STARS_2026_02_09-0076.webp`,
               },
@@ -620,7 +621,7 @@ async function main() {
                   "We hosted our anniversary here and the team went above and beyond. The setting is stunning, especially in the evening when the glow hits the stone walls.",
                 author: "Robert & Elena",
                 name: "Robert & Elena",
-                role: "Club Members",
+                role: "Regular Guests",
                 comment:
                   "We hosted our anniversary here and the team went above and beyond. The setting is stunning, especially in the evening when the glow hits the stone walls.",
                 rating: 5,
@@ -660,9 +661,9 @@ async function main() {
           order: 9,
           content: {
             companyName: "SEVEN STARS",
-            tagline: "Countryside Gastro Club Pub",
+            tagline: "Countryside Gastro Pub",
             footerDescription:
-              "Born from a passion for exceptional hospitality, Seven Stars merges the warmth of a countryside pub with the sophistication of a premium gastro club.",
+              "Born from a passion for exceptional hospitality, Seven Stars merges the warmth of a countryside pub with the sophistication of a premium dining experience.",
             ctaLabel: "BOOK A TABLE",
             ctaUrl:
               "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
@@ -855,7 +856,8 @@ async function main() {
             headingPart1: "The",
             headingItalicHighlight: "Dining",
             headingPart3: "Experience",
-            mainQuote: "Honest food, thoughtfully prepared.",
+            mainQuote:
+              "Our kitchen works with fresh, carefully sourced ingredients to create craft-heartening dishes that become the season to bond together.",
             paragraph1:
               "At The Seven Stars, every dish begins with fresh, carefully sourced ingredients and a respect for the seasons. Rooted in the traditions of the British pub, our menu is complemented by subtle influences from the Middle East, Europe and South Asia, bringing fresh perspectives to familiar favourites.",
             paragraph2:
@@ -864,7 +866,8 @@ async function main() {
             btnUrl: "/menu",
             indoorCapacity: "76",
             gardenCapacity: "150",
-            showcaseImage: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
+            showcaseImage:
+              "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
             imageAlt: "Gourmet dish at Seven Stars",
             imageOverlayTitle: "Proper Food",
             imageOverlaySubtitle: "Honouring British Pub Tradition",
@@ -882,8 +885,8 @@ async function main() {
               "A great pub is as much about what's in the glass as what's on the plate. Alongside our seasonal menus, you'll find a carefully kept selection of cask ales, craft beers, fine wines, premium spirits, and cocktails, chosen to suit every occasion—from a quiet pint after a countryside walk to a celebratory toast with family and friends.",
             introDesc2:
               "What brings it all together is our approach to hospitality. Relaxed, genuine and without pretence, it's the kind of service that lets you settle in, linger a little longer, and enjoy good food, good drink and even better company.",
-            introFeature1: "Locally Sourced Ingredients",
-            introFeature2: "Seasonal Menus",
+            introFeature1: "EXPERT CHEFS",
+            introFeature2: "FRESH FLAVORS",
             introImage: `${STORAGE_BASE}/1780554493244-SEVEN_STARS_2026_02_09-120.webp`,
             title: "Serious food, unfussy hospitality.",
           },
@@ -1285,7 +1288,7 @@ async function main() {
           type: "MenuIntro",
           order: 4,
           content: {
-            title: "Dietary Options & Special Nights",
+            quote: "Dietary Options & Special Nights",
             subtext:
               "Don't miss our fortnightly Indian Thali Nights and seasonal specials, bringing exciting new flavours to Marsh Baldon throughout the year.",
           },
@@ -1398,8 +1401,7 @@ async function main() {
           order: 3,
           content: {
             tagline: "PERFECT FOR EVERY OCCASION",
-            heading: "What We Host",
-            title: "Occasions we host",
+            heading: "Occasions We Host",
             subtext:
               "From intimate celebrations to large gatherings, we have the perfect setting for every occasion.",
             items: [
@@ -1411,7 +1413,7 @@ async function main() {
               "Christmas and New Year's celebrations",
               "Community events and fundraisers",
             ],
-            image: `${STORAGE_BASE}/1781164162893-SEVEN_STARS_2026_02_09-0142.webp`,
+            image: `https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780555071861-Weddingpic.webp`,
           },
         },
         {
@@ -1819,25 +1821,68 @@ async function main() {
             title: "Featured Festive Dishes",
             dishesList: [
               {
-                name: "Roasted Norfolk Turkey",
-                tagline: "TRADITIONAL MAIN",
+                name: "Pan-Seared White Fish",
+                tagline: "FESTIVE SEAFOOD",
                 description:
-                  "Sage & onion stuffing, pigs in blankets, roast potatoes, and cranberry jus.",
-                image: `${STORAGE_BASE}/1781687988901-SEVEN_STARS_2026_02_09-81.webp`,
+                  "A golden-brown fish fillet served with roasted baby potatoes, steamed green beans, and a fresh lemon wedge.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish1.webp",
               },
               {
-                name: "Cured Scottish Salmon",
-                tagline: "FESTIVE STARTER",
+                name: "Herb-Crusted White Fish",
+                tagline: "ELEGANT MAIN",
                 description:
-                  "Citrus-cured salmon, pickled cucumber, radish, and herb emulsion.",
-                image: `${STORAGE_BASE}/1781078308869-82e86b0f-9c24-42cb-873a-73ee51ed02cb.webp`,
+                  "Succulent fish fillet garnished with fresh green herbs, accompanied by bright asparagus spears and roasted cherry tomatoes.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish2.webp",
               },
               {
-                name: "Traditional Christmas Pudding",
-                tagline: "FESTIVE DESSERT",
+                name: "Baked Camembert",
+                tagline: "WARM STARTER",
                 description:
-                  "Served warm with rich brandy butter, vanilla cream, and festive holly.",
-                image: `${STORAGE_BASE}/1782451835616-christmas-children-feast.webp`,
+                  "A whole warm cheese wheel topped with caramelized nuts, served with red berry compote and crispy breadsticks.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish3.webp",
+              },
+              {
+                name: "Red Wine Poached Pear",
+                tagline: "FRUITY DESSERT",
+                description:
+                  "Classic poached pear paired with a refreshing scoop of orange sorbet and a drizzle of reduction syrup.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish4.webp",
+              },
+              {
+                name: "Festive Fruit Crumble",
+                tagline: "COMFORT DESSERT",
+                description:
+                  "Warm mixed berry and apple crumble with a golden topping, served with rich, creamy custard.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish5.webp",
+              },
+              {
+                name: "Decadent Chocolate Mousse",
+                tagline: "RICH DESSERT",
+                description:
+                  "Soft chocolate cake cubes on a bed of chocolate soil, served with vibrant red berry sorbet.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish6.webp",
+              },
+              {
+                name: "Roasted Duck Breast",
+                tagline: "SIGNATURE MAIN",
+                description:
+                  "Tender, medium-rare slices of roasted meat elegantly plated over a vibrant green vegetable puree with savory jus.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish7.webp",
+              },
+              {
+                name: "Savoury Wellington",
+                tagline: "VEGETARIAN DELIGHT",
+                description:
+                  "Golden, flaky puff pastry wrapped around a rich, dark filling and fresh spinach, served on a bed of savory crumbs.",
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/dish8.webp",
               },
             ],
           },
@@ -1936,7 +1981,7 @@ async function main() {
           order: 0,
           content: {
             title: "Articles & News",
-            backgroundImage: IMAGES.BLOG_SUMMER,
+            backgroundImage: IMAGES.BLOG_LOCAL,
           },
         },
       ],
@@ -1962,8 +2007,8 @@ async function main() {
             title: "Privacy Policy",
             introduction:
               "We value your privacy and are committed to protecting your personal data.",
-            backgroundImage: IMAGES.HERO_INTERIOR,
-            content: `<h3>1. Important Information and Who We Are</h3><p>Seven Stars, located in Marsh Baldon, Oxford (referred to as "we", "us" or "our" in this privacy policy) is the controller and responsible for this website.</p><p>If you have any questions about this privacy policy, including any requests to exercise your legal rights, please contact us using the details set out below.</p><h3>2. The Data We Collect About You</h3><p>Personal data, or personal information, means any information about an individual from which that person can be identified.</p>`,
+            backgroundImage: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
+            content: `<h1><span style="color: rgb(91, 99, 104);">Privacy&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;protecting&nbsp;your&nbsp;privacy.&nbsp;In&nbsp;this&nbsp;notice,&nbsp;you&nbsp;can&nbsp;read&nbsp;about&nbsp;the&nbsp;information&nbsp;we&nbsp;collect&nbsp;from&nbsp;you&nbsp;and&nbsp;how&nbsp;we&nbsp;use&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;questions&nbsp;or&nbsp;concerns,&nbsp;you&nbsp;can&nbsp;email&nbsp;us&nbsp;at:&nbsp;info@sevenstarsatmb.co.uk</span></p><p><strong style="color: rgb(91, 99, 104);">1.&nbsp;Information&nbsp;we&nbsp;collect</strong></p><p><span style="color: rgb(91, 99, 104);">This&nbsp;notice&nbsp;applies&nbsp;to&nbsp;all&nbsp;information&nbsp;collected&nbsp;or&nbsp;submitted&nbsp;on&nbsp;our&nbsp;website.&nbsp;We&nbsp;collect&nbsp;this&nbsp;information&nbsp;to&nbsp;conveniently&nbsp;provide&nbsp;you&nbsp;with&nbsp;our&nbsp;products&nbsp;and&nbsp;services,&nbsp;or&nbsp;for&nbsp;technical&nbsp;reasons.</span></p><ul><li><span style="color: rgb(91, 99, 104);">Personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">Name&nbsp;and&nbsp;job&nbsp;title</span></li><li><span style="color: rgb(91, 99, 104);">Contact&nbsp;information&nbsp;including&nbsp;email&nbsp;address</span></li><li><span style="color: rgb(91, 99, 104);">Demographic&nbsp;information&nbsp;such&nbsp;as&nbsp;postcode,&nbsp;preferences&nbsp;and&nbsp;interests</span></li><li><span style="color: rgb(91, 99, 104);">Non-personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">The&nbsp;type&nbsp;of&nbsp;device&nbsp;you&nbsp;are&nbsp;using&nbsp;to&nbsp;view&nbsp;the&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;usage&nbsp;statistics</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;information,&nbsp;such&nbsp;as&nbsp;your&nbsp;internet&nbsp;service&nbsp;provider,&nbsp;IP&nbsp;address&nbsp;and&nbsp;internet&nbsp;browsing&nbsp;software,&nbsp;collected&nbsp;by&nbsp;our&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">“Cookies,”&nbsp;which&nbsp;enable&nbsp;the&nbsp;website&nbsp;to&nbsp;remember&nbsp;your&nbsp;information&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site,&nbsp;such&nbsp;as&nbsp;to&nbsp;keep&nbsp;you&nbsp;logged&nbsp;in&nbsp;or&nbsp;to&nbsp;remember&nbsp;your&nbsp;login&nbsp;credentials&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site</span></li></ul><p><strong style="color: rgb(91, 99, 104);">2.&nbsp;Visitors&nbsp;to&nbsp;our&nbsp;website</strong></p><p><strong style="color: rgb(91, 99, 104);">Google&nbsp;Analytics:</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;someone&nbsp;visits&nbsp;our&nbsp;website,&nbsp;we&nbsp;use&nbsp;a&nbsp;third&nbsp;party&nbsp;service,&nbsp;Google&nbsp;Analytics,&nbsp;to&nbsp;collect&nbsp;standard&nbsp;internet&nbsp;log&nbsp;information&nbsp;and&nbsp;details&nbsp;of&nbsp;visitor&nbsp;behaviour&nbsp;patterns.&nbsp;We&nbsp;do&nbsp;this&nbsp;to&nbsp;find&nbsp;out&nbsp;things&nbsp;such&nbsp;as&nbsp;the&nbsp;number&nbsp;of&nbsp;visitors&nbsp;to&nbsp;the&nbsp;various&nbsp;parts&nbsp;of&nbsp;the&nbsp;site.&nbsp;This&nbsp;information&nbsp;is&nbsp;only&nbsp;processed&nbsp;in&nbsp;a&nbsp;way&nbsp;which&nbsp;does&nbsp;not&nbsp;identify&nbsp;anyone.&nbsp;We&nbsp;do&nbsp;not&nbsp;make,&nbsp;and&nbsp;do&nbsp;not&nbsp;allow&nbsp;Google&nbsp;to&nbsp;make,&nbsp;any&nbsp;attempt&nbsp;to&nbsp;find&nbsp;out&nbsp;the&nbsp;identities&nbsp;of&nbsp;those&nbsp;visiting&nbsp;our&nbsp;website.&nbsp;If&nbsp;we&nbsp;do&nbsp;want&nbsp;to&nbsp;collect&nbsp;personally&nbsp;identifiable&nbsp;information&nbsp;through&nbsp;our&nbsp;website,&nbsp;we&nbsp;will&nbsp;be&nbsp;up&nbsp;front&nbsp;about&nbsp;this.&nbsp;We&nbsp;will&nbsp;make&nbsp;it&nbsp;clear&nbsp;when&nbsp;we&nbsp;collect&nbsp;personal&nbsp;information&nbsp;and&nbsp;will&nbsp;explain&nbsp;what&nbsp;we&nbsp;intend&nbsp;to&nbsp;do&nbsp;with&nbsp;it.</span></p><p><strong style="color: rgb(91, 99, 104);">Use&nbsp;of&nbsp;cookies:</strong></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;can&nbsp;read&nbsp;more&nbsp;about&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies&nbsp;on&nbsp;our&nbsp;Cookies&nbsp;Page.</span></p><p><strong style="color: rgb(91, 99, 104);">Newsletter:</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;sign&nbsp;up&nbsp;for&nbsp;our&nbsp;newsletter,&nbsp;which&nbsp;is&nbsp;administered&nbsp;through&nbsp;Mailchimp,&nbsp;we&nbsp;will&nbsp;store&nbsp;some&nbsp;of&nbsp;your&nbsp;information,&nbsp;including&nbsp;your&nbsp;email&nbsp;address,&nbsp;IP&nbsp;address&nbsp;and&nbsp;certain&nbsp;information&nbsp;about&nbsp;the&nbsp;links&nbsp;you&nbsp;click&nbsp;within&nbsp;the&nbsp;emails&nbsp;we&nbsp;send&nbsp;you,&nbsp;on&nbsp;a&nbsp;Mailchimp&nbsp;server.&nbsp;Neither&nbsp;Mailchimp&nbsp;nor&nbsp;we&nbsp;will&nbsp;ever&nbsp;sell&nbsp;your&nbsp;email&nbsp;address&nbsp;or&nbsp;share&nbsp;it&nbsp;with&nbsp;any&nbsp;other&nbsp;party,&nbsp;unless&nbsp;we&nbsp;are&nbsp;legally&nbsp;compelled&nbsp;to&nbsp;do&nbsp;so.&nbsp;If&nbsp;you&nbsp;contact&nbsp;Mailchimp&nbsp;directly&nbsp;regarding&nbsp;your&nbsp;subscription&nbsp;to&nbsp;our&nbsp;newsletter,&nbsp;Mailchimp&nbsp;may&nbsp;contact&nbsp;you&nbsp;directly;&nbsp;otherwise,&nbsp;Mailchimp&nbsp;will&nbsp;never&nbsp;contact&nbsp;you.&nbsp;Only&nbsp;authorised&nbsp;Mailchimp&nbsp;employees&nbsp;have&nbsp;access&nbsp;to&nbsp;our&nbsp;subscriber&nbsp;list.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;are&nbsp;always&nbsp;free&nbsp;to&nbsp;unsubscribe&nbsp;from&nbsp;our&nbsp;newsletter&nbsp;at&nbsp;any&nbsp;time&nbsp;by&nbsp;following&nbsp;the&nbsp;instructions&nbsp;contained&nbsp;within&nbsp;the&nbsp;email&nbsp;or&nbsp;by&nbsp;sending&nbsp;an&nbsp;email&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page,&nbsp;but&nbsp;as&nbsp;long&nbsp;as&nbsp;you&nbsp;are&nbsp;registered,&nbsp;we&nbsp;may&nbsp;use&nbsp;Mailchimp&nbsp;to&nbsp;send&nbsp;you&nbsp;information&nbsp;about&nbsp;your&nbsp;account.</span></p><p><strong style="color: rgb(91, 99, 104);">3.&nbsp;How&nbsp;we&nbsp;use&nbsp;your&nbsp;information</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;not&nbsp;sell,&nbsp;distribute&nbsp;or&nbsp;lease&nbsp;your&nbsp;personal&nbsp;information&nbsp;to&nbsp;third&nbsp;parties&nbsp;except&nbsp;(such&nbsp;as&nbsp;in&nbsp;the&nbsp;case&nbsp;of&nbsp;Mailchimp)&nbsp;when&nbsp;it’s&nbsp;necessary&nbsp;to&nbsp;complete&nbsp;the&nbsp;functions&nbsp;of&nbsp;the&nbsp;website.</span></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;email&nbsp;us,&nbsp;we&nbsp;will&nbsp;use&nbsp;your&nbsp;email&nbsp;address&nbsp;only&nbsp;for&nbsp;the&nbsp;purpose&nbsp;of&nbsp;responding&nbsp;to&nbsp;you&nbsp;and&nbsp;for&nbsp;no&nbsp;other&nbsp;purpose.</span></p><p><span style="color: rgb(91, 99, 104);">Sometimes&nbsp;we&nbsp;may&nbsp;use&nbsp;anonymous&nbsp;information&nbsp;about&nbsp;your&nbsp;use&nbsp;of&nbsp;our&nbsp;site&nbsp;in&nbsp;combination&nbsp;with&nbsp;other&nbsp;users’&nbsp;usage&nbsp;to&nbsp;make&nbsp;decisions&nbsp;about&nbsp;the&nbsp;contents&nbsp;and&nbsp;design&nbsp;of&nbsp;the&nbsp;web&nbsp;site.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;in&nbsp;response&nbsp;to&nbsp;court&nbsp;orders,&nbsp;or&nbsp;other&nbsp;legal&nbsp;process,&nbsp;or&nbsp;to&nbsp;establish&nbsp;or&nbsp;exercise&nbsp;our&nbsp;legal&nbsp;rights&nbsp;or&nbsp;to&nbsp;defend&nbsp;against&nbsp;legal&nbsp;claims.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;when&nbsp;we&nbsp;believe&nbsp;it&nbsp;necessary&nbsp;or&nbsp;desirable&nbsp;in&nbsp;order&nbsp;to&nbsp;investigate,&nbsp;prevent,&nbsp;or&nbsp;take&nbsp;action&nbsp;regarding&nbsp;illegal&nbsp;activities,&nbsp;suspected&nbsp;fraud,&nbsp;situations&nbsp;involving&nbsp;potential&nbsp;threats&nbsp;to&nbsp;the&nbsp;physical&nbsp;safety&nbsp;of&nbsp;any&nbsp;person,&nbsp;violations&nbsp;of&nbsp;our&nbsp;policies,&nbsp;and/or&nbsp;to&nbsp;protect&nbsp;our&nbsp;rights&nbsp;and&nbsp;property.</span></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;believe&nbsp;that&nbsp;any&nbsp;information&nbsp;we&nbsp;are&nbsp;holding&nbsp;on&nbsp;you&nbsp;is&nbsp;incorrect&nbsp;or&nbsp;incomplete,&nbsp;please&nbsp;write&nbsp;to&nbsp;or&nbsp;email&nbsp;us&nbsp;as&nbsp;soon&nbsp;as&nbsp;possible.&nbsp;We&nbsp;will&nbsp;promptly&nbsp;correct&nbsp;any&nbsp;information&nbsp;found&nbsp;to&nbsp;be&nbsp;incorrect.</span></p><p><strong style="color: rgb(91, 99, 104);">4.&nbsp;Data&nbsp;security</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;ensuring&nbsp;that&nbsp;your&nbsp;information&nbsp;is&nbsp;secure.&nbsp;We&nbsp;will&nbsp;never&nbsp;provide&nbsp;access&nbsp;to&nbsp;our&nbsp;databases&nbsp;to&nbsp;any&nbsp;third&nbsp;party,&nbsp;except&nbsp;to&nbsp;the&nbsp;extent&nbsp;necessary&nbsp;to&nbsp;conduct&nbsp;the&nbsp;operations&nbsp;of&nbsp;the&nbsp;web&nbsp;site&nbsp;(such&nbsp;as&nbsp;providing&nbsp;user&nbsp;data&nbsp;to&nbsp;Mailchimp).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;cannot&nbsp;ensure&nbsp;or&nbsp;warrant&nbsp;the&nbsp;security&nbsp;of&nbsp;any&nbsp;information&nbsp;you&nbsp;transmit&nbsp;to&nbsp;us&nbsp;or&nbsp;guarantee&nbsp;that&nbsp;your&nbsp;information&nbsp;on&nbsp;our&nbsp;web&nbsp;site&nbsp;may&nbsp;not&nbsp;be&nbsp;accessed,&nbsp;disclosed,&nbsp;altered&nbsp;or&nbsp;destroyed&nbsp;by&nbsp;breach&nbsp;of&nbsp;any&nbsp;of&nbsp;our&nbsp;industry&nbsp;standard&nbsp;physical,&nbsp;technical&nbsp;or&nbsp;managerial&nbsp;safeguards.&nbsp;When&nbsp;you&nbsp;enter&nbsp;sensitive&nbsp;information&nbsp;(such&nbsp;as&nbsp;contact&nbsp;form&nbsp;credentials)&nbsp;on&nbsp;our&nbsp;contact&nbsp;form,&nbsp;we&nbsp;encrypt&nbsp;that&nbsp;information&nbsp;using&nbsp;secure&nbsp;socket&nbsp;layer&nbsp;technology&nbsp;(SSL).&nbsp;No&nbsp;method&nbsp;of&nbsp;transmission&nbsp;over&nbsp;the&nbsp;Internet&nbsp;or&nbsp;method&nbsp;of&nbsp;electronic&nbsp;storage&nbsp;is&nbsp;100%&nbsp;secure,&nbsp;however.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;guarantee&nbsp;its&nbsp;absolute&nbsp;security.</span></p><p><strong style="color: rgb(91, 99, 104);">5.&nbsp;Access&nbsp;to&nbsp;Personal&nbsp;Information</strong></p><p><span style="color: rgb(91, 99, 104);">How&nbsp;to&nbsp;access&nbsp;your&nbsp;information</span></p><p><span style="color: rgb(91, 99, 104);">To&nbsp;access&nbsp;your&nbsp;information,&nbsp;you&nbsp;will&nbsp;need&nbsp;to&nbsp;put&nbsp;your&nbsp;request&nbsp;in&nbsp;writing.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;will&nbsp;need&nbsp;to&nbsp;provide&nbsp;information&nbsp;for&nbsp;us&nbsp;to&nbsp;identify&nbsp;you&nbsp;from&nbsp;our&nbsp;records,&nbsp;suchas&nbsp;yourr&nbsp;name&nbsp;and&nbsp;email&nbsp;address.&nbsp;You&nbsp;will&nbsp;also&nbsp;need&nbsp;to&nbsp;tell&nbsp;us&nbsp;what&nbsp;kind&nbsp;of&nbsp;information&nbsp;you&nbsp;are&nbsp;requesting&nbsp;to&nbsp;enable&nbsp;us&nbsp;to&nbsp;locate&nbsp;the&nbsp;information.&nbsp;Send&nbsp;your&nbsp;request&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page.</span></p><p><strong style="color: rgb(91, 99, 104);">Proof&nbsp;of&nbsp;identity</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;we&nbsp;receive&nbsp;a&nbsp;request&nbsp;for&nbsp;information,&nbsp;we&nbsp;must&nbsp;make&nbsp;sure&nbsp;you&nbsp;are&nbsp;who&nbsp;you&nbsp;say&nbsp;you&nbsp;are.&nbsp;We&nbsp;need&nbsp;proof&nbsp;of&nbsp;identity.&nbsp;These&nbsp;include:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Your&nbsp;full&nbsp;name</span></li><li><span style="color: rgb(91, 99, 104);">Email&nbsp;Address</span></li></ul><p><span style="color: rgb(91, 99, 104);">The&nbsp;following&nbsp;documents&nbsp;can&nbsp;be&nbsp;accepted&nbsp;to&nbsp;verify&nbsp;your&nbsp;identity.&nbsp;We&nbsp;require&nbsp;two&nbsp;forms&nbsp;of&nbsp;ID:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Current&nbsp;UK/EEA&nbsp;passport</span></li><li><span style="color: rgb(91, 99, 104);">UK&nbsp;photocard&nbsp;driving&nbsp;licence&nbsp;(full&nbsp;or&nbsp;provisional)</span></li><li><span style="color: rgb(91, 99, 104);">Firearms&nbsp;licence/shotgun&nbsp;certificate</span></li><li><span style="color: rgb(91, 99, 104);">EEA&nbsp;national&nbsp;identity&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Full&nbsp;UK&nbsp;paper&nbsp;driving&nbsp;licence</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;benefits&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;pension&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;credit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">Local&nbsp;authority&nbsp;benefit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State/local&nbsp;authority&nbsp;educational&nbsp;grant&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;notification&nbsp;document</span></li><li><span style="color: rgb(91, 99, 104);">Disabled&nbsp;driver’s&nbsp;pass</span></li><li><span style="color: rgb(91, 99, 104);">Financial&nbsp;statement&nbsp;issued&nbsp;by&nbsp;bank,&nbsp;building&nbsp;society&nbsp;or&nbsp;credit&nbsp;card&nbsp;company</span></li><li><span style="color: rgb(91, 99, 104);">Judiciary&nbsp;document&nbsp;such&nbsp;as&nbsp;a&nbsp;notice&nbsp;of&nbsp;hearing,&nbsp;summons&nbsp;or&nbsp;court&nbsp;order+</span></li><li><span style="color: rgb(91, 99, 104);">Utility&nbsp;bill&nbsp;for&nbsp;supply&nbsp;of&nbsp;gas,&nbsp;electric,&nbsp;water&nbsp;or&nbsp;telephone&nbsp;landline+</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;mortgage&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;council&nbsp;tax&nbsp;bill/demand&nbsp;or&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;rent&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;tenancy&nbsp;agreement</span></li><li><span style="color: rgb(91, 99, 104);">Building&nbsp;society&nbsp;passbook&nbsp;which&nbsp;shows&nbsp;a&nbsp;transaction&nbsp;in&nbsp;the&nbsp;last&nbsp;three&nbsp;months&nbsp;and&nbsp;your&nbsp;address</span></li></ul><p><span style="color: rgb(91, 99, 104);">*&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old.</span></p><p><span style="color: rgb(91, 99, 104);">+&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;three&nbsp;months&nbsp;old&nbsp;(except&nbsp;water&nbsp;bills&nbsp;–&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;accept&nbsp;copies&nbsp;of&nbsp;these&nbsp;documents.&nbsp;However,&nbsp;we&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;ask&nbsp;for&nbsp;originals&nbsp;if&nbsp;photocopies&nbsp;are&nbsp;not&nbsp;of&nbsp;a&nbsp;good&nbsp;quality.</span></p><p><span style="color: rgb(91, 99, 104);">A&nbsp;‘reasonable&nbsp;fee’&nbsp;will&nbsp;be&nbsp;charged&nbsp;when&nbsp;a&nbsp;request&nbsp;is&nbsp;manifestly&nbsp;unfounded&nbsp;or&nbsp;excessive,&nbsp;particularly&nbsp;if&nbsp;it&nbsp;is&nbsp;repetitive.&nbsp;We&nbsp;may&nbsp;also&nbsp;charge&nbsp;a&nbsp;reasonable&nbsp;fee&nbsp;to&nbsp;comply&nbsp;with&nbsp;requests&nbsp;for&nbsp;further&nbsp;copies&nbsp;of&nbsp;the&nbsp;same&nbsp;information.</span></p><p><strong style="color: rgb(91, 99, 104);">6.&nbsp;Changes&nbsp;to&nbsp;this&nbsp;policy</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;change&nbsp;this&nbsp;policy&nbsp;at&nbsp;any&nbsp;time.&nbsp;Although&nbsp;we&nbsp;will&nbsp;notify&nbsp;users&nbsp;appropriately&nbsp;when&nbsp;changes&nbsp;are&nbsp;made&nbsp;to&nbsp;this&nbsp;policy,&nbsp;you&nbsp;are&nbsp;responsible&nbsp;for&nbsp;checking&nbsp;this&nbsp;page&nbsp;for&nbsp;changes.&nbsp;Your&nbsp;use&nbsp;of&nbsp;our&nbsp;website&nbsp;constitutes&nbsp;agreement&nbsp;to&nbsp;this&nbsp;privacy&nbsp;policy.</span></p><p><strong style="color: rgb(91, 99, 104);">7.&nbsp;Links&nbsp;to&nbsp;other&nbsp;websites</strong></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;website&nbsp;may&nbsp;contain&nbsp;links&nbsp;to&nbsp;other&nbsp;websites&nbsp;of&nbsp;interest.&nbsp;However,&nbsp;once&nbsp;you&nbsp;have&nbsp;used&nbsp;these&nbsp;links&nbsp;to&nbsp;leave&nbsp;our&nbsp;site,&nbsp;you&nbsp;should&nbsp;note&nbsp;that&nbsp;we&nbsp;do&nbsp;not&nbsp;have&nbsp;any&nbsp;control&nbsp;over&nbsp;that&nbsp;other&nbsp;website.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;be&nbsp;responsible&nbsp;for&nbsp;the&nbsp;protection&nbsp;and&nbsp;privacy&nbsp;of&nbsp;any&nbsp;information&nbsp;which&nbsp;you&nbsp;provide&nbsp;whilst&nbsp;visiting&nbsp;such&nbsp;sites&nbsp;and&nbsp;such&nbsp;sites&nbsp;are&nbsp;not&nbsp;governed&nbsp;by&nbsp;this&nbsp;privacy&nbsp;statement.&nbsp;You&nbsp;should&nbsp;exercise&nbsp;caution&nbsp;and&nbsp;look&nbsp;at&nbsp;the&nbsp;privacy&nbsp;statement&nbsp;applicable&nbsp;to&nbsp;the&nbsp;website&nbsp;in&nbsp;question.</span></p><p></p><p></p>`,
           },
         },
       ],
@@ -1991,7 +2036,7 @@ async function main() {
             introduction:
               "Please read these Terms of Service carefully before accessing our website or placing table bookings.",
             backgroundImage: IMAGES.HERO_INTERIOR,
-            content: `<h3>1. Acceptance of Terms</h3><p>By accessing or using any part of our website or reservation service, you agree to be bound by these Terms of Service.</p><h3>2. Bookings, Cancellations and Deposits</h3><p>We use third-party tools to manage reservations. Bookings can be modified or canceled up to 24 hours prior to your scheduled time.</p>`,
+            content: `<h1><span style="color: rgb(91, 99, 104);">Cookie&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">Hi&nbsp;Baldon&nbsp;Ltd&nbsp;(“us”,&nbsp;“we”,&nbsp;or&nbsp;“our”)&nbsp;uses&nbsp;cookies&nbsp;on&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;(the&nbsp;“Service”).</span></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;Cookies&nbsp;Policy&nbsp;explains&nbsp;what&nbsp;cookies&nbsp;are,&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies,&nbsp;how&nbsp;third-parties&nbsp;we&nbsp;may&nbsp;partner&nbsp;with&nbsp;may&nbsp;use&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies&nbsp;and&nbsp;further&nbsp;information&nbsp;about&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;are&nbsp;small&nbsp;pieces&nbsp;of&nbsp;text&nbsp;sent&nbsp;by&nbsp;your&nbsp;web&nbsp;browser&nbsp;to&nbsp;a&nbsp;website&nbsp;you&nbsp;visit.&nbsp;A&nbsp;cookie&nbsp;file&nbsp;is&nbsp;stored&nbsp;in&nbsp;your&nbsp;web&nbsp;browser&nbsp;and&nbsp;allows&nbsp;the&nbsp;Service&nbsp;or&nbsp;a&nbsp;third&nbsp;party&nbsp;to&nbsp;recognise&nbsp;you,&nbsp;making&nbsp;your&nbsp;next&nbsp;visit&nbsp;easier&nbsp;and&nbsp;more&nbsp;efficient.&nbsp;You&nbsp;can&nbsp;find&nbsp;out&nbsp;more&nbsp;information&nbsp;about&nbsp;cookies&nbsp;at&nbsp;www.allaboutcookies.org</span></p><p><span style="color: rgb(91, 99, 104);">The&nbsp;law&nbsp;states&nbsp;that&nbsp;we&nbsp;can&nbsp;store&nbsp;cookies&nbsp;on&nbsp;your&nbsp;machine&nbsp;if&nbsp;they&nbsp;are&nbsp;essential&nbsp;to&nbsp;the&nbsp;operation&nbsp;of&nbsp;this&nbsp;site&nbsp;but&nbsp;that&nbsp;we&nbsp;need&nbsp;your&nbsp;permission&nbsp;before&nbsp;using&nbsp;any&nbsp;other&nbsp;type&nbsp;of&nbsp;cookie.</span></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;can&nbsp;be&nbsp;“persistent”&nbsp;or&nbsp;“session”&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">How&nbsp;&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;use&nbsp;and&nbsp;access&nbsp;the&nbsp;Service,&nbsp;we&nbsp;may&nbsp;place&nbsp;several&nbsp;cookie&nbsp;files&nbsp;in&nbsp;your&nbsp;web&nbsp;Browser.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;cookies&nbsp;for&nbsp;the&nbsp;following&nbsp;purposes:&nbsp;to&nbsp;enable&nbsp;certain&nbsp;functions&nbsp;of&nbsp;the&nbsp;Service,&nbsp;to&nbsp;provide&nbsp;analytics,&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;to&nbsp;enable&nbsp;advertisement&nbsp;delivery,&nbsp;including&nbsp;behavioural&nbsp;advertising.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;both&nbsp;session&nbsp;and&nbsp;persistent&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;and&nbsp;we&nbsp;use&nbsp;different&nbsp;types&nbsp;of&nbsp;cookies&nbsp;to&nbsp;run&nbsp;the&nbsp;Service:</span></p><p><span style="color: rgb(91, 99, 104);">Essential&nbsp;cookies.&nbsp;We&nbsp;may&nbsp;use&nbsp;essential&nbsp;cookies&nbsp;to&nbsp;authenticate&nbsp;users&nbsp;and&nbsp;prevent&nbsp;fraudulent&nbsp;use&nbsp;of&nbsp;user&nbsp;accounts.</span></p><p><strong style="color: rgb(91, 99, 104);">Third-party&nbsp;cookies</strong></p><p><span style="color: rgb(91, 99, 104);">In&nbsp;addition&nbsp;to&nbsp;our&nbsp;own&nbsp;cookies,&nbsp;we&nbsp;may&nbsp;also&nbsp;use&nbsp;various&nbsp;third-parties&nbsp;cookies&nbsp;to&nbsp;report&nbsp;usage&nbsp;statistics&nbsp;of&nbsp;the&nbsp;Service,&nbsp;deliver&nbsp;advertisements&nbsp;on&nbsp;and&nbsp;through&nbsp;the&nbsp;Service,&nbsp;and&nbsp;so&nbsp;on.</span></p><p><strong style="color: rgb(91, 99, 104);">The&nbsp;cookies&nbsp;we&nbsp;use</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;the&nbsp;following&nbsp;types&nbsp;of&nbsp;cookies&nbsp;on&nbsp;our&nbsp;website:</span></p><p><span style="color: rgb(91, 99, 104);">Google&nbsp;Analytics&nbsp;cookies:</span></p><p><span style="color: rgb(91, 99, 104);">These&nbsp;cookies&nbsp;collect&nbsp;information&nbsp;about&nbsp;how&nbsp;visitors&nbsp;use&nbsp;a&nbsp;website,e&nbsp;e.g.&nbsp;which&nbsp;pages&nbsp;visitors&nbsp;go&nbsp;to&nbsp;most&nbsp;often.&nbsp;These&nbsp;cookies&nbsp;do&nbsp;not&nbsp;collect&nbsp;information&nbsp;that&nbsp;identifies&nbsp;a&nbsp;visitor&nbsp;but&nbsp;provide&nbsp;a&nbsp;free&nbsp;web&nbsp;analytics&nbsp;service&nbsp;to&nbsp;website&nbsp;owners.</span></p><p><span style="color: rgb(91, 99, 104);">_ga</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;2&nbsp;years</span></p><p><span style="color: rgb(91, 99, 104);">_gid</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;24&nbsp;hours</span></p><p><span style="color: rgb(91, 99, 104);">_gat</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;throttle&nbsp;request&nbsp;rate</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;1&nbsp;minute</span></p><p><span style="color: rgb(91, 99, 104);">AMP_TOKEN</span></p><p><span style="color: rgb(91, 99, 104);">Contains&nbsp;a&nbsp;token&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;Client&nbsp;ID&nbsp;fromthe&nbsp;&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service.&nbsp;Other&nbsp;possible&nbsp;values&nbsp;indicate&nbsp;opt-out,&nbsp;inflight&nbsp;request&nbsp;or&nbsp;an&nbsp;error&nbsp;retrieving&nbsp;a&nbsp;Client&nbsp;ID&nbsp;from&nbsp;the&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;30&nbsp;seconds&nbsp;to&nbsp;1&nbsp;year</span></p><p><span style="color: rgb(91, 99, 104);">_gac_&nbsp;Contains&nbsp;campaign-related&nbsp;information&nbsp;for&nbsp;the&nbsp;user.&nbsp;If&nbsp;you&nbsp;have&nbsp;linked&nbsp;your&nbsp;Google&nbsp;Analytics&nbsp;and&nbsp;AdWords&nbsp;accounts,&nbsp;AdWords&nbsp;website&nbsp;conversion&nbsp;tags&nbsp;will&nbsp;read&nbsp;this&nbsp;cookie&nbsp;unless&nbsp;you&nbsp;opt&nbsp;out.</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;90&nbsp;days</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;accessing&nbsp;the&nbsp;Service,e&nbsp;the&nbsp;cookies&nbsp;noted&nbsp;above&nbsp;are&nbsp;automatically&nbsp;added&nbsp;to&nbsp;your&nbsp;computer.&nbsp;You&nbsp;may&nbsp;choose&nbsp;to&nbsp;block&nbsp;cookies&nbsp;by&nbsp;activating&nbsp;the&nbsp;setting&nbsp;on&nbsp;your&nbsp;browser&nbsp;that&nbsp;allows&nbsp;you&nbsp;to&nbsp;refuse&nbsp;the&nbsp;setting&nbsp;of&nbsp;all&nbsp;or&nbsp;some&nbsp;cookies.</span></p><p><span style="color: rgb(91, 99, 104);">Please&nbsp;note,&nbsp;however,&nbsp;that&nbsp;if&nbsp;you&nbsp;delete&nbsp;cookies&nbsp;or&nbsp;refuse&nbsp;to&nbsp;accept&nbsp;them,&nbsp;you&nbsp;might&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;use&nbsp;all&nbsp;of&nbsp;the&nbsp;features&nbsp;we&nbsp;offer,&nbsp;you&nbsp;may&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;and&nbsp;some&nbsp;of&nbsp;our&nbsp;pages&nbsp;might&nbsp;not&nbsp;display&nbsp;properly.</span></p><p><strong style="color: rgb(91, 99, 104);">Your&nbsp;consent</strong></p><p><span style="color: rgb(91, 99, 104);">By&nbsp;clicking&nbsp;on&nbsp;the&nbsp;“Accept&nbsp;Cookies”&nbsp;tab&nbsp;on&nbsp;the&nbsp;cookie&nbsp;pop-up&nbsp;on&nbsp;our&nbsp;site&nbsp;or&nbsp;by&nbsp;continuing&nbsp;to&nbsp;use&nbsp;the&nbsp;Service,&nbsp;we&nbsp;deem&nbsp;that&nbsp;you&nbsp;have&nbsp;provided&nbsp;your&nbsp;consent&nbsp;to&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;above-named&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">Contact&nbsp;us</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;have&nbsp;any&nbsp;queries&nbsp;about&nbsp;your&nbsp;personal&nbsp;information&nbsp;or&nbsp;any&nbsp;questions&nbsp;on&nbsp;our&nbsp;use&nbsp;of&nbsp;the&nbsp;information,&nbsp;please&nbsp;contact&nbsp;info@sevenstarsatmb.co.uk</span></p><p></p>`,
           },
         },
       ],
