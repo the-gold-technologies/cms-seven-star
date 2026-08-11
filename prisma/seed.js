@@ -1485,21 +1485,302 @@ async function main() {
             title: "Our Image Collection",
             description:
               "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
-            images: ALL_SUPABASE_FILES.filter(
-              (url) => !url.endsWith(".pdf") && !url.endsWith(".mp3"),
-            ).map((url, idx) => ({
-              url: url,
-              src: url,
-              category:
-                idx % 4 === 0
-                  ? "Exterior"
-                  : idx % 4 === 1
-                    ? "Food"
-                    : idx % 4 === 2
-                      ? "Interior"
-                      : "Events",
-              title: `Seven Stars Gallery Photo ${idx + 1}`,
-            })),
+            galleryItems: [
+              {
+                id: 1,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086645604-SEVEN_STARS_2026_02_09-169.webp",
+                category: "Food",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 1"
+              },
+              {
+                id: 2,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779096151673-gallery-8.webp",
+                category: "Outdoor",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 2"
+              },
+              {
+                id: 3,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+                category: "Indoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 3"
+              },
+              {
+                id: 4,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779093880678-footer-bg.webp",
+                category: "Food",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 4"
+              },
+              {
+                id: 5,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095839457-barn.webp",
+                category: "Outdoor",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 5"
+              },
+              {
+                id: 6,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+                category: "Indoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 6"
+              },
+              {
+                id: 7,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779094138324-food-gourmet.webp",
+                category: "Food",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 7"
+              },
+              {
+                id: 8,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095838769-gallery-4.webp",
+                category: "Outdoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 8"
+              },
+              {
+                id: 9,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087467006-SEVEN_STARS_2026_02_09-0043.webp",
+                category: "Indoor",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 9"
+              },
+              {
+                id: 10,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095841739-event-celebration.webp",
+                category: "Food",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 10"
+              },
+              {
+                id: 11,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
+                category: "Outdoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 11"
+              },
+              {
+                id: 12,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087463543-SEVEN_STARS_2026_02_09-0050.webp",
+                category: "Indoor",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 12"
+              },
+              {
+                id: 13,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102563583-SEVEN_STARS_2026_02_09-0065.webp",
+                category: "Food",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 13"
+              },
+              {
+                id: 14,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686614010-SEVEN_STARS_2026_02_09-210.webp",
+                category: "Outdoor",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 14"
+              },
+              {
+                id: 15,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087454735-SEVEN_STARS_2026_02_09-0048.webp",
+                category: "Indoor",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 15"
+              },
+              {
+                id: 16,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102629081-feature-classic-1.webp",
+                category: "Food",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 16"
+              },
+              {
+                id: 17,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
+                category: "Outdoor",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 17"
+              },
+              {
+                id: 18,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087435267-SEVEN_STARS_2026_02_09-0058.webp",
+                category: "Indoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 18"
+              },
+              {
+                id: 19,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102630377-feature-special-1.webp",
+                category: "Food",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 19"
+              },
+              {
+                id: 20,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
+                category: "Outdoor",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 20"
+              },
+              {
+                id: 21,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087019487-SEVEN_STARS_2026_02_09-0066.webp",
+                category: "Indoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 21"
+              },
+              {
+                id: 22,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779446831444-SEVEN_STARS_2026_02_09-10.webp",
+                category: "Food",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 22"
+              },
+              {
+                id: 23,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087458738-SEVEN_STARS_2026_02_09-0012.webp",
+                category: "Outdoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 23"
+              },
+              {
+                id: 24,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086666152-SEVEN_STARS_2026_02_09-0057.webp",
+                category: "Indoor",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 24"
+              },
+              {
+                id: 25,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637514694-SEVEN_STARS_2026_02_09-349.webp",
+                category: "Food",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 25"
+              },
+              {
+                id: 26,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087445795-SEVEN_STARS_2026_02_09-0023.webp",
+                category: "Outdoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 26"
+              },
+              {
+                id: 27,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086662028-SEVEN_STARS_2026_02_09-0080.webp",
+                category: "Indoor",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 27"
+              },
+              {
+                id: 28,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637679964-SEVEN_STARS_2026_02_09-265.webp",
+                category: "Food",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 28"
+              },
+              {
+                id: 29,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087440607-SEVEN_STARS_2026_02_09-0016.webp",
+                category: "Outdoor",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 29"
+              },
+              {
+                id: 30,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086655447-SEVEN_STARS_2026_02_09-0025.webp",
+                category: "Indoor",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 30"
+              },
+              {
+                id: 31,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637684315-SEVEN_STARS_2026_02_09-344.webp",
+                category: "Food",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 31"
+              },
+              {
+                id: 32,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087039804-SEVEN_STARS_2026_02_09-0011.webp",
+                category: "Outdoor",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 32"
+              },
+              {
+                id: 33,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085738861-SEVEN_STARS_2026_02_09-0040.webp",
+                category: "Indoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 33"
+              },
+              {
+                id: 34,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637685212-SEVEN_STARS_2026_02_09-94.webp",
+                category: "Food",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 34"
+              },
+              {
+                id: 35,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087033121-SEVEN_STARS_2026_02_09-0106.webp",
+                category: "Outdoor",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 35"
+              },
+              {
+                id: 36,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085721419-SEVEN_STARS_2026_02_09-0032.webp",
+                category: "Indoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 36"
+              },
+              {
+                id: 37,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781071047399-SEVEN_STARS_2026_02_09-35.webp",
+                category: "Food",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 37"
+              },
+              {
+                id: 38,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086064541-SEVEN_STARS_2026_02_09-0022.webp",
+                category: "Outdoor",
+                aspect: "aspect-[3/4]",
+                title: "Seven Stars Gallery Photo 38"
+              },
+              {
+                id: 39,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779100598226-gallery-25.webp",
+                category: "Indoor",
+                aspect: "aspect-[4/5]",
+                title: "Seven Stars Gallery Photo 39"
+              },
+              {
+                id: 40,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781074152897-SEVEN_STARS_2026_02_09-5.webp",
+                category: "Food",
+                aspect: "aspect-[16/9]",
+                title: "Seven Stars Gallery Photo 40"
+              },
+              {
+                id: 41,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779099397728-gallery-25.webp",
+                category: "Indoor",
+                aspect: "aspect-square",
+                title: "Seven Stars Gallery Photo 41"
+              },
+              {
+                id: 42,
+                src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085731650-SEVEN_STARS_2026_02_09-125.webp",
+                category: "Food",
+                aspect: "aspect-[4/3]",
+                title: "Seven Stars Gallery Photo 42"
+              }
+            ],
           },
         },
       ],
