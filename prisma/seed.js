@@ -379,7 +379,7 @@ async function main() {
           type: "FirstTimePopup",
           order: 1,
           content: {
-            isEnabled: true,
+            isEnabled: false,
             title: "Send an Enquiry",
             description: "We aim to respond to all enquiries within 24 hours.",
             welcomeText: "Welcome",
@@ -834,9 +834,8 @@ async function main() {
           order: 0,
           content: {
             tagline: "SEASONAL DINING",
-            headingPart1: "The Dining",
+            headingPart1: "Dining",
             headingItalicHighlight: "Experience",
-            title: "The Dining Experience",
             backgroundImage: IMAGES.DINING_HALL,
           },
         },
@@ -880,20 +879,15 @@ async function main() {
             introFeature1: "EXPERT CHEFS",
             introFeature2: "FRESH FLAVORS",
             introImage: `${STORAGE_BASE}/1780554493244-SEVEN_STARS_2026_02_09-120.webp`,
-            title: "Serious food, unfussy hospitality.",
           },
         },
         {
           type: "DiningQuote",
           order: 3,
           content: {
-            quote:
-              "Food is the ingredient that binds us together, And at Seven Stars, we make sure it's extraordinary.",
             quotePart1:
               "Food is the ingredient that binds us together, And at Seven Stars, we make sure it's",
             quoteHighlight: "extraordinary.",
-            author:
-              "Food has always brought people together.\nAt The Seven Stars, we simply make it worth gathering for.",
           },
         },
         {
@@ -903,8 +897,6 @@ async function main() {
             upperTag: "OUR MENU",
             heading: "Classic Foundations,",
             headingHighlight: "Global Inspirations",
-            title: "Classic Foundations, Global Inspirations",
-            subtitle: "British Traditions. Worldly Flavours.",
             pillars: [
               {
                 title: "British Classics",
@@ -949,9 +941,6 @@ async function main() {
           type: "DiningOutdoor",
           order: 6,
           content: {
-            title: "Outdoor Seating",
-            description:
-              "When the weather is kind, there's nowhere better to be than our garden overlooking the village green. Settle in for a leisurely meal, enjoy a drink with friends, or simply take in the peaceful surroundings.",
             outdoorHeading: "Outdoor",
             outdoorHeadingItalic: "Seating",
             outdoorDesc:
@@ -987,7 +976,7 @@ async function main() {
           content: {
             tagline: "SEASONAL SELECTION",
             headingPart1: "Our ",
-            headingHighlight: "Menus",
+            headingHighlight: "Menu",
             backgroundImage: `${STORAGE_BASE}/1780637784295-SEVEN_STARS_2026_02_09-34.webp`,
           },
         },
@@ -2220,7 +2209,10 @@ async function main() {
           type: "BlogHero",
           order: 0,
           content: {
-            title: "Articles & News",
+            tagline: "GUIDES & ARTICLES",
+            headingPart1: "The Seven Stars",
+            headingItalicHighlight: "Blogs & News",
+            description: "",
             backgroundImage: IMAGES.BLOG_LOCAL,
           },
         },
@@ -2245,8 +2237,7 @@ async function main() {
           order: 0,
           content: {
             title: "Privacy Policy",
-            introduction:
-              "We value your privacy and are committed to protecting your personal data.",
+            introduction: "",
             backgroundImage: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
             content: `<h1><span style="color: rgb(91, 99, 104);">Privacy&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;protecting&nbsp;your&nbsp;privacy.&nbsp;In&nbsp;this&nbsp;notice,&nbsp;you&nbsp;can&nbsp;read&nbsp;about&nbsp;the&nbsp;information&nbsp;we&nbsp;collect&nbsp;from&nbsp;you&nbsp;and&nbsp;how&nbsp;we&nbsp;use&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;questions&nbsp;or&nbsp;concerns,&nbsp;you&nbsp;can&nbsp;email&nbsp;us&nbsp;at:&nbsp;info@sevenstarsatmb.co.uk</span></p><p><strong style="color: rgb(91, 99, 104);">1.&nbsp;Information&nbsp;we&nbsp;collect</strong></p><p><span style="color: rgb(91, 99, 104);">This&nbsp;notice&nbsp;applies&nbsp;to&nbsp;all&nbsp;information&nbsp;collected&nbsp;or&nbsp;submitted&nbsp;on&nbsp;our&nbsp;website.&nbsp;We&nbsp;collect&nbsp;this&nbsp;information&nbsp;to&nbsp;conveniently&nbsp;provide&nbsp;you&nbsp;with&nbsp;our&nbsp;products&nbsp;and&nbsp;services,&nbsp;or&nbsp;for&nbsp;technical&nbsp;reasons.</span></p><ul><li><span style="color: rgb(91, 99, 104);">Personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">Name&nbsp;and&nbsp;job&nbsp;title</span></li><li><span style="color: rgb(91, 99, 104);">Contact&nbsp;information&nbsp;including&nbsp;email&nbsp;address</span></li><li><span style="color: rgb(91, 99, 104);">Demographic&nbsp;information&nbsp;such&nbsp;as&nbsp;postcode,&nbsp;preferences&nbsp;and&nbsp;interests</span></li><li><span style="color: rgb(91, 99, 104);">Non-personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">The&nbsp;type&nbsp;of&nbsp;device&nbsp;you&nbsp;are&nbsp;using&nbsp;to&nbsp;view&nbsp;the&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;usage&nbsp;statistics</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;information,&nbsp;such&nbsp;as&nbsp;your&nbsp;internet&nbsp;service&nbsp;provider,&nbsp;IP&nbsp;address&nbsp;and&nbsp;internet&nbsp;browsing&nbsp;software,&nbsp;collected&nbsp;by&nbsp;our&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">“Cookies,”&nbsp;which&nbsp;enable&nbsp;the&nbsp;website&nbsp;to&nbsp;remember&nbsp;your&nbsp;information&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site,&nbsp;such&nbsp;as&nbsp;to&nbsp;keep&nbsp;you&nbsp;logged&nbsp;in&nbsp;or&nbsp;to&nbsp;remember&nbsp;your&nbsp;login&nbsp;credentials&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site</span></li></ul><p><strong style="color: rgb(91, 99, 104);">2.&nbsp;Visitors&nbsp;to&nbsp;our&nbsp;website</strong></p><p><strong style="color: rgb(91, 99, 104);">Google&nbsp;Analytics:</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;someone&nbsp;visits&nbsp;our&nbsp;website,&nbsp;we&nbsp;use&nbsp;a&nbsp;third&nbsp;party&nbsp;service,&nbsp;Google&nbsp;Analytics,&nbsp;to&nbsp;collect&nbsp;standard&nbsp;internet&nbsp;log&nbsp;information&nbsp;and&nbsp;details&nbsp;of&nbsp;visitor&nbsp;behaviour&nbsp;patterns.&nbsp;We&nbsp;do&nbsp;this&nbsp;to&nbsp;find&nbsp;out&nbsp;things&nbsp;such&nbsp;as&nbsp;the&nbsp;number&nbsp;of&nbsp;visitors&nbsp;to&nbsp;the&nbsp;various&nbsp;parts&nbsp;of&nbsp;the&nbsp;site.&nbsp;This&nbsp;information&nbsp;is&nbsp;only&nbsp;processed&nbsp;in&nbsp;a&nbsp;way&nbsp;which&nbsp;does&nbsp;not&nbsp;identify&nbsp;anyone.&nbsp;We&nbsp;do&nbsp;not&nbsp;make,&nbsp;and&nbsp;do&nbsp;not&nbsp;allow&nbsp;Google&nbsp;to&nbsp;make,&nbsp;any&nbsp;attempt&nbsp;to&nbsp;find&nbsp;out&nbsp;the&nbsp;identities&nbsp;of&nbsp;those&nbsp;visiting&nbsp;our&nbsp;website.&nbsp;If&nbsp;we&nbsp;do&nbsp;want&nbsp;to&nbsp;collect&nbsp;personally&nbsp;identifiable&nbsp;information&nbsp;through&nbsp;our&nbsp;website,&nbsp;we&nbsp;will&nbsp;be&nbsp;up&nbsp;front&nbsp;about&nbsp;this.&nbsp;We&nbsp;will&nbsp;make&nbsp;it&nbsp;clear&nbsp;when&nbsp;we&nbsp;collect&nbsp;personal&nbsp;information&nbsp;and&nbsp;will&nbsp;explain&nbsp;what&nbsp;we&nbsp;intend&nbsp;to&nbsp;do&nbsp;with&nbsp;it.</span></p><p><strong style="color: rgb(91, 99, 104);">Use&nbsp;of&nbsp;cookies:</strong></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;can&nbsp;read&nbsp;more&nbsp;about&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies&nbsp;on&nbsp;our&nbsp;Cookies&nbsp;Page.</span></p><p><strong style="color: rgb(91, 99, 104);">Newsletter:</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;sign&nbsp;up&nbsp;for&nbsp;our&nbsp;newsletter,&nbsp;which&nbsp;is&nbsp;administered&nbsp;through&nbsp;Mailchimp,&nbsp;we&nbsp;will&nbsp;store&nbsp;some&nbsp;of&nbsp;your&nbsp;information,&nbsp;including&nbsp;your&nbsp;email&nbsp;address,&nbsp;IP&nbsp;address&nbsp;and&nbsp;certain&nbsp;information&nbsp;about&nbsp;the&nbsp;links&nbsp;you&nbsp;click&nbsp;within&nbsp;the&nbsp;emails&nbsp;we&nbsp;send&nbsp;you,&nbsp;on&nbsp;a&nbsp;Mailchimp&nbsp;server.&nbsp;Neither&nbsp;Mailchimp&nbsp;nor&nbsp;we&nbsp;will&nbsp;ever&nbsp;sell&nbsp;your&nbsp;email&nbsp;address&nbsp;or&nbsp;share&nbsp;it&nbsp;with&nbsp;any&nbsp;other&nbsp;party,&nbsp;unless&nbsp;we&nbsp;are&nbsp;legally&nbsp;compelled&nbsp;to&nbsp;do&nbsp;so.&nbsp;If&nbsp;you&nbsp;contact&nbsp;Mailchimp&nbsp;directly&nbsp;regarding&nbsp;your&nbsp;subscription&nbsp;to&nbsp;our&nbsp;newsletter,&nbsp;Mailchimp&nbsp;may&nbsp;contact&nbsp;you&nbsp;directly;&nbsp;otherwise,&nbsp;Mailchimp&nbsp;will&nbsp;never&nbsp;contact&nbsp;you.&nbsp;Only&nbsp;authorised&nbsp;Mailchimp&nbsp;employees&nbsp;have&nbsp;access&nbsp;to&nbsp;our&nbsp;subscriber&nbsp;list.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;are&nbsp;always&nbsp;free&nbsp;to&nbsp;unsubscribe&nbsp;from&nbsp;our&nbsp;newsletter&nbsp;at&nbsp;any&nbsp;time&nbsp;by&nbsp;following&nbsp;the&nbsp;instructions&nbsp;contained&nbsp;within&nbsp;the&nbsp;email&nbsp;or&nbsp;by&nbsp;sending&nbsp;an&nbsp;email&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page,&nbsp;but&nbsp;as&nbsp;long&nbsp;as&nbsp;you&nbsp;are&nbsp;registered,&nbsp;we&nbsp;may&nbsp;use&nbsp;Mailchimp&nbsp;to&nbsp;send&nbsp;you&nbsp;information&nbsp;about&nbsp;your&nbsp;account.</span></p><p><strong style="color: rgb(91, 99, 104);">3.&nbsp;How&nbsp;we&nbsp;use&nbsp;your&nbsp;information</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;not&nbsp;sell,&nbsp;distribute&nbsp;or&nbsp;lease&nbsp;your&nbsp;personal&nbsp;information&nbsp;to&nbsp;third&nbsp;parties&nbsp;except&nbsp;(such&nbsp;as&nbsp;in&nbsp;the&nbsp;case&nbsp;of&nbsp;Mailchimp)&nbsp;when&nbsp;it’s&nbsp;necessary&nbsp;to&nbsp;complete&nbsp;the&nbsp;functions&nbsp;of&nbsp;the&nbsp;website.</span></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;email&nbsp;us,&nbsp;we&nbsp;will&nbsp;use&nbsp;your&nbsp;email&nbsp;address&nbsp;only&nbsp;for&nbsp;the&nbsp;purpose&nbsp;of&nbsp;responding&nbsp;to&nbsp;you&nbsp;and&nbsp;for&nbsp;no&nbsp;other&nbsp;purpose.</span></p><p><span style="color: rgb(91, 99, 104);">Sometimes&nbsp;we&nbsp;may&nbsp;use&nbsp;anonymous&nbsp;information&nbsp;about&nbsp;your&nbsp;use&nbsp;of&nbsp;our&nbsp;site&nbsp;in&nbsp;combination&nbsp;with&nbsp;other&nbsp;users’&nbsp;usage&nbsp;to&nbsp;make&nbsp;decisions&nbsp;about&nbsp;the&nbsp;contents&nbsp;and&nbsp;design&nbsp;of&nbsp;the&nbsp;web&nbsp;site.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;in&nbsp;response&nbsp;to&nbsp;court&nbsp;orders,&nbsp;or&nbsp;other&nbsp;legal&nbsp;process,&nbsp;or&nbsp;to&nbsp;establish&nbsp;or&nbsp;exercise&nbsp;our&nbsp;legal&nbsp;rights&nbsp;or&nbsp;to&nbsp;defend&nbsp;against&nbsp;legal&nbsp;claims.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;when&nbsp;we&nbsp;believe&nbsp;it&nbsp;necessary&nbsp;or&nbsp;desirable&nbsp;in&nbsp;order&nbsp;to&nbsp;investigate,&nbsp;prevent,&nbsp;or&nbsp;take&nbsp;action&nbsp;regarding&nbsp;illegal&nbsp;activities,&nbsp;suspected&nbsp;fraud,&nbsp;situations&nbsp;involving&nbsp;potential&nbsp;threats&nbsp;to&nbsp;the&nbsp;physical&nbsp;safety&nbsp;of&nbsp;any&nbsp;person,&nbsp;violations&nbsp;of&nbsp;our&nbsp;policies,&nbsp;and/or&nbsp;to&nbsp;protect&nbsp;our&nbsp;rights&nbsp;and&nbsp;property.</span></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;believe&nbsp;that&nbsp;any&nbsp;information&nbsp;we&nbsp;are&nbsp;holding&nbsp;on&nbsp;you&nbsp;is&nbsp;incorrect&nbsp;or&nbsp;incomplete,&nbsp;please&nbsp;write&nbsp;to&nbsp;or&nbsp;email&nbsp;us&nbsp;as&nbsp;soon&nbsp;as&nbsp;possible.&nbsp;We&nbsp;will&nbsp;promptly&nbsp;correct&nbsp;any&nbsp;information&nbsp;found&nbsp;to&nbsp;be&nbsp;incorrect.</span></p><p><strong style="color: rgb(91, 99, 104);">4.&nbsp;Data&nbsp;security</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;ensuring&nbsp;that&nbsp;your&nbsp;information&nbsp;is&nbsp;secure.&nbsp;We&nbsp;will&nbsp;never&nbsp;provide&nbsp;access&nbsp;to&nbsp;our&nbsp;databases&nbsp;to&nbsp;any&nbsp;third&nbsp;party,&nbsp;except&nbsp;to&nbsp;the&nbsp;extent&nbsp;necessary&nbsp;to&nbsp;conduct&nbsp;the&nbsp;operations&nbsp;of&nbsp;the&nbsp;web&nbsp;site&nbsp;(such&nbsp;as&nbsp;providing&nbsp;user&nbsp;data&nbsp;to&nbsp;Mailchimp).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;cannot&nbsp;ensure&nbsp;or&nbsp;warrant&nbsp;the&nbsp;security&nbsp;of&nbsp;any&nbsp;information&nbsp;you&nbsp;transmit&nbsp;to&nbsp;us&nbsp;or&nbsp;guarantee&nbsp;that&nbsp;your&nbsp;information&nbsp;on&nbsp;our&nbsp;web&nbsp;site&nbsp;may&nbsp;not&nbsp;be&nbsp;accessed,&nbsp;disclosed,&nbsp;altered&nbsp;or&nbsp;destroyed&nbsp;by&nbsp;breach&nbsp;of&nbsp;any&nbsp;of&nbsp;our&nbsp;industry&nbsp;standard&nbsp;physical,&nbsp;technical&nbsp;or&nbsp;managerial&nbsp;safeguards.&nbsp;When&nbsp;you&nbsp;enter&nbsp;sensitive&nbsp;information&nbsp;(such&nbsp;as&nbsp;contact&nbsp;form&nbsp;credentials)&nbsp;on&nbsp;our&nbsp;contact&nbsp;form,&nbsp;we&nbsp;encrypt&nbsp;that&nbsp;information&nbsp;using&nbsp;secure&nbsp;socket&nbsp;layer&nbsp;technology&nbsp;(SSL).&nbsp;No&nbsp;method&nbsp;of&nbsp;transmission&nbsp;over&nbsp;the&nbsp;Internet&nbsp;or&nbsp;method&nbsp;of&nbsp;electronic&nbsp;storage&nbsp;is&nbsp;100%&nbsp;secure,&nbsp;however.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;guarantee&nbsp;its&nbsp;absolute&nbsp;security.</span></p><p><strong style="color: rgb(91, 99, 104);">5.&nbsp;Access&nbsp;to&nbsp;Personal&nbsp;Information</strong></p><p><span style="color: rgb(91, 99, 104);">How&nbsp;to&nbsp;access&nbsp;your&nbsp;information</span></p><p><span style="color: rgb(91, 99, 104);">To&nbsp;access&nbsp;your&nbsp;information,&nbsp;you&nbsp;will&nbsp;need&nbsp;to&nbsp;put&nbsp;your&nbsp;request&nbsp;in&nbsp;writing.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;will&nbsp;need&nbsp;to&nbsp;provide&nbsp;information&nbsp;for&nbsp;us&nbsp;to&nbsp;identify&nbsp;you&nbsp;from&nbsp;our&nbsp;records,&nbsp;suchas&nbsp;yourr&nbsp;name&nbsp;and&nbsp;email&nbsp;address.&nbsp;You&nbsp;will&nbsp;also&nbsp;need&nbsp;to&nbsp;tell&nbsp;us&nbsp;what&nbsp;kind&nbsp;of&nbsp;information&nbsp;you&nbsp;are&nbsp;requesting&nbsp;to&nbsp;enable&nbsp;us&nbsp;to&nbsp;locate&nbsp;the&nbsp;information.&nbsp;Send&nbsp;your&nbsp;request&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page.</span></p><p><strong style="color: rgb(91, 99, 104);">Proof&nbsp;of&nbsp;identity</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;we&nbsp;receive&nbsp;a&nbsp;request&nbsp;for&nbsp;information,&nbsp;we&nbsp;must&nbsp;make&nbsp;sure&nbsp;you&nbsp;are&nbsp;who&nbsp;you&nbsp;say&nbsp;you&nbsp;are.&nbsp;We&nbsp;need&nbsp;proof&nbsp;of&nbsp;identity.&nbsp;These&nbsp;include:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Your&nbsp;full&nbsp;name</span></li><li><span style="color: rgb(91, 99, 104);">Email&nbsp;Address</span></li></ul><p><span style="color: rgb(91, 99, 104);">The&nbsp;following&nbsp;documents&nbsp;can&nbsp;be&nbsp;accepted&nbsp;to&nbsp;verify&nbsp;your&nbsp;identity.&nbsp;We&nbsp;require&nbsp;two&nbsp;forms&nbsp;of&nbsp;ID:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Current&nbsp;UK/EEA&nbsp;passport</span></li><li><span style="color: rgb(91, 99, 104);">UK&nbsp;photocard&nbsp;driving&nbsp;licence&nbsp;(full&nbsp;or&nbsp;provisional)</span></li><li><span style="color: rgb(91, 99, 104);">Firearms&nbsp;licence/shotgun&nbsp;certificate</span></li><li><span style="color: rgb(91, 99, 104);">EEA&nbsp;national&nbsp;identity&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Full&nbsp;UK&nbsp;paper&nbsp;driving&nbsp;licence</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;benefits&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;pension&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;credit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">Local&nbsp;authority&nbsp;benefit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State/local&nbsp;authority&nbsp;educational&nbsp;grant&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;notification&nbsp;document</span></li><li><span style="color: rgb(91, 99, 104);">Disabled&nbsp;driver’s&nbsp;pass</span></li><li><span style="color: rgb(91, 99, 104);">Financial&nbsp;statement&nbsp;issued&nbsp;by&nbsp;bank,&nbsp;building&nbsp;society&nbsp;or&nbsp;credit&nbsp;card&nbsp;company</span></li><li><span style="color: rgb(91, 99, 104);">Judiciary&nbsp;document&nbsp;such&nbsp;as&nbsp;a&nbsp;notice&nbsp;of&nbsp;hearing,&nbsp;summons&nbsp;or&nbsp;court&nbsp;order+</span></li><li><span style="color: rgb(91, 99, 104);">Utility&nbsp;bill&nbsp;for&nbsp;supply&nbsp;of&nbsp;gas,&nbsp;electric,&nbsp;water&nbsp;or&nbsp;telephone&nbsp;landline+</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;mortgage&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;council&nbsp;tax&nbsp;bill/demand&nbsp;or&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;rent&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;tenancy&nbsp;agreement</span></li><li><span style="color: rgb(91, 99, 104);">Building&nbsp;society&nbsp;passbook&nbsp;which&nbsp;shows&nbsp;a&nbsp;transaction&nbsp;in&nbsp;the&nbsp;last&nbsp;three&nbsp;months&nbsp;and&nbsp;your&nbsp;address</span></li></ul><p><span style="color: rgb(91, 99, 104);">*&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old.</span></p><p><span style="color: rgb(91, 99, 104);">+&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;three&nbsp;months&nbsp;old&nbsp;(except&nbsp;water&nbsp;bills&nbsp;–&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;accept&nbsp;copies&nbsp;of&nbsp;these&nbsp;documents.&nbsp;However,&nbsp;we&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;ask&nbsp;for&nbsp;originals&nbsp;if&nbsp;photocopies&nbsp;are&nbsp;not&nbsp;of&nbsp;a&nbsp;good&nbsp;quality.</span></p><p><span style="color: rgb(91, 99, 104);">A&nbsp;‘reasonable&nbsp;fee’&nbsp;will&nbsp;be&nbsp;charged&nbsp;when&nbsp;a&nbsp;request&nbsp;is&nbsp;manifestly&nbsp;unfounded&nbsp;or&nbsp;excessive,&nbsp;particularly&nbsp;if&nbsp;it&nbsp;is&nbsp;repetitive.&nbsp;We&nbsp;may&nbsp;also&nbsp;charge&nbsp;a&nbsp;reasonable&nbsp;fee&nbsp;to&nbsp;comply&nbsp;with&nbsp;requests&nbsp;for&nbsp;further&nbsp;copies&nbsp;of&nbsp;the&nbsp;same&nbsp;information.</span></p><p><strong style="color: rgb(91, 99, 104);">6.&nbsp;Changes&nbsp;to&nbsp;this&nbsp;policy</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;change&nbsp;this&nbsp;policy&nbsp;at&nbsp;any&nbsp;time.&nbsp;Although&nbsp;we&nbsp;will&nbsp;notify&nbsp;users&nbsp;appropriately&nbsp;when&nbsp;changes&nbsp;are&nbsp;made&nbsp;to&nbsp;this&nbsp;policy,&nbsp;you&nbsp;are&nbsp;responsible&nbsp;for&nbsp;checking&nbsp;this&nbsp;page&nbsp;for&nbsp;changes.&nbsp;Your&nbsp;use&nbsp;of&nbsp;our&nbsp;website&nbsp;constitutes&nbsp;agreement&nbsp;to&nbsp;this&nbsp;privacy&nbsp;policy.</span></p><p><strong style="color: rgb(91, 99, 104);">7.&nbsp;Links&nbsp;to&nbsp;other&nbsp;websites</strong></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;website&nbsp;may&nbsp;contain&nbsp;links&nbsp;to&nbsp;other&nbsp;websites&nbsp;of&nbsp;interest.&nbsp;However,&nbsp;once&nbsp;you&nbsp;have&nbsp;used&nbsp;these&nbsp;links&nbsp;to&nbsp;leave&nbsp;our&nbsp;site,&nbsp;you&nbsp;should&nbsp;note&nbsp;that&nbsp;we&nbsp;do&nbsp;not&nbsp;have&nbsp;any&nbsp;control&nbsp;over&nbsp;that&nbsp;other&nbsp;website.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;be&nbsp;responsible&nbsp;for&nbsp;the&nbsp;protection&nbsp;and&nbsp;privacy&nbsp;of&nbsp;any&nbsp;information&nbsp;which&nbsp;you&nbsp;provide&nbsp;whilst&nbsp;visiting&nbsp;such&nbsp;sites&nbsp;and&nbsp;such&nbsp;sites&nbsp;are&nbsp;not&nbsp;governed&nbsp;by&nbsp;this&nbsp;privacy&nbsp;statement.&nbsp;You&nbsp;should&nbsp;exercise&nbsp;caution&nbsp;and&nbsp;look&nbsp;at&nbsp;the&nbsp;privacy&nbsp;statement&nbsp;applicable&nbsp;to&nbsp;the&nbsp;website&nbsp;in&nbsp;question.</span></p><p></p><p></p>`,
           },
@@ -2273,8 +2264,7 @@ async function main() {
           order: 0,
           content: {
             title: "Terms of Service",
-            introduction:
-              "Please read these Terms of Service carefully before accessing our website or placing table bookings.",
+            introduction: "",
             backgroundImage: IMAGES.HERO_INTERIOR,
             content: `<h1><span style="color: rgb(91, 99, 104);">Cookie&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">Hi&nbsp;Baldon&nbsp;Ltd&nbsp;(“us”,&nbsp;“we”,&nbsp;or&nbsp;“our”)&nbsp;uses&nbsp;cookies&nbsp;on&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;(the&nbsp;“Service”).</span></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;Cookies&nbsp;Policy&nbsp;explains&nbsp;what&nbsp;cookies&nbsp;are,&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies,&nbsp;how&nbsp;third-parties&nbsp;we&nbsp;may&nbsp;partner&nbsp;with&nbsp;may&nbsp;use&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies&nbsp;and&nbsp;further&nbsp;information&nbsp;about&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;are&nbsp;small&nbsp;pieces&nbsp;of&nbsp;text&nbsp;sent&nbsp;by&nbsp;your&nbsp;web&nbsp;browser&nbsp;to&nbsp;a&nbsp;website&nbsp;you&nbsp;visit.&nbsp;A&nbsp;cookie&nbsp;file&nbsp;is&nbsp;stored&nbsp;in&nbsp;your&nbsp;web&nbsp;browser&nbsp;and&nbsp;allows&nbsp;the&nbsp;Service&nbsp;or&nbsp;a&nbsp;third&nbsp;party&nbsp;to&nbsp;recognise&nbsp;you,&nbsp;making&nbsp;your&nbsp;next&nbsp;visit&nbsp;easier&nbsp;and&nbsp;more&nbsp;efficient.&nbsp;You&nbsp;can&nbsp;find&nbsp;out&nbsp;more&nbsp;information&nbsp;about&nbsp;cookies&nbsp;at&nbsp;www.allaboutcookies.org</span></p><p><span style="color: rgb(91, 99, 104);">The&nbsp;law&nbsp;states&nbsp;that&nbsp;we&nbsp;can&nbsp;store&nbsp;cookies&nbsp;on&nbsp;your&nbsp;machine&nbsp;if&nbsp;they&nbsp;are&nbsp;essential&nbsp;to&nbsp;the&nbsp;operation&nbsp;of&nbsp;this&nbsp;site&nbsp;but&nbsp;that&nbsp;we&nbsp;need&nbsp;your&nbsp;permission&nbsp;before&nbsp;using&nbsp;any&nbsp;other&nbsp;type&nbsp;of&nbsp;cookie.</span></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;can&nbsp;be&nbsp;“persistent”&nbsp;or&nbsp;“session”&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">How&nbsp;&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;use&nbsp;and&nbsp;access&nbsp;the&nbsp;Service,&nbsp;we&nbsp;may&nbsp;place&nbsp;several&nbsp;cookie&nbsp;files&nbsp;in&nbsp;your&nbsp;web&nbsp;Browser.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;cookies&nbsp;for&nbsp;the&nbsp;following&nbsp;purposes:&nbsp;to&nbsp;enable&nbsp;certain&nbsp;functions&nbsp;of&nbsp;the&nbsp;Service,&nbsp;to&nbsp;provide&nbsp;analytics,&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;to&nbsp;enable&nbsp;advertisement&nbsp;delivery,&nbsp;including&nbsp;behavioural&nbsp;advertising.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;both&nbsp;session&nbsp;and&nbsp;persistent&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;and&nbsp;we&nbsp;use&nbsp;different&nbsp;types&nbsp;of&nbsp;cookies&nbsp;to&nbsp;run&nbsp;the&nbsp;Service:</span></p><p><span style="color: rgb(91, 99, 104);">Essential&nbsp;cookies.&nbsp;We&nbsp;may&nbsp;use&nbsp;essential&nbsp;cookies&nbsp;to&nbsp;authenticate&nbsp;users&nbsp;and&nbsp;prevent&nbsp;fraudulent&nbsp;use&nbsp;of&nbsp;user&nbsp;accounts.</span></p><p><strong style="color: rgb(91, 99, 104);">Third-party&nbsp;cookies</strong></p><p><span style="color: rgb(91, 99, 104);">In&nbsp;addition&nbsp;to&nbsp;our&nbsp;own&nbsp;cookies,&nbsp;we&nbsp;may&nbsp;also&nbsp;use&nbsp;various&nbsp;third-parties&nbsp;cookies&nbsp;to&nbsp;report&nbsp;usage&nbsp;statistics&nbsp;of&nbsp;the&nbsp;Service,&nbsp;deliver&nbsp;advertisements&nbsp;on&nbsp;and&nbsp;through&nbsp;the&nbsp;Service,&nbsp;and&nbsp;so&nbsp;on.</span></p><p><strong style="color: rgb(91, 99, 104);">The&nbsp;cookies&nbsp;we&nbsp;use</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;the&nbsp;following&nbsp;types&nbsp;of&nbsp;cookies&nbsp;on&nbsp;our&nbsp;website:</span></p><p><span style="color: rgb(91, 99, 104);">Google&nbsp;Analytics&nbsp;cookies:</span></p><p><span style="color: rgb(91, 99, 104);">These&nbsp;cookies&nbsp;collect&nbsp;information&nbsp;about&nbsp;how&nbsp;visitors&nbsp;use&nbsp;a&nbsp;website,e&nbsp;e.g.&nbsp;which&nbsp;pages&nbsp;visitors&nbsp;go&nbsp;to&nbsp;most&nbsp;often.&nbsp;These&nbsp;cookies&nbsp;do&nbsp;not&nbsp;collect&nbsp;information&nbsp;that&nbsp;identifies&nbsp;a&nbsp;visitor&nbsp;but&nbsp;provide&nbsp;a&nbsp;free&nbsp;web&nbsp;analytics&nbsp;service&nbsp;to&nbsp;website&nbsp;owners.</span></p><p><span style="color: rgb(91, 99, 104);">_ga</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;2&nbsp;years</span></p><p><span style="color: rgb(91, 99, 104);">_gid</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;24&nbsp;hours</span></p><p><span style="color: rgb(91, 99, 104);">_gat</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;throttle&nbsp;request&nbsp;rate</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;1&nbsp;minute</span></p><p><span style="color: rgb(91, 99, 104);">AMP_TOKEN</span></p><p><span style="color: rgb(91, 99, 104);">Contains&nbsp;a&nbsp;token&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;Client&nbsp;ID&nbsp;fromthe&nbsp;&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service.&nbsp;Other&nbsp;possible&nbsp;values&nbsp;indicate&nbsp;opt-out,&nbsp;inflight&nbsp;request&nbsp;or&nbsp;an&nbsp;error&nbsp;retrieving&nbsp;a&nbsp;Client&nbsp;ID&nbsp;from&nbsp;the&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;30&nbsp;seconds&nbsp;to&nbsp;1&nbsp;year</span></p><p><span style="color: rgb(91, 99, 104);">_gac_&nbsp;Contains&nbsp;campaign-related&nbsp;information&nbsp;for&nbsp;the&nbsp;user.&nbsp;If&nbsp;you&nbsp;have&nbsp;linked&nbsp;your&nbsp;Google&nbsp;Analytics&nbsp;and&nbsp;AdWords&nbsp;accounts,&nbsp;AdWords&nbsp;website&nbsp;conversion&nbsp;tags&nbsp;will&nbsp;read&nbsp;this&nbsp;cookie&nbsp;unless&nbsp;you&nbsp;opt&nbsp;out.</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;90&nbsp;days</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;accessing&nbsp;the&nbsp;Service,e&nbsp;the&nbsp;cookies&nbsp;noted&nbsp;above&nbsp;are&nbsp;automatically&nbsp;added&nbsp;to&nbsp;your&nbsp;computer.&nbsp;You&nbsp;may&nbsp;choose&nbsp;to&nbsp;block&nbsp;cookies&nbsp;by&nbsp;activating&nbsp;the&nbsp;setting&nbsp;on&nbsp;your&nbsp;browser&nbsp;that&nbsp;allows&nbsp;you&nbsp;to&nbsp;refuse&nbsp;the&nbsp;setting&nbsp;of&nbsp;all&nbsp;or&nbsp;some&nbsp;cookies.</span></p><p><span style="color: rgb(91, 99, 104);">Please&nbsp;note,&nbsp;however,&nbsp;that&nbsp;if&nbsp;you&nbsp;delete&nbsp;cookies&nbsp;or&nbsp;refuse&nbsp;to&nbsp;accept&nbsp;them,&nbsp;you&nbsp;might&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;use&nbsp;all&nbsp;of&nbsp;the&nbsp;features&nbsp;we&nbsp;offer,&nbsp;you&nbsp;may&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;and&nbsp;some&nbsp;of&nbsp;our&nbsp;pages&nbsp;might&nbsp;not&nbsp;display&nbsp;properly.</span></p><p><strong style="color: rgb(91, 99, 104);">Your&nbsp;consent</strong></p><p><span style="color: rgb(91, 99, 104);">By&nbsp;clicking&nbsp;on&nbsp;the&nbsp;“Accept&nbsp;Cookies”&nbsp;tab&nbsp;on&nbsp;the&nbsp;cookie&nbsp;pop-up&nbsp;on&nbsp;our&nbsp;site&nbsp;or&nbsp;by&nbsp;continuing&nbsp;to&nbsp;use&nbsp;the&nbsp;Service,&nbsp;we&nbsp;deem&nbsp;that&nbsp;you&nbsp;have&nbsp;provided&nbsp;your&nbsp;consent&nbsp;to&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;above-named&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">Contact&nbsp;us</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;have&nbsp;any&nbsp;queries&nbsp;about&nbsp;your&nbsp;personal&nbsp;information&nbsp;or&nbsp;any&nbsp;questions&nbsp;on&nbsp;our&nbsp;use&nbsp;of&nbsp;the&nbsp;information,&nbsp;please&nbsp;contact&nbsp;info@sevenstarsatmb.co.uk</span></p><p></p>`,
           },
@@ -2309,6 +2299,190 @@ async function main() {
 
   const blogsData = [
     {
+      title: "Cricket Legend Visits Oxfordshire Pub Next to Village Green",
+      slug: "cricket-legend-visits-oxfordshire-pub",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage:
+        "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/07/seven-stars-car-show.jpg",
+      metaTitle: "Cricket Legend Visits Seven Stars - Oxford Mail Feature",
+      metaDescription:
+        "Oxford Mail reports on a cricket legend visiting The Seven Stars at Marsh Baldon.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "Oxford Mail featured The Seven Stars as a cricket legend visited our traditional village green pub in Marsh Baldon.",
+            content:
+              "<p>The Seven Stars at Marsh Baldon was recently highlighted in an Oxford Mail feature following an exciting visit from a renowned international cricket legend. Situated right on the picturesque Marsh Baldon village green—where cricket has been played by local teams for generations—the pub served as the ideal setting for a summer afternoon of sports talk, warm hospitality, and traditional pub refreshments.</p><h3>A Village Green Steeped in History</h3><p>Marsh Baldon Green is famous across South Oxfordshire as one of the largest and most scenic village greens in England. For over a century, summer weekends have seen local cricket matches played against the backdrop of historic thatched cottages and mature oak trees.</p><p>During the visit, patrons and local residents gathered in the pub garden to share memories, take photos, and discuss classic cricket fixtures over cold pints of local cask ale and freshly cooked British pub dishes.</p><h3>Celebrating Community & Sports</h3><p>\"It’s an incredible honor to have sporting figures visit our community pub,\" said landlord Namit. \"The connection between village green cricket and a traditional English pub is timeless. Events like these bring residents and visitors together in celebration of local heritage.\"</p>",
+            postType: "news",
+            link: "https://www.oxfordmail.co.uk/news/26159216.cricket-legend-visits-oxfordshire-pub-next-village-green/",
+            area: "Oxford Mail Feature",
+            readTime: "3 min read",
+            tag: "Press & News",
+            views: 245,
+            date: "June 2026",
+          },
+        },
+      ],
+    },
+    {
+      title: "Five Oxfordshire Country Pubs With Best Food Revealed",
+      slug: "five-oxfordshire-country-pubs-best-food",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage:
+        "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/christmas-celebration-2.webp",
+      metaTitle: "Five Oxfordshire Country Pubs With Best Food Revealed",
+      metaDescription:
+        "The Seven Stars recognized as one of Oxfordshire's top country pubs for exceptional dining.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "The Oxford Mail named The Seven Stars among the top five country pubs in Oxfordshire for outstanding food and service.",
+            content:
+              "<p>The Oxford Mail has published its annual culinary guide featuring the top five country pubs across Oxfordshire for outstanding food, hospitality, and atmosphere. We are thrilled to announce that The Seven Stars at Marsh Baldon has been officially named among this elite group of destinations!</p><h3>Elevated Pub Classics & Global Inspirations</h3><p>The feature highlighted our kitchen’s dual philosophy: perfecting traditional British pub staples like ale-battered fish and chips, slow-cooked Sunday roasts, and gourmet steak burgers, while also introducing vibrant international specials like our fortnightly Indian Thali nights.</p><blockquote>\"The Seven Stars strikes the perfect balance between a quintessential countryside local and a destination gastropub serving extraordinary food.\" — Oxford Mail</blockquote><h3>Sourcing Local Oxfordshire Ingredients</h3><p>Our commitment to quality starts with local partnerships. Our chefs work closely with local farms, butchery suppliers, and organic vegetable growers across South Oxfordshire to ensure seasonal freshness in every plate. Whether dining inside our cozy 350-year-old dining room by the log fire or enjoying lunch on the garden patio, guests can expect exceptional quality every time.</p>",
+            postType: "news",
+            link: "https://www.oxfordmail.co.uk/news/24868629.five-oxfordshire-country-pubs-best-food-revealed/",
+            area: "Oxford Mail Feature",
+            readTime: "4 min read",
+            tag: "Award & Press",
+            views: 312,
+            date: "January 2025",
+          },
+        },
+      ],
+    },
+    {
+      title: "Staff at Village Green Pub Get Ready for Beer Festival",
+      slug: "staff-village-green-pub-beer-festival",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage:
+        "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
+      metaTitle: "Beer Festival at The Seven Stars - Oxford Mail Feature",
+      metaDescription:
+        "Oxford Mail highlights the annual beer festival preparations at The Seven Stars Marsh Baldon.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "Preparations underway at Marsh Baldon Green for our annual beer festival featuring local microbreweries and cask ciders.",
+            content:
+              "<p>The Seven Stars team is gearing up for our annual Summer Beer & Cider Festival on Marsh Baldon Green! As reported in the Oxford Mail, the event promises to showcase over 25 guest ales, craft beers, and artisan ciders from microbreweries across Oxfordshire and surrounding counties.</p><h3>Festival Highlights & Local Craft Brews</h3><p>Visitors can look forward to a diverse selection of beverages ranging from crisp pale ales to rich stouts and fruity traditional ciders. Highlights of the weekend include:</p><ul><li>Over 20 hand-pulled cask ales from Oxfordshire microbreweries</li><li>Live acoustic music performances on the garden lawn</li><li>Wood-fired pizza oven and gourmet BBQ food stalls</li><li>Family-friendly outdoor games and Aunt Sally competitions</li></ul><h3>Gathering the Community</h3><p>Our spacious beer garden overlooking the village green will be equipped with stretch tents, seating for over 150 guests, and an outdoor bar tap system. Entrance is free, and all community members and visitors are invited to celebrate the best of British brewing tradition with us.</p>",
+            postType: "news",
+            link: "https://www.oxfordmail.co.uk/news/24423574.staff-village-green-pub-gets-ready-beer-festival/",
+            area: "Beer Festival",
+            readTime: "3 min read",
+            tag: "Events & Media",
+            views: 189,
+            date: "July 2024",
+          },
+        },
+      ],
+    },
+    {
+      title: "Sunday Roasts Selling Fast at Village Pub Near Oxford",
+      slug: "sunday-roasts-selling-fast-village-pub",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage: `${STORAGE_BASE}/1779094138324-food-gourmet.webp`,
+      metaTitle: "Popular Sunday Roasts at Seven Stars Marsh Baldon",
+      metaDescription:
+        "Oxford Mail features the highly popular Sunday Roast dinners at The Seven Stars.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "Why our Sunday Roasts with fluffy roast potatoes, giant Yorkshire puddings, and rich gravies are a local favourite.",
+            content:
+              "<p>Sunday roast at The Seven Stars has quickly become one of the most sought-after weekend dining reservations in South Oxfordshire. The Oxford Mail recently featured our Sunday lunch service, highlighting why tables fill up days in advance.</p><h3>The Perfect Sunday Feast</h3><p>Every Sunday, our chefs prepare a traditional roast feast served with giant homemade Yorkshire puddings, duck-fat roasted potatoes, honey-glazed root vegetables, and rich 48-hour bone marrow gravy. Our menu features:</p><ul><li><strong>28-Day Aged British Beef Sirloin:</strong> Served cooked to perfection with horseradish cream.</li><li><strong>Slow-Roasted Pork Belly:</strong> With crispy crackling, spiced apple sauce, and seasonal greens.</li><li><strong>Free-Range Roast Chicken Breast:</strong> Accompanied by sage and onion stuffing.</li><li><strong>Nut Roast & Vegetarian Specials:</strong> Served with vegetarian gravy and seasonal produce.</li></ul><p>Due to high demand, early reservation is highly recommended. Book your Sunday table online or call our team on 01865 343337.</p>",
+            postType: "news",
+            link: "https://www.oxfordmail.co.uk/news/23651506.sunday-roasts-selling-village-pub-near-oxford/",
+            area: "Sunday Luncheon",
+            readTime: "3 min read",
+            tag: "Food Feature",
+            views: 420,
+            date: "July 2023",
+          },
+        },
+      ],
+    },
+    {
+      title: "Village Pub Near Oxford Taken Over by New Managers",
+      slug: "village-pub-near-oxford-taken-over-new-managers",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
+      metaTitle: "New Management at The Seven Stars - Oxford Mail",
+      metaDescription:
+        "New stewards Namit & Sunit bring fresh energy and local passion to The Seven Stars.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "Under new stewards Namit and Sunit, the historic community-owned pub begins an exciting chapter of hospitality.",
+            content:
+              "<p>An exciting new chapter began for The Seven Stars at Marsh Baldon as experienced stewards Namit and Sunit assumed leadership of the historic community-owned pub, as reported by the Oxford Mail.</p><h3>Preserving History, Breathing New Energy</h3><p>Purchased by over 75 local shareholders through the Baldons and Nuneham Community Society (BNCS) in 2013, The Seven Stars stands as a beacon of community preservation. Namit and Sunit bring years of hospitality expertise and a deep commitment to maintaining the pub’s warm, welcoming character while introducing modern refinements.</p><h3>What’s New at The Seven Stars?</h3><p>Under new stewardship, the pub has launched refreshed seasonal dining menus, upgraded the outdoor beer garden facilities, introduced regular live music and quiz nights, and launched our popular fortnightly Indian Thali nights. The team remains dedicated to ensuring every guest—whether a lifelong local resident or a first-time visitor—feels right at home.</p>",
+            postType: "news",
+            link: "https://www.oxfordmail.co.uk/news/23615560.village-pub-near-oxford-taken-new-managers/",
+            area: "Community News",
+            readTime: "4 min read",
+            tag: "Pub History",
+            views: 298,
+            date: "June 2023",
+          },
+        },
+      ],
+    },
+    {
+      title: "Authentic Indian Desi Thali Nights at The Seven Stars",
+      slug: "authentic-indian-desi-thali-nights",
+      type: "blog",
+      isStatic: false,
+      visibility: "published",
+      featuredImage:
+        "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/06/Desi-thali.jpg",
+      metaTitle: "Indian Desi Thali Nights - Seven Stars Marsh Baldon",
+      metaDescription:
+        "Join us for our popular fortnightly Indian Thali nights featuring authentic curries and fresh naan.",
+      sections: [
+        {
+          type: "BlogDetail",
+          order: 0,
+          content: {
+            excerpt:
+              "Experience our popular Indian Desi Thali nights, featuring authentic regional curries, daals, warm naan, and side dishes.",
+            content:
+              "<p>Every fortnight, The Seven Stars transforms its kitchen to host our hugely popular Indian Desi Thali Nights—a unique dining experience in South Oxfordshire that combines authentic Indian home-style cooking with traditional pub warmth.</p><h3>What is a Thali?</h3><p>A Thali is a traditional Indian meal arrangement where a balanced assortment of dishes is served on a single large platter. It offers diners a harmonious blend of sweet, savory, spicy, and tangy flavors in one complete feast.</p><h3>On the Thali Menu</h3><p>Each Thali night features a thoughtfully curated menu that changes regularly to showcase regional Indian specialties:</p><ul><li><strong>Authentic Curries:</strong> From aromatic Butter Chicken and Slow-Cooked Lamb Rogan Josh to Paneer Tikka Masala and Dal Makhani.</li><li><strong>Freshly Baked Breads:</strong> Piping hot garlic naan and butter roti served straight from the oven.</li><li><strong>Accompaniments:</strong> Fragrant basmati pilau rice, crispy vegetable samosas, tangy mango chutney, and refreshing cucumber raita.</li></ul><p>Tables sell out quickly for Thali nights! Check our events schedule or contact us directly to reserve your place at the next event.</p>",
+            postType: "blog",
+            link: "",
+            area: "Special Event",
+            readTime: "3 min read",
+            tag: "Dining Night",
+            views: 510,
+            date: "Fortnightly",
+          },
+        },
+      ],
+    },
+    {
       title: "Summer Evenings on Marsh Baldon Green",
       slug: "summer-in-marsh-baldon",
       type: "blog",
@@ -2326,7 +2500,7 @@ async function main() {
             excerpt:
               "Discover how we are celebrating summer with wood-fired pizzas, outdoor bar taps, and acoustic Sunday sessions on the green.",
             content:
-              "<p>Summer has arrived at Marsh Baldon! Join us as we serve fresh pizzas, seasonal cocktails, and ice-cold cask ales on our sunny garden patio.</p><p>Our garden bar is now open every Friday to Sunday evening.</p>",
+              "<p>As long summer days arrive in South Oxfordshire, there is no finer location to spend an evening than the spacious garden at The Seven Stars, overlooking the tranquil expanse of Marsh Baldon Green.</p><h3>Outdoor Dining & Garden Bar</h3><p>Our expansive outdoor seating area accommodates over 120 guests, complete with wooden picnic benches, shaded patio umbrellas, and a covered stretch tent for evening comfort. Throughout the summer season, our outdoor garden bar serves icy draught beers, craft ciders, Pimms pitchers, and chilled rosé.</p><h3>Live Music & Sunday Sessions</h3><p>Join us every weekend for acoustic music sessions on the green, wood-fired pizza specials, and relaxed outdoor gatherings. Whether stopping by after a countryside walk with your dog or meeting friends for an early evening drink, summer at The Seven Stars offers quintessential English village charm at its best.</p>",
             postType: "blog",
             link: "",
             area: "Marsh Baldon",
@@ -2356,8 +2530,8 @@ async function main() {
             excerpt:
               "A deep dive into our farm-to-table culinary philosophy and our partnerships with local growers.",
             content:
-              "<p>We take pride in serving high-quality dishes made with produce grown right here in Oxfordshire.</p><p>From local organic vegetables to free-range meat, discover the farms behind your favorite dishes.</p>",
-            postType: "news",
+              "<p>At The Seven Stars, our culinary philosophy centers on fresh, ethically sourced ingredients. We believe that great food starts with exceptional produce grown and raised right here in Oxfordshire and neighboring counties.</p><h3>Our Local Sourcing Partners</h3><p>We are proud to partner with local farms, dairies, and independent artisan suppliers who share our passion for quality and sustainability:</p><ul><li><strong>Oxfordshire Butchery:</strong> Supplying 28-day dry-aged British beef, free-range pork, and locally reared lamb.</li><li><strong>Regional Organic Growers:</strong> Delivering seasonal vegetables, fresh herbs, and crisp salad greens directly to our kitchen.</li><li><strong>Local Breweries & Distilleries:</strong> Crafting the real ales, craft beers, and gins featured on our bar taps and spirit shelf.</li></ul><p>By keeping our supply chain short and local, we support neighboring farm businesses while ensuring our diners enjoy maximum flavor and freshness in every meal.</p>",
+            postType: "blog",
             link: "",
             area: "Oxfordshire",
             readTime: "5 min read",
