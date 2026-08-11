@@ -345,17 +345,19 @@ async function main() {
           content: {
             headlineLine1: "Where Village \n Warmth Meets",
             headlineLine2Italic: "Great Food",
-            description:
-              "We're your neighborhood pub situated in the heart of Oxfordshire serving mouth-watering food, real ales, and a warm welcome.",
             primaryBtnLabel: "Discover Menu",
             primaryBtnUrl: "/menu",
             secondaryBtnLabel: "Book a Table",
-            secondaryBtnUrl: "/contact",
+            secondaryBtnUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
             heroImage: IMAGES.HERO_ATMOSPHERIC,
             images: [
-              IMAGES.HERO_ATMOSPHERIC,
-              IMAGES.HERO_INTERIOR,
-              IMAGES.EXTERIOR_MAIN,
+              `${STORAGE_BASE}/1781686626397-SEVEN_STARS_2026_02_09-338.webp`,
+              `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
+              `${STORAGE_BASE}/1781686614010-SEVEN_STARS_2026_02_09-210.webp`,
+              `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
+              `${STORAGE_BASE}/1781686610741-SEVEN_STARS_2026_02_09-0076.webp`,
+              `${STORAGE_BASE}/1781686617797-SEVEN_STARS_2026_02_09-0113.webp`,
             ],
             marqueePills: [
               "Sunday Roasts",
@@ -378,18 +380,11 @@ async function main() {
           order: 1,
           content: {
             isEnabled: true,
-            enabled: true,
-            badge: "Welcome Offer",
             title: "Send an Enquiry",
             description: "We aim to respond to all enquiries within 24 hours.",
             welcomeText: "Welcome",
             imageTitle: "Seven Stars",
             imageSubtitle: "Marsh Baldon, Oxford",
-            discountCode: "WELCOME10",
-            buttonText: "Claim Voucher",
-            buttonUrl: "/contact",
-            image: IMAGES.EXTERIOR_MAIN,
-            popupImage: IMAGES.EXTERIOR_MAIN,
           },
         },
         {
@@ -435,9 +430,9 @@ async function main() {
               {
                 title: "Sunday Roasts",
                 images: [
-                  IMAGES.FOOD_STEAK,
-                  IMAGES.DINING_HALL,
-                  IMAGES.DINING_TABLE,
+                  `${STORAGE_BASE}/1781687988901-SEVEN_STARS_2026_02_09-81.webp`,
+                  `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
+                  `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
                 ],
                 description:
                   "The ultimate British tradition, perfected with local meats.",
@@ -446,9 +441,9 @@ async function main() {
               {
                 title: "Pub Classics",
                 images: [
-                  IMAGES.FOOD_SPECIAL,
-                  IMAGES.GALLERY_BAR,
-                  IMAGES.GALLERY_COZY,
+                  `${STORAGE_BASE}/1781687990034-SEVEN_STARS_2026_02_09-306.webp`,
+                  `${STORAGE_BASE}/1781687991208-SEVEN_STARS_2026_02_09-329.webp`,
+                  `${STORAGE_BASE}/1781087452994-SEVEN_STARS_2026_02_09-349.webp`,
                 ],
                 description:
                   "Time-honored favorites with a sophisticated gourmet twist.",
@@ -457,9 +452,9 @@ async function main() {
               {
                 title: "Seasonal Specials",
                 images: [
-                  IMAGES.GALLERY_DRINKS,
-                  IMAGES.STORY_HERITAGE,
-                  IMAGES.FOOD_SEASONAL_170,
+                  `${STORAGE_BASE}/SEVEN_STARS_2026_02_09-384.webp`,
+                  `${STORAGE_BASE}/1781688388195-SEVEN_STARS_2026_02_09-155.webp`,
+                  `${STORAGE_BASE}/1781688390427-SEVEN_STARS_2026_02_09-138.webp`,
                 ],
                 description:
                   "Fresh, local ingredients inspired by the changing seasons.",
@@ -649,13 +644,14 @@ async function main() {
             bookLabel: "Book a Table",
             bookUrl: "/contact",
             phoneLabel: "Call Us",
-            phoneUrl: "+441865343337",
-            image1: IMAGES.FOOD_STEAK,
-            image2: IMAGES.GALLERY_COZY,
+            phoneUrl: "tel:01865343337",
+            image1: `${STORAGE_BASE}/1779094138324-food-gourmet.webp`,
+            image2: `${STORAGE_BASE}/1781087458738-SEVEN_STARS_2026_02_09-0012.webp`,
             title: "Ready to Experience Seven Stars?",
             subtitle: "Book your table online or stop by for a pint.",
             buttonText: "Book Table Now",
-            buttonUrl: "/contact#book",
+            buttonUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
             image: IMAGES.HERO_INTERIOR,
           },
         },
@@ -668,7 +664,8 @@ async function main() {
             footerDescription:
               "Born from a passion for exceptional hospitality, Seven Stars merges the warmth of a countryside pub with the sophistication of a premium gastro club.",
             ctaLabel: "BOOK A TABLE",
-            ctaUrl: "/contact#book",
+            ctaUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
             instagramUrl: "https://www.instagram.com/sevenstarsatmarshbaldon/",
             facebookUrl: "https://www.facebook.com/sevenstarsatmarshbaldon",
             youtubeUrl: "#",
@@ -689,7 +686,7 @@ async function main() {
               },
               {
                 day: "SUNDAY",
-                hours: "12:00 - 22:00",
+                hours: "12:00 - 20:00",
               },
             ],
           },
@@ -718,11 +715,7 @@ async function main() {
             tagline: "OUR STORY",
             headingPart1: "About",
             headingItalicHighlight: "Us",
-            quote:
-              "More than a pub, it belongs to its community. The Seven Stars at Marsh Baldon is set in a picturesque Oxfordshire village. In the truest sense of the word, it belongs to the people who call this place home.",
             title: "About Us",
-            subtitle:
-              "A community-owned gem in the heart of Oxfordshire, where traditional hospitality meets a serious kitchen.",
             backgroundImage: `${STORAGE_BASE}/1781689296201-SEVEN_STARS_2026_02_09-0166.webp`,
             badgeText: "Est. 17th Century",
           },
@@ -742,15 +735,12 @@ async function main() {
             pillar2: "Warm Hospitality",
             pillar3: "Local Produce",
             rootsImages: [
-              `${STORAGE_BASE}/1781163080123-SEVEN_STARS_2026_02_09-0005.webp`,
-              `${STORAGE_BASE}/1781085714533-SEVEN_STARS_2026_02_09-0008.webp`,
-              `${STORAGE_BASE}/1781085721419-SEVEN_STARS_2026_02_09-0032.webp`,
-              `${STORAGE_BASE}/1781085727303-SEVEN_STARS_2026_02_09-0151.webp`,
-              `${STORAGE_BASE}/1781085731650-SEVEN_STARS_2026_02_09-125.webp`,
-              `${STORAGE_BASE}/1781085738861-SEVEN_STARS_2026_02_09-0040.webp`,
-              `${STORAGE_BASE}/1781085742647-SEVEN_STARS_2026_02_09-0107.webp`,
-              `${STORAGE_BASE}/1781085747049-SEVEN_STARS_2026_02_09-124.webp`,
-              `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
+              `${STORAGE_BASE}/1781084597937-Gemini_Generated_Image_3ongbm3ongbm3ong.webp`,
+              `${STORAGE_BASE}/1781084593652-Gemini_Generated_Image_zdu2vbzdu2vbzdu2.webp`,
+              `${STORAGE_BASE}/1781084589375-Gemini_Generated_Image_b3lys7b3lys7b3ly.webp`,
+              `${STORAGE_BASE}/1781080100388-Screenshot_20260530_212418.webp`,
+              `${STORAGE_BASE}/1781080099243-Screenshot_20260530_212407.webp`,
+              `${STORAGE_BASE}/1781080098132-Screenshot_20260530_212349.webp`,
             ],
             title: "A village pub, owned by the people it serves.",
             description:
@@ -824,7 +814,8 @@ async function main() {
             description:
               "From intimate dinners and milestone birthdays to weddings, anniversaries, christenings, and private celebrations—The Seven Stars is a place to come together. For larger gatherings, our private barn offers a characterful setting where every celebration feels truly special.",
             buttonText: "Book Table Now",
-            buttonUrl: "/contact#book",
+            buttonUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
             image: IMAGES.EXTERIOR_MAIN,
           },
         },
@@ -852,8 +843,6 @@ async function main() {
             tagline: "SEASONAL DINING",
             headingPart1: "The Dining",
             headingItalicHighlight: "Experience",
-            description:
-              "Our kitchen works with fresh, carefully sourced ingredients, honouring British classics while taking inspiration from across Europe, the Middle East and South Asia.",
             title: "The Dining Experience",
             backgroundImage: IMAGES.DINING_HALL,
           },
@@ -875,7 +864,7 @@ async function main() {
             btnUrl: "/menu",
             indoorCapacity: "76",
             gardenCapacity: "150",
-            showcaseImage: `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
+            showcaseImage: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
             imageAlt: "Gourmet dish at Seven Stars",
             imageOverlayTitle: "Proper Food",
             imageOverlaySubtitle: "Honouring British Pub Tradition",
@@ -895,7 +884,7 @@ async function main() {
               "What brings it all together is our approach to hospitality. Relaxed, genuine and without pretence, it's the kind of service that lets you settle in, linger a little longer, and enjoy good food, good drink and even better company.",
             introFeature1: "Locally Sourced Ingredients",
             introFeature2: "Seasonal Menus",
-            introImage: IMAGES.DINING_TABLE,
+            introImage: `${STORAGE_BASE}/1780554493244-SEVEN_STARS_2026_02_09-120.webp`,
             title: "Serious food, unfussy hospitality.",
           },
         },
@@ -932,7 +921,7 @@ async function main() {
                 title: "Seasonal Specials",
                 description:
                   "Our specials draw on European, Middle Eastern and South Asian flavours, bringing a contemporary twist to the village pub.",
-                image: `${STORAGE_BASE}/1781688386177-SEVEN_STARS_2026_02_09-170.webp`,
+                image: `${STORAGE_BASE}/SEVEN_STARS_2026_02_09-342.webp`,
               },
               {
                 title: "Not To Be Missed",
@@ -952,7 +941,7 @@ async function main() {
             barnHeadingItalic: "Barn",
             barnDesc:
               "Set apart from the main pub, The Barn offers a warm and characterful setting for private gatherings. Whether you're hosting an intimate celebration, a family occasion or a small corporate event, it's a flexible space paired with thoughtful hospitality and seasonal menus.",
-            barnImage: `${STORAGE_BASE}/1781686607452-SEVEN_STARS_2026_02_09-0028.webp`,
+            barnImage: `${STORAGE_BASE}/1781085738861-SEVEN_STARS_2026_02_09-0040.webp`,
             capacityTitle: "Capacity",
             capacityDesc: "Designed for gatherings of up to 40 guests.",
             beerTentTitle: "Outdoor Extension",
@@ -974,6 +963,7 @@ async function main() {
               "When the weather is kind, there's nowhere better to be than our garden overlooking the village green. Settle in for a leisurely meal, enjoy a drink with friends, or simply take in the peaceful surroundings.",
             outdoorImages: [
               `${STORAGE_BASE}/1781156724977-SEVEN_STARS_2026_02_09-0106.webp`,
+              `${STORAGE_BASE}/1781686617797-SEVEN_STARS_2026_02_09-0113.webp`,
             ],
             outdoorCtaText: "Book a Table",
             outdoorCtaLink: "#",
@@ -1003,10 +993,8 @@ async function main() {
             tagline: "SEASONAL SELECTION",
             headingPart1: "Food &",
             headingHighlight: "Drink Menus",
-            description:
-              "At The Seven Stars, our kitchen starts with fresh, quality ingredients, honouring the classics while keeping things interesting with seasonal specials.",
             title: "Food & Drink Menus",
-            backgroundImage: `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
+            backgroundImage: `${STORAGE_BASE}/1780637784295-SEVEN_STARS_2026_02_09-34.webp`,
           },
         },
         {
@@ -1024,6 +1012,8 @@ async function main() {
               "At The Seven Stars, fresh, carefully sourced ingredients are at the heart of everything we serve, creating dishes that celebrate the seasons and the joy of sharing a meal.",
             locationName: "Marsh Baldon",
             locationCounty: "OXFORDSHIRE",
+            ctaText: "ENQUIRE FOR PRIVATE DINING",
+            ctaLink: "/contact",
             coverImage: IMAGES.FOOD_SPECIAL,
             mainMenuPdf: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
             sundayMenuPdf: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
@@ -1224,7 +1214,7 @@ async function main() {
             menuCategories: [
               {
                 title: "Small Plates & Starters",
-                image: `${STORAGE_BASE}/1781085714533-SEVEN_STARS_2026_02_09-0008.webp`,
+                image: `${STORAGE_BASE}/1780637679964-SEVEN_STARS_2026_02_09-265.webp`,
                 items: [
                   "Marinated Olives",
                   "Focaccia With Balsamic",
@@ -1235,7 +1225,7 @@ async function main() {
               },
               {
                 title: "Pub Classics",
-                image: `${STORAGE_BASE}/1781086645604-SEVEN_STARS_2026_02_09-169.webp`,
+                image: `${STORAGE_BASE}/1780637682165-SEVEN_STARS_2026_02_09-235.webp`,
                 items: [
                   "Beer-Battered Haddock & Chips",
                   "Seven Stars Cheeseburger",
@@ -1245,7 +1235,7 @@ async function main() {
               },
               {
                 title: "Mains",
-                image: `${STORAGE_BASE}/1781687985102-SEVEN_STARS_2026_02_09-206.webp`,
+                image: `${STORAGE_BASE}/1780637684315-SEVEN_STARS_2026_02_09-344.webp`,
                 items: [
                   "Pan-Seared Duck Breast",
                   "Golden Squash Risotto",
@@ -1256,7 +1246,7 @@ async function main() {
               },
               {
                 title: "Sunday Roast",
-                image: `${STORAGE_BASE}/1781687988901-SEVEN_STARS_2026_02_09-81.webp`,
+                image: `${STORAGE_BASE}/1780637685212-SEVEN_STARS_2026_02_09-94.webp`,
                 description: "Served every Sunday 12:00 – 18:00",
                 items: [
                   "Slow-Roasted Sirloin of Beef",
@@ -1288,7 +1278,7 @@ async function main() {
             title: "The Cellar",
             description:
               "A perfectly kept pint, a thoughtfully chosen wine or a favourite cocktail—whatever your drink of choice, you'll find a bar that's stocked with care. Alongside local ales, lagers and ciders, we proudly support producers from across the region.",
-            image: IMAGES.GALLERY_DRINKS,
+            sideImage: `${STORAGE_BASE}/1781086062051-SEVEN_STARS_2026_02_09-5.webp`,
           },
         },
         {
@@ -1296,8 +1286,8 @@ async function main() {
           order: 4,
           content: {
             title: "Dietary Options & Special Nights",
-            content:
-              "We cater for vegetarian, vegan, and gluten-free diets. Don't miss our fortnightly Indian Thali Nights and seasonal specials!",
+            subtext:
+              "Don't miss our fortnightly Indian Thali Nights and seasonal specials, bringing exciting new flavours to Marsh Baldon throughout the year.",
           },
         },
       ],
@@ -1321,15 +1311,11 @@ async function main() {
           type: "EventsHero",
           order: 0,
           content: {
-            tagline: "EVENTS & CELEBRATIONS",
+            tagline: "OCCASIONS & CELEBRATIONS",
             headingPart1: "Events &",
-            headingHighlight: "Functions",
-            title: "Events & Functions",
-            subtitle:
-              "Step through the door into a classic space or enjoy Oxfordshire's finest beer garden.",
-            description:
-              "Step through the door into a classic space or enjoy Oxfordshire's finest beer garden.",
-            backgroundImage: IMAGES.EVENT_GATHERING,
+            headingHighlight: "Celebrations",
+            title: "Events & Celebrations",
+            backgroundImage: `${STORAGE_BASE}/1780554968912-SEVEN_STARS_2026_02_09-122.webp`,
           },
         },
         {
@@ -1350,7 +1336,7 @@ async function main() {
                 highlight: "Test your trivia knowledge & win prizes",
                 description:
                   "Join us for our popular Quiz Night at The Seven Stars! Test your knowledge, enjoy great drinks, and compete for exciting prizes with friends.",
-                image: `${STORAGE_BASE}/1781156724977-SEVEN_STARS_2026_02_09-0106.webp`,
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/10/Quizz-Poster-New.jpg`,
               },
               {
                 title: "Classic Car Show",
@@ -1360,7 +1346,7 @@ async function main() {
                 highlight: "Vintage cars & classics on the green",
                 description:
                   "Admire a fantastic collection of classic cars and vintage vehicles on Marsh Baldon Green. Enjoy great food and drinks while meeting fellow car enthusiasts.",
-                image: `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/07/seven-stars-car-show.jpg`,
               },
               {
                 title: "Indian Desi Thali",
@@ -1370,7 +1356,7 @@ async function main() {
                 highlight: "Authentic Indian curries & fresh naan",
                 description:
                   "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
-                image: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/06/Desi-thali.jpg`,
               },
               {
                 title: "Aunt Sally Season",
@@ -1380,49 +1366,17 @@ async function main() {
                 highlight: "Traditional Oxfordshire pub game",
                 description:
                   "Get ready for the traditional Oxfordshire Aunt Sally pub game season at The Seven Stars! Join the local team or cheer from the garden.",
-                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
-              },
-            ],
-            events: [
-              {
-                title: "Quiz Night",
-                date: "12th Aug, 26th Aug",
-                time: "7:30 PM",
-                category: "PUB EVENT",
-                highlight: "Test your trivia knowledge & win prizes",
-                description:
-                  "Join us for our popular Quiz Night at The Seven Stars! Test your knowledge, enjoy great drinks, and compete for exciting prizes with friends.",
-                image: `${STORAGE_BASE}/1781156724977-SEVEN_STARS_2026_02_09-0106.webp`,
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/04/Aunt-Sally.jpg`,
               },
               {
-                title: "Classic Car Show",
-                date: "18th Aug, 15th Sep",
-                time: "5:00 PM",
-                category: "SPECIAL GATHERING",
-                highlight: "Vintage cars & classics on the green",
+                title: "Mother's Day Lunch",
+                date: "30th March",
+                time: "Lunchtime",
+                category: "SPECIAL EVENT",
+                highlight: "2/3 Course Set Luncheon",
                 description:
-                  "Admire a fantastic collection of classic cars and vintage vehicles on Marsh Baldon Green. Enjoy great food and drinks while meeting fellow car enthusiasts.",
-                image: `${STORAGE_BASE}/1781686621461-SEVEN_STARS_2026_02_09-145.webp`,
-              },
-              {
-                title: "Indian Desi Thali",
-                date: "20th Aug, 3rd & 17th Sep",
-                time: "6:00 PM",
-                category: "DINING EXPERIENCE",
-                highlight: "Authentic Indian curries & fresh naan",
-                description:
-                  "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
-                image: `${STORAGE_BASE}/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg`,
-              },
-              {
-                title: "Aunt Sally Season",
-                date: "Starting Soon",
-                time: "6:30 PM",
-                category: "TRADITIONAL PUB SPORT",
-                highlight: "Traditional Oxfordshire pub game",
-                description:
-                  "Get ready for the traditional Oxfordshire Aunt Sally pub game season at The Seven Stars! Join the local team or cheer from the garden.",
-                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
+                  "Celebrate Mother's Day with a special 2 or 3 course set luncheon at Seven Stars at Marsh Baldon. Includes a complimentary glass of prosecco for moms! Call 01865 343337 to book.",
+                image: `${STORAGE_BASE}/1779093878328-481171001_957353706531406_1040071741557670337_nlow1.webp`,
               },
             ],
           },
@@ -1488,7 +1442,8 @@ async function main() {
                 description:
                   "One of the finest beer gardens in Oxfordshire, seating 120 to 150 guests for slow summer afternoons.",
                 iconName: "Sun",
-                image: `${STORAGE_BASE}/1781687981908-SEVEN_STARS_2026_02_09-114.webp`,
+                image:
+                  "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
               },
             ],
           },
@@ -1518,12 +1473,6 @@ async function main() {
             headingPart1: "Photo",
             headingItalicHighlight: "Gallery",
             title: "Photo Gallery",
-            subtitle:
-              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
-            quote:
-              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
-            description:
-              "From cosy interiors and the garden overlooking the village green to memorable meals and special occasions...explore the spaces, flavours and moments that make The Seven Stars what it is.",
             backgroundImage: IMAGES.GALLERY_BAR,
           },
         },
@@ -1576,9 +1525,6 @@ async function main() {
             headingPart1: "Our Story &",
             headingItalicHighlight: "Community",
             title: "Saved by the community. Sustained by its people.",
-            subtitle: "A Community That Creates Happy Moments",
-            description:
-              "Our story began when we started looking for ways to bring people together. These community members shared a common interest and shared purpose.",
             backgroundImage: `${STORAGE_BASE}/1781073689384-SEVEN_STARS_2026_02_09-0104.webp`,
           },
         },
@@ -1751,10 +1697,9 @@ async function main() {
             headingItalicHighlight: "Christmas",
             headingSuffix: "at Seven Stars",
             title: "Celebrate Christmas at Seven Stars",
-            subtitle:
-              "Step into the warmth of our decorated countryside pub in Marsh Baldon, Oxford. Savor award-winning festive menus, cozy up next to glowing fireplaces, and celebrate the season in style.",
             primaryButtonText: "RESERVE YOUR TABLE",
-            primaryButtonUrl: "/contact#book",
+            primaryButtonUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
             secondaryButtonText: "DISCOVER MENUS",
             secondaryButtonUrl: "#menus",
             backgroundImage: `${STORAGE_BASE}/1782451657572-christmas-pub-hero.webp`,
@@ -1800,8 +1745,9 @@ async function main() {
             termsText: "*Terms and Conditions apply.",
             cardFooterNote:
               "Tables are filling fast – don't miss your chance to make this Christmas unforgettable!",
-            buttonText: "BOOK YOUR CHRISTMAS PARTY NOW!",
-            buttonUrl: "/contact#book",
+            ctaText: "BOOK YOUR CHRISTMAS PARTY NOW!",
+            ctaLink:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
           },
         },
         {
@@ -1823,7 +1769,8 @@ async function main() {
                 description:
                   "Don't forget if you book your Christmas Party before the end of October 2025 you will receive a £20 voucher to use towards your booking. Minimum of 8 people dining and booking made before end of October 2025.",
                 link: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-                image: `${STORAGE_BASE}/1782451657572-christmas-pub-hero.webp`,
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/christmas-celebration-2.webp",
                 highlights: [
                   "Smoked Salmon Starter",
                   "Traditional Roast Turkey",
@@ -1837,7 +1784,8 @@ async function main() {
                 description:
                   "Why Cook on Christmas Day when we can do it for you?\nBook your Christmas Lunch with us here at Seven Stars instead.\nView our Christmas Day Menu below",
                 link: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-                image: `${STORAGE_BASE}/1782451790403-christmas-poster-day.webp`,
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/25-dec.webp",
                 highlights: [
                   "Glass of Champagne on arrival",
                   "Slow-Roasted Prime Beef Sirloin",
@@ -1850,7 +1798,8 @@ async function main() {
                 description:
                   "To make Christmas extra special for families, we've prepared a dedicated children's menu — light, delicious, and perfect for younger guests.",
                 link: `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-                image: `${STORAGE_BASE}/1782451835616-christmas-children-feast.webp`,
+                image:
+                  "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/children-christmas.webp",
                 highlights: [
                   "Mini Turkey Roast with all the trimmings",
                   "Ice Cream Sundae",
@@ -1900,7 +1849,8 @@ async function main() {
             title: "Book Your Christmas Table",
             description: "Early booking recommended for holiday parties.",
             buttonText: "Reserve Christmas Table",
-            buttonUrl: "/contact#christmas",
+            buttonUrl:
+              "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
           },
         },
       ],
@@ -1954,7 +1904,7 @@ async function main() {
               },
               {
                 days: "Sunday",
-                hours: "12:00 - 22:00",
+                hours: "12:00 - 20:00",
               },
             ],
             mapHeading: "Locate Us",
@@ -1986,8 +1936,6 @@ async function main() {
           order: 0,
           content: {
             title: "Articles & News",
-            subtitle:
-              "Latest news, recipe guides, and stories from Marsh Baldon",
             backgroundImage: IMAGES.BLOG_SUMMER,
           },
         },
