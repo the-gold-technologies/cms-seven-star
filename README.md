@@ -26,7 +26,7 @@
 
 <br />
 
-Welcome to the **Seven Stars CMS** — a custom-tailored, enterprise-grade management console built from the ground up to dynamicize and manage the **Seven Stars Pub Club** digital footprint. This centralized portal offers a secure, performant, and premium dark-gold interface to edit website pages, dining & drink menus, navigation structures, media assets, global SEO configurations, and customer enquiry CRM leads with automated email notifications.
+Welcome to the **Seven Stars CMS** — an enterprise-grade, custom-tailored content management console designed specifically for the **Seven Stars Pub Club**. This system provides comprehensive control over page section layouts, dining & drink menus, navigation bar hierarchy, Supabase media assets, global SEO metadata, dynamic XML sitemaps, robots.txt rules, third-party analytics scripts, and customer enquiry CRM leads with automated SMTP email notifications.
 
 ---
 
@@ -43,10 +43,14 @@ Welcome to the **Seven Stars CMS** — a custom-tailored, enterprise-grade manag
   - [2. Installation](#2-installation)
   - [3. Environment Setup](#3-environment-setup)
   - [4. Database Migration & Client Generation](#4-database-migration--client-generation)
-  - [5. Creating Initial Admin User](#5-creating-initial-admin-user)
+  - [5. Database Seeding & Admin Credentials](#5-database-seeding--admin-credentials)
   - [6. Running the Development Server](#6-running-the-development-server)
+- [🗄️ Database Schema & Data Models](#️-database-schema--data-models)
+- [🌐 CMS Page Builders & Layout Modules](#-cms-page-builders--layout-modules)
+- [🔌 Comprehensive API Endpoints Matrix](#-comprehensive-api-endpoints-matrix)
 - [⚡ API Caching & Revalidation Architecture](#-api-caching--revalidation-architecture)
 - [🎨 Design Language & Aesthetic System](#-design-language--aesthetic-system)
+- [🚀 Production Deployment Guide](#-production-deployment-guide)
 
 ---
 
@@ -56,12 +60,13 @@ The CMS bridges dynamic server-side content with the live customer-facing portal
 
 | Module | Feature Capabilities |
 | :--- | :--- |
-| **Dynamic Page Layout Builder** | Section-based visual ordering and text/image content creation for Home, About Us, Dining, Events, Our Story, and custom static pages. |
-| **Supabase Asset Manager** | Direct cloud bucket storage integration for high-resolution images, logo assets, and gallery media with automatic image optimization via Next.js Sharp image transformer. |
-| **Menu & Navigation Editor** | Interactive drag-and-drop structural controls for top bar navigation links, footer shortcuts, dining menus, and social link integrations. |
-| **Global SEO & Meta Control** | Full real-time configuration for page meta titles, meta descriptions, target keywords, canonical URLs, OG Social share tags, dynamic `robots.txt`, dynamic XML `sitemap.xml`, custom header/footer code injection (Google Analytics, GTM, Search Console), and JSON-LD schema markup. |
-| **Enquiry CRM & SMTP Notifications** | Database dashboard tracking incoming customer form submissions, party bookings, and lead messages, with automatic HTML email dispatching to admin via Nodemailer SMTP. |
-| **Metrics & System Health** | Live analytics overview screen featuring dynamic charts (Recharts) for total lead tracking, active static pages count, sitemap indexing status, and database health. |
+| **Dynamic Layout Builder** | Section-based visual reordering, content creation, and real-time updates for 12 static pages (Home, About Us, Dining, Menu, Events, Gallery, Our Story, Christmas, Contact Us, Blog, Privacy Policy, Terms of Service). |
+| **Supabase Cloud Asset Manager** | Direct cloud bucket storage integration for high-resolution images, brand logos, and gallery media with client-side image compression and Next.js Sharp image transformation. |
+| **Menu & Navigation Editor** | Drag-and-drop hierarchy controls for main navigation links, sub-menu items, footer shortcuts, dining food & drinks menus, cellar list, and social link integrations. |
+| **Global SEO & Custom Scripts** | Complete real-time management for page meta titles, meta descriptions, target keywords, canonical URLs, OG Social share tags, dynamic `robots.txt`, dynamic XML `sitemap.xml`, Google Analytics (GA4), GTM, Google Search Console, and custom HTML header/footer code injection. |
+| **Enquiry CRM & SMTP Mailer** | Interactive admin dashboard tracking customer booking requests, party enquiries, and lead form submissions, paired with instant HTML email dispatching to site administrators via Nodemailer SMTP. |
+| **Blog Management System** | Complete CRUD operations for blog posts, featuring rich-text publishing, hero image management, publication dates, and author metadata. |
+| **Metrics & System Health** | Real-time analytics overview featuring interactive charts (Recharts) for lead volume, active static pages, search index status, and PostgreSQL connection health. |
 | **Secure Authentication** | Credential-based authentication powered by NextAuth.js v5 (Auth.js) with bcrypt password hashing and session encryption. |
 
 ---
@@ -70,12 +75,13 @@ The CMS bridges dynamic server-side content with the live customer-facing portal
 
 - **Core Framework**: [Next.js 16 (App Router)](https://nextjs.org/) paired with [React 19](https://react.dev/).
 - **Database ORM**: [Prisma ORM v6](https://www.prisma.io/) managing a remote [PostgreSQL](https://www.postgresql.org/) database on Supabase (utilizing connection pooling via `pgbouncer` for high query throughput and direct connections for schema migrations).
-- **Cloud Storage**: [Supabase Storage](https://supabase.com/storage) for storing and serving image uploads.
-- **Styling & UI**: [Tailwind CSS v4](https://tailwindcss.com/) with custom CSS utility extensions and glassmorphism styling.
+- **Cloud Storage**: [Supabase Storage](https://supabase.com/storage) for storing and serving high-resolution media assets.
+- **Styling & UI**: [Tailwind CSS v4](https://tailwindcss.com/) with custom CSS utility extensions and glassmorphism overlay styles.
 - **Animations & Effects**: [Framer Motion v12](https://www.framer.com/motion/) for fluid motion transitions, modal reveals, and UI feedback.
 - **Auth System**: [NextAuth.js v5](https://next-auth.js.org/) (Auth.js) credentials provider backed by `@auth/prisma-adapter` and `bcryptjs`.
 - **Rich Text & Forms**: [React Quill New](https://www.npmjs.com/package/react-quill-new) rich-text editor integration and [React Hot Toast](https://react-hot-toast.com/) notifications.
 - **Email Delivery**: [Nodemailer](https://nodemailer.com/) with custom HTML email template generation for instant lead delivery over SMTP.
+- **Data Visualization**: [Recharts v3](https://recharts.org/) for rendering dashboard analytics.
 
 ---
 
@@ -85,31 +91,65 @@ The CMS bridges dynamic server-side content with the live customer-facing portal
 pub-club-cms/
 ├── prisma/                    # Database ORM configurations & seed scripts
 │   ├── schema.prisma          # PostgreSQL models (Page, Section, NavLink, Enquiry, GlobalConfig, User)
-│   └── seed.js                # Initial database seeder script
-├── public/                    # Public static web assets, fallback icons, and static images
+│   └── seed.js                # Database seeder script with initial pages, sections & admin user
+├── public/                    # Static public web assets, fallback icons, and static images
 ├── src/
 │   ├── app/                   # Next.js 16 App Router pages & API routes
-│   │   ├── api/               # API endpoint handlers (GET, POST, PUT, DELETE)
+│   │   ├── api/               # Server-side REST API handlers (26 endpoint directories)
+│   │   │   ├── about/         # About page API handler
 │   │   │   ├── auth/          # NextAuth authentication endpoints
-│   │   │   ├── enquiries/     # Customer contact form submissions endpoint
-│   │   │   ├── nav-links/     # Navigation structure management API
-│   │   │   ├── sections/      # Dynamic page section layout API
-│   │   │   ├── seo/           # Sitemap & robots.txt generator endpoints
-│   │   │   └── upload/        # Supabase media upload handler
+│   │   │   ├── blogs/         # Blog posts CRUD operations
+│   │   │   ├── christmas/     # Christmas festive page API
+│   │   │   ├── contact/       # Contact page section API
+│   │   │   ├── dashboard/     # Analytics metrics & CRM counts API
+│   │   │   ├── dining/        # Dining page section API
+│   │   │   ├── enquiries/     # Contact lead submissions & SMTP dispatch API
+│   │   │   ├── events/        # Events page section API
+│   │   │   ├── gallery/       # Media gallery items API
+│   │   │   ├── health/        # Database health check diagnostic API
+│   │   │   ├── home/          # Homepage layout sections API
+│   │   │   ├── instagram/     # Instagram feed auto-refresh API
+│   │   │   ├── menu/          # Food & drink menu sections API
+│   │   │   ├── nav-links/     # Navigation links & order hierarchy API
+│   │   │   ├── our-story/     # Pub heritage timeline API
+│   │   │   ├── pages/         # Dynamic page CRUD operations
+│   │   │   ├── profile/       # Admin password & account settings API
+│   │   │   ├── sections/      # Polymorphic layout sections engine API
+│   │   │   ├── seo/           # Global SEO, sitemap.xml & robots.txt routes
+│   │   │   └── upload/        # Supabase direct image upload handler
 │   │   ├── components/        # Admin UI layouts (Sidebar, Header, RichText, Form controls)
-│   │   ├── lib/               # Client-side cache engine (`apiCache.ts`), helpers & utilities
-│   │   ├── login/             # Secure login screen
-│   │   ├── navigation/        # Menu links and social media navigation editor
-│   │   ├── seo/               # SEO, Sitemap, Robots, Header/Footer scripts configuration page
+│   │   ├── lib/               # Client-side cache engine (`apiCache.ts`), upload helpers & utils
+│   │   ├── login/             # Credential login authentication screen
+│   │   ├── navigation/        # Menu links and social media navigation editors
+│   │   │   ├── menu-links/    # Main navigation links order builder
+│   │   │   └── social-media/  # Social media links editor
+│   │   ├── seo/               # Global SEO, Page Metadata, Sitemap & Robots configuration pages
+│   │   │   ├── global/        # Global SEO & Header/Footer code injection
+│   │   │   ├── pages/         # Per-page metadata editor
+│   │   │   └── sitemap-robots/# Sitemap & robots.txt editor
 │   │   ├── settings/          # Admin account password & profile management
-│   │   ├── static-pages/      # Visual page builders (Home, About, Dining, Events, etc.)
+│   │   ├── static-pages/      # Visual page section layout builders (12 static pages)
+│   │   │   ├── about/         # About Us layout builder
+│   │   │   ├── blog/          # Blog posts publisher
+│   │   │   ├── christmas/     # Festive Christmas layout builder
+│   │   │   ├── contact/       # Contact info layout builder
+│   │   │   ├── dining/        # Culinary experience builder
+│   │   │   ├── events/        # Private events layout builder
+│   │   │   ├── gallery/       # Gallery photos manager
+│   │   │   ├── home/          # Homepage section builder
+│   │   │   ├── menu/          # Food, drinks & cellar menu builder
+│   │   │   ├── our-story/     # Pub history timeline builder
+│   │   │   ├── privacy-policy/# Legal Privacy policy builder
+│   │   │   └── terms-of-service/# Legal Terms layout builder
 │   │   └── submissions/       # Customer enquiry lead table CRM view
+│   │       └── enquiries/     # Submissions CRM table
 │   ├── components/            # Shared universal components (FooterCMS, UI components)
-│   ├── lib/               # Core server instances (Prisma database client, Supabase client, SMTP mailer)
+│   ├── lib/                   # Core server instances (Prisma database client, Supabase client, SMTP mailer)
 │   └── styles/                # Global CSS rules, Tailwind v4 imports, Quill editor overrides
 ├── .env.example               # Sanitized environment variable configuration template
-├── next.config.ts             # Compilation and domain image loading settings
-├── package.json               # Dependencies and scripts registry
+├── .gitignore                 # Git ignore rules (with !.env.example exception)
+├── next.config.ts             # Next.js compilation settings & remote image domains
+├── package.json               # Package dependencies & npm execution scripts
 ├── prisma.config.ts           # Prisma configuration entrypoint
 └── tsconfig.json              # TypeScript compilation rules
 ```
@@ -118,7 +158,7 @@ pub-club-cms/
 
 ## 🔑 Environment Configuration Guide
 
-To protect system security and secrets, **never commit real credentials or keys to git**. All environment variables are stored in local `.env` or `.env.local` files and injected at runtime.
+To protect system security and credentials, **never commit real API secrets, database passwords, or SMTP keys to git**. Environment variables are maintained in local `.env` or `.env.local` files and loaded at runtime.
 
 ### Environment Variables Reference Table
 
@@ -200,7 +240,7 @@ CONTACT_EMAIL="<recipient-enquiry-email-address>"
 
 ## 💻 Developer Quickstart & Setup
 
-Follow these step-by-step instructions to initialize and run the CMS application in a development environment.
+Follow these step-by-step instructions to initialize and run the CMS application in a local development environment.
 
 ### 1. Prerequisites
 
@@ -243,19 +283,18 @@ npx prisma db push
 npx prisma generate
 ```
 
-*(Optional)* To seed initial default data into your database, run:
+### 5. Database Seeding & Admin Credentials
+
+Run the automated seeder script to populate initial static pages, navigation menus, and the default administrative user account:
+
 ```bash
+# Seed database tables and initialize admin account
 npm run seed
 ```
 
-### 5. Creating Initial Admin User
-
-Because public user registration is intentionally disabled for security, administrators must be created via command-line execution:
-
-```bash
-# Command Syntax: node scripts/create-user.js <email> <password> [name]
-node scripts/create-user.js admin@example.com MySecurePassword123 "Admin User"
-```
+Default administrative login credentials created by the seeder:
+- **Email**: `admin@sevenstars.co.uk`
+- **Password**: `1234asdf@` *(Change immediately upon logging in under Settings)*
 
 ### 6. Running the Development Server
 
@@ -268,7 +307,63 @@ npm run dev
 Once started, open your web browser and navigate to:
 **`http://localhost:3001`** (or the custom port configured in `NEXTAUTH_URL`).
 
-Log in using the administrative credentials created in Step 5.
+Log in using the administrative credentials from Step 5.
+
+---
+
+## 🗄️ Database Schema & Data Models
+
+The CMS database is managed via Prisma ORM and consists of six core models:
+
+1. **`User`**: Admin user authentication accounts storing hashed passwords (`bcryptjs`), names, and email addresses.
+2. **`Page`**: Represents individual website pages (`slug`, `title`, `order`, `visibility`, `isStatic`, `metaTitle`, `metaDescription`, `targetKeywords`, `canonicalUrl`, `noIndex`, `featuredImage`, `ogTitle`, `ogDescription`, `ogImage`, `schema`).
+3. **`Section`**: Polymorphic layout blocks associated with a `Page` via foreign key (`pageId`). Contains `type`, `order`, and a dynamic `content` JSON column.
+4. **`NavLink`**: Navigation menu hierarchy storing top-level links, dropdown sub-links, footer links (`label`, `url`, `type`, `parent`, `order`, `description`, `title`, `isStatic`).
+5. **`Enquiry`**: Stores incoming customer contact form submissions, party enquiries, and lead data (`name`, `email`, `interestedIn`, `budget`, `projectGoals`, `createdAt`).
+6. **`GlobalConfig`**: Single-row configuration storing global website metadata (`siteTitle`, `siteDescription`, `favicon`, `googleAnalyticsId`, `gtmId`, `searchConsoleId`, `customHeaderScripts`, `customFooterScripts`, `socialLinks`, `sitemapEnabled`, `robotsTxt`, `schema`).
+
+---
+
+## 🌐 CMS Page Builders & Layout Modules
+
+The CMS provides specialized visual editor interfaces located under `src/app/static-pages/`:
+
+| Page Route | Builder Focus | Content Managed |
+| :--- | :--- | :--- |
+| `/static-pages/home` | Homepage Builder | Hero section, Feature tiles, Gallery showcase, Visitor popup banner, Visiting info. |
+| `/static-pages/about` | About Us Builder | Heritage introduction, Pub philosophy, Team spotlight, Facility feature highlights. |
+| `/static-pages/dining` | Dining Builder | Culinary experience overview, Seasonal food highlights, Private dining room info. |
+| `/static-pages/menu` | Menus & Cellar | Food menu categories, Drink lists, Wine cellar selections, Special curated menus. |
+| `/static-pages/events` | Private Events | Function room bookings, Event package details, Private gathering features. |
+| `/static-pages/gallery` | Photo Gallery | High-res image uploads, Category tagging (Atmosphere, Dining, Events, Garden). |
+| `/static-pages/our-story` | History & Story | Pub timeline events, Historical milestones, Heritage photo showcase. |
+| `/static-pages/christmas` | Festive / Christmas | Seasonal festive dining packages, Christmas menu offerings, Party booking info. |
+| `/static-pages/contact` | Contact & Venue | Operating hours, Location address details, Parking & directions guide. |
+| `/static-pages/blog` | Blog Publisher | Create, edit, and publish news articles, summer events, and pub updates. |
+| `/static-pages/privacy-policy` | Legal Privacy | Privacy policy text content and data handling disclosures. |
+| `/static-pages/terms-of-service` | Legal Terms | Terms of service and pub reservation policy disclosures. |
+
+---
+
+## 🔌 Comprehensive API Endpoints Matrix
+
+The CMS exposes server-side REST API handlers located under `src/app/api/`:
+
+| API Endpoint Path | Supported Methods | Description & Functionality |
+| :--- | :--- | :--- |
+| `/api/auth/[...nextauth]` | `GET`, `POST` | NextAuth.js authentication session management & credential login. |
+| `/api/dashboard` | `GET` | Fetches dashboard metrics, total CRM leads count, page counts, and activity stats. |
+| `/api/sections` | `GET`, `PUT` | Fetches or updates polymorphic layout sections for dynamic pages. |
+| `/api/pages` | `GET`, `POST`, `PUT`, `DELETE` | CRUD operations for managing site pages and metadata. |
+| `/api/nav-links` | `GET`, `POST`, `PUT`, `DELETE` | Retrieves and updates navigation bar menu links and ordering. |
+| `/api/enquiries` | `GET`, `POST`, `DELETE` | Saves incoming customer enquiries and dispatches Nodemailer SMTP emails. |
+| `/api/blogs` | `GET`, `POST`, `PUT`, `DELETE` | CRUD operations for blog posts and article publishing. |
+| `/api/seo` | `GET`, `PUT` | Fetches and updates global SEO settings, header/footer scripts, and tracking IDs. |
+| `/api/seo/sitemap` | `GET` | Generates dynamic XML `sitemap.xml` for search engines. |
+| `/api/seo/robots` | `GET` | Generates dynamic `robots.txt` output based on GlobalConfig rules. |
+| `/api/upload` | `POST` | Uploads image files directly to Supabase Storage bucket. |
+| `/api/health` | `GET` | Diagnostic health endpoint verifying database connectivity. |
+| `/api/profile` | `PUT` | Updates administrator account profile name and password hash. |
 
 ---
 
@@ -309,6 +404,19 @@ The CMS UI follows a high-contrast dark aesthetic tailored specifically to match
 - **Royal Gold (`#D4AF37`)**: Reserved strictly for high-priority interactive elements, highlight borders, active state indicators, section headers, and primary CTA buttons.
 - **Glassmorphism**: Modals, sidebar menus, navigation bars, and stats cards utilize `backdrop-blur-md` with semi-transparent dark borders (`border-white/10`).
 - **Smooth Animations**: Framer Motion components provide subtle entrance animations (`opacity`, `y-axis shift`) and interactive hover feedback without compromising dashboard responsiveness.
+
+---
+
+## 🚀 Production Deployment Guide
+
+When deploying the CMS to production platforms (such as Vercel or custom Linux servers):
+
+1. **Environment Variables**: Set all 18 environment variables in your hosting provider's settings dashboard (Vercel Environment Variables).
+2. **Build Command**: Configure the build script to run Prisma generation:
+   ```bash
+   npm run build
+   ```
+3. **Database Migrations**: Ensure `DATABASE_URL` uses the `pgbouncer` pooler string (port 6543) for runtime queries, and `DIRECT_URL` points directly to PostgreSQL (port 5432) for running migrations.
 
 ---
 
