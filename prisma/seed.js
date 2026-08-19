@@ -147,6 +147,8 @@ const ALL_SUPABASE_FILES = [
   "1785413432718-SundayMenu.pdf",
   "1785413456217-DessertMenu.pdf",
   "1785413495467-summermenu2.pdf",
+  "1787142603105-1787141171062-Fathers-day-Menu-scaled.pdf",
+  "1787142624711-1787142262718-Wine-List-2025-Summer-Menu.pdf",
 ].map((filename) => `${STORAGE_BASE}/${filename}`);
 
 async function main() {
@@ -995,192 +997,31 @@ async function main() {
             ctaText: "ENQUIRE FOR PRIVATE DINING",
             ctaLink: "/contact",
             coverImage: IMAGES.FOOD_SPECIAL,
-            mainMenuPdf: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-            sundayMenuPdf: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-            dessertMenuPdf: `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-            pdfUrl: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-            menuPdfs: [
-              `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-              `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-              `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-            ],
-            pdfMenus: [
-              {
-                id: "main",
-                name: "Main Menu",
-                title: "MAIN MENU",
-                url: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-                pdfUrl: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-              },
-              {
-                id: "sunday",
-                name: "Sunday Menu",
-                title: "SUNDAY MENU",
-                url: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-                pdfUrl: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-              },
-              {
-                id: "dessert",
-                name: "Dessert Menu",
-                title: "DESSERT MENU",
-                url: `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-                pdfUrl: `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-              },
-            ],
             menuSections: [
               {
                 id: "main",
                 title: "MAIN MENU",
                 pdf: `${STORAGE_BASE}/1785413495467-summermenu2.pdf`,
-                pages: [
-                  {
-                    categories: [
-                      {
-                        name: "Small Plates",
-                        items: [
-                          {
-                            name: "Marinated Olives",
-                            price: "£4.95",
-                            desc: "(VG) (GF)",
-                          },
-                          {
-                            name: "Focaccia With Balsamic and Olive Oil",
-                            price: "£5.95",
-                            desc: "(VG)",
-                          },
-                          { name: "Devil Crispy Whitebait", price: "£6.50" },
-                          {
-                            name: "Honey BBQ Chicken Wings",
-                            price: "£6.95",
-                            desc: "Chives, Scallions (GF)",
-                          },
-                          {
-                            name: "Halloumi Fries",
-                            price: "£7.50",
-                            desc: "With Honey Chili Sauce (GF/V)",
-                          },
-                        ],
-                      },
-                      {
-                        name: "To Start",
-                        items: [
-                          {
-                            name: "Soup Of The Day",
-                            price: "£7.50",
-                            desc: "Served with Sourdough",
-                          },
-                          {
-                            name: "Pressed Beef Brisket",
-                            price: "£11.95",
-                            desc: "Oriental Coleslaw, Chimichurri",
-                          },
-                          {
-                            name: "Hoisin Crispy Duck Salad",
-                            price: "£10.95",
-                            desc: "Cucumber, Scallions, Pomegranate, Roasted Cashew Nuts, Red Wine Gastrique",
-                          },
-                          {
-                            name: "Arabic Crème Chicken Skewers",
-                            price: "£10.50",
-                            desc: "Chermoula, Scallions, Pomegranate, Levantine Spiced Salad (GF)",
-                          },
-                          {
-                            name: "Spiced Home-Reared Lamb Kofta",
-                            price: "£12.95",
-                            desc: "Red Pepper Hummus, Lightly Spiced Onion, Tzatziki (GF)",
-                          },
-                          {
-                            name: "Garlic & Chili King Prawns",
-                            price: "£14.95",
-                            desc: "Roasted Tomatoes, Sourdough",
-                          },
-                          {
-                            name: "Truffle Arancini",
-                            price: "£10.95",
-                            desc: "Wild Creamy Mushroom Sauce, Parmigiano, Tarragon (V)",
-                          },
-                          {
-                            name: "Harissa Roasted Heart Artichoke",
-                            price: "£10.95",
-                            desc: "Green Hummus, Pomegranate, Paprika & Pita Bread (VG)",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                id: "sunday",
-                title: "SUNDAY MENU",
-                pdf: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
-                pages: [
-                  {
-                    categories: [
-                      {
-                        name: "Sunday Roasts (Served 12:00 - 18:00)",
-                        items: [
-                          {
-                            name: "Slow-Roasted Sirloin of Beef",
-                            price: "£22.50",
-                            desc: "Yorkshire pudding, roast potatoes, seasonal vegetables, rich gravy",
-                          },
-                          {
-                            name: "Roast Leg of English Lamb",
-                            price: "£21.50",
-                            desc: "Yorkshire pudding, roast potatoes, mint sauce, seasonal vegetables",
-                          },
-                          {
-                            name: "Free-Range Roast Chicken",
-                            price: "£19.50",
-                            desc: "Sage & onion stuffing, Yorkshire pudding, roast potatoes, gravy",
-                          },
-                          {
-                            name: "Nut Roast & Mushroom Tart",
-                            price: "£17.50",
-                            desc: "Vegetarian gravy, roast potatoes, seasonal vegetables (V/VG)",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
               },
               {
                 id: "dessert",
                 title: "DESSERT MENU",
                 pdf: `${STORAGE_BASE}/1785413456217-DessertMenu.pdf`,
-                pages: [
-                  {
-                    categories: [
-                      {
-                        name: "Desserts",
-                        items: [
-                          {
-                            name: "Orange & Cognac Crème Brûlée",
-                            price: "£9.00",
-                            desc: "Classic rich burnt custard infused with orange zest and cognac",
-                          },
-                          {
-                            name: "Warm Chocolate Lava Cake",
-                            price: "£9.50",
-                            desc: "Vanilla bean gelato, fresh berries",
-                          },
-                          {
-                            name: "Sticky Toffee Pudding",
-                            price: "£8.50",
-                            desc: "Warm butterscotch sauce, clotted cream",
-                          },
-                          {
-                            name: "Selection of Artisan Cheeses",
-                            price: "£11.95",
-                            desc: "Local Oxfordshire cheeses, biscuits, chutney",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
+              },
+              {
+                id: "sunday",
+                title: "Sunday Menu",
+                pdf: `${STORAGE_BASE}/1785413432718-SundayMenu.pdf`,
+              },
+              {
+                id: "fathers-day",
+                title: "Father's Day Menu",
+                pdf: `${STORAGE_BASE}/1787142603105-1787141171062-Fathers-day-Menu-scaled.pdf`,
+              },
+              {
+                id: "wine-list",
+                title: "Wine List",
+                pdf: `${STORAGE_BASE}/1787142624711-1787142262718-Wine-List-2025-Summer-Menu.pdf`,
               },
             ],
           },
@@ -1308,7 +1149,7 @@ async function main() {
             upcomingEvents: [
               {
                 title: "Quiz Night",
-                date: "12th Aug, 26th Aug",
+                date: "26th Aug",
                 time: "7:30 PM",
                 category: "PUB EVENT",
                 highlight: "Test your trivia knowledge & win prizes",
@@ -1317,24 +1158,34 @@ async function main() {
                 image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/10/Quizz-Poster-New.jpg`,
               },
               {
+                title: "Jubilee Brass",
+                date: "Saturday, 29th August",
+                time: "7:00 PM",
+                category: "LIVE MUSIC",
+                highlight: "Live brass band performance on the green",
+                description:
+                  "Enjoy a fantastic evening of live brass music with the Jubilee Brass band playing live at The Seven Stars.",
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/08/jubly-Brass.jpg`,
+              },
+              {
+                title: "Indian Desi Thali",
+                date: "3rd & 17th Sep, 1st, 15th & 29th Oct",
+                time: "6:00 PM",
+                category: "DINING EXPERIENCE",
+                highlight: "Authentic Indian curries & fresh naan",
+                description:
+                  "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
+                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/08/Indian-Desi-Thali-Template.jpg`,
+              },
+              {
                 title: "Classic Car Show",
-                date: "18th Aug, 15th Sep",
+                date: "15th Sep",
                 time: "5:00 PM",
                 category: "SPECIAL GATHERING",
                 highlight: "Vintage cars & classics on the green",
                 description:
                   "Admire a fantastic collection of classic cars and vintage vehicles on Marsh Baldon Green. Enjoy great food and drinks while meeting fellow car enthusiasts.",
                 image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/07/seven-stars-car-show.jpg`,
-              },
-              {
-                title: "Indian Desi Thali",
-                date: "20th Aug, 3rd & 17th Sep",
-                time: "6:00 PM",
-                category: "DINING EXPERIENCE",
-                highlight: "Authentic Indian curries & fresh naan",
-                description:
-                  "Experience our popular Indian Desi Thali nights, featuring authentic curries, daals, warm naan, and delicious traditional side dishes.",
-                image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/06/Desi-thali.jpg`,
               },
               {
                 title: "Aunt Sally Season",
@@ -1345,16 +1196,6 @@ async function main() {
                 description:
                   "Get ready for the traditional Oxfordshire Aunt Sally pub game season at The Seven Stars! Join the local team or cheer from the garden.",
                 image: `https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2026/04/Aunt-Sally.jpg`,
-              },
-              {
-                title: "Mother's Day Lunch",
-                date: "30th March",
-                time: "Lunchtime",
-                category: "SPECIAL EVENT",
-                highlight: "2/3 Course Set Luncheon",
-                description:
-                  "Celebrate Mother's Day with a special 2 or 3 course set luncheon at Seven Stars at Marsh Baldon. Includes a complimentary glass of prosecco for moms! Call 01865 343337 to book.",
-                image: `${STORAGE_BASE}/1779093878328-481171001_957353706531406_1040071741557670337_nlow1.webp`,
               },
             ],
           },
@@ -2317,7 +2158,7 @@ async function main() {
             excerpt:
               "Oxford Mail featured The Seven Stars as a cricket legend visited our traditional village green pub in Marsh Baldon.",
             content:
-              "<p>The Seven Stars at Marsh Baldon was recently highlighted in an Oxford Mail feature following an exciting visit from a renowned international cricket legend. Situated right on the picturesque Marsh Baldon village green—where cricket has been played by local teams for generations—the pub served as the ideal setting for a summer afternoon of sports talk, warm hospitality, and traditional pub refreshments.</p><h3>A Village Green Steeped in History</h3><p>Marsh Baldon Green is famous across South Oxfordshire as one of the largest and most scenic village greens in England. For over a century, summer weekends have seen local cricket matches played against the backdrop of historic thatched cottages and mature oak trees.</p><p>During the visit, patrons and local residents gathered in the pub garden to share memories, take photos, and discuss classic cricket fixtures over cold pints of local cask ale and freshly cooked British pub dishes.</p><h3>Celebrating Community & Sports</h3><p>\"It’s an incredible honor to have sporting figures visit our community pub,\" said landlord Namit. \"The connection between village green cricket and a traditional English pub is timeless. Events like these bring residents and visitors together in celebration of local heritage.\"</p>",
+              '<p>The Seven Stars at Marsh Baldon was recently highlighted in an Oxford Mail feature following an exciting visit from a renowned international cricket legend. Situated right on the picturesque Marsh Baldon village green—where cricket has been played by local teams for generations—the pub served as the ideal setting for a summer afternoon of sports talk, warm hospitality, and traditional pub refreshments.</p><h3>A Village Green Steeped in History</h3><p>Marsh Baldon Green is famous across South Oxfordshire as one of the largest and most scenic village greens in England. For over a century, summer weekends have seen local cricket matches played against the backdrop of historic thatched cottages and mature oak trees.</p><p>During the visit, patrons and local residents gathered in the pub garden to share memories, take photos, and discuss classic cricket fixtures over cold pints of local cask ale and freshly cooked British pub dishes.</p><h3>Celebrating Community & Sports</h3><p>"It’s an incredible honor to have sporting figures visit our community pub," said landlord Namit. "The connection between village green cricket and a traditional English pub is timeless. Events like these bring residents and visitors together in celebration of local heritage."</p>',
             postType: "news",
             link: "https://www.oxfordmail.co.uk/news/26159216.cricket-legend-visits-oxfordshire-pub-next-village-green/",
             area: "Oxford Mail Feature",
@@ -2348,7 +2189,7 @@ async function main() {
             excerpt:
               "The Oxford Mail named The Seven Stars among the top five country pubs in Oxfordshire for outstanding food and service.",
             content:
-              "<p>The Oxford Mail has published its annual culinary guide featuring the top five country pubs across Oxfordshire for outstanding food, hospitality, and atmosphere. We are thrilled to announce that The Seven Stars at Marsh Baldon has been officially named among this elite group of destinations!</p><h3>Elevated Pub Classics & Global Inspirations</h3><p>The feature highlighted our kitchen’s dual philosophy: perfecting traditional British pub staples like ale-battered fish and chips, slow-cooked Sunday roasts, and gourmet steak burgers, while also introducing vibrant international specials like our fortnightly Indian Thali nights.</p><blockquote>\"The Seven Stars strikes the perfect balance between a quintessential countryside local and a destination gastropub serving extraordinary food.\" — Oxford Mail</blockquote><h3>Sourcing Local Oxfordshire Ingredients</h3><p>Our commitment to quality starts with local partnerships. Our chefs work closely with local farms, butchery suppliers, and organic vegetable growers across South Oxfordshire to ensure seasonal freshness in every plate. Whether dining inside our cozy 350-year-old dining room by the log fire or enjoying lunch on the garden patio, guests can expect exceptional quality every time.</p>",
+              '<p>The Oxford Mail has published its annual culinary guide featuring the top five country pubs across Oxfordshire for outstanding food, hospitality, and atmosphere. We are thrilled to announce that The Seven Stars at Marsh Baldon has been officially named among this elite group of destinations!</p><h3>Elevated Pub Classics & Global Inspirations</h3><p>The feature highlighted our kitchen’s dual philosophy: perfecting traditional British pub staples like ale-battered fish and chips, slow-cooked Sunday roasts, and gourmet steak burgers, while also introducing vibrant international specials like our fortnightly Indian Thali nights.</p><blockquote>"The Seven Stars strikes the perfect balance between a quintessential countryside local and a destination gastropub serving extraordinary food." — Oxford Mail</blockquote><h3>Sourcing Local Oxfordshire Ingredients</h3><p>Our commitment to quality starts with local partnerships. Our chefs work closely with local farms, butchery suppliers, and organic vegetable growers across South Oxfordshire to ensure seasonal freshness in every plate. Whether dining inside our cozy 350-year-old dining room by the log fire or enjoying lunch on the garden patio, guests can expect exceptional quality every time.</p>',
             postType: "news",
             link: "https://www.oxfordmail.co.uk/news/24868629.five-oxfordshire-country-pubs-best-food-revealed/",
             area: "Oxford Mail Feature",
