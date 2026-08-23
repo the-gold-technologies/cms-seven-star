@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
+
 interface ActivityItem {
   type: string;
   text: string;
