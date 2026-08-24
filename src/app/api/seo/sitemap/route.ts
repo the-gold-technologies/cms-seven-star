@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_WEBSITE_URL || "https://pub-club-mu.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL || "";
 
 export async function GET() {
   try {

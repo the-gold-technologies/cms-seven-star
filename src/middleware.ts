@@ -8,16 +8,13 @@ export default auth((req) => {
   const isLoggedIn = !!req.auth;
   const { nextUrl } = req;
   const origin = req.headers.get("origin");
-  const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
+  const allowedOrigin = process.env.ALLOWED_ORIGINS;
 
   // Handle CORS for API routes
   if (nextUrl.pathname.startsWith("/api/")) {
     const response = NextResponse.next();
 
-    if (
-      origin &&
-      (allowedOrigins.includes(origin) || allowedOrigins.includes("*"))
-    ) {
+    if (origin && (allowedOrigin === origin || allowedOrigin === "*")) {
       response.headers.set("Access-Control-Allow-Origin", origin);
     }
 
