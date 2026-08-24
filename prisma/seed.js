@@ -382,11 +382,7 @@ async function main() {
           order: 1,
           content: {
             isEnabled: false,
-            title: "Send an Enquiry",
-            description: "We aim to respond to all enquiries within 24 hours.",
-            welcomeText: "Welcome",
-            imageTitle: "Seven Stars",
-            imageSubtitle: "Marsh Baldon, Oxford",
+            image: "",
           },
         },
         {

@@ -2,21 +2,15 @@
 
 import { useState, useRef, useEffect } from "react";
 import { fetchWithCache } from "@/lib/apiCache";
-import { CloudUpload, Trash2, Sparkles, HelpCircle } from "lucide-react";
+import { CloudUpload, Trash2, Sparkles } from "lucide-react";
 import toast from "react-hot-toast";
-import { InputField } from "@/components/InputField";
 import { SaveButton } from "@/components/SaveButton";
 import { uploadFiles } from "@/lib/uploadHelpers";
 import { SectionHeader } from "@/components/SectionHeader";
 
 const defaultFormData = {
   isEnabled: true,
-  title: "Send an Enquiry",
-  description: "We aim to respond to all enquiries within 24 hours.",
   image: "",
-  welcomeText: "Welcome",
-  imageTitle: "Seven Stars",
-  imageSubtitle: "Marsh Baldon, Oxford",
 };
 
 interface FirstTimePopupSectionProps {
@@ -74,11 +68,6 @@ export function FirstTimePopupSection({
     }
   }, [initialData, saveUrl, responseKey]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData((prev) => ({ ...prev, [name]: checked }));
@@ -96,15 +85,6 @@ export function FirstTimePopupSection({
   };
 
   const handleSave = async () => {
-    const errs: string[] = [];
-    if (!formData.title.trim()) errs.push("Title is required");
-    if (!formData.description.trim()) errs.push("Description is required");
-
-    if (errs.length > 0) {
-      errs.forEach((msg) => toast.error(msg));
-      return;
-    }
-
     setIsSaving(true);
     const toastId = toast.loading("Saving First-Time Visitor Popup settings...");
     try {
@@ -179,51 +159,6 @@ export function FirstTimePopupSection({
                     Enable Popup on First Visit
                   </span>
                 </label>
-              </div>
-
-              {/* Form fields */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
-                <InputField
-                  label="Popup Title"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleChange}
-                  placeholder="e.g. Send an Enquiry"
-                  required
-                />
-                <InputField
-                  label="Popup Description"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  placeholder="e.g. We aim to respond within 24 hours."
-                  required
-                />
-              </div>
-
-              {/* Image Overlay Text fields */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50/20 border border-gray-100 p-6 rounded-2xl">
-                <InputField
-                  label="Image Overlay Welcome Label"
-                  name="welcomeText"
-                  value={formData.welcomeText}
-                  onChange={handleChange}
-                  placeholder="e.g. Welcome"
-                />
-                <InputField
-                  label="Image Overlay Title"
-                  name="imageTitle"
-                  value={formData.imageTitle}
-                  onChange={handleChange}
-                  placeholder="e.g. Seven Stars"
-                />
-                <InputField
-                  label="Image Overlay Subtitle"
-                  name="imageSubtitle"
-                  value={formData.imageSubtitle}
-                  onChange={handleChange}
-                  placeholder="e.g. Marsh Baldon, Oxford"
-                />
               </div>
 
               {/* Popup Side Image */}
