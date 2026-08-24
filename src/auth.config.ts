@@ -1,6 +1,5 @@
 import type { NextAuthConfig } from "next-auth";
 
-
 export default {
   providers: [],
   session: { strategy: "jwt" },
@@ -8,6 +7,7 @@ export default {
     signIn: "/login",
   },
   secret: process.env.AUTH_SECRET,
+  trustHost: true,
   cookies: {
     sessionToken: {
       name: "pub-club-cms.session-token",
