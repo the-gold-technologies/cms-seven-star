@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 import { checkAndAutoRefreshToken } from "@/lib/instagramAutoRefresh";
 
+export const dynamic = "force-dynamic";
+
 const DEFAULT_PRIVACY_POLICY = {
   title: "Privacy Policy",
   introduction:

@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/home
  * Returns all sections of the Home page as { [sectionType]: content } map.

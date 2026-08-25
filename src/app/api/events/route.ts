@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { checkAndAutoRefreshToken } from "@/lib/instagramAutoRefresh";
 
+export const dynamic = "force-dynamic";
+
 const PAGE_SLUG = "events";
 
 export async function GET() {
