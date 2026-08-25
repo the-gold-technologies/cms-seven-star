@@ -191,12 +191,6 @@ export function UpcomingEventsCMS({
         errs.push(`Event ${index + 1} Time label is required`);
       if (!ev.description?.trim())
         errs.push(`Event ${index + 1} Description is required`);
-      if (!ev.pricing?.trim())
-        errs.push(`Event ${index + 1} Pricing detail is required`);
-      if (!ev.highlight?.trim())
-        errs.push(`Event ${index + 1} Glass highlight is required`);
-      if (!ev.contactInfo?.trim())
-        errs.push(`Event ${index + 1} Contact detail is required`);
       if (!ev.category?.trim())
         errs.push(`Event ${index + 1} Category tag is required`);
       if (!selectedImages[index])
@@ -362,20 +356,49 @@ export function UpcomingEventsCMS({
                       key={idx}
                       className="flex flex-col gap-6 p-6 bg-white border border-gray-200/80 rounded-3xl relative hover:border-gray-300 transition-all text-left"
                     >
-                      <div className="flex justify-between items-center border-b border-gray-100 pb-2 mb-1 cursor-pointer" onClick={() => toggleCardCollapse(idx)}>
-                        <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest flex items-center gap-2">
-                          <Award className="w-3.5 h-3.5 text-blue-500" />
-                          Upcoming Event Card #{idx + 1}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${collapsedCards[idx] ? 'rotate-180' : ''}`} />
+                      <div
+                        className="flex justify-between items-center border-b border-gray-100 pb-3 mb-1 cursor-pointer select-none"
+                        onClick={() => toggleCardCollapse(idx)}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest flex items-center gap-2">
+                            <Award className="w-3.5 h-3.5 text-blue-500" />
+                            Upcoming Event Card #{idx + 1}
+                          </span>
+                          {ev.title && (
+                            <span className="text-xs font-medium text-gray-500 truncate max-w-[200px] border-l border-gray-200 pl-2">
+                              {ev.title}
+                            </span>
+                          )}
+                        </div>
+
+                        <div
+                          className="flex items-center gap-2"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <button
                             type="button"
-                            onClick={(e) => { e.stopPropagation(); deleteEvent(idx); }}
-                            className="text-red-500 hover:text-red-600 hover:bg-red-50 px-2.5 py-1 rounded-lg text-[10px] font-bold border border-red-100 flex items-center gap-1 transition-all"
+                            onClick={() => deleteEvent(idx)}
+                            className="text-red-500 hover:text-red-600 hover:bg-red-50 px-2.5 py-1 rounded-lg text-[10px] font-bold border border-red-100 flex items-center gap-1 transition-all cursor-pointer"
                           >
                             <Trash2 className="w-3 h-3" />
                             Delete Event
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => toggleCardCollapse(idx)}
+                            className="text-gray-400 hover:text-gray-600 p-1 hover:bg-gray-100 rounded-lg transition-all cursor-pointer flex items-center justify-center"
+                            title={
+                              collapsedCards[idx]
+                                ? "Expand Event"
+                                : "Collapse Event"
+                            }
+                          >
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-200 ${
+                                collapsedCards[idx] ? "" : "rotate-180"
+                              }`}
+                            />
                           </button>
                         </div>
                       </div>
@@ -503,17 +526,16 @@ export function UpcomingEventsCMS({
                           />
 
                           <InputField
-                            label="Pricing Detail"
+                            label="Pricing Detail (Optional)"
                             value={ev.pricing}
                             onChange={(e) =>
                               handleEventFieldChange(idx, "pricing", e.target.value)
                             }
                             placeholder="e.g. ADULTS £28.95 / CHILDREN £17.95"
-                            required
                           />
 
                           <InputField
-                            label="Glass Highlight Tag"
+                            label="Glass Highlight Tag (Optional)"
                             value={ev.highlight}
                             onChange={(e) =>
                               handleEventFieldChange(
@@ -523,11 +545,10 @@ export function UpcomingEventsCMS({
                               )
                             }
                             placeholder="e.g. GLASS OF PROSECCO FOR MOMS"
-                            required
                           />
 
                           <InputField
-                            label="Reservation Contact Info"
+                            label="Reservation Contact Info (Optional)"
                             value={ev.contactInfo}
                             onChange={(e) =>
                               handleEventFieldChange(
@@ -537,7 +558,6 @@ export function UpcomingEventsCMS({
                               )
                             }
                             placeholder="e.g. 01865 343337 | info@..."
-                            required
                           />
                         </div>
                       </div>
