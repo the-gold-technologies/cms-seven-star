@@ -24,9 +24,10 @@ function getSmtpTransporter() {
   }
 
   const port = Number(process.env.SMTP_PORT || 465);
-  const secure = process.env.SMTP_SECURE !== undefined 
-    ? process.env.SMTP_SECURE === "true"
-    : (port === 465 || port === 465);
+  const secure =
+    process.env.SMTP_SECURE !== undefined
+      ? process.env.SMTP_SECURE === "true"
+      : port === 465 || port === 465;
 
   return nodemailer.createTransport({
     host,
@@ -48,7 +49,7 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
 
     if (!transporter) {
       console.warn(
-        "[SMTP Mailer] SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) are not configured. Email notification skipped."
+        "[SMTP Mailer] SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) are not configured. Email notification skipped.",
       );
       return { success: false, reason: "SMTP not configured" };
     }
@@ -56,7 +57,7 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
     const recipient = process.env.CONTACT_EMAIL || "info@sevenstarsatmb.co.uk";
 
     const fromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
-    const fromName = process.env.SMTP_FROM_NAME || "Seven Stars Pub & Club";
+    const fromName = process.env.SMTP_FROM_NAME || "Gastro Pub";
     const sender = process.env.SMTP_FROM || `"${fromName}" <${fromEmail}>`;
 
     const subject = `New Enquiry: ${enquiry.interestedIn || "General Enquiry"} from ${enquiry.name}`;
@@ -142,7 +143,10 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
       html: htmlContent,
     });
 
-    console.log("[SMTP Mailer] Email sent successfully. MessageID:", info.messageId);
+    console.log(
+      "[SMTP Mailer] Email sent successfully. MessageID:",
+      info.messageId,
+    );
     return { success: true, messageId: info.messageId };
   } catch (error: any) {
     console.error("[SMTP Mailer Error]:", error);

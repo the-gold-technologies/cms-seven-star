@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pub Club CMS",
-  description: "Manage your pub club website content",
+  title: "The Seven Star",
+  description: "Manage your Seven Star website content",
 };
 
 export default async function RootLayout({
