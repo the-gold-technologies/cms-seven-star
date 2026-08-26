@@ -94,7 +94,7 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Seven Stars Pub & Club</h1>
+              <h1>Gastro Pub</h1>
               <p>New Form Submission Received</p>
             </div>
             <div class="body-content">
