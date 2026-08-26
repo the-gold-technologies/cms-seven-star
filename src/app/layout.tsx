@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "The Seven Star",
-  description: "Manage your Seven Star website content",
+  title: "The Seven Stars",
+  description: "Manage your Seven Stars website content",
 };
 
 export default async function RootLayout({
