@@ -40,6 +40,11 @@ function getSmtpTransporter() {
   });
 }
 
+function cleanEmail(email?: string | null): string {
+  if (!email) return "";
+  return email.replace(/[\u201C\u201D\u2018\u2019"'\s]/g, "").trim();
+}
+
 /**
  * Sends an SMTP email notification when a new enquiry is received.
  */
@@ -54,9 +59,12 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
       return { success: false, reason: "SMTP not configured" };
     }
 
-    const recipient = process.env.CONTACT_EMAIL || "info@sevenstarsatmb.co.uk";
+    const recipient =
+      cleanEmail(process.env.CONTACT_EMAIL) || "info@sevenstarsatmb.co.uk";
 
-    const fromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
+    const fromEmail = cleanEmail(
+      process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER,
+    );
     const fromName = process.env.SMTP_FROM_NAME || "Gastro Pub";
     const sender = process.env.SMTP_FROM || `"${fromName}" <${fromEmail}>`;
 
@@ -138,7 +146,7 @@ export async function sendEnquiryNotificationEmail(enquiry: EnquiryData) {
     const info = await transporter.sendMail({
       from: sender,
       to: recipient,
-      replyTo: enquiry.email,
+      replyTo: cleanEmail(enquiry.email) || enquiry.email,
       subject: subject,
       html: htmlContent,
     });
