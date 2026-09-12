@@ -4,18 +4,8 @@ import { useState, useEffect } from "react";
 import { PageHeader } from "@/app/components/PageHeader";
 import { Search, Loader2, ChevronLeft, ChevronRight, Mail, Calendar, User, Tag, MessageSquare } from "lucide-react";
 import { InputField } from "@/app/components/InputField";
+import { EnquiryModal, Enquiry } from "@/app/components/EnquiryModal";
 import toast from "react-hot-toast";
-
-interface Enquiry {
-  id: string;
-  name: string;
-  email: string;
-  interestedIn: string | null;
-  budget: string | null;
-  projectGoals: string | null;
-  status: string;
-  createdAt: string;
-}
 
 interface Pagination {
   total: number;
@@ -26,6 +16,7 @@ interface Pagination {
 
 export default function EnquiriesPage() {
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
+  const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -124,11 +115,12 @@ export default function EnquiriesPage() {
                     </td>
                     <td className="px-6 py-5 pr-8 text-right">
                        <button 
-                         onClick={() => alert(enquiry.projectGoals || "No message content")}
-                         title="View message"
-                         className="p-2 bg-gray-50 text-gray-400 rounded-xl hover:bg-[#475DB1]/10 hover:text-[#475DB1] transition-all"
+                         onClick={() => setSelectedEnquiry(enquiry)}
+                         title="View message and enquiry details"
+                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 text-gray-600 rounded-xl hover:bg-[#475DB1]/10 hover:text-[#475DB1] transition-all text-xs font-semibold group-hover:bg-white group-hover:shadow-sm"
                        >
-                         <MessageSquare className="w-4 h-4" />
+                         <MessageSquare className="w-3.5 h-3.5 text-[#475DB1]" />
+                         <span>View</span>
                        </button>
                     </td>
                   </tr>
@@ -163,6 +155,13 @@ export default function EnquiriesPage() {
           </div>
         )}
       </div>
+
+      {/* Enquiry Detail Popup Modal */}
+      <EnquiryModal
+        enquiry={selectedEnquiry}
+        isOpen={Boolean(selectedEnquiry)}
+        onClose={() => setSelectedEnquiry(null)}
+      />
     </div>
   );
 }

@@ -2,19 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { User, Mail, Tag, Calendar, ArrowRight, Loader2 } from "lucide-react";
-
-interface Enquiry {
-  id: string;
-  name: string;
-  email: string;
-  interestedIn: string | null;
-  budget: string | null;
-  createdAt: string;
-}
+import { User, Mail, Tag, Calendar, ArrowRight, Loader2, Eye } from "lucide-react";
+import { EnquiryModal, Enquiry } from "./EnquiryModal";
 
 export function RecentEnquiries() {
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
+  const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -71,11 +64,16 @@ export function RecentEnquiries() {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {enquiries.map((enquiry) => (
-                <tr key={enquiry.id} className="hover:bg-gray-50/20 transition-colors">
+                <tr
+                  key={enquiry.id}
+                  onClick={() => setSelectedEnquiry(enquiry)}
+                  className="hover:bg-gray-50/80 transition-colors cursor-pointer group"
+                  title="Click to view details"
+                >
                   <td className="py-3.5">
                     <div className="flex flex-col">
-                      <span className="font-bold text-gray-900 flex items-center gap-1.5">
-                        <User className="w-3 h-3 text-gray-400" />
+                      <span className="font-bold text-gray-900 group-hover:text-[#475DB1] transition-colors flex items-center gap-1.5">
+                        <User className="w-3 h-3 text-gray-400 group-hover:text-[#475DB1]" />
                         {enquiry.name}
                       </span>
                       <span className="text-[11px] text-gray-400 flex items-center gap-1.5 mt-0.5">
@@ -102,6 +100,13 @@ export function RecentEnquiries() {
           </table>
         </div>
       )}
+
+      {/* Enquiry Detail Popup Modal */}
+      <EnquiryModal
+        enquiry={selectedEnquiry}
+        isOpen={Boolean(selectedEnquiry)}
+        onClose={() => setSelectedEnquiry(null)}
+      />
     </div>
   );
 }
