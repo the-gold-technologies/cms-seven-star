@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import { createClient } from "@supabase/supabase-js";
 import { deleteFromCloudinary } from "@/lib/cloudinary";
 
 const globalForPrisma = global as unknown as { prisma: unknown };
@@ -8,49 +7,17 @@ const rawPrisma = new PrismaClient({
   log: ["query"],
 });
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
-const BUCKET = "myBucket";
-
-function extractFilePath(publicUrl: string): string | null {
-  try {
-    const marker = `/object/public/${BUCKET}/`;
-    const idx = publicUrl.indexOf(marker);
-    if (idx === -1) return null;
-    return decodeURIComponent(publicUrl.slice(idx + marker.length));
-  } catch {
-    return null;
-  }
-}
-
 async function deleteFromSupabase(url: string) {
   if (!url) return;
-
-  // If it is a Cloudinary URL, delete from Cloudinary
   if (url.includes("cloudinary.com")) {
     await deleteFromCloudinary(url);
-    return;
-  }
-
-  // Otherwise handle legacy Supabase URL
-  const path = extractFilePath(url);
-  if (!path) return;
-  const { error } = await supabase.storage.from(BUCKET).remove([path]);
-  if (error) {
-    console.warn("Prisma Hook: Failed to delete old file:", error.message);
-  } else {
-    console.log(`Prisma Hook: Successfully deleted orphaned file: ${path}`);
   }
 }
 
 function findSupabaseUrls(obj: unknown): string[] {
   const urls: string[] = [];
   if (typeof obj === "string") {
-    if (
-      obj.includes(`/object/public/${BUCKET}/`) ||
-      obj.includes("res.cloudinary.com")
-    ) {
+    if (obj.includes("res.cloudinary.com")) {
       urls.push(obj);
     }
   } else if (Array.isArray(obj)) {
@@ -78,7 +45,8 @@ const extendedPrisma = rawPrisma.$extends({
         const result = await query(args);
 
         if (oldPage) {
-          const newFeatured = (result as { featuredImage?: string | null }).featuredImage;
+          const newFeatured = (result as { featuredImage?: string | null })
+            .featuredImage;
           const oldFeatured = oldPage.featuredImage;
           if (oldFeatured && oldFeatured !== newFeatured) {
             await deleteFromSupabase(oldFeatured);
@@ -101,7 +69,8 @@ const extendedPrisma = rawPrisma.$extends({
         const result = await query(args);
 
         if (oldPage) {
-          const newFeatured = (result as { featuredImage?: string | null }).featuredImage;
+          const newFeatured = (result as { featuredImage?: string | null })
+            .featuredImage;
           const oldFeatured = oldPage.featuredImage;
           if (oldFeatured && oldFeatured !== newFeatured) {
             await deleteFromSupabase(oldFeatured);
@@ -118,13 +87,18 @@ const extendedPrisma = rawPrisma.$extends({
       async delete({ args, query }) {
         const oldPage = await rawPrisma.page.findUnique({
           where: args.where,
-          select: { featuredImage: true, ogImage: true, sections: { select: { content: true } } },
+          select: {
+            featuredImage: true,
+            ogImage: true,
+            sections: { select: { content: true } },
+          },
         });
 
         const result = await query(args);
 
         if (oldPage) {
-          if (oldPage.featuredImage) await deleteFromSupabase(oldPage.featuredImage);
+          if (oldPage.featuredImage)
+            await deleteFromSupabase(oldPage.featuredImage);
           if (oldPage.ogImage) await deleteFromSupabase(oldPage.ogImage);
           if (oldPage.sections) {
             for (const section of oldPage.sections) {
@@ -136,7 +110,7 @@ const extendedPrisma = rawPrisma.$extends({
           }
         }
         return result;
-      }
+      },
     },
     globalConfig: {
       async update({ args, query }) {
@@ -172,7 +146,7 @@ const extendedPrisma = rawPrisma.$extends({
           }
         }
         return result;
-      }
+      },
     },
     user: {
       async update({ args, query }) {
@@ -191,7 +165,7 @@ const extendedPrisma = rawPrisma.$extends({
           }
         }
         return result;
-      }
+      },
     },
     section: {
       async update({ args, query }) {
@@ -204,8 +178,10 @@ const extendedPrisma = rawPrisma.$extends({
 
         if (oldSection && args.data.content !== undefined) {
           const oldUrls = findSupabaseUrls(oldSection.content);
-          const newUrls = findSupabaseUrls((result as { content?: unknown }).content);
-          const orphanedUrls = oldUrls.filter(url => !newUrls.includes(url));
+          const newUrls = findSupabaseUrls(
+            (result as { content?: unknown }).content,
+          );
+          const orphanedUrls = oldUrls.filter((url) => !newUrls.includes(url));
 
           for (const url of orphanedUrls) {
             await deleteFromSupabase(url);
@@ -221,10 +197,16 @@ const extendedPrisma = rawPrisma.$extends({
 
         const result = await query(args);
 
-        if (oldSection && (args.update.content !== undefined || args.create.content !== undefined)) {
+        if (
+          oldSection &&
+          (args.update.content !== undefined ||
+            args.create.content !== undefined)
+        ) {
           const oldUrls = findSupabaseUrls(oldSection.content);
-          const newUrls = findSupabaseUrls((result as { content?: unknown }).content);
-          const orphanedUrls = oldUrls.filter(url => !newUrls.includes(url));
+          const newUrls = findSupabaseUrls(
+            (result as { content?: unknown }).content,
+          );
+          const orphanedUrls = oldUrls.filter((url) => !newUrls.includes(url));
 
           for (const url of orphanedUrls) {
             await deleteFromSupabase(url);
@@ -247,11 +229,12 @@ const extendedPrisma = rawPrisma.$extends({
           }
         }
         return result;
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
-export const prisma = (globalForPrisma.prisma as PrismaClient) || extendedPrisma;
+export const prisma =
+  (globalForPrisma.prisma as PrismaClient) || extendedPrisma;
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

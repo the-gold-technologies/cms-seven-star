@@ -1,31 +1,10 @@
-import { supabase } from "@/lib/supabase";
-
-const BUCKET = "myBucket";
-
 /**
- * Extracts the storage file path from a Supabase public URL.
- * e.g. "https://<project>.supabase.co/storage/v1/object/public/myBucket/1234-image.jpg"
- *      → "1234-image.jpg"
- */
-function extractFilePath(publicUrl: string): string | null {
-  try {
-    const marker = `/object/public/${BUCKET}/`;
-    const idx = publicUrl.indexOf(marker);
-    if (idx === -1) return null;
-    return decodeURIComponent(publicUrl.slice(idx + marker.length));
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Deletes a file from Cloudinary or Supabase storage given its public URL.
+ * Deletes a file from Cloudinary given its public URL.
  * Silently ignores errors so it never blocks an upload.
  */
 export async function deleteFileFromSupabase(publicUrl: string): Promise<void> {
   if (!publicUrl) return;
 
-  // Handle Cloudinary URLs
   if (publicUrl.includes("cloudinary.com")) {
     try {
       await fetch(`/api/upload?url=${encodeURIComponent(publicUrl)}`, {
@@ -34,16 +13,6 @@ export async function deleteFileFromSupabase(publicUrl: string): Promise<void> {
     } catch (err) {
       console.warn("Failed to delete file from Cloudinary:", err);
     }
-    return;
-  }
-
-  // Handle legacy Supabase URLs
-  const path = extractFilePath(publicUrl);
-  if (!path) return;
-
-  const { error } = await supabase.storage.from(BUCKET).remove([path]);
-  if (error) {
-    console.warn("Failed to delete old file from Supabase:", error.message);
   }
 }
 
@@ -54,7 +23,7 @@ export async function deleteFileFromSupabase(publicUrl: string): Promise<void> {
 async function compressImageToWebP(
   file: File,
   maxWidth = 1920,
-  quality = 0.8
+  quality = 0.8,
 ): Promise<File> {
   return new Promise((resolve) => {
     // Only compress standard images (excluding GIFs)
@@ -93,7 +62,8 @@ async function compressImageToWebP(
             if (!blob) {
               return resolve(file); // Fallback to original
             }
-            const baseName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+            const baseName =
+              file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
             const compressedFile = new File([blob], `${baseName}.webp`, {
               type: "image/webp",
               lastModified: Date.now(),
@@ -101,7 +71,7 @@ async function compressImageToWebP(
             resolve(compressedFile);
           },
           "image/webp",
-          quality
+          quality,
         );
       };
       img.onerror = () => resolve(file);
