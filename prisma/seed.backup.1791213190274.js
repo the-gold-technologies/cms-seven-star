@@ -188,15 +188,15 @@ const pagesData = [
         type: "HeroSection",
         content: {
           images: [
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212919/seven_star/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212971/seven_star/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212974/seven_star/1781686614010-SEVEN_STARS_2026_02_09-210.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212975/seven_star/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212978/seven_star/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212981/seven_star/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686614010-SEVEN_STARS_2026_02_09-210.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
           ],
           heroImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212984/seven_star/1781160541188-SEVEN_STARS_2026_02_09-207.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160541188-SEVEN_STARS_2026_02_09-207.webp",
           headingTag: "h1",
           youtubeUrl: "",
           description: "",
@@ -227,7 +227,7 @@ const pagesData = [
         type: "FirstTimePopup",
         content: {
           image:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212986/seven_star/1789993417696-Christmasmenu.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1789993417696-Christmasmenu.webp",
           title: "Send an Enquiry",
           isEnabled: true,
           imageTitle: " ",
@@ -242,7 +242,7 @@ const pagesData = [
         type: "AboutUs",
         content: {
           image:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212989/seven_star/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
           stats: [
             {
               label: "Years of Heritage",
@@ -265,7 +265,7 @@ const pagesData = [
           upperTag: "OUR STORY",
           buttonUrl: "/our-story",
           doorImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212989/seven_star/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
           buttonText: "Read Our Story",
           paragraphs: [
             "Tucked away in the beautiful village of Marsh Baldon, The Seven Stars is everything a great British pub should be. Community-owned and community-run, every pint poured and every plate served is a small act of keeping something genuinely valuable alive.",
@@ -288,9 +288,9 @@ const pagesData = [
             {
               title: "Sunday Roasts",
               images: [
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212992/seven_star/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212993/seven_star/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212995/seven_star/1787575973421-SEVEN_STARS_2026_02_09-206.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787575973421-SEVEN_STARS_2026_02_09-206.webp",
               ],
               description:
                 "The ultimate British tradition, perfected with local meats.",
@@ -298,9 +298,9 @@ const pagesData = [
             {
               title: "Pub Classics",
               images: [
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212997/seven_star/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213000/seven_star/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213002/seven_star/1781087452994-SEVEN_STARS_2026_02_09-349.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087452994-SEVEN_STARS_2026_02_09-349.webp",
               ],
               description:
                 "Time-honored favorites with a sophisticated gourmet twist.",
@@ -308,9 +308,9 @@ const pagesData = [
             {
               title: "Seasonal Specials",
               images: [
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213005/seven_star/1787553095858-1781087027455-SEVEN_STARS_2026_02_09-126.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213006/seven_star/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213008/seven_star/1781688390427-SEVEN_STARS_2026_02_09-138.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787553095858-1781087027455-SEVEN_STARS_2026_02_09-126.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688390427-SEVEN_STARS_2026_02_09-138.webp",
               ],
               description:
                 "Fresh, local ingredients inspired by the changing seasons.",
@@ -332,7 +332,7 @@ const pagesData = [
             {
               name: "Pan-Seared Duck Breast",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213010/seven_star/1787556994844-1781688390427-SEVEN_STARS_2026_02_09-138.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787556994844-1781688390427-SEVEN_STARS_2026_02_09-138.webp",
               price: "£24.00",
               description:
                 "Dauphinoise Potatoes, Garlic Kale, Cherry Tomatoes, Red Wine Jus",
@@ -340,7 +340,7 @@ const pagesData = [
             {
               name: "Spiced Poached Pear",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213012/seven_star/1781688775136-SEVEN_STARS_2026_02_09-0173.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688775136-SEVEN_STARS_2026_02_09-0173.webp",
               price: "£8.50",
               description:
                 "Firm pear poached in spiced red wine, star anise and cinnamon, served with orange sorbet",
@@ -348,7 +348,7 @@ const pagesData = [
             {
               name: "Spiced Home-Reared Lamb Kofta",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213013/seven_star/1781071047399-SEVEN_STARS_2026_02_09-35.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781071047399-SEVEN_STARS_2026_02_09-35.webp",
               price: "£12.95",
               description:
                 "Red pepper hummus, lightly spiced onion, tzatziki, warm pita.",
@@ -375,23 +375,23 @@ const pagesData = [
           images: [
             {
               alt: "Mother's Day Special Luncheon",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212971/seven_star/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
             },
             {
               alt: "Mother's Day Celebration Table",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212978/seven_star/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
             },
             {
               alt: "Mother's Day Experience Preview",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212992/seven_star/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
             },
             {
               alt: "Indian Heritage Banquet",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212989/seven_star/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781163080123-SEVEN_STARS_2026_02_09-0005.webp",
             },
             {
               alt: "Pub Atmosphere",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212919/seven_star/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
             },
           ],
           subtitle: "Live music, pub quizzes, and seasonal celebrations",
@@ -409,38 +409,38 @@ const pagesData = [
           images: [
             {
               alt: "Authentic Pub Atmosphere",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212919/seven_star/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212919/seven_star/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
               caption: "Cozy Bar Seating",
             },
             {
               alt: "Vibrant Main Bar",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212993/seven_star/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212993/seven_star/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687981908-SEVEN_STARS_2026_02_09-114.webp",
               caption: "Summer Garden Terrace",
             },
             {
               alt: "Traditional Pub Character",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212997/seven_star/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212997/seven_star/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
               caption: "Fireside Dining",
             },
             {
               alt: "Restaurant Interior Detail",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213000/seven_star/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213000/seven_star/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687991208-SEVEN_STARS_2026_02_09-329.webp",
               caption: "Local Cask & Craft Ales",
             },
             {
               alt: "Atmospheric Interiors",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212975/seven_star/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212975/seven_star/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
               caption: "Traditional Facade",
             },
             {
               alt: "Gourmet Dining Setup",
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213016/seven_star/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
-              url: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213016/seven_star/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
+              url: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
               caption: "Dining Room",
             },
           ],
@@ -464,7 +464,7 @@ const pagesData = [
               name: "James Harrison",
               role: "Local Food Critic",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212978/seven_star/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
               quote:
                 "The atmosphere at Seven Stars is unmatched. From the warm welcome to the exquisite Middle Eastern influences in their Sunday roast, it's a truly wonderful pub experience.",
               author: "James Harrison",
@@ -476,7 +476,7 @@ const pagesData = [
               name: "Sarah Jenkins",
               role: "Frequent Guest",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213006/seven_star/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
               quote:
                 "A perfect blend of British tradition and modern culinary art. Their orange and cognac crème brulée is quite literally the best dessert I've had this year.",
               author: "Sarah Jenkins",
@@ -488,7 +488,7 @@ const pagesData = [
               name: "Robert & Elena",
               role: "Regular Guests",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213018/seven_star/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
               quote:
                 "We hosted our anniversary here and the team went above and beyond. The setting is stunning, especially in the evening when the glow hits the stone walls.",
               author: "Robert & Elena",
@@ -498,9 +498,9 @@ const pagesData = [
             },
           ],
           testimonialImages: [
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212978/seven_star/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213006/seven_star/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213018/seven_star/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688388195-SEVEN_STARS_2026_02_09-155.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
           ],
         },
         order: 7,
@@ -510,13 +510,13 @@ const pagesData = [
         type: "ReadyToVisit",
         content: {
           image:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213016/seven_star/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
           lines: ["Book online or give us a call.", "We'd love to see you."],
           title: "Ready to Experience Seven Stars?",
           image1:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213021/seven_star/1779094138324-food-gourmet.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779094138324-food-gourmet.webp",
           image2:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213024/seven_star/1781087458738-SEVEN_STARS_2026_02_09-0012.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087458738-SEVEN_STARS_2026_02_09-0012.webp",
           bookUrl: "/contact",
           heading: "Ready to Visit?",
           phoneUrl: "tel:01865343337",
@@ -562,7 +562,7 @@ const pagesData = [
             },
           ],
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213027/seven_star/1779093880678-footer-bg.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779093880678-footer-bg.webp",
           footerDescription:
             "Born from a passion for exceptional hospitality, Seven Stars merges the warmth of a countryside pub with the sophistication of a premium dining experience.",
         },
@@ -602,7 +602,7 @@ const pagesData = [
           badgeText: "Est. 17th Century",
           headingPart1: "About",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213028/seven_star/1781689296201-SEVEN_STARS_2026_02_09-0166.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781689296201-SEVEN_STARS_2026_02_09-0166.webp",
           headingItalicHighlight: "Us",
         },
         order: 0,
@@ -612,7 +612,7 @@ const pagesData = [
         type: "AboutRoots",
         content: {
           image:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213031/seven_star/1781085714533-SEVEN_STARS_2026_02_09-0008.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085714533-SEVEN_STARS_2026_02_09-0008.webp",
           title: "A village pub, owned by the people it serves.",
           pillar1: "Community Owned",
           pillar2: "Warm Hospitality",
@@ -625,12 +625,12 @@ const pagesData = [
           description:
             "Nestled in the heart of Marsh Baldon, The Seven Stars is one of the few community-owned pubs in Oxfordshire.",
           rootsImages: [
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213034/seven_star/1781084597937-Gemini_Generated_Image_3ongbm3ongbm3ong.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213035/seven_star/1781084593652-Gemini_Generated_Image_zdu2vbzdu2vbzdu2.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213038/seven_star/1781084589375-Gemini_Generated_Image_b3lys7b3lys7b3ly.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213042/seven_star/1781080100388-Screenshot_20260530_212418.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213043/seven_star/1781080099243-Screenshot_20260530_212407.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213045/seven_star/1781080098132-Screenshot_20260530_212349.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781084597937-Gemini_Generated_Image_3ongbm3ongbm3ong.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781084593652-Gemini_Generated_Image_zdu2vbzdu2vbzdu2.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781084589375-Gemini_Generated_Image_b3lys7b3lys7b3ly.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781080100388-Screenshot_20260530_212418.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781080099243-Screenshot_20260530_212407.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781080098132-Screenshot_20260530_212349.webp",
           ],
           rootsHeading: "A village pub, owned by the",
           rootsHeadingItalic: "people it serves.",
@@ -669,7 +669,7 @@ const pagesData = [
           differentDesc:
             "Walk into The Seven Stars and you'll find the character and warmth of a classic village. Local open fires, aged beams, and the hum of good conversation create an atmosphere that is both nostalgic and vibrantly alive.",
           differentImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212997/seven_star/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687990034-SEVEN_STARS_2026_02_09-306.webp",
           differentHeading: "Experience the",
           differentHeadingItalic: "best of both worlds.",
         },
@@ -760,7 +760,7 @@ const pagesData = [
           tagline: "SEASONAL DINING",
           headingPart1: "Dining",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212992/seven_star/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781687988901-SEVEN_STARS_2026_02_09-81.webp",
           headingItalicHighlight: "Experience",
         },
         order: 0,
@@ -782,7 +782,7 @@ const pagesData = [
           headingPart1: "The",
           headingPart3: "Experience",
           showcaseImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212975/seven_star/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686621461-SEVEN_STARS_2026_02_09-145.webp",
           gardenCapacity: "150",
           indoorCapacity: "76",
           imageOverlayTitle: "Proper Food",
@@ -800,7 +800,7 @@ const pagesData = [
           introDesc2:
             "What brings it all together is our approach to hospitality. Relaxed, genuine and without pretence, it's the kind of service that lets you settle in, linger a little longer, and enjoy good food, good drink and even better company.",
           introImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213050/seven_star/1780554493244-SEVEN_STARS_2026_02_09-120.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780554493244-SEVEN_STARS_2026_02_09-120.webp",
           introTagline: "The Dining Experience",
           introFeature1: "EXPERT CHEFS",
           introFeature2: "FRESH FLAVORS",
@@ -828,21 +828,21 @@ const pagesData = [
           pillars: [
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212981/seven_star/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
               title: "British Classics",
               description:
                 "We serve British pub classics prepared properly. No shortcuts, just traditional recipes elevated with premium ingredients.",
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213021/seven_star/1779094138324-food-gourmet.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779094138324-food-gourmet.webp",
               title: "Seasonal Specials",
               description:
                 "Our specials draw on European, Middle Eastern and South Asian flavours, bringing a contemporary twist to the village pub.",
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213053/seven_star/1781195615052-WhatsAppImage2026-06-11at21.23.03.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg",
               title: "Not To Be Missed",
               description:
                 "Our fortnightly Indian Thali Nights and Sunday Roasts are designated the highlight of the week.",
@@ -860,7 +860,7 @@ const pagesData = [
           barnDesc:
             "Set apart from the main pub, The Barn offers a warm and characterful setting for private gatherings. Whether you're hosting an intimate celebration, a family occasion or a small corporate event, it's a flexible space paired with thoughtful hospitality and seasonal menus.",
           barnImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213055/seven_star/1781085738861-SEVEN_STARS_2026_02_09-0040.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085738861-SEVEN_STARS_2026_02_09-0040.webp",
           barnCtaText: "Enquire Barn Hire",
           barnHeading: "The",
           barnTagline: "PRIVATE DINING",
@@ -880,8 +880,8 @@ const pagesData = [
           outdoorDesc:
             "When the weather is kind, there's nowhere better to be than our garden overlooking the village green. Settle in for a leisurely meal, enjoy a drink with friends, or simply take in the peaceful surroundings.",
           outdoorImages: [
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213059/seven_star/1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212981/seven_star/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
           ],
           outdoorCtaLink: "#",
           outdoorCtaText: "Book a Table",
@@ -922,7 +922,7 @@ const pagesData = [
           tagline: "SEASONAL SELECTION",
           headingPart1: "Our ",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213061/seven_star/1780637784295-SEVEN_STARS_2026_02_09-34.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637784295-SEVEN_STARS_2026_02_09-34.webp",
           headingHighlight: "Menu",
         },
         order: 0,
@@ -935,13 +935,13 @@ const pagesData = [
           ctaText: "ENQUIRE FOR PRIVATE DINING",
           tagline: "SEASONAL SELECTION",
           menuPdfs: [
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213063/seven_star/1785413495467-summermenu2.pdf",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213065/seven_star/1785413456217-DessertMenu.pdf",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212941/seven_star/1785413432718-SundayMenu.pdf",
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213069/seven_star/1787728547908-winemenu.pdf",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413495467-summermenu2.pdf",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413456217-DessertMenu.pdf",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413432718-SundayMenu.pdf",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787728547908-winemenu.pdf",
           ],
           coverImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212981/seven_star/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686617797-SEVEN_STARS_2026_02_09-0113.webp",
           description:
             "At The Seven Stars, fresh, carefully sourced ingredients are at the heart of everything we serve, creating dishes that celebrate the seasons and the joy of sharing a meal.",
           headingPart1: "Our",
@@ -949,25 +949,25 @@ const pagesData = [
           menuSections: [
             {
               id: "main",
-              pdf: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213063/seven_star/1785413495467-summermenu2.pdf",
+              pdf: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413495467-summermenu2.pdf",
               pages: [{}],
               title: "MAIN MENU",
             },
             {
               id: "dessert",
-              pdf: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213065/seven_star/1785413456217-DessertMenu.pdf",
+              pdf: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413456217-DessertMenu.pdf",
               pages: [{}],
               title: "DESSERT MENU",
             },
             {
               id: "sunday",
-              pdf: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212941/seven_star/1785413432718-SundayMenu.pdf",
+              pdf: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413432718-SundayMenu.pdf",
               pages: [{}],
               title: "Sunday Menu",
             },
             {
               id: "wine-list",
-              pdf: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213069/seven_star/1787728547908-winemenu.pdf",
+              pdf: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787728547908-winemenu.pdf",
               pages: [{}],
               title: "Wine List",
             },
@@ -987,7 +987,7 @@ const pagesData = [
           menuCategories: [
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213071/seven_star/1780637679964-SEVEN_STARS_2026_02_09-265.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637679964-SEVEN_STARS_2026_02_09-265.webp",
               items: [
                 "Marinated Olives",
                 "Focaccia With Balsamic",
@@ -999,7 +999,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213074/seven_star/1780637682165-SEVEN_STARS_2026_02_09-235.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637682165-SEVEN_STARS_2026_02_09-235.webp",
               items: [
                 "Beer-Battered Haddock & Chips",
                 "Seven Stars Cheeseburger",
@@ -1010,7 +1010,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213075/seven_star/1780637684315-SEVEN_STARS_2026_02_09-344.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637684315-SEVEN_STARS_2026_02_09-344.webp",
               items: [
                 "Pan-Seared Duck Breast",
                 "Golden Squash Risotto",
@@ -1022,7 +1022,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213078/seven_star/1780637685212-SEVEN_STARS_2026_02_09-94.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637685212-SEVEN_STARS_2026_02_09-94.webp",
               items: [
                 "Slow-Roasted Sirloin of Beef",
                 "Roast Leg of English Lamb",
@@ -1034,7 +1034,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213081/seven_star/1781164162893-SEVEN_STARS_2026_02_09-0142.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781164162893-SEVEN_STARS_2026_02_09-0142.webp",
               items: [
                 "Orange & Cognac Crème Brûlée",
                 "Warm Chocolate Lava Cake",
@@ -1055,7 +1055,7 @@ const pagesData = [
           heading: "We take our drinks",
           tagline: "THE CELLAR",
           sideImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213084/seven_star/1781086062051-SEVEN_STARS_2026_02_09-5.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086062051-SEVEN_STARS_2026_02_09-5.webp",
           description:
             "A perfectly kept pint, a thoughtfully chosen wine or a favourite cocktail—whatever your drink of choice, you'll find a bar that's stocked with care. Alongside local ales, lagers and ciders, we proudly support producers from across the region.",
           headingHighlight: "as seriously as our food.",
@@ -1104,7 +1104,7 @@ const pagesData = [
           tagline: "OCCASIONS & CELEBRATIONS",
           headingPart1: "Events &",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213085/seven_star/1780554968912-SEVEN_STARS_2026_02_09-122.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780554968912-SEVEN_STARS_2026_02_09-122.webp",
           headingHighlight: "Celebrations",
         },
         order: 0,
@@ -1125,7 +1125,7 @@ const pagesData = [
               date: "26th Aug",
               time: "7:30 PM",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213087/seven_star/1787723231766-WhatsAppImage2026-08-26at11.15.04.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787723231766-WhatsAppImage2026-08-26at11.15.04.webp",
               title: "Quiz Night",
               category: "PUB EVENT",
               highlight: "Test your trivia knowledge & win prizes",
@@ -1136,7 +1136,7 @@ const pagesData = [
               date: "Saturday, 29th August",
               time: "7:00 PM",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213089/seven_star/1787665142170-jubly-Brass.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787665142170-jubly-Brass.webp",
               title: "Jubilee Brass",
               category: "LIVE MUSIC",
               highlight: "Live brass band performance on the green",
@@ -1147,7 +1147,7 @@ const pagesData = [
               date: "3rd & 17th Sep, 1st, 15th & 29th Oct",
               time: "6:00 PM",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213091/seven_star/1787665286058-Indian-Desi-Thali-Template.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787665286058-Indian-Desi-Thali-Template.webp",
               title: "Indian Desi Thali",
               category: "DINING EXPERIENCE",
               highlight: "Authentic Indian curries & fresh naan",
@@ -1158,7 +1158,7 @@ const pagesData = [
               date: "15th Sep",
               time: "5:00 PM",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213093/seven_star/1787723315522-WhatsAppImage2026-08-26at11.15.16.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787723315522-WhatsAppImage2026-08-26at11.15.16.webp",
               title: "Classic Car Show",
               category: "SPECIAL GATHERING",
               highlight: "Vintage cars & classics on the green",
@@ -1188,7 +1188,7 @@ const pagesData = [
         type: "WhatWeHost",
         content: {
           image:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213095/seven_star/1780555071861-Weddingpic.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780555071861-Weddingpic.webp",
           items: [
             "Birthday celebrations and milestone occasions",
             "Family gatherings and reunion dinners",
@@ -1214,7 +1214,7 @@ const pagesData = [
           capabilities: [
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213016/seven_star/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
               title: "Main Bar & Dining Area",
               iconName: "PartyPopper",
               description:
@@ -1222,7 +1222,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791212971/seven_star/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
               title: "The Private Barn",
               iconName: "Warehouse",
               description:
@@ -1230,7 +1230,7 @@ const pagesData = [
             },
             {
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213098/seven_star/1781195516243-IMG_4523.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
               title: "Sprawling Beer Garden",
               iconName: "Sun",
               description:
@@ -1274,7 +1274,7 @@ const pagesData = [
           tagline: "VISUAL JOURNEY",
           headingPart1: "Photo",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791212919/seven_star/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686626397-SEVEN_STARS_2026_02_09-338.webp",
           headingItalicHighlight: "Gallery",
         },
         order: 0,
@@ -1289,294 +1289,294 @@ const pagesData = [
           galleryItems: [
             {
               id: 1,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213101/seven_star/1781086645604-SEVEN_STARS_2026_02_09-169.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086645604-SEVEN_STARS_2026_02_09-169.webp",
               title: "Seven Stars Gallery Photo 1",
               aspect: "aspect-square",
               category: "Food",
             },
             {
               id: 2,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213104/seven_star/1779096151673-gallery-8.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779096151673-gallery-8.webp",
               title: "Seven Stars Gallery Photo 2",
               aspect: "aspect-[4/3]",
               category: "Outdoor",
             },
             {
               id: 3,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212978/seven_star/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686610741-SEVEN_STARS_2026_02_09-0076.webp",
               title: "Seven Stars Gallery Photo 3",
               aspect: "aspect-[3/4]",
               category: "Indoor",
             },
             {
               id: 4,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213027/seven_star/1779093880678-footer-bg.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779093880678-footer-bg.webp",
               title: "Seven Stars Gallery Photo 4",
               aspect: "aspect-[4/5]",
               category: "Food",
             },
             {
               id: 5,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213107/seven_star/1779095839457-barn.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095839457-barn.webp",
               title: "Seven Stars Gallery Photo 5",
               aspect: "aspect-[16/9]",
               category: "Outdoor",
             },
             {
               id: 6,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212971/seven_star/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
               title: "Seven Stars Gallery Photo 6",
               aspect: "aspect-square",
               category: "Indoor",
             },
             {
               id: 7,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213021/seven_star/1779094138324-food-gourmet.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779094138324-food-gourmet.webp",
               title: "Seven Stars Gallery Photo 7",
               aspect: "aspect-[4/3]",
               category: "Food",
             },
             {
               id: 8,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213110/seven_star/1779095838769-gallery-4.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095838769-gallery-4.webp",
               title: "Seven Stars Gallery Photo 8",
               aspect: "aspect-[3/4]",
               category: "Outdoor",
             },
             {
               id: 9,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213112/seven_star/1781087467006-SEVEN_STARS_2026_02_09-0043.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087467006-SEVEN_STARS_2026_02_09-0043.webp",
               title: "Seven Stars Gallery Photo 9",
               aspect: "aspect-[4/5]",
               category: "Indoor",
             },
             {
               id: 10,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213113/seven_star/1779095841739-event-celebration.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779095841739-event-celebration.webp",
               title: "Seven Stars Gallery Photo 10",
               aspect: "aspect-[16/9]",
               category: "Food",
             },
             {
               id: 11,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213018/seven_star/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781688953515-SEVEN_STARS_2026_02_09-0006.webp",
               title: "Seven Stars Gallery Photo 11",
               aspect: "aspect-square",
               category: "Outdoor",
             },
             {
               id: 12,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213116/seven_star/1781087463543-SEVEN_STARS_2026_02_09-0050.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087463543-SEVEN_STARS_2026_02_09-0050.webp",
               title: "Seven Stars Gallery Photo 12",
               aspect: "aspect-[4/3]",
               category: "Indoor",
             },
             {
               id: 13,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213117/seven_star/1779102563583-SEVEN_STARS_2026_02_09-0065.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102563583-SEVEN_STARS_2026_02_09-0065.webp",
               title: "Seven Stars Gallery Photo 13",
               aspect: "aspect-[3/4]",
               category: "Food",
             },
             {
               id: 14,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212974/seven_star/1781686614010-SEVEN_STARS_2026_02_09-210.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686614010-SEVEN_STARS_2026_02_09-210.webp",
               title: "Seven Stars Gallery Photo 14",
               aspect: "aspect-[4/5]",
               category: "Outdoor",
             },
             {
               id: 15,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213120/seven_star/1781087454735-SEVEN_STARS_2026_02_09-0048.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087454735-SEVEN_STARS_2026_02_09-0048.webp",
               title: "Seven Stars Gallery Photo 15",
               aspect: "aspect-[16/9]",
               category: "Indoor",
             },
             {
               id: 16,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213122/seven_star/1779102629081-feature-classic-1.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102629081-feature-classic-1.webp",
               title: "Seven Stars Gallery Photo 16",
               aspect: "aspect-square",
               category: "Food",
             },
             {
               id: 17,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213098/seven_star/1781195516243-IMG_4523.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
               title: "Seven Stars Gallery Photo 17",
               aspect: "aspect-[4/3]",
               category: "Outdoor",
             },
             {
               id: 18,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213124/seven_star/1781087435267-SEVEN_STARS_2026_02_09-0058.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087435267-SEVEN_STARS_2026_02_09-0058.webp",
               title: "Seven Stars Gallery Photo 18",
               aspect: "aspect-[3/4]",
               category: "Indoor",
             },
             {
               id: 19,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213127/seven_star/1779102630377-feature-special-1.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779102630377-feature-special-1.webp",
               title: "Seven Stars Gallery Photo 19",
               aspect: "aspect-[4/5]",
               category: "Food",
             },
             {
               id: 20,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213059/seven_star/1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
               title: "Seven Stars Gallery Photo 20",
               aspect: "aspect-[16/9]",
               category: "Outdoor",
             },
             {
               id: 21,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213130/seven_star/1781087019487-SEVEN_STARS_2026_02_09-0066.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087019487-SEVEN_STARS_2026_02_09-0066.webp",
               title: "Seven Stars Gallery Photo 21",
               aspect: "aspect-square",
               category: "Indoor",
             },
             {
               id: 22,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213133/seven_star/1779446831444-SEVEN_STARS_2026_02_09-10.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779446831444-SEVEN_STARS_2026_02_09-10.webp",
               title: "Seven Stars Gallery Photo 22",
               aspect: "aspect-[4/3]",
               category: "Food",
             },
             {
               id: 23,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213024/seven_star/1781087458738-SEVEN_STARS_2026_02_09-0012.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087458738-SEVEN_STARS_2026_02_09-0012.webp",
               title: "Seven Stars Gallery Photo 23",
               aspect: "aspect-[3/4]",
               category: "Outdoor",
             },
             {
               id: 24,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213135/seven_star/1781086666152-SEVEN_STARS_2026_02_09-0057.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086666152-SEVEN_STARS_2026_02_09-0057.webp",
               title: "Seven Stars Gallery Photo 24",
               aspect: "aspect-[4/5]",
               category: "Indoor",
             },
             {
               id: 25,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213138/seven_star/1780637514694-SEVEN_STARS_2026_02_09-349.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637514694-SEVEN_STARS_2026_02_09-349.webp",
               title: "Seven Stars Gallery Photo 25",
               aspect: "aspect-[16/9]",
               category: "Food",
             },
             {
               id: 26,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213140/seven_star/1781087445795-SEVEN_STARS_2026_02_09-0023.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087445795-SEVEN_STARS_2026_02_09-0023.webp",
               title: "Seven Stars Gallery Photo 26",
               aspect: "aspect-square",
               category: "Outdoor",
             },
             {
               id: 27,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213143/seven_star/1781086662028-SEVEN_STARS_2026_02_09-0080.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086662028-SEVEN_STARS_2026_02_09-0080.webp",
               title: "Seven Stars Gallery Photo 27",
               aspect: "aspect-[4/3]",
               category: "Indoor",
             },
             {
               id: 28,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213071/seven_star/1780637679964-SEVEN_STARS_2026_02_09-265.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637679964-SEVEN_STARS_2026_02_09-265.webp",
               title: "Seven Stars Gallery Photo 28",
               aspect: "aspect-[3/4]",
               category: "Food",
             },
             {
               id: 29,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213146/seven_star/1781087440607-SEVEN_STARS_2026_02_09-0016.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087440607-SEVEN_STARS_2026_02_09-0016.webp",
               title: "Seven Stars Gallery Photo 29",
               aspect: "aspect-[4/5]",
               category: "Outdoor",
             },
             {
               id: 30,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213149/seven_star/1781086655447-SEVEN_STARS_2026_02_09-0025.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086655447-SEVEN_STARS_2026_02_09-0025.webp",
               title: "Seven Stars Gallery Photo 30",
               aspect: "aspect-[16/9]",
               category: "Indoor",
             },
             {
               id: 31,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213075/seven_star/1780637684315-SEVEN_STARS_2026_02_09-344.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637684315-SEVEN_STARS_2026_02_09-344.webp",
               title: "Seven Stars Gallery Photo 31",
               aspect: "aspect-square",
               category: "Food",
             },
             {
               id: 32,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213152/seven_star/1781087039804-SEVEN_STARS_2026_02_09-0011.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087039804-SEVEN_STARS_2026_02_09-0011.webp",
               title: "Seven Stars Gallery Photo 32",
               aspect: "aspect-[4/3]",
               category: "Outdoor",
             },
             {
               id: 33,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213055/seven_star/1781085738861-SEVEN_STARS_2026_02_09-0040.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085738861-SEVEN_STARS_2026_02_09-0040.webp",
               title: "Seven Stars Gallery Photo 33",
               aspect: "aspect-[3/4]",
               category: "Indoor",
             },
             {
               id: 34,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213078/seven_star/1780637685212-SEVEN_STARS_2026_02_09-94.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1780637685212-SEVEN_STARS_2026_02_09-94.webp",
               title: "Seven Stars Gallery Photo 34",
               aspect: "aspect-[4/5]",
               category: "Food",
             },
             {
               id: 35,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213155/seven_star/1781087033121-SEVEN_STARS_2026_02_09-0106.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781087033121-SEVEN_STARS_2026_02_09-0106.webp",
               title: "Seven Stars Gallery Photo 35",
               aspect: "aspect-[16/9]",
               category: "Outdoor",
             },
             {
               id: 36,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213157/seven_star/1781085721419-SEVEN_STARS_2026_02_09-0032.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085721419-SEVEN_STARS_2026_02_09-0032.webp",
               title: "Seven Stars Gallery Photo 36",
               aspect: "aspect-square",
               category: "Indoor",
             },
             {
               id: 37,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213013/seven_star/1781071047399-SEVEN_STARS_2026_02_09-35.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781071047399-SEVEN_STARS_2026_02_09-35.webp",
               title: "Seven Stars Gallery Photo 37",
               aspect: "aspect-[4/3]",
               category: "Food",
             },
             {
               id: 38,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213159/seven_star/1781086064541-SEVEN_STARS_2026_02_09-0022.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781086064541-SEVEN_STARS_2026_02_09-0022.webp",
               title: "Seven Stars Gallery Photo 38",
               aspect: "aspect-[3/4]",
               category: "Outdoor",
             },
             {
               id: 39,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213162/seven_star/1779100598226-gallery-25.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779100598226-gallery-25.webp",
               title: "Seven Stars Gallery Photo 39",
               aspect: "aspect-[4/5]",
               category: "Indoor",
             },
             {
               id: 40,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213164/seven_star/1781074152897-SEVEN_STARS_2026_02_09-5.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781074152897-SEVEN_STARS_2026_02_09-5.webp",
               title: "Seven Stars Gallery Photo 40",
               aspect: "aspect-[16/9]",
               category: "Food",
             },
             {
               id: 41,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213166/seven_star/1779099397728-gallery-25.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779099397728-gallery-25.webp",
               title: "Seven Stars Gallery Photo 41",
               aspect: "aspect-square",
               category: "Indoor",
             },
             {
               id: 42,
-              src: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213169/seven_star/1781085731650-SEVEN_STARS_2026_02_09-125.webp",
+              src: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781085731650-SEVEN_STARS_2026_02_09-125.webp",
               title: "Seven Stars Gallery Photo 42",
               aspect: "aspect-[4/3]",
               category: "Food",
@@ -1617,7 +1617,7 @@ const pagesData = [
           tagline: "OUR STORY",
           headingPart1: "Our Story &",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213172/seven_star/1781073689384-SEVEN_STARS_2026_02_09-0104.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781073689384-SEVEN_STARS_2026_02_09-0104.webp",
           headingItalicHighlight: "Community",
         },
         order: 0,
@@ -1728,7 +1728,7 @@ const pagesData = [
           hubHeading: "A Pub By the People,",
           hubTagline: "COMMUNITY HUB",
           rightImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213038/seven_star/1781084589375-Gemini_Generated_Image_b3lys7b3lys7b3ly.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781084589375-Gemini_Generated_Image_b3lys7b3lys7b3ly.webp",
           rightImageTitle: "The Seven Stars, Marsh Baldon, c. 1868",
           hubHeadingItalic: "For the People",
         },
@@ -1783,14 +1783,14 @@ const pagesData = [
           ctaText2: "Discover Menus",
           headingTag: "h1",
           musicTrack:
-            "https://res.cloudinary.com/mbip34n2/video/upload/v1791212945/seven_star/1782451660185-christmas-tune.mp3",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1782451660185-christmas-tune.mp3",
           description:
             "Step into the warmth of our decorated countryside pub in Marsh Baldon, Oxford. Savor award-winning festive menus, cozy up next to glowing fireplaces, and celebrate the season in style.",
           headingPart1: "Celebrate",
           headingPart2: "at Seven Stars",
           headingSuffix: "at Seven Stars",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213175/seven_star/1788169569525-Christmas.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1788169569525-Christmas.webp",
           primaryButtonUrl:
             "https://www.opentable.co.uk/r/the-seven-stars-at-marsh-baldon-reservations-oxford?restref=459243&lang=en-GB&ot_source=Restaurant%20website",
           primaryButtonText: "RESERVE YOUR TABLE",
@@ -1823,7 +1823,7 @@ const pagesData = [
             "Are you looking for the perfect place to celebrate Christmas with your loved ones? Located in Marsh Baldon, Oxford, Seven Stars is here to make your Christmas Day magical!",
           headingPart1: "Celebrate Christmas at",
           showcaseImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213176/seven_star/1788169802092-ChristmasSenta.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1788169802092-ChristmasSenta.webp",
           headingHighlight: "Seven Stars in Marsh Baldon!",
           whyChooseHeading: "Why Choose Seven Stars:",
           headingItalicHighlight: "Seven Stars in Marsh Baldon!",
@@ -1862,12 +1862,12 @@ const pagesData = [
         content: {
           title: "Download Our Festive Menus",
           pdfUrl:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213063/seven_star/1785413495467-summermenu2.pdf",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413495467-summermenu2.pdf",
           heading: "Download Our",
           tagline: "CULINARY DELIGHTS 🥂",
           menusList: [
             {
-              link: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213063/seven_star/1785413495467-summermenu2.pdf",
+              link: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413495467-summermenu2.pdf",
               image:
                 "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/christmas-celebration-2.webp",
               title: "Festive Party Menu",
@@ -1882,7 +1882,7 @@ const pagesData = [
                 "Don't forget if you book your Christmas Party before the end of October 2025 you will receive a £20 voucher to use towards your booking. Minimum of 8 people dining and booking made before end of October 2025.",
             },
             {
-              link: "https://res.cloudinary.com/mbip34n2/image/upload/v1791212941/seven_star/1785413432718-SundayMenu.pdf",
+              link: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413432718-SundayMenu.pdf",
               image:
                 "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/25-dec.webp",
               title: "Christmas Day Menu",
@@ -1897,7 +1897,7 @@ const pagesData = [
                 "Why Cook on Christmas Day when we can do it for you?\nBook your Christmas Lunch with us here at Seven Stars instead.\nView our Christmas Day Menu below",
             },
             {
-              link: "https://res.cloudinary.com/mbip34n2/image/upload/v1791213065/seven_star/1785413456217-DessertMenu.pdf",
+              link: "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1785413456217-DessertMenu.pdf",
               image:
                 "https://sevenstarsatmarshbaldon.co.uk/wp-content/uploads/2025/09/children-christmas.webp",
               title: "Children's Christmas Day Menu",
@@ -1951,7 +1951,7 @@ const pagesData = [
             {
               name: "Red Wine Poached Pear",
               image:
-                "https://res.cloudinary.com/mbip34n2/image/upload/v1791213179/seven_star/1788170281583-BakedCamembert.webp",
+                "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1788170281583-BakedCamembert.webp",
               tagline: "FRUITY DESSERT",
               description:
                 "Classic poached pear paired with a refreshing scoop of orange sorbet and a drizzle of reduction syrup.",
@@ -2037,7 +2037,7 @@ const pagesData = [
           tagline: "FIND US IN MARSH BALDON",
           headingPart1: "Get in",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213081/seven_star/1781164162893-SEVEN_STARS_2026_02_09-0142.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781164162893-SEVEN_STARS_2026_02_09-0142.webp",
           headingItalicHighlight: "Touch",
         },
         order: 0,
@@ -2110,7 +2110,7 @@ const pagesData = [
           description: "",
           headingPart1: "The Seven Stars",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213181/seven_star/1781160436858-SEVEN_STARS_2026_02_09-16.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160436858-SEVEN_STARS_2026_02_09-16.webp",
           headingItalicHighlight: "Blogs & News",
         },
         order: 0,
@@ -2148,7 +2148,7 @@ const pagesData = [
             '<h1><span style="color: rgb(91, 99, 104);">Privacy&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;protecting&nbsp;your&nbsp;privacy.&nbsp;In&nbsp;this&nbsp;notice,&nbsp;you&nbsp;can&nbsp;read&nbsp;about&nbsp;the&nbsp;information&nbsp;we&nbsp;collect&nbsp;from&nbsp;you&nbsp;and&nbsp;how&nbsp;we&nbsp;use&nbsp;it.&nbsp;If&nbsp;you&nbsp;have&nbsp;any&nbsp;questions&nbsp;or&nbsp;concerns,&nbsp;you&nbsp;can&nbsp;email&nbsp;us&nbsp;at:&nbsp;info@sevenstarsatmb.co.uk</span></p><p><strong style="color: rgb(91, 99, 104);">1.&nbsp;Information&nbsp;we&nbsp;collect</strong></p><p><span style="color: rgb(91, 99, 104);">This&nbsp;notice&nbsp;applies&nbsp;to&nbsp;all&nbsp;information&nbsp;collected&nbsp;or&nbsp;submitted&nbsp;on&nbsp;our&nbsp;website.&nbsp;We&nbsp;collect&nbsp;this&nbsp;information&nbsp;to&nbsp;conveniently&nbsp;provide&nbsp;you&nbsp;with&nbsp;our&nbsp;products&nbsp;and&nbsp;services,&nbsp;or&nbsp;for&nbsp;technical&nbsp;reasons.</span></p><ul><li><span style="color: rgb(91, 99, 104);">Personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">Name&nbsp;and&nbsp;job&nbsp;title</span></li><li><span style="color: rgb(91, 99, 104);">Contact&nbsp;information&nbsp;including&nbsp;email&nbsp;address</span></li><li><span style="color: rgb(91, 99, 104);">Demographic&nbsp;information&nbsp;such&nbsp;as&nbsp;postcode,&nbsp;preferences&nbsp;and&nbsp;interests</span></li><li><span style="color: rgb(91, 99, 104);">Non-personally&nbsp;identifiable&nbsp;information&nbsp;we&nbsp;may&nbsp;collect&nbsp;includes:</span></li><li><span style="color: rgb(91, 99, 104);">The&nbsp;type&nbsp;of&nbsp;device&nbsp;you&nbsp;are&nbsp;using&nbsp;to&nbsp;view&nbsp;the&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;usage&nbsp;statistics</span></li><li><span style="color: rgb(91, 99, 104);">Anonymous&nbsp;information,&nbsp;such&nbsp;as&nbsp;your&nbsp;internet&nbsp;service&nbsp;provider,&nbsp;IP&nbsp;address&nbsp;and&nbsp;internet&nbsp;browsing&nbsp;software,&nbsp;collected&nbsp;by&nbsp;our&nbsp;website</span></li><li><span style="color: rgb(91, 99, 104);">“Cookies,”&nbsp;which&nbsp;enable&nbsp;the&nbsp;website&nbsp;to&nbsp;remember&nbsp;your&nbsp;information&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site,&nbsp;such&nbsp;as&nbsp;to&nbsp;keep&nbsp;you&nbsp;logged&nbsp;in&nbsp;or&nbsp;to&nbsp;remember&nbsp;your&nbsp;login&nbsp;credentials&nbsp;if&nbsp;you&nbsp;return&nbsp;to&nbsp;the&nbsp;site</span></li></ul><p><strong style="color: rgb(91, 99, 104);">2.&nbsp;Visitors&nbsp;to&nbsp;our&nbsp;website</strong></p><p><strong style="color: rgb(91, 99, 104);">Google&nbsp;Analytics:</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;someone&nbsp;visits&nbsp;our&nbsp;website,&nbsp;we&nbsp;use&nbsp;a&nbsp;third&nbsp;party&nbsp;service,&nbsp;Google&nbsp;Analytics,&nbsp;to&nbsp;collect&nbsp;standard&nbsp;internet&nbsp;log&nbsp;information&nbsp;and&nbsp;details&nbsp;of&nbsp;visitor&nbsp;behaviour&nbsp;patterns.&nbsp;We&nbsp;do&nbsp;this&nbsp;to&nbsp;find&nbsp;out&nbsp;things&nbsp;such&nbsp;as&nbsp;the&nbsp;number&nbsp;of&nbsp;visitors&nbsp;to&nbsp;the&nbsp;various&nbsp;parts&nbsp;of&nbsp;the&nbsp;site.&nbsp;This&nbsp;information&nbsp;is&nbsp;only&nbsp;processed&nbsp;in&nbsp;a&nbsp;way&nbsp;which&nbsp;does&nbsp;not&nbsp;identify&nbsp;anyone.&nbsp;We&nbsp;do&nbsp;not&nbsp;make,&nbsp;and&nbsp;do&nbsp;not&nbsp;allow&nbsp;Google&nbsp;to&nbsp;make,&nbsp;any&nbsp;attempt&nbsp;to&nbsp;find&nbsp;out&nbsp;the&nbsp;identities&nbsp;of&nbsp;those&nbsp;visiting&nbsp;our&nbsp;website.&nbsp;If&nbsp;we&nbsp;do&nbsp;want&nbsp;to&nbsp;collect&nbsp;personally&nbsp;identifiable&nbsp;information&nbsp;through&nbsp;our&nbsp;website,&nbsp;we&nbsp;will&nbsp;be&nbsp;up&nbsp;front&nbsp;about&nbsp;this.&nbsp;We&nbsp;will&nbsp;make&nbsp;it&nbsp;clear&nbsp;when&nbsp;we&nbsp;collect&nbsp;personal&nbsp;information&nbsp;and&nbsp;will&nbsp;explain&nbsp;what&nbsp;we&nbsp;intend&nbsp;to&nbsp;do&nbsp;with&nbsp;it.</span></p><p><strong style="color: rgb(91, 99, 104);">Use&nbsp;of&nbsp;cookies:</strong></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;can&nbsp;read&nbsp;more&nbsp;about&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies&nbsp;on&nbsp;our&nbsp;Cookies&nbsp;Page.</span></p><p><strong style="color: rgb(91, 99, 104);">Newsletter:</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;sign&nbsp;up&nbsp;for&nbsp;our&nbsp;newsletter,&nbsp;which&nbsp;is&nbsp;administered&nbsp;through&nbsp;Mailchimp,&nbsp;we&nbsp;will&nbsp;store&nbsp;some&nbsp;of&nbsp;your&nbsp;information,&nbsp;including&nbsp;your&nbsp;email&nbsp;address,&nbsp;IP&nbsp;address&nbsp;and&nbsp;certain&nbsp;information&nbsp;about&nbsp;the&nbsp;links&nbsp;you&nbsp;click&nbsp;within&nbsp;the&nbsp;emails&nbsp;we&nbsp;send&nbsp;you,&nbsp;on&nbsp;a&nbsp;Mailchimp&nbsp;server.&nbsp;Neither&nbsp;Mailchimp&nbsp;nor&nbsp;we&nbsp;will&nbsp;ever&nbsp;sell&nbsp;your&nbsp;email&nbsp;address&nbsp;or&nbsp;share&nbsp;it&nbsp;with&nbsp;any&nbsp;other&nbsp;party,&nbsp;unless&nbsp;we&nbsp;are&nbsp;legally&nbsp;compelled&nbsp;to&nbsp;do&nbsp;so.&nbsp;If&nbsp;you&nbsp;contact&nbsp;Mailchimp&nbsp;directly&nbsp;regarding&nbsp;your&nbsp;subscription&nbsp;to&nbsp;our&nbsp;newsletter,&nbsp;Mailchimp&nbsp;may&nbsp;contact&nbsp;you&nbsp;directly;&nbsp;otherwise,&nbsp;Mailchimp&nbsp;will&nbsp;never&nbsp;contact&nbsp;you.&nbsp;Only&nbsp;authorised&nbsp;Mailchimp&nbsp;employees&nbsp;have&nbsp;access&nbsp;to&nbsp;our&nbsp;subscriber&nbsp;list.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;are&nbsp;always&nbsp;free&nbsp;to&nbsp;unsubscribe&nbsp;from&nbsp;our&nbsp;newsletter&nbsp;at&nbsp;any&nbsp;time&nbsp;by&nbsp;following&nbsp;the&nbsp;instructions&nbsp;contained&nbsp;within&nbsp;the&nbsp;email&nbsp;or&nbsp;by&nbsp;sending&nbsp;an&nbsp;email&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page,&nbsp;but&nbsp;as&nbsp;long&nbsp;as&nbsp;you&nbsp;are&nbsp;registered,&nbsp;we&nbsp;may&nbsp;use&nbsp;Mailchimp&nbsp;to&nbsp;send&nbsp;you&nbsp;information&nbsp;about&nbsp;your&nbsp;account.</span></p><p><strong style="color: rgb(91, 99, 104);">3.&nbsp;How&nbsp;we&nbsp;use&nbsp;your&nbsp;information</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;not&nbsp;sell,&nbsp;distribute&nbsp;or&nbsp;lease&nbsp;your&nbsp;personal&nbsp;information&nbsp;to&nbsp;third&nbsp;parties&nbsp;except&nbsp;(such&nbsp;as&nbsp;in&nbsp;the&nbsp;case&nbsp;of&nbsp;Mailchimp)&nbsp;when&nbsp;it’s&nbsp;necessary&nbsp;to&nbsp;complete&nbsp;the&nbsp;functions&nbsp;of&nbsp;the&nbsp;website.</span></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;email&nbsp;us,&nbsp;we&nbsp;will&nbsp;use&nbsp;your&nbsp;email&nbsp;address&nbsp;only&nbsp;for&nbsp;the&nbsp;purpose&nbsp;of&nbsp;responding&nbsp;to&nbsp;you&nbsp;and&nbsp;for&nbsp;no&nbsp;other&nbsp;purpose.</span></p><p><span style="color: rgb(91, 99, 104);">Sometimes&nbsp;we&nbsp;may&nbsp;use&nbsp;anonymous&nbsp;information&nbsp;about&nbsp;your&nbsp;use&nbsp;of&nbsp;our&nbsp;site&nbsp;in&nbsp;combination&nbsp;with&nbsp;other&nbsp;users’&nbsp;usage&nbsp;to&nbsp;make&nbsp;decisions&nbsp;about&nbsp;the&nbsp;contents&nbsp;and&nbsp;design&nbsp;of&nbsp;the&nbsp;web&nbsp;site.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;in&nbsp;response&nbsp;to&nbsp;court&nbsp;orders,&nbsp;or&nbsp;other&nbsp;legal&nbsp;process,&nbsp;or&nbsp;to&nbsp;establish&nbsp;or&nbsp;exercise&nbsp;our&nbsp;legal&nbsp;rights&nbsp;or&nbsp;to&nbsp;defend&nbsp;against&nbsp;legal&nbsp;claims.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;may&nbsp;disclose&nbsp;your&nbsp;information&nbsp;when&nbsp;we&nbsp;believe&nbsp;it&nbsp;necessary&nbsp;or&nbsp;desirable&nbsp;in&nbsp;order&nbsp;to&nbsp;investigate,&nbsp;prevent,&nbsp;or&nbsp;take&nbsp;action&nbsp;regarding&nbsp;illegal&nbsp;activities,&nbsp;suspected&nbsp;fraud,&nbsp;situations&nbsp;involving&nbsp;potential&nbsp;threats&nbsp;to&nbsp;the&nbsp;physical&nbsp;safety&nbsp;of&nbsp;any&nbsp;person,&nbsp;violations&nbsp;of&nbsp;our&nbsp;policies,&nbsp;and/or&nbsp;to&nbsp;protect&nbsp;our&nbsp;rights&nbsp;and&nbsp;property.</span></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;believe&nbsp;that&nbsp;any&nbsp;information&nbsp;we&nbsp;are&nbsp;holding&nbsp;on&nbsp;you&nbsp;is&nbsp;incorrect&nbsp;or&nbsp;incomplete,&nbsp;please&nbsp;write&nbsp;to&nbsp;or&nbsp;email&nbsp;us&nbsp;as&nbsp;soon&nbsp;as&nbsp;possible.&nbsp;We&nbsp;will&nbsp;promptly&nbsp;correct&nbsp;any&nbsp;information&nbsp;found&nbsp;to&nbsp;be&nbsp;incorrect.</span></p><p><strong style="color: rgb(91, 99, 104);">4.&nbsp;Data&nbsp;security</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;are&nbsp;committed&nbsp;to&nbsp;ensuring&nbsp;that&nbsp;your&nbsp;information&nbsp;is&nbsp;secure.&nbsp;We&nbsp;will&nbsp;never&nbsp;provide&nbsp;access&nbsp;to&nbsp;our&nbsp;databases&nbsp;to&nbsp;any&nbsp;third&nbsp;party,&nbsp;except&nbsp;to&nbsp;the&nbsp;extent&nbsp;necessary&nbsp;to&nbsp;conduct&nbsp;the&nbsp;operations&nbsp;of&nbsp;the&nbsp;web&nbsp;site&nbsp;(such&nbsp;as&nbsp;providing&nbsp;user&nbsp;data&nbsp;to&nbsp;Mailchimp).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;cannot&nbsp;ensure&nbsp;or&nbsp;warrant&nbsp;the&nbsp;security&nbsp;of&nbsp;any&nbsp;information&nbsp;you&nbsp;transmit&nbsp;to&nbsp;us&nbsp;or&nbsp;guarantee&nbsp;that&nbsp;your&nbsp;information&nbsp;on&nbsp;our&nbsp;web&nbsp;site&nbsp;may&nbsp;not&nbsp;be&nbsp;accessed,&nbsp;disclosed,&nbsp;altered&nbsp;or&nbsp;destroyed&nbsp;by&nbsp;breach&nbsp;of&nbsp;any&nbsp;of&nbsp;our&nbsp;industry&nbsp;standard&nbsp;physical,&nbsp;technical&nbsp;or&nbsp;managerial&nbsp;safeguards.&nbsp;When&nbsp;you&nbsp;enter&nbsp;sensitive&nbsp;information&nbsp;(such&nbsp;as&nbsp;contact&nbsp;form&nbsp;credentials)&nbsp;on&nbsp;our&nbsp;contact&nbsp;form,&nbsp;we&nbsp;encrypt&nbsp;that&nbsp;information&nbsp;using&nbsp;secure&nbsp;socket&nbsp;layer&nbsp;technology&nbsp;(SSL).&nbsp;No&nbsp;method&nbsp;of&nbsp;transmission&nbsp;over&nbsp;the&nbsp;Internet&nbsp;or&nbsp;method&nbsp;of&nbsp;electronic&nbsp;storage&nbsp;is&nbsp;100%&nbsp;secure,&nbsp;however.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;guarantee&nbsp;its&nbsp;absolute&nbsp;security.</span></p><p><strong style="color: rgb(91, 99, 104);">5.&nbsp;Access&nbsp;to&nbsp;Personal&nbsp;Information</strong></p><p><span style="color: rgb(91, 99, 104);">How&nbsp;to&nbsp;access&nbsp;your&nbsp;information</span></p><p><span style="color: rgb(91, 99, 104);">To&nbsp;access&nbsp;your&nbsp;information,&nbsp;you&nbsp;will&nbsp;need&nbsp;to&nbsp;put&nbsp;your&nbsp;request&nbsp;in&nbsp;writing.</span></p><p><span style="color: rgb(91, 99, 104);">You&nbsp;will&nbsp;need&nbsp;to&nbsp;provide&nbsp;information&nbsp;for&nbsp;us&nbsp;to&nbsp;identify&nbsp;you&nbsp;from&nbsp;our&nbsp;records,&nbsp;suchas&nbsp;yourr&nbsp;name&nbsp;and&nbsp;email&nbsp;address.&nbsp;You&nbsp;will&nbsp;also&nbsp;need&nbsp;to&nbsp;tell&nbsp;us&nbsp;what&nbsp;kind&nbsp;of&nbsp;information&nbsp;you&nbsp;are&nbsp;requesting&nbsp;to&nbsp;enable&nbsp;us&nbsp;to&nbsp;locate&nbsp;the&nbsp;information.&nbsp;Send&nbsp;your&nbsp;request&nbsp;to&nbsp;the&nbsp;address&nbsp;provided&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;this&nbsp;page.</span></p><p><strong style="color: rgb(91, 99, 104);">Proof&nbsp;of&nbsp;identity</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;we&nbsp;receive&nbsp;a&nbsp;request&nbsp;for&nbsp;information,&nbsp;we&nbsp;must&nbsp;make&nbsp;sure&nbsp;you&nbsp;are&nbsp;who&nbsp;you&nbsp;say&nbsp;you&nbsp;are.&nbsp;We&nbsp;need&nbsp;proof&nbsp;of&nbsp;identity.&nbsp;These&nbsp;include:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Your&nbsp;full&nbsp;name</span></li><li><span style="color: rgb(91, 99, 104);">Email&nbsp;Address</span></li></ul><p><span style="color: rgb(91, 99, 104);">The&nbsp;following&nbsp;documents&nbsp;can&nbsp;be&nbsp;accepted&nbsp;to&nbsp;verify&nbsp;your&nbsp;identity.&nbsp;We&nbsp;require&nbsp;two&nbsp;forms&nbsp;of&nbsp;ID:</span></p><ul><li><span style="color: rgb(91, 99, 104);">Current&nbsp;UK/EEA&nbsp;passport</span></li><li><span style="color: rgb(91, 99, 104);">UK&nbsp;photocard&nbsp;driving&nbsp;licence&nbsp;(full&nbsp;or&nbsp;provisional)</span></li><li><span style="color: rgb(91, 99, 104);">Firearms&nbsp;licence/shotgun&nbsp;certificate</span></li><li><span style="color: rgb(91, 99, 104);">EEA&nbsp;national&nbsp;identity&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Full&nbsp;UK&nbsp;paper&nbsp;driving&nbsp;licence</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;benefits&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State&nbsp;pension&nbsp;entitlement&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;credit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">Local&nbsp;authority&nbsp;benefit&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">State/local&nbsp;authority&nbsp;educational&nbsp;grant&nbsp;document*</span></li><li><span style="color: rgb(91, 99, 104);">HMRC&nbsp;tax&nbsp;notification&nbsp;document</span></li><li><span style="color: rgb(91, 99, 104);">Disabled&nbsp;driver’s&nbsp;pass</span></li><li><span style="color: rgb(91, 99, 104);">Financial&nbsp;statement&nbsp;issued&nbsp;by&nbsp;bank,&nbsp;building&nbsp;society&nbsp;or&nbsp;credit&nbsp;card&nbsp;company</span></li><li><span style="color: rgb(91, 99, 104);">Judiciary&nbsp;document&nbsp;such&nbsp;as&nbsp;a&nbsp;notice&nbsp;of&nbsp;hearing,&nbsp;summons&nbsp;or&nbsp;court&nbsp;order+</span></li><li><span style="color: rgb(91, 99, 104);">Utility&nbsp;bill&nbsp;for&nbsp;supply&nbsp;of&nbsp;gas,&nbsp;electric,&nbsp;water&nbsp;or&nbsp;telephone&nbsp;landline+</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;mortgage&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Most&nbsp;recent&nbsp;council&nbsp;tax&nbsp;bill/demand&nbsp;or&nbsp;statement</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;rent&nbsp;card</span></li><li><span style="color: rgb(91, 99, 104);">Current&nbsp;council&nbsp;tenancy&nbsp;agreement</span></li><li><span style="color: rgb(91, 99, 104);">Building&nbsp;society&nbsp;passbook&nbsp;which&nbsp;shows&nbsp;a&nbsp;transaction&nbsp;in&nbsp;the&nbsp;last&nbsp;three&nbsp;months&nbsp;and&nbsp;your&nbsp;address</span></li></ul><p><span style="color: rgb(91, 99, 104);">*&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old.</span></p><p><span style="color: rgb(91, 99, 104);">+&nbsp;Must&nbsp;be&nbsp;the&nbsp;most&nbsp;recently&nbsp;issued&nbsp;and&nbsp;less&nbsp;than&nbsp;three&nbsp;months&nbsp;old&nbsp;(except&nbsp;water&nbsp;bills&nbsp;–&nbsp;less&nbsp;than&nbsp;12&nbsp;months&nbsp;old).</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;will&nbsp;accept&nbsp;copies&nbsp;of&nbsp;these&nbsp;documents.&nbsp;However,&nbsp;we&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;ask&nbsp;for&nbsp;originals&nbsp;if&nbsp;photocopies&nbsp;are&nbsp;not&nbsp;of&nbsp;a&nbsp;good&nbsp;quality.</span></p><p><span style="color: rgb(91, 99, 104);">A&nbsp;‘reasonable&nbsp;fee’&nbsp;will&nbsp;be&nbsp;charged&nbsp;when&nbsp;a&nbsp;request&nbsp;is&nbsp;manifestly&nbsp;unfounded&nbsp;or&nbsp;excessive,&nbsp;particularly&nbsp;if&nbsp;it&nbsp;is&nbsp;repetitive.&nbsp;We&nbsp;may&nbsp;also&nbsp;charge&nbsp;a&nbsp;reasonable&nbsp;fee&nbsp;to&nbsp;comply&nbsp;with&nbsp;requests&nbsp;for&nbsp;further&nbsp;copies&nbsp;of&nbsp;the&nbsp;same&nbsp;information.</span></p><p><strong style="color: rgb(91, 99, 104);">6.&nbsp;Changes&nbsp;to&nbsp;this&nbsp;policy</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;reserve&nbsp;the&nbsp;right&nbsp;to&nbsp;change&nbsp;this&nbsp;policy&nbsp;at&nbsp;any&nbsp;time.&nbsp;Although&nbsp;we&nbsp;will&nbsp;notify&nbsp;users&nbsp;appropriately&nbsp;when&nbsp;changes&nbsp;are&nbsp;made&nbsp;to&nbsp;this&nbsp;policy,&nbsp;you&nbsp;are&nbsp;responsible&nbsp;for&nbsp;checking&nbsp;this&nbsp;page&nbsp;for&nbsp;changes.&nbsp;Your&nbsp;use&nbsp;of&nbsp;our&nbsp;website&nbsp;constitutes&nbsp;agreement&nbsp;to&nbsp;this&nbsp;privacy&nbsp;policy.</span></p><p><strong style="color: rgb(91, 99, 104);">7.&nbsp;Links&nbsp;to&nbsp;other&nbsp;websites</strong></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;website&nbsp;may&nbsp;contain&nbsp;links&nbsp;to&nbsp;other&nbsp;websites&nbsp;of&nbsp;interest.&nbsp;However,&nbsp;once&nbsp;you&nbsp;have&nbsp;used&nbsp;these&nbsp;links&nbsp;to&nbsp;leave&nbsp;our&nbsp;site,&nbsp;you&nbsp;should&nbsp;note&nbsp;that&nbsp;we&nbsp;do&nbsp;not&nbsp;have&nbsp;any&nbsp;control&nbsp;over&nbsp;that&nbsp;other&nbsp;website.&nbsp;Therefore,&nbsp;we&nbsp;cannot&nbsp;be&nbsp;responsible&nbsp;for&nbsp;the&nbsp;protection&nbsp;and&nbsp;privacy&nbsp;of&nbsp;any&nbsp;information&nbsp;which&nbsp;you&nbsp;provide&nbsp;whilst&nbsp;visiting&nbsp;such&nbsp;sites&nbsp;and&nbsp;such&nbsp;sites&nbsp;are&nbsp;not&nbsp;governed&nbsp;by&nbsp;this&nbsp;privacy&nbsp;statement.&nbsp;You&nbsp;should&nbsp;exercise&nbsp;caution&nbsp;and&nbsp;look&nbsp;at&nbsp;the&nbsp;privacy&nbsp;statement&nbsp;applicable&nbsp;to&nbsp;the&nbsp;website&nbsp;in&nbsp;question.</span></p><p></p><p></p>',
           introduction: "",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213053/seven_star/1781195615052-WhatsAppImage2026-06-11at21.23.03.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195615052-WhatsAppImage2026-06-11at21.23.03.jpeg",
         },
         order: 0,
       },
@@ -2186,7 +2186,7 @@ const pagesData = [
             '<h1><span style="color: rgb(91, 99, 104);">Cookie&nbsp;Policy</span></h1><p><span style="color: rgb(91, 99, 104);">Hi&nbsp;Baldon&nbsp;Ltd&nbsp;(“us”,&nbsp;“we”,&nbsp;or&nbsp;“our”)&nbsp;uses&nbsp;cookies&nbsp;on&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;(the&nbsp;“Service”).</span></p><p><span style="color: rgb(91, 99, 104);">Our&nbsp;Cookies&nbsp;Policy&nbsp;explains&nbsp;what&nbsp;cookies&nbsp;are,&nbsp;how&nbsp;we&nbsp;use&nbsp;cookies,&nbsp;how&nbsp;third-parties&nbsp;we&nbsp;may&nbsp;partner&nbsp;with&nbsp;may&nbsp;use&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies&nbsp;and&nbsp;further&nbsp;information&nbsp;about&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;are&nbsp;small&nbsp;pieces&nbsp;of&nbsp;text&nbsp;sent&nbsp;by&nbsp;your&nbsp;web&nbsp;browser&nbsp;to&nbsp;a&nbsp;website&nbsp;you&nbsp;visit.&nbsp;A&nbsp;cookie&nbsp;file&nbsp;is&nbsp;stored&nbsp;in&nbsp;your&nbsp;web&nbsp;browser&nbsp;and&nbsp;allows&nbsp;the&nbsp;Service&nbsp;or&nbsp;a&nbsp;third&nbsp;party&nbsp;to&nbsp;recognise&nbsp;you,&nbsp;making&nbsp;your&nbsp;next&nbsp;visit&nbsp;easier&nbsp;and&nbsp;more&nbsp;efficient.&nbsp;You&nbsp;can&nbsp;find&nbsp;out&nbsp;more&nbsp;information&nbsp;about&nbsp;cookies&nbsp;at&nbsp;www.allaboutcookies.org</span></p><p><span style="color: rgb(91, 99, 104);">The&nbsp;law&nbsp;states&nbsp;that&nbsp;we&nbsp;can&nbsp;store&nbsp;cookies&nbsp;on&nbsp;your&nbsp;machine&nbsp;if&nbsp;they&nbsp;are&nbsp;essential&nbsp;to&nbsp;the&nbsp;operation&nbsp;of&nbsp;this&nbsp;site&nbsp;but&nbsp;that&nbsp;we&nbsp;need&nbsp;your&nbsp;permission&nbsp;before&nbsp;using&nbsp;any&nbsp;other&nbsp;type&nbsp;of&nbsp;cookie.</span></p><p><span style="color: rgb(91, 99, 104);">Cookies&nbsp;can&nbsp;be&nbsp;“persistent”&nbsp;or&nbsp;“session”&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">How&nbsp;&nbsp;sevenstarsatmarshbaldon.co.uk&nbsp;</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;you&nbsp;use&nbsp;and&nbsp;access&nbsp;the&nbsp;Service,&nbsp;we&nbsp;may&nbsp;place&nbsp;several&nbsp;cookie&nbsp;files&nbsp;in&nbsp;your&nbsp;web&nbsp;Browser.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;cookies&nbsp;for&nbsp;the&nbsp;following&nbsp;purposes:&nbsp;to&nbsp;enable&nbsp;certain&nbsp;functions&nbsp;of&nbsp;the&nbsp;Service,&nbsp;to&nbsp;provide&nbsp;analytics,&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;to&nbsp;enable&nbsp;advertisement&nbsp;delivery,&nbsp;including&nbsp;behavioural&nbsp;advertising.</span></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;both&nbsp;session&nbsp;and&nbsp;persistent&nbsp;cookies&nbsp;on&nbsp;the&nbsp;Service,&nbsp;and&nbsp;we&nbsp;use&nbsp;different&nbsp;types&nbsp;of&nbsp;cookies&nbsp;to&nbsp;run&nbsp;the&nbsp;Service:</span></p><p><span style="color: rgb(91, 99, 104);">Essential&nbsp;cookies.&nbsp;We&nbsp;may&nbsp;use&nbsp;essential&nbsp;cookies&nbsp;to&nbsp;authenticate&nbsp;users&nbsp;and&nbsp;prevent&nbsp;fraudulent&nbsp;use&nbsp;of&nbsp;user&nbsp;accounts.</span></p><p><strong style="color: rgb(91, 99, 104);">Third-party&nbsp;cookies</strong></p><p><span style="color: rgb(91, 99, 104);">In&nbsp;addition&nbsp;to&nbsp;our&nbsp;own&nbsp;cookies,&nbsp;we&nbsp;may&nbsp;also&nbsp;use&nbsp;various&nbsp;third-parties&nbsp;cookies&nbsp;to&nbsp;report&nbsp;usage&nbsp;statistics&nbsp;of&nbsp;the&nbsp;Service,&nbsp;deliver&nbsp;advertisements&nbsp;on&nbsp;and&nbsp;through&nbsp;the&nbsp;Service,&nbsp;and&nbsp;so&nbsp;on.</span></p><p><strong style="color: rgb(91, 99, 104);">The&nbsp;cookies&nbsp;we&nbsp;use</strong></p><p><span style="color: rgb(91, 99, 104);">We&nbsp;use&nbsp;the&nbsp;following&nbsp;types&nbsp;of&nbsp;cookies&nbsp;on&nbsp;our&nbsp;website:</span></p><p><span style="color: rgb(91, 99, 104);">Google&nbsp;Analytics&nbsp;cookies:</span></p><p><span style="color: rgb(91, 99, 104);">These&nbsp;cookies&nbsp;collect&nbsp;information&nbsp;about&nbsp;how&nbsp;visitors&nbsp;use&nbsp;a&nbsp;website,e&nbsp;e.g.&nbsp;which&nbsp;pages&nbsp;visitors&nbsp;go&nbsp;to&nbsp;most&nbsp;often.&nbsp;These&nbsp;cookies&nbsp;do&nbsp;not&nbsp;collect&nbsp;information&nbsp;that&nbsp;identifies&nbsp;a&nbsp;visitor&nbsp;but&nbsp;provide&nbsp;a&nbsp;free&nbsp;web&nbsp;analytics&nbsp;service&nbsp;to&nbsp;website&nbsp;owners.</span></p><p><span style="color: rgb(91, 99, 104);">_ga</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;2&nbsp;years</span></p><p><span style="color: rgb(91, 99, 104);">_gid</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;distinguish&nbsp;users</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;24&nbsp;hours</span></p><p><span style="color: rgb(91, 99, 104);">_gat</span></p><p><span style="color: rgb(91, 99, 104);">Used&nbsp;to&nbsp;throttle&nbsp;request&nbsp;rate</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;1&nbsp;minute</span></p><p><span style="color: rgb(91, 99, 104);">AMP_TOKEN</span></p><p><span style="color: rgb(91, 99, 104);">Contains&nbsp;a&nbsp;token&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;a&nbsp;Client&nbsp;ID&nbsp;fromthe&nbsp;&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service.&nbsp;Other&nbsp;possible&nbsp;values&nbsp;indicate&nbsp;opt-out,&nbsp;inflight&nbsp;request&nbsp;or&nbsp;an&nbsp;error&nbsp;retrieving&nbsp;a&nbsp;Client&nbsp;ID&nbsp;from&nbsp;the&nbsp;AMP&nbsp;Client&nbsp;ID&nbsp;service</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;30&nbsp;seconds&nbsp;to&nbsp;1&nbsp;year</span></p><p><span style="color: rgb(91, 99, 104);">_gac_&nbsp;Contains&nbsp;campaign-related&nbsp;information&nbsp;for&nbsp;the&nbsp;user.&nbsp;If&nbsp;you&nbsp;have&nbsp;linked&nbsp;your&nbsp;Google&nbsp;Analytics&nbsp;and&nbsp;AdWords&nbsp;accounts,&nbsp;AdWords&nbsp;website&nbsp;conversion&nbsp;tags&nbsp;will&nbsp;read&nbsp;this&nbsp;cookie&nbsp;unless&nbsp;you&nbsp;opt&nbsp;out.</span></p><p><span style="color: rgb(91, 99, 104);">Default&nbsp;expiration&nbsp;time:&nbsp;90&nbsp;days</span></p><p><strong style="color: rgb(91, 99, 104);">What&nbsp;are&nbsp;your&nbsp;choices&nbsp;regarding&nbsp;cookies?</strong></p><p><span style="color: rgb(91, 99, 104);">When&nbsp;accessing&nbsp;the&nbsp;Service,e&nbsp;the&nbsp;cookies&nbsp;noted&nbsp;above&nbsp;are&nbsp;automatically&nbsp;added&nbsp;to&nbsp;your&nbsp;computer.&nbsp;You&nbsp;may&nbsp;choose&nbsp;to&nbsp;block&nbsp;cookies&nbsp;by&nbsp;activating&nbsp;the&nbsp;setting&nbsp;on&nbsp;your&nbsp;browser&nbsp;that&nbsp;allows&nbsp;you&nbsp;to&nbsp;refuse&nbsp;the&nbsp;setting&nbsp;of&nbsp;all&nbsp;or&nbsp;some&nbsp;cookies.</span></p><p><span style="color: rgb(91, 99, 104);">Please&nbsp;note,&nbsp;however,&nbsp;that&nbsp;if&nbsp;you&nbsp;delete&nbsp;cookies&nbsp;or&nbsp;refuse&nbsp;to&nbsp;accept&nbsp;them,&nbsp;you&nbsp;might&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;use&nbsp;all&nbsp;of&nbsp;the&nbsp;features&nbsp;we&nbsp;offer,&nbsp;you&nbsp;may&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;store&nbsp;your&nbsp;preferences,&nbsp;and&nbsp;some&nbsp;of&nbsp;our&nbsp;pages&nbsp;might&nbsp;not&nbsp;display&nbsp;properly.</span></p><p><strong style="color: rgb(91, 99, 104);">Your&nbsp;consent</strong></p><p><span style="color: rgb(91, 99, 104);">By&nbsp;clicking&nbsp;on&nbsp;the&nbsp;“Accept&nbsp;Cookies”&nbsp;tab&nbsp;on&nbsp;the&nbsp;cookie&nbsp;pop-up&nbsp;on&nbsp;our&nbsp;site&nbsp;or&nbsp;by&nbsp;continuing&nbsp;to&nbsp;use&nbsp;the&nbsp;Service,&nbsp;we&nbsp;deem&nbsp;that&nbsp;you&nbsp;have&nbsp;provided&nbsp;your&nbsp;consent&nbsp;to&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;above-named&nbsp;cookies.</span></p><p><strong style="color: rgb(91, 99, 104);">Contact&nbsp;us</strong></p><p><span style="color: rgb(91, 99, 104);">If&nbsp;you&nbsp;have&nbsp;any&nbsp;queries&nbsp;about&nbsp;your&nbsp;personal&nbsp;information&nbsp;or&nbsp;any&nbsp;questions&nbsp;on&nbsp;our&nbsp;use&nbsp;of&nbsp;the&nbsp;information,&nbsp;please&nbsp;contact&nbsp;info@sevenstarsatmb.co.uk</span></p><p></p>',
           introduction: "",
           backgroundImage:
-            "https://res.cloudinary.com/mbip34n2/image/upload/v1791213016/seven_star/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
+            "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160176550-SEVEN_STARS_2026_02_09-137.webp",
         },
         order: 0,
       },
@@ -2209,7 +2209,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213184/seven_star/1787557315939-download.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787557315939-download.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2253,7 +2253,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213186/seven_star/1787662018756-18990479.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787662018756-18990479.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2297,7 +2297,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213098/seven_star/1781195516243-IMG_4523.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781195516243-IMG_4523.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2341,7 +2341,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213021/seven_star/1779094138324-food-gourmet.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1779094138324-food-gourmet.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2385,7 +2385,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791212971/seven_star/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781686607452-SEVEN_STARS_2026_02_09-0028.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2429,7 +2429,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213187/seven_star/1787659089858-1781195615052-WhatsAppImage2026-06-11at21.23.03.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787659089858-1781195615052-WhatsAppImage2026-06-11at21.23.03.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2473,7 +2473,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213189/seven_star/1787659182710-1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1787659182710-1781156724977-SEVEN_STARS_2026_02_09-0106.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
@@ -2517,7 +2517,7 @@ const pagesData = [
     canonicalUrl: null,
     noIndex: false,
     featuredImage:
-      "https://res.cloudinary.com/mbip34n2/image/upload/v1791213181/seven_star/1781160436858-SEVEN_STARS_2026_02_09-16.webp",
+      "https://hnbxxyyfesdapmxpsppo.supabase.co/storage/v1/object/public/myBucket/1781160436858-SEVEN_STARS_2026_02_09-16.webp",
     ogTitle: null,
     ogDescription: null,
     ogImage: null,
