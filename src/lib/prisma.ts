@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { createClient } from "@supabase/supabase-js";
+import { deleteFromCloudinary } from "@/lib/cloudinary";
 
 const globalForPrisma = global as unknown as { prisma: unknown };
 
@@ -24,6 +25,15 @@ function extractFilePath(publicUrl: string): string | null {
 }
 
 async function deleteFromSupabase(url: string) {
+  if (!url) return;
+
+  // If it is a Cloudinary URL, delete from Cloudinary
+  if (url.includes("cloudinary.com")) {
+    await deleteFromCloudinary(url);
+    return;
+  }
+
+  // Otherwise handle legacy Supabase URL
   const path = extractFilePath(url);
   if (!path) return;
   const { error } = await supabase.storage.from(BUCKET).remove([path]);
@@ -37,7 +47,10 @@ async function deleteFromSupabase(url: string) {
 function findSupabaseUrls(obj: unknown): string[] {
   const urls: string[] = [];
   if (typeof obj === "string") {
-    if (obj.includes(`/object/public/${BUCKET}/`)) {
+    if (
+      obj.includes(`/object/public/${BUCKET}/`) ||
+      obj.includes("res.cloudinary.com")
+    ) {
       urls.push(obj);
     }
   } else if (Array.isArray(obj)) {

@@ -19,10 +19,25 @@ function extractFilePath(publicUrl: string): string | null {
 }
 
 /**
- * Deletes a file from Supabase storage given its public URL.
+ * Deletes a file from Cloudinary or Supabase storage given its public URL.
  * Silently ignores errors so it never blocks an upload.
  */
 export async function deleteFileFromSupabase(publicUrl: string): Promise<void> {
+  if (!publicUrl) return;
+
+  // Handle Cloudinary URLs
+  if (publicUrl.includes("cloudinary.com")) {
+    try {
+      await fetch(`/api/upload?url=${encodeURIComponent(publicUrl)}`, {
+        method: "DELETE",
+      });
+    } catch (err) {
+      console.warn("Failed to delete file from Cloudinary:", err);
+    }
+    return;
+  }
+
+  // Handle legacy Supabase URLs
   const path = extractFilePath(publicUrl);
   if (!path) return;
 

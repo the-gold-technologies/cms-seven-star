@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { uploadBufferToCloudinary, deleteFromCloudinary } from "@/lib/cloudinary";
 import path from "path";
 import sharp from "sharp";
 
@@ -16,7 +16,6 @@ export async function POST(req: Request) {
         const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.\-_]/g, "")}`;
 
         let uploadBuffer: Buffer = buffer;
-        let mimeType = file.type;
         let finalFileName = fileName;
 
         // Automatically optimize images (excluding GIFs)
@@ -27,7 +26,6 @@ export async function POST(req: Request) {
               .webp({ quality: 80 })
               .toBuffer();
 
-            mimeType = "image/webp";
             const ext = path.extname(fileName);
             const baseName = fileName.slice(0, fileName.length - ext.length);
             finalFileName = `${baseName}.webp`;
@@ -39,29 +37,25 @@ export async function POST(req: Request) {
           }
         }
 
-        const { error } = await supabase.storage
-          .from("myBucket")
-          .upload(finalFileName, uploadBuffer, {
-            contentType: mimeType,
-            cacheControl: "31536000",
-            upsert: false,
-          });
-
-        if (error) {
-          console.error("Supabase Storage Error:", error);
+        // Upload directly to Cloudinary
+        try {
+          const uploadResult = await uploadBufferToCloudinary(
+            uploadBuffer,
+            finalFileName,
+            { resourceType: "auto" }
+          );
+          uploadedFiles.push(uploadResult.secure_url);
+        } catch (uploadError: unknown) {
+          const errMsg = uploadError instanceof Error ? uploadError.message : String(uploadError);
+          console.error("Cloudinary Upload Error:", errMsg);
           return NextResponse.json(
             {
               success: false,
-              error: `Supabase Storage Error: ${error.message}`,
+              error: `Cloudinary Upload Error: ${errMsg}`,
             },
             { status: 500 },
           );
         }
-
-        const {
-          data: { publicUrl },
-        } = supabase.storage.from("myBucket").getPublicUrl(finalFileName);
-        uploadedFiles.push(publicUrl);
       }
     }
 
@@ -71,6 +65,30 @@ export async function POST(req: Request) {
     console.error("Critical Upload Error:", error);
     return NextResponse.json(
       { success: false, error: `Server Error: ${error.message}` },
+      { status: 500 },
+    );
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const url = searchParams.get("url");
+
+    if (!url) {
+      return NextResponse.json(
+        { success: false, error: "Missing url parameter" },
+        { status: 400 },
+      );
+    }
+
+    await deleteFromCloudinary(url);
+    return NextResponse.json({ success: true, message: "Asset deleted" });
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("Delete Error:", errMsg);
+    return NextResponse.json(
+      { success: false, error: errMsg },
       { status: 500 },
     );
   }
